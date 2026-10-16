@@ -1,0 +1,342 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 메인 배너 스타일 */
+.main-banner {
+    width: 100%;
+    height: 80vh; /* 화면 높이의 80% 차지 */
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner-text h2 {
+    font-size: 5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeInUp 1.5s ease;
+}
+
+/* Swiper 페이지네이션 커스텀 (핫핑크 포인트) */
+.swiper-pagination-bullet {
+    background: #fff;
+    opacity: 0.5;
+}
+.swiper-pagination-bullet-active {
+    background: #ff69b4 !important;
+    opacity: 1;
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 배너 폰트 크기 조절 */
+@media (max-width: 768px) {
+    .banner-text h2 { font-size: 2.5rem; }
+    .banner-text p { font-size: 0.9rem; }
+    .main-banner { height: 60vh; }
+}
+
+/* ... 기존 카드 및 푸터 스타일 동일 ... */
+
+body {
+    background-color: #0a0a0a; /* 깊은 블랙 */
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 색상 클래스 */
+.p-pink { color: #ff69b4; }
+.p-blue { color: #00008b; }
+
+/* 1. 상단영역 */
+header {
+    padding: 40px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.menu-list {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.menu-list li a:hover {
+    color: #ff69b4;
+}
+
+/* 2. 메인영역 - 카드 그리드 */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-title span {
+    color: #00008b;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: #151515;
+    border: 1px solid #222;
+    transition: transform 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #ff69b4;
+}
+
+/* 이미지 영역 핵심 수정 */
+.card-img {
+    width: 100%;
+    height: 450px; /* 높이 고정 */
+    background-color: #222; /* 이미지가 안 나올 때 배경색 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    transition: 0.5s;
+}
+
+.card:hover .card-img {
+    filter: grayscale(0%);
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.category.pink {
+    color: #ff69b4;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-body p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.btn-more {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid #00008b;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-more:hover {
+    background: #00008b;
+}
+
+/* 3. 하단영역 */
+footer {
+    background-color: #050505;
+    padding: 80px 0;
+    border-top: 1px solid #1a1a1a;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.company-info {
+    color: #555;
+    font-size: 0.85rem;
+}
+
+.copyright {
+    margin-top: 30px;
+    font-size: 0.75rem;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .header-content { flex-direction: column; gap: 20px; }
+}
+
+/* 1. 변수 설정 */
+:root {
+    /* 라이트 모드 컬러 */
+    --bg-body: #ffffff;
+    --bg-header: rgba(255, 255, 255, 0.9);
+    --bg-card: #f8f8f8;
+    --text-main: #111111;
+    --text-sub: #666666;
+    --border: #eeeeee;
+    --point-pink: #ff69b4;
+    --point-blue: #00008b;
+}
+
+[data-theme='dark'] {
+    /* 다크 모드 컬러 */
+    --bg-body: #0a0a0a;
+    --bg-header: rgba(10, 10, 10, 0.9);
+    --bg-card: #151515;
+    --text-main: #ffffff;
+    --text-sub: #aaaaaa;
+    --border: #222222;
+}
+
+/* 2. 레이아웃 리팩토링 */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* 헤더 배치 핵심 */
+header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    background-color: var(--bg-header);
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* 로고와 header-right를 양끝으로 */
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* 메뉴와 버튼 사이 간격 */
+}
+
+.menu-list {
+    display: flex; gap: 30px; list-style: none;
+}
+
+.menu-list a {
+    text-decoration: none; color: var(--text-main);
+    font-weight: 700; font-size: 0.9rem; text-transform: uppercase;
+}
+
+/* 토글 버튼 디자인 */
+.theme-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    color: var(--text-main);
+}
+
+/* 테마에 따른 아이콘 전환 */
+[data-theme='dark'] .icon-sun { display: block; }
+[data-theme='dark'] .icon-moon { display: none; }
+[data-theme='light'] .icon-sun { display: none; }
+[data-theme='light'] .icon-moon { display: block; }
+
+/* 3. 포인트 컬러 적용 */
+.p-pink { color: var(--point-pink); }
+.p-blue { color: var(--point-blue); }
+
+/* 4. 카드 및 섹션 스타일 */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+.card-body p { color: var(--text-sub); }
+
+/* ... (나머지 배너 및 카드 스타일은 이전과 동일하게 변수 적용) ... */

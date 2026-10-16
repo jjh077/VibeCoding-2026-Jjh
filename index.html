@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark"> <!-- 초기값 다크모드 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion 404 | Designer Portfolio</title>
+    <!-- Swiper & Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 테마 실행 전 깜빡임 방지 스크립트 -->
+    <script>
+        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    </script>
+</head>
+<body>
+
+    <!-- 1. 상단영역 (Header) -->    
+    <header>
+        <div class="container header-content">
+            <!-- 로고 -->
+            <h1 class="logo">FASHION<span class="p-pink">4</span><span class="p-blue">0</span><span class="p-pink">4</span></h1>
+            
+            <!-- 메뉴와 토글 버튼을 감싸는 영역 -->
+            <div class="header-right">
+                <nav>
+                    <ul class="menu-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Show</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- 테마 토글 버튼 -->
+                <button id="theme-toggle" class="theme-btn" title="Toggle Mode">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. 메인영역 (Main - Event Section) -->    
+    <main>
+        <!-- 신규: 메인 배너 영역 (Full Width Slider) -->
+        <section class="main-banner">
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- Slide 1: ELEGANCE -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=1920');">
+                <div class="banner-text">
+                    <h2 class="p-pink">ELEGANCE</h2>
+                    <p>2024 New Definition of Style</p>
+                </div>
+            </div>
+            <!-- Slide 2: MODERNITY -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1920');">
+                <div class="banner-text">
+                    <h2 class="p-blue">MODERNITY</h2>
+                    <p>Urban Symphony in Darkblue</p>
+                </div>
+            </div>
+            <!-- Slide 3: AVANT-GARDE -->
+            <div class="swiper-slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&q=80&w=1920');">
+                <div class="banner-text">
+                    <h2 class="p-pink">AVANT-GARDE</h2>
+                    <p>Fashion 404: The Future is Now</p>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+        <!-- 이벤트 섹션 (기존 카드 파트) -->
+        <section class="event-section container">
+            <h2 class="section-title">LATEST <span>EVENTS</span></h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/64/600/800');"></div>
+                    <div class="card-body">
+                        <span class="category pink">2024 FW</span>
+                        <h3>Midnight Collection</h3>
+                        <p>도시의 밤에서 영감을 얻은 다크블루 테마의 오뜨꾸뛰르 컬렉션.</p>
+                        <a href="#" class="btn-more">View More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/445/600/800');"></div>
+                    <div class="card-body">
+                        <span class="category pink">Exhibition</span>
+                        <h3>Neon Rebellion</h3>
+                        <p>핫핑크와 블랙의 대비를 통한 패션의 파괴적 혁신.</p>
+                        <a href="#" class="btn-more">View More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/id/658/600/800');"></div>
+                    <div class="card-body">
+                        <span class="category pink">Collaboration</span>
+                        <h3>Digital Nomad</h3>
+                        <p>Fashion 404가 제안하는 디지털 시대의 새로운 스타일.</p>
+                        <a href="#" class="btn-more">View More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. 하단영역 (Footer) -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">FASHION<span class="p-pink">404</span></div>
+            <div class="company-info">
+                <p>Designer. Lee 404 | Seoul, Korea</p>
+                <p>Email: contact@fashion404.com | Tel: +82 2-1234-5678</p>
+                <p class="copyright">&copy; 2024 Fashion 404. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- JS 로직 -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const btn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // 버튼 클릭 시 테마 변경
+    btn.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+
+    // Swiper 초기화 (기존 로직 유지)
+    const swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: true },
+        pagination: { el: ".swiper-pagination", clickable: true },
+    });
+
+      // 사용자 조작 후 5초간 아무런 동작이 없으면 다시 자동재생 시작
+      let restartTimer;
+        swiper.on('touchEnd', function () {
+            clearTimeout(restartTimer);
+            restartTimer = setTimeout(() => {
+                swiper.autoplay.start();
+            }, 5000);
+        });
+</script>
+</body>
+</html>
