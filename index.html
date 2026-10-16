@@ -156,6 +156,97 @@
                 </div>
             </div>
         </section>
+
+        <section class="fashion-shows-section" aria-labelledby="fashion-shows-title">
+            <div class="fashion-shows-container">
+                <div class="fashion-shows-heading">
+                    <div>
+                        <h2 id="fashion-shows-title">FASHION WEEKS AROUND THE WORLD</h2>
+                        <p>도시마다 다른 감각으로 완성되는 런웨이를 만나보세요.</p>
+                    </div>
+                    <div class="fashion-shows-controls">
+                        <button class="fashion-shows-prev" type="button" aria-label="이전 패션쇼"></button>
+                        <button class="fashion-shows-next" type="button" aria-label="다음 패션쇼"></button>
+                    </div>
+                </div>
+
+                <div class="swiper fashionShowSwiper">
+                    <div class="swiper-wrapper">
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion1/600/800" alt="파리 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>파리 패션위크</h3>
+                                    <p>파리, 프랑스</p>
+                                    <span>2월 · 9월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion2/600/800" alt="밀라노 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>밀라노 패션위크</h3>
+                                    <p>밀라노, 이탈리아</p>
+                                    <span>2월 · 9월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion3/600/800" alt="뉴욕 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>뉴욕 패션위크</h3>
+                                    <p>뉴욕, 미국</p>
+                                    <span>2월 · 9월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion4/600/800" alt="런던 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>런던 패션위크</h3>
+                                    <p>런던, 영국</p>
+                                    <span>2월 · 9월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion5/600/800" alt="서울 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>서울 패션위크</h3>
+                                    <p>서울, 대한민국</p>
+                                    <span>2월 · 9월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion6/600/800" alt="도쿄 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>도쿄 패션위크</h3>
+                                    <p>도쿄, 일본</p>
+                                    <span>3월 · 8월</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide">
+                            <div class="fashion-show-card">
+                                <img src="https://picsum.photos/seed/fashion7/600/800" alt="상하이 패션위크 런웨이" loading="lazy">
+                                <div class="fashion-show-info">
+                                    <h3>상하이 패션위크</h3>
+                                    <p>상하이, 중국</p>
+                                    <span>3월 · 10월</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-pagination fashion-shows-pagination"></div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- 3. 하단영역 (Footer) -->
@@ -207,6 +298,32 @@
             restartTimer = setTimeout(() => {
                 swiper.autoplay.start();
             }, 5000);
+        });
+
+        const fashionShowSwiper = new Swiper('.fashionShowSwiper', {
+            loop: true,
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            grabCursor: true,
+            speed: 600,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true,
+                pauseOnMouseEnter: true,
+            },
+            navigation: {
+                nextEl: '.fashion-shows-next',
+                prevEl: '.fashion-shows-prev',
+            },
+            pagination: {
+                el: '.fashion-shows-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                480: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1200: { slidesPerView: 4 },
+            },
         });
 </script>
 </body>
