@@ -1,0 +1,201 @@
+{
+"color": {
+"primary": {
+"50": {
+"$type": "color",
+"$value": "#eff6ff",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"500": {
+"$type": "color",
+"$value": "#3b82f6",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"900": {
+"$type": "color",
+"$value": "#1e3a8a",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+}
+},
+"neutral": {
+"0": {
+"$type": "color",
+"$value": "#ffffff",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"100": {
+"$type": "color",
+"$value": "#f3f4f6",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"500": {
+"$type": "color",
+"$value": "#6b7280",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"900": {
+"$type": "color",
+"$value": "#111827",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+}
+},
+"feedback": {
+"success": {
+"$type": "color",
+"$value": "#22c55e",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"warning": {
+"$type": "color",
+"$value": "#f59e0b",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+},
+"error": {
+"$type": "color",
+"$value": "#ef4444",
+"$extensions": {
+"com.figma.scopes": ["ALL_SCOPES"]
+}
+}
+}
+},
+"spacing": {
+"4": {
+"$type": "number",
+"$value": 4,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"8": {
+"$type": "number",
+"$value": 8,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"12": {
+"$type": "number",
+"$value": 12,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"16": {
+"$type": "number",
+"$value": 16,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"24": {
+"$type": "number",
+"$value": 24,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"32": {
+"$type": "number",
+"$value": 32,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"48": {
+"$type": "number",
+"$value": 48,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+},
+"64": {
+"$type": "number",
+"$value": 64,
+"$extensions": {
+"com.figma.scopes": ["WIDTH_HEIGHT", "GAP", "PADDING"]
+}
+}
+},
+"font": {
+"size": {
+"xs": {
+"$type": "number",
+"$value": 12,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"sm": {
+"$type": "number",
+"$value": 14,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"base": {
+"$type": "number",
+"$value": 16,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"lg": {
+"$type": "number",
+"$value": 18,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"xl": {
+"$type": "number",
+"$value": 20,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"2xl": {
+"$type": "number",
+"$value": 24,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"3xl": {
+"$type": "number",
+"$value": 30,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+},
+"4xl": {
+"$type": "number",
+"$value": 36,
+"$extensions": {
+"com.figma.scopes": ["FONT_SIZE"]
+}
+}
+}
+},
+"$extensions": {
+"com.figma.modeName": "Mode 1"
+}
+}
