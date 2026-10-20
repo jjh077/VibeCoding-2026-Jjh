@@ -1,134 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>산리오 코리아 홍홍</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- 인터널스타일시트(internal style sheet) -->
     <!-- 상단영역 스타일 (Top Area Styles) -->
     <style>
-        .header-inner {
-            display: flex;
-            max-width: 1440px;
-            margin: 0 auto;
-            align-items: center;
-            justify-content: space-between;
-            height: 90px;
-        }
-        .logo-box {
-            flex-shrink: 0;
-        }
-         .logo-box img {
-            height: 56px; /* 로고 이미지 높이 고정 */
-        }
-        .menu-list {
-            display: flex;
-            gap: 32px;
-            margin: 0 20px 0 0;
-            padding: 0;
-            list-style: none;
-            align-items: center;
-        }
-        .menu-link {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 6px 12px;
-            transition: color 0.2s;
-        }
-        .menu-link:hover {
-            color: #ff69b4;
-        }
-        
-        /* 배너 영역 스타일 */
-    #banner-section {
-        background: url('./images/main_visual_bg.jpg') repeat 0 0/50px;
-    }
-    .main-visual-box {
+      .header-inner {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+        height: 90px;
+      }
+      .logo-box {
+        flex-shrink: 0;
+      }
+      .logo-box img {
+        height: 56px; /* 로고 이미지 높이 고정 */
+      }
+      .menu-list {
+        display: flex;
+        gap: 32px;
+        margin: 0 20px 0 0;
+        padding: 0;
+        list-style: none;
+        align-items: center;
+      }
+      .menu-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 1.1em;
+        padding: 6px 12px;
+        transition: color 0.2s;
+      }
+      .menu-link:hover {
+        color: #ff69b4;
+      }
+
+      /* 배너 영역 스타일 */
+      #banner-section {
+        background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
+      }
+      .main-visual-box {
         text-align: center;
         margin: 0 auto 0 auto;
         justify-content: center;
         padding: 80px;
         align-items: center;
-    }
-    .main-visual-img {
+      }
+      .main-visual-img {
         width: 984px;
         max-width: 100%;
         object-fit: contain;
-    }
-
+      }
+      /* SNS 버튼 래퍼 */
+      .sns {
+        display: flex; /* 아이콘을 flex로 배치 */
+        flex-direction: column; /* 세로 정렬 */
+        position: absolute; /* 부모 영역에서 위치 지정 */
+        top: 50px; /* 위쪽에서 50px 떨어짐 */
+        right: 50px; /* 오른쪽에서 50px 떨어짐 */
+      }
+ 
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <main id="wrapper">
-        <!-- 1. 상단영역 -->
-        <header id="site-header">
-            <!-- 헤더 내부 컨테이너(로고와 네비게이션 정렬 역할) -->
-            <section class="header-inner">
-                <!-- 로고 박스(좌측) -->
-                <aside class="logo-box">
-                    <!-- 사이트 대표 로고 이미지 -->
-                    <img src="./images/logo_2023.png" alt="Sanrio Korea Logo" class="site-logo">
-                </aside>
-                <!-- 내비게이션(메인 메뉴) 영역 -->
-                <nav>
-                    <!-- 메뉴 리스트(네비게이션 링크들을 포함) -->
-                    <ul class="menu-list">
-                        <!-- 회사 소개 섹션으로 이동 -->
-                        <li><a href="#company-section" class="menu-link">company</a></li>
-                        <!-- 캐릭터 소개 섹션으로 이동 -->
-                        <li><a href="#character-section" class="menu-link">character</a></li>
-                        <!-- 장소 소개 섹션으로 이동 -->
-                        <li><a href="#place-section" class="menu-link">place</a></li>
-                        <!-- 채용 정보 섹션으로 이동 -->
-                        <li><a href="#recruit-section" class="menu-link">recruit</a></li>
-                    </ul>
-                </nav>
-            </section>
-        </header>
-    
-        <!-- 2. 메인영역 -->
-        <main id="site-main">
-            <!-- 2-1. 배너영역 -->
-            <section id="banner-section" style="position: relative;">
-                <!-- 배너영역 내용 -->
-                <figure class="main-visual-box">
-                    <img src="./images/main_visual_pc_v1.png" alt="메인 비주얼" class="main-visual-img">
-                </figure>
+      <!-- 1. 상단영역 -->
+      <header id="site-header">
+        <!-- 헤더 내부 컨테이너(로고와 네비게이션 정렬 역할) -->
+        <section class="header-inner">
+          <!-- 로고 박스(좌측) -->
+          <aside class="logo-box">
+            <!-- 사이트 대표 로고 이미지 -->
+            <img
+              src="./images/logo_2023.png"
+              alt="Sanrio Korea Logo"
+              class="site-logo"
+            />
+          </aside>
+          <!-- 내비게이션(메인 메뉴) 영역 -->
+          <nav>
+            <!-- 메뉴 리스트(네비게이션 링크들을 포함) -->
+            <ul class="menu-list">
+              <!-- 회사 소개 섹션으로 이동 -->
+              <li><a href="#company-section" class="menu-link">company</a></li>
+              <!-- 캐릭터 소개 섹션으로 이동 -->
+              <li>
+                <a href="#character-section" class="menu-link">character</a>
+              </li>
+              <!-- 장소 소개 섹션으로 이동 -->
+              <li><a href="#place-section" class="menu-link">place</a></li>
+              <!-- 채용 정보 섹션으로 이동 -->
+              <li><a href="#recruit-section" class="menu-link">recruit</a></li>
+            </ul>
+          </nav>
+        </section>
+      </header>
 
-                <!-- SNS이동버튼박스 -->
-                 <div class="sns" style="display: flex;flex-direction: column;position: absolute;top: 50px;right: 50px;">
-				<a href="https://www.instagram.com/sanrio_kr/" target="_blank"><img src="./images/i_ins_pc_v3.png" alt="instargram"></a>
-				<a href="https://www.youtube.com/c/sanriokorea/featured" target="_blank"><img src="./images/i_you_pc_v3.png" alt="youtube"></a>
-			</div>
-                 
-            </section>
-            <!-- 2-2. 캐릭터영역 -->
-            <section id="character-section">
-                <!-- 캐릭터영역 내용 -->
-            </section>
-            <!-- 2-3. 컴퍼니영역 -->
-            <section id="company-section">
-                <!-- 컴퍼니영역 내용 (추후 추가) -->
-            </section>
-            <!-- 2-4. 리쿠르트영역 -->
-            <section id="recruit-section">
-                <!-- 리쿠르트영역 내용 (추후 추가) -->
-            </section>
-            <!-- 2-5. 플레이스영역 -->
-            <section id="place-section">
-                <!-- 플레이스영역 내용 (추후 추가) -->
-            </section>
-            <!-- 2-6. 컨텍어스영역 -->
-            <section id="contactus-section">
-                <!-- 컨텍어스영역 내용 (추후 추가) -->
-            </section>
-        </main>
-    
-        <!-- 3. 하단영역 -->
-        <footer id="site-footer">
-            <!-- 하단영역 내용 (추후 추가) -->
-        </footer>
+      <!-- 2. 메인영역 -->
+      <main id="site-main">
+        <!-- 2-1. 배너영역 -->
+        <section id="banner-section" style="position: relative">
+          <!-- 배너영역 내용 -->
+          <figure class="main-visual-box">
+            <img
+              src="./images/main_visual_pc_v1.png"
+              alt="메인 비주얼"
+              class="main-visual-img"
+            />
+          </figure>
+
+          <!-- SNS이동버튼박스 -->
+          <div class="sns">
+            <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
+              ><img src="./images/i_ins_pc_v3.png" alt="instargram"
+            /></a>
+            <a
+              href="https://www.youtube.com/c/sanriokorea/featured"
+              target="_blank"
+              ><img src="./images/i_you_pc_v3.png" alt="youtube"
+            /></a>
+          </div>
+        </section>
+        <!-- 2-2. 캐릭터영역 -->
+        <section id="character-section">
+          <!-- 캐릭터영역 내용 -->
+        </section>
+        <!-- 2-3. 컴퍼니영역 -->
+        <section id="company-section">
+          <!-- 컴퍼니영역 내용 (추후 추가) -->
+        </section>
+        <!-- 2-4. 리쿠르트영역 -->
+        <section id="recruit-section">
+          <!-- 리쿠르트영역 내용 (추후 추가) -->
+        </section>
+        <!-- 2-5. 플레이스영역 -->
+        <section id="place-section">
+          <!-- 플레이스영역 내용 (추후 추가) -->
+        </section>
+        <!-- 2-6. 컨텍어스영역 -->
+        <section id="contactus-section">
+          <!-- 컨텍어스영역 내용 (추후 추가) -->
+        </section>
+      </main>
+
+      <!-- 3. 하단영역 -->
+      <footer id="site-footer">
+        <!-- 하단영역 내용 (추후 추가) -->
+      </footer>
     </main>
-</body>
+  </body>
 </html>
