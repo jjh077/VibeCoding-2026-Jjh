@@ -200,8 +200,20 @@
         height: 36px;
         border: 1px solid #222;
         border-radius: 15px;
+        /* 애니메이션 호출 : (이시이지반방마)
+        이름 시간 이징 지연시간 반복 방향 마지막상태 */
+        animation: mouse-ani 0.9s ease-in-out infinite alternate;
       }
-
+      /* 마우스 애니메이션 키프레임 */
+      @keyframes mouse-ani {
+        /* 시작값  from이 처음 셋팅값과 같으면 생략가능 */
+        from{
+          top: 0;
+        }
+        to{
+          top: 15px;
+        }
+      }
       .scroll_btn .mouse span {
         position: absolute;
         top: 50%;
