@@ -6,6 +6,19 @@
     <!-- 인터널스타일시트(internal style sheet) -->
     <!-- 상단영역 스타일 (Top Area Styles) -->
     <style>
+      /* 웹폰트 로딩하기(CDN방식)
+        CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
+
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
+
+      @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css");
+
+      /* 전체 루트 설정 */
+      html, body{
+        /* 웹폰트체 지정 (콤마는 우선순위) */
+        font-family: Montserrat, NanumBarunGothic, Dotum, sans-serif;
+      }
+
       .header-inner {
         display: flex;
         max-width: 1440px;
@@ -126,7 +139,14 @@
               ><img src="./images/i_you_pc_v3.png" alt="youtube"
             /></a>
           </div>
+
+          <!-- 스크롤 유도 애니박스 -->
+          <div class="scroll_btn">
+            <span class="mouse"><span></span></span>
+            <p>scroll down</p>
+          </div>
         </section>
+
         <!-- 2-2. 캐릭터영역 -->
         <section id="character-section">
           <!-- 캐릭터영역 내용 -->
