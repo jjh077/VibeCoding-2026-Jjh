@@ -198,6 +198,7 @@
         display: block;
         width: 26px;
         height: 36px;
+        background-color: #fff;
         border: 1px solid #222;
         border-radius: 15px;
         /* 애니메이션 호출 : (이시이지반방마)
@@ -207,22 +208,48 @@
       /* 마우스 애니메이션 키프레임 */
       @keyframes mouse-ani {
         /* 시작값  from이 처음 셋팅값과 같으면 생략가능 */
-        from{
+        from {
           top: 0;
         }
-        to{
+        to {
           top: 15px;
         }
       }
       .scroll_btn .mouse span {
         position: absolute;
-        top: 50%;
+        top: 27%;
         left: 50%;
         translate: -50% -50%;
         width: 5px;
         height: 5px;
         background-color: #222;
         border-radius: 50%;
+        opacity: 0;
+        /* 마우스휠 키프레임 호출 : 이시이지반방마 */
+        animation: mouse-dot-ani 1.5s linear infinite;
+      }
+      /* 마우스휠 애니메이션 키프레임 */
+      @keyframes mouse-dot-ani {
+        0% {
+          opacity: 0;
+          top: 27%;
+        }
+        10% {
+          opacity: 1;
+          top: 27%;
+        }
+        40% {
+          opacity: 1;
+          top: 50%;
+        }
+        60% {
+          opacity: 0;
+          top: 50%;
+        }
+        100% {
+          opacity: 0;
+          top: 50%;
+        }
       }
     </style>
   </head>
