@@ -174,7 +174,7 @@
         width: 40px;
         height: 40px;
       }
- 
+
       /* 스크롤 유도 애니 버튼박스 */
       .scroll_btn {
         position: absolute;
@@ -256,6 +256,23 @@
           top: 50%;
         }
       }
+
+      /* 공통타이틀박스 */
+      section#character-section {
+        height: 100vh;
+      }
+      .tit-box {
+        max-width: 1200px;
+        margin: 0 auto;
+        outline: 3px dashed blue;
+      }
+      /* 타이틀파트 */
+      .tit-box .part-tit {
+        text-align: center;
+        padding: 40px 0;
+        font-size: 5rem;
+        font-weight: normal;
+      }
     </style>
   </head>
   <body>
@@ -327,6 +344,12 @@
         <!-- 2-2. 캐릭터영역 -->
         <section id="character-section">
           <!-- 캐릭터영역 내용 -->
+          <div class="tit-box">
+            <h2 class="part-tit">character</h2>
+            <div class="btn-box">
+              <a href="#" class="btn-view">view more</a>
+            </div>
+          </div>
         </section>
         <!-- 2-3. 컴퍼니영역 -->
         <section id="company-section">
