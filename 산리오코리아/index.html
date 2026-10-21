@@ -215,7 +215,9 @@
       .tit-box {
         max-width: 1200px;
         margin: 0 auto;
-        outline: 3px dashed blue;
+        /* outline: 3px dashed blue; */
+        /* 대문자변환 */
+        text-transform: uppercase;
       }
 
       /* 타이틀파트 */
@@ -230,7 +232,14 @@
       /* 타이틀박스 하위 버튼박스 */
       .btn-box {
         text-align: center;
-        padding: 20px 0;
+        /* padding: 20px 0; */
+        margin-bottom: 50px;
+        /* 버튼이 사라지면 하단 마진도 사라짐! */
+      }
+
+      /* 버튼출력안함 클래스 */
+      .btn-box.off {
+        display: none;
       }
 
       /* 타이틀 아래 버튼 */
@@ -269,8 +278,8 @@
         content: url(./images/ico_more2.png);
       }
 
-       /* 캐릭터카드 */
-       .character-card {
+      /* 캐릭터카드 */
+      .character-card {
         width: calc(25% - 15px);
         /* calc(계산식)
          +,-는 기호 앞뒤를 반드시 띄어써야 함!
@@ -309,7 +318,7 @@
         width: 100%;
         /* 싸고있는 부모박스 기준 채우기 */
       }
-      
+
       /* 두번째 이미지만 앱솔루트주기 */
       .character-card .card-imgs img:last-child {
         position: absolute;
@@ -422,6 +431,7 @@
       <!-- 2-2. 캐릭터영역 -->
       <section id="character-section">
         <!-- 캐릭터영역 내용 -->
+
         <!-- 타이틀박스 -->
         <div class="tit-box">
           <h2 class="part-tit">character</h2>
@@ -484,7 +494,10 @@
           <div class="character-card">
             <div class="card-imgs">
               <img src="./images/new_main_crt6.png" alt="리틀트윈스타" />
-              <img src="./images/new_main_crt6_ov.png" alt="리틀트윈스타 오버" />
+              <img
+                src="./images/new_main_crt6_ov.png"
+                alt="리틀트윈스타 오버"
+              />
             </div>
             <div class="card-desc">
               <h3>리틀트윈스타</h3>
@@ -504,7 +517,10 @@
           <div class="character-card">
             <div class="card-imgs">
               <img src="./images/new_main_crt8.png" alt="케로케로케로피" />
-              <img src="./images/new_main_crt8_ov.png" alt="케로케로케로피 오버" />
+              <img
+                src="./images/new_main_crt8_ov.png"
+                alt="케로케로케로피 오버"
+              />
             </div>
             <div class="card-desc">
               <h3>케로케로케로피</h3>
@@ -524,7 +540,10 @@
           <div class="character-card">
             <div class="card-imgs">
               <img src="./images/new_main_crt10.png" alt="배드바츠마루" />
-              <img src="./images/new_main_crt10_ov.png" alt="배드바츠마루 오버" />
+              <img
+                src="./images/new_main_crt10_ov.png"
+                alt="배드바츠마루 오버"
+              />
             </div>
             <div class="card-desc">
               <h3>배드바츠마루</h3>
@@ -554,7 +573,10 @@
           <div class="character-card">
             <div class="card-imgs">
               <img src="./images/new_main_crt13.png" alt="딩구리데이즈" />
-              <img src="./images/new_main_crt13_ov.png" alt="딩구리데이즈 오버" />
+              <img
+                src="./images/new_main_crt13_ov.png"
+                alt="딩구리데이즈 오버"
+              />
             </div>
             <div class="card-desc">
               <h3>딩구리데이즈</h3>
@@ -599,18 +621,46 @@
       <!-- 2-3. 컴퍼니영역 -->
       <section id="company-section">
         <!-- 컴퍼니영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">company</h2>
+          <div class="btn-box off">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
       </section>
       <!-- 2-4. 리쿠르트영역 -->
       <section id="recruit-section">
         <!-- 리쿠르트영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">recruit</h2>
+          <div class="btn-box off">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
       </section>
       <!-- 2-5. 플레이스영역 -->
       <section id="place-section">
         <!-- 플레이스영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">place</h2>
+          <div class="btn-box">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
       </section>
       <!-- 2-6. 컨텍어스영역 -->
       <section id="contactus-section">
         <!-- 컨텍어스영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">contact us</h2>
+          <div class="btn-box">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
       </section>
     </main>
 
