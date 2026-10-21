@@ -25,90 +25,12 @@
         font-family: Montserrat, NanumBarunGothic, Dotum, sans-serif;
       }
       /* 공통요소 초기화 */
-      html,
-      body,
-      div,
-      span,
-      applet,
-      object,
-      iframe,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      blockquote,
-      pre,
-      a,
-      abbr,
-      acronym,
-      address,
-      big,
-      cite,
-      code,
-      del,
-      dfn,
-      em,
-      img,
-      ins,
-      kbd,
-      q,
-      s,
-      samp,
-      small,
-      strike,
-      strong,
-      sub,
-      sup,
-      tt,
-      var,
-      b,
-      u,
-      i,
-      center,
-      dl,
-      dt,
-      dd,
-      ol,
-      ul,
-      li,
-      fieldset,
-      form,
-      label,
-      legend,
-      table,
-      caption,
-      tbody,
-      tfoot,
-      thead,
-      tr,
-      th,
-      td,
-      article,
-      aside,
-      canvas,
-      details,
-      embed,
-      figure,
-      figcaption,
-      footer,
-      header,
-      hgroup,
-      menu,
-      nav,
-      output,
-      ruby,
-      section,
-      summary,
-      time,
-      mark,
-      audio,
-      video {
+      /* prettier-ignore */
+      html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
         margin: 0;
         padding: 0;
       }
+      
       .header-inner {
         display: flex;
         max-width: 1440px;
@@ -210,7 +132,7 @@
         border: 1px solid #222;
         border-radius: 15px;
         /* 애니메이션 호출 : (이시이지반방마)
-              이름 시간 이징 지연시간 반복 방향 마지막상태 */
+        이름 시간 이징 지연시간 반복 방향 마지막상태 */
         animation: mouse-ani 0.9s ease-in-out infinite alternate;
       }
 
@@ -301,7 +223,7 @@
         border-radius: 24px;
         padding: 16px 32px;
         /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
-        transition: all .5s;
+        transition: all 0.5s;
       }
 
       /* 버튼가상요소로 이미지 넣기 */
@@ -319,6 +241,11 @@
         /* 트랜지션 양뱡향은 원본에 설정함! */
         /* :hover에 설정하면 오버시에만 애니됨 */
         /* transition: all .5s; */
+      }
+      
+      /* 버튼오버시 가상요소 after이미지변경 */
+      .btn-view:hover::after {
+        content: url(./images/ico_more2.png);
       }
     </style>
   </head>
