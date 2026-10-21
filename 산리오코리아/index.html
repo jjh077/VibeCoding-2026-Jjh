@@ -300,6 +300,8 @@
         border: 1px solid #222;
         border-radius: 24px;
         padding: 16px 32px;
+        /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
+        transition: all .5s;
       }
 
       /* 버튼가상요소로 이미지 넣기 */
@@ -308,9 +310,16 @@
         /* before, after의 필수속성 content */
         content: url(./images/ico_more1.png);
         padding-left: 20px;
-
       }
-      
+
+      /* 버튼 오버시 가상클래스 :hover를 사용함 */
+      a.btn-view:hover {
+        color: #fff;
+        background: #222;
+        /* 트랜지션 양뱡향은 원본에 설정함! */
+        /* :hover에 설정하면 오버시에만 애니됨 */
+        /* transition: all .5s; */
+      }
     </style>
   </head>
   <body>
