@@ -251,45 +251,61 @@
 
       /* 캐릭터카드 박스 */
       .character-card {
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 285px;
+        /* height: 285px;
+        높이값이 없으면 기본값 auto임.
+        의미는 내용물만큼 높이값이 생성됨 */
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        display: inline-block;
+        background: #fff;
       }
 
-      /* 카드 내부 */
-      .card-inner {
-        width: 25%;
+
+      /* 카드 내부상단 이미지박스 */
+      .character-card .card-imgs {
+        /* 포지션을 준 이유: 자식요소중 앱솔루트 기준 */
+        position: relative;
+         /* height: 204px; 
+        내용물만큼 늘어나려면 높이값 주면 안됨! */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f7f7f7;
+        border-bottom: 1px solid #eee;
+      }
+      /* 첫번째 이미지 셋팅 - 비율크기 유지역할 */
+      .character-area .card-imgs img:first-child {
+        width: 100%;
+        /* 싸고있는 부모박스 기준 채우기 */
+      }
+      /* 두번째 이미지만 앱솔루트주기 */
+      .character-card .card-imgs img:last-child {
+        position: absolute;
+        /* 부모는? .card-imgs */
+        width: 100%;
+      }
+      /* 카드 내부하단 설명박스 */
+      .character-card .card-desc {
+        /* height: 81px; */
+        /* 비율유지 설정하기 (높이값 불필요!) */
+        aspect-ratio: 1 / 0.3;
+        padding: 16px 12px 12px 12px;
         text-align: center;
       }
-
-      /* 내부상단: 이미지 2장 */
-      .card-images {
-        position: relative;
-      }
-
-      .card-images img {
-        width: 100%;
-        display: block;
-      }
-
-      .card-images img:last-child {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-      }
-
-      /* 내부하단: 캐릭터 이름 */
-      .card-info h3 {
+      .character-card .card-desc h3 {
         font-size: 2rem;
-        margin: 0;
-        color: #222;
+        font-weight: 700;
+        margin: 0 0 4px 0;
       }
-
-      .card-info h4 {
-        font-size: 1.4rem;
-        margin: 8px 0 0;
+      .character-card .card-desc h4 {
+        font-size: 1.2rem;
         color: #888;
-        font-weight: normal;
+        font-weight: 400;
+        margin: 0;
       }
     </style>
   </head>
@@ -370,23 +386,15 @@
         </div>
         <!-- 캐릭터카드 박스 -->
         <div class="character-card">
-          <div class="card-inner">
-            <!-- 내부상단박스: 이미지 2장 -->
-            <div class="card-images">
-              <img
-                src="./images/new_main_crt1.png"
-                alt="캐릭터 메인 이미지"
-              />
-              <img
-                src="./images/new_main_crt1_ov.png"
-                alt="캐릭터 오버 이미지"
-              />
-            </div>
-            <!-- 내부하단박스: h3, h4 -->
-            <div class="card-info">
-              <h3>헬로키티</h3>
-              <h4>HELLO KITTY</h4>
-            </div>
+          <!-- 내부상단박스 -->
+          <div class="card-imgs">
+            <img src="./images/new_main_crt1.png" alt="캐릭터 메인 이미지" />
+            <img src="./images/new_main_crt1_ov.png" alt="캐릭터 오버 이미지" />
+          </div>
+          <!-- 내부하단박스 -->
+          <div class="card-desc">
+            <h3>헬로키티</h3>
+            <h4>Hello Kitty</h4>
           </div>
         </div>
       </section>
