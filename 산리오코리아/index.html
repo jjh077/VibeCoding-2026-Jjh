@@ -256,10 +256,13 @@
         높이값이 없으면 기본값 auto임.
         의미는 내용물만큼 높이값이 생성됨 */
         border: 1px solid #ddd;
-        border-radius: 16px;
+        border-radius: 20px;
+        /* 박스그림자
+        box-shadow: inset hoff voff blur spread color;
+        inset은 내부그림자, hoff-x축이동, voff-y축이동, blur */
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        display: inline-block;
+        /* overflow: hidden;
+        display: inline-block; */
         background: #fff;
       }
       /* 카드 내부상단 이미지박스 */
@@ -268,11 +271,6 @@
         position: relative;
         /* height: 204px; 
         내용물만큼 늘어나려면 높이값 주면 안됨! */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #f7f7f7;
         border-bottom: 1px solid #eee;
       }
       /* 첫번째 이미지 셋팅 - 비율크기 유지역할 */
@@ -284,6 +282,7 @@
       .character-card .card-imgs img:last-child {
         position: absolute;
         /* 부모는? .card-imgs */
+        left: 0;
         width: 100%;
       }
       /* 카드 내부하단 설명박스 */
@@ -294,16 +293,15 @@
         padding: 16px 12px 12px 12px;
         text-align: center;
       }
+      /* 한글타이틀 */
       .character-card .card-desc h3 {
-        font-size: 2rem;
-        font-weight: 700;
-        margin: 0 0 4px 0;
+        font-size: 2.4rem;
+        color: #222;
       }
+      /* 영문타이틀 */
       .character-card .card-desc h4 {
         font-size: 1.2rem;
-        color: #888;
-        font-weight: 400;
-        margin: 0;
+        color: #ccc;
       }
     </style>
   </head>
