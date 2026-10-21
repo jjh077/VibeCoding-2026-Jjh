@@ -198,7 +198,8 @@
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
-        /* 카드 285px * 4 + 간격 20px * 3 = 1200px */
+        gap: 20px;
+        /* gap 사이간격(값을 두개쓰면 가로,세로) */
       }
 
       /* 공통타이틀박스 */
@@ -261,7 +262,7 @@
 
        /* 캐릭터카드 */
        .character-card {
-        width: 25%;
+        width: calc(25% - 15px);
         /* height: 285px;
         높이값이 없으면 기본값 auto임.
         의미는 내용물만큼 높이값이 생성됨 */
