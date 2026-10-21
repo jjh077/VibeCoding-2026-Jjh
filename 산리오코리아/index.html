@@ -29,6 +29,7 @@
       html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
         margin: 0;
         padding: 0;
+        font-weight: normal;
       }
 
       .header-inner {
@@ -249,18 +250,22 @@
         content: url(./images/ico_more2.png);
       }
 
-      /* 캐릭터카드 */
-      .character-card {
+       /* 캐릭터카드 */
+       .character-card {
         width: 285px;
         /* height: 285px;
         높이값이 없으면 기본값 auto임.
         의미는 내용물만큼 높이값이 생성됨 */
         border: 1px solid #ddd;
-        border-radius: 20px;
+        border-radius: 16px;
         /* 박스그림자
-        box-shadow: inset hoff voff blur spread color;
-        inset은 내부그림자, hoff-x축이동, voff-y축이동, blur */
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        box-shadow: inset hoff voff blur spread color; 
+        inset은 내부그림자, 
+        hoff -x축이동, voff-y축이동, blur 경계선흐림
+        spread - 그림자크기(확장분만씀) color - 그림자색
+        */
+        box-shadow: 4px 4px 10px #00000026;
+
         /* overflow: hidden;
         display: inline-block; */
         background: #fff;
@@ -271,6 +276,13 @@
         position: relative;
         /* height: 204px; 
         내용물만큼 늘어나려면 높이값 주면 안됨! */
+        /* 플렉스 모두 불필요!
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-content: center; */
+        background: #f7f7f7;
         border-bottom: 1px solid #eee;
       }
       /* 첫번째 이미지 셋팅 - 비율크기 유지역할 */
@@ -291,14 +303,20 @@
         /* 비율유지 설정하기 (높이값 불필요!) */
         aspect-ratio: 1 / 0.3;
         padding: 16px 12px 12px 12px;
-        text-align: center;
+        /* text-align: center; */
+        /* 플렉스 박스 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
       }
       /* 한글타이틀 */
       .character-card .card-desc h3 {
         font-size: 2.4rem;
-        color: #222;
+        color: #444;
       }
-      /* 영문타이틀 */
+      /* 영어타이틀 */
       .character-card .card-desc h4 {
         font-size: 1.2rem;
         color: #ccc;
