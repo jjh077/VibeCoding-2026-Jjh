@@ -7,7 +7,7 @@
     <!-- 상단영역 스타일 (Top Area Styles) -->
     <style>
       /* 웹폰트 로딩하기(CDN방식)
-        CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
+              CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
 
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
 
@@ -146,8 +146,8 @@
       #banner-section {
         background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
         /* 배경스타일 사용법:
-        background: 색 이 반 고 윙/크
-        background: 배경색 이미지 반복 고정 위치/크기 */
+              background: 색 이 반 고 윙/크
+              background: 배경색 이미지 반복 고정 위치/크기 */
       }
       .main-visual-box {
         text-align: center;
@@ -207,7 +207,7 @@
         border: 1px solid #222;
         border-radius: 15px;
         /* 애니메이션 호출 : (이시이지반방마)
-        이름 시간 이징 지연시간 반복 방향 마지막상태 */
+              이름 시간 이징 지연시간 반복 방향 마지막상태 */
         animation: mouse-ani 0.9s ease-in-out infinite alternate;
       }
       /* 마우스 애니메이션 키프레임 */
@@ -272,7 +272,8 @@
       /* 타이틀파트 */
       .tit-box .part-tit {
         text-align: center;
-        padding: 40px 0;
+        /* padding: 40px 0; */
+        margin-bottom: 30px;
         font-size: 5rem;
         font-weight: normal;
       }
@@ -282,17 +283,24 @@
         text-align: center;
         padding: 20px 0;
       }
-
+      /* 타이틀 아래 버튼 */
       .btn-view {
         text-decoration: none;
         color: #222;
-        font-size: 2rem;
+        font-size: 1.2rem;
         display: inline-block;
         margin: 0 auto;
         border: 1px solid #222;
         border-radius: 24px;
-        padding: 10px 23px;
+        padding: 16px 32px;
       }
+      /* 버튼가상요소로 이미지 넣기 */
+      /* 앞은 ::before, 뒤는 ::after */
+      .btn-view::after {
+        /* before, after의 필수속성 content */
+        content: url(./images/ico_more1.png);
+      }
+      
     </style>
   </head>
   <body>
