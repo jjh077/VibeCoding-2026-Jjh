@@ -263,10 +263,13 @@
        /* 캐릭터카드 */
        .character-card {
         width: calc(25% - 15px);
+        /* calc(계산식)
+         +,-는 기호 앞뒤를 반드시 띄어써야 함!
+         *,/ 곱하기 나누기는 붙여써도 됨 */
+        box-sizing: border-box;
         /* height: 285px;
         높이값이 없으면 기본값 auto임.
         의미는 내용물만큼 높이값이 생성됨 */
-        box-sizing: border-box;
         border: 1px solid #ddd;
         border-radius: 16px;
         /* 박스그림자
@@ -303,7 +306,18 @@
         position: absolute;
         /* 부모는? .card-imgs */
         left: 0;
+        top: 0;
         width: 100%;
+        /* 처음엔 투명, 오버시 보이게 */
+        opacity: 0;
+        /* 트랜지션 : 속시이지(속성 시간 이징 지연)
+        양방향 애니는 원본에 설정함 */
+        transition: opacity 0.5s;
+      }
+
+      /* 카드 오버시 두번째 이미지 보이기 */
+      .character-card:hover .card-imgs img:last-child {
+        opacity: 1;
       }
       /* 카드 내부하단 설명박스 */
       .character-card .card-desc {
