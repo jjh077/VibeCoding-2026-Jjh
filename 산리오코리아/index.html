@@ -199,7 +199,6 @@
         display: flex;
         flex-wrap: wrap;
         /* 카드 285px * 4 + 간격 20px * 3 = 1200px */
-        gap: 20px;
       }
 
       /* 공통타이틀박스 */
@@ -262,10 +261,11 @@
 
        /* 캐릭터카드 */
        .character-card {
-        width: 285px;
+        width: 25%;
         /* height: 285px;
         높이값이 없으면 기본값 auto임.
         의미는 내용물만큼 높이값이 생성됨 */
+        box-sizing: border-box;
         border: 1px solid #ddd;
         border-radius: 16px;
         /* 박스그림자
@@ -275,10 +275,6 @@
         spread - 그림자크기(확장분만씀) color - 그림자색
         */
         box-shadow: 4px 4px 10px #00000026;
-
-        /* overflow: hidden;
-        display: inline-block; */
-        background: #fff;
       }
       /* 카드 내부상단 이미지박스 */
       .character-card .card-imgs {
