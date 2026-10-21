@@ -30,7 +30,7 @@
         margin: 0;
         padding: 0;
       }
-      
+
       .header-inner {
         display: flex;
         max-width: 1440px;
@@ -248,6 +248,49 @@
       .btn-view:hover::after {
         content: url(./images/ico_more2.png);
       }
+
+      /* 캐릭터카드 박스 */
+      .character-card {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* 카드 내부 */
+      .card-inner {
+        width: 25%;
+        text-align: center;
+      }
+
+      /* 내부상단: 이미지 2장 */
+      .card-images {
+        position: relative;
+      }
+
+      .card-images img {
+        width: 100%;
+        display: block;
+      }
+
+      .card-images img:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      /* 내부하단: 캐릭터 이름 */
+      .card-info h3 {
+        font-size: 2rem;
+        margin: 0;
+        color: #222;
+      }
+
+      .card-info h4 {
+        font-size: 1.4rem;
+        margin: 8px 0 0;
+        color: #888;
+        font-weight: normal;
+      }
     </style>
   </head>
   <body>
@@ -318,10 +361,32 @@
       <!-- 2-2. 캐릭터영역 -->
       <section id="character-section">
         <!-- 캐릭터영역 내용 -->
+        <!-- 타이틀박스 -->
         <div class="tit-box">
           <h2 class="part-tit">character</h2>
           <div class="btn-box">
             <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+        <!-- 캐릭터카드 박스 -->
+        <div class="character-card">
+          <div class="card-inner">
+            <!-- 내부상단박스: 이미지 2장 -->
+            <div class="card-images">
+              <img
+                src="./images/new_main_crt1.png"
+                alt="캐릭터 메인 이미지"
+              />
+              <img
+                src="./images/new_main_crt1_ov.png"
+                alt="캐릭터 오버 이미지"
+              />
+            </div>
+            <!-- 내부하단박스: h3, h4 -->
+            <div class="card-info">
+              <h3>헬로키티</h3>
+              <h4>HELLO KITTY</h4>
+            </div>
           </div>
         </div>
       </section>
