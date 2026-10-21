@@ -142,6 +142,7 @@
       .menu-link:hover {
         color: #ff69b4;
       }
+
       /* 배너 영역 스타일 */
       #banner-section {
         background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
@@ -162,6 +163,7 @@
         max-width: 100%;
         object-fit: contain;
       }
+
       /* SNS 버튼 박스 스타일 */
       .sns {
         display: flex; /* 아이콘을 flex로 배치 */
@@ -185,6 +187,7 @@
         height: 70px;
         /* outline: 2px solid blue; */
       }
+
       /* 마우스 글자박스 */
       .scroll_btn p {
         position: absolute;
@@ -210,6 +213,7 @@
               이름 시간 이징 지연시간 반복 방향 마지막상태 */
         animation: mouse-ani 0.9s ease-in-out infinite alternate;
       }
+
       /* 마우스 애니메이션 키프레임 */
       @keyframes mouse-ani {
         /* 시작값  from이 처음 셋팅값과 같으면 생략가능 */
@@ -220,6 +224,7 @@
           top: 15px;
         }
       }
+
       .scroll_btn .mouse span {
         position: absolute;
         top: 27%;
@@ -233,6 +238,7 @@
         /* 마우스휠 키프레임 호출 : 이시이지반방마 */
         animation: mouse-dot-ani 1.5s linear infinite;
       }
+
       /* 마우스휠 애니메이션 키프레임 */
       @keyframes mouse-dot-ani {
         0% {
@@ -283,6 +289,7 @@
         text-align: center;
         padding: 20px 0;
       }
+
       /* 타이틀 아래 버튼 */
       .btn-view {
         text-decoration: none;
@@ -294,11 +301,14 @@
         border-radius: 24px;
         padding: 16px 32px;
       }
+
       /* 버튼가상요소로 이미지 넣기 */
       /* 앞은 ::before, 뒤는 ::after */
       .btn-view::after {
         /* before, after의 필수속성 content */
         content: url(./images/ico_more1.png);
+        padding-left: 20px;
+
       }
       
     </style>
