@@ -32,6 +32,15 @@
         font-weight: normal;
       }
 
+      /* 공통셋팅 */
+      /* 메인영역 하위박스 공통 */
+      /* 직계자식 선택자(>), 형제선택자(+) 
+      section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라! 즉, 첫번째 section을 제외한 모든 section선택
+      */
+      #site-main > section + section {
+        padding: 85px 0;
+      }
+
       .header-inner {
         display: flex;
         max-width: 1440px;
