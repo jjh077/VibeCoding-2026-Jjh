@@ -455,6 +455,56 @@
         display: block;
         font-size: 1.8rem;
       }
+
+      /* 컨텍어스 지도 + 회사정보 박스 */
+      .contact-box {
+        display: flex;
+        width: 1200px;
+        height: 350px;
+        margin: 0 auto 50px;
+        border-radius: 20px;
+        overflow: hidden; /* 모서리 둥글게 자식까지 적용 */
+        background: #fff;
+      }
+      /* 반으로 갈라서 좌우 50% */
+      .contact-box .map-box,
+      .contact-box .info-box {
+        width: 50%;
+        height: 100%;
+      }
+      .contact-box .map-box iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .contact-box .info-box {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 40px;
+        color: #222;
+      }
+      /* 키티 자동차 이미지 */
+      #kitty-car{
+        width: 207px;
+        height: 240px;
+      }
+      .contact-box .info-box h3 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      .contact-box .info-box h4 {
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: #555;
+      }
+      .contact-box .info-box h5 {
+        font-size: 1.4rem;
+        font-weight: normal;
+      }
     </style>
   </head>
   <body>
@@ -851,6 +901,28 @@
           <h2 class="part-tit">contact us</h2>
           <div class="btn-box">
             <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+        <!-- 지도 + 회사정보 박스 -->
+        <div class="contact-box">
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C%20509&output=embed"
+              title="구글맵 - 엔씨타워1"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="info-box">
+            <h3>서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)</h3>
+            <h4>509, Teheranro, Gangnam-gu, Seoul</h4>
+            <h4>(4th floor, Samsung-dong, NC Tower 1)</h4>
+            <h5>M : webmaster@sanriokorea.co.kr</h5>
+            <h5>T : +82 (0) 2 543 3810</h5>
+            <h5>F : +82 (0) 2 543 2904</h5>
+            <!-- 키티이미지 -->
+             <img id="kitty-car" src="./images/contact_img.png" alt="키티자동차">
           </div>
         </div>
       </section>
