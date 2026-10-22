@@ -7,7 +7,7 @@
     <!-- 상단영역 스타일 (Top Area Styles) -->
     <style>
       /* 웹폰트 로딩하기(CDN방식)
-      CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
+            CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
 
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
 
@@ -27,16 +27,16 @@
       /* 공통요소 초기화 */
       /* prettier-ignore */
       html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
-        margin: 0;
-        padding: 0;
-        font-weight: normal;
-      }
+              margin: 0;
+              padding: 0;
+              font-weight: normal;
+            }
 
       /* 공통셋팅 */
       /* 메인영역 하위박스 공통 */
-      /* 직계자식 선택자(>), 형제선택자(+) 
-      section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라! 즉, 첫번째 section을 제외한 모든 section선택
-      */
+      /* 직계자식 선택자(>), 형제선택자(+)
+            section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라! 즉, 첫번째 section을 제외한 모든 section선택
+            */
       #site-main > section + section {
         padding: 85px 0;
       }
@@ -80,14 +80,14 @@
         padding-bottom: 160px;
         background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
         /* 배경스타일 사용법:
-        background: 색 이 반 고 윙/크
-        background: 배경색 이미지 반복 고정 위치/크기 */
+              background: 색 이 반 고 윙/크
+              background: 배경색 이미지 반복 고정 위치/크기 */
       }
       .main-visual-box {
         text-align: center;
         /* margin: 0 auto 0 auto;
-        justify-content: center;
-        align-items: center; */
+              justify-content: center;
+              align-items: center; */
       }
       .main-visual-img {
         width: 984px;
@@ -142,7 +142,7 @@
         border: 1px solid #222;
         border-radius: 15px;
         /* 애니메이션 호출 : (이시이지반방마)
-        이름 시간 이징 지연시간 반복 방향 마지막상태 */
+              이름 시간 이징 지연시간 반복 방향 마지막상태 */
         animation: mouse-ani 0.9s ease-in-out infinite alternate;
       }
 
@@ -231,6 +231,33 @@
         display: none;
       }
 
+      /* 타이틀 흰색테마 클래스 */
+
+      .tit-box.white .part-tit {
+        color: #fff;
+      }
+      /* 타이틀박스의 로고 컨트롤 */
+      .tit-box.tit-box.white .logo-box{
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* 버튼 흰색테마 클래스 */
+      .tit-box.white .btn-view {
+        color: #fff;
+        border: 1px solid #fff;
+      }
+      .tit-box.white .btn-view::after {
+        content: url(./images/ico_more2.png);
+      }
+      .tit-box.white .btn-view:hover {
+        color: #222;
+        background: #fff;
+      }
+      .tit-box.white .btn-view:hover::after {
+        content: url(./images/ico_more1.png);
+      }
+
       /* 화살표 출력안함 클래스 */
       /* 부모박스에 simple클래스를 주면 자식 버튼에 가상요소 화살표가 출력안됨 */
       .btn-box.simple .btn-view::after {
@@ -266,7 +293,7 @@
       }
 
       /* 버튼 오버시 가상클래스 :hover를 사용함 */
-      a.btn-view:hover {
+      .btn-view:hover {
         color: #fff;
         background: #222;
         /* 트랜지션 양뱡향은 원본에 설정함! */
@@ -293,34 +320,34 @@
       .character-card {
         width: calc(25% - 15px);
         /* calc(계산식)
-         +,-는 기호 앞뒤를 반드시 띄어써야 함!
-         *,/ 곱하기 나누기는 붙여써도 됨 */
+               +,-는 기호 앞뒤를 반드시 띄어써야 함!
+               *,/ 곱하기 나누기는 붙여써도 됨 */
         box-sizing: border-box;
         /* height: 285px;
-        높이값이 없으면 기본값 auto임.
-        의미는 내용물만큼 높이값이 생성됨 */
+              높이값이 없으면 기본값 auto임.
+              의미는 내용물만큼 높이값이 생성됨 */
         border: 1px solid #ddd;
         border-radius: 16px;
         /* 박스그림자
-        box-shadow: inset hoff voff blur spread color; 
-        inset은 내부그림자, 
-        hoff -x축이동, voff-y축이동, blur 경계선흐림
-        spread - 그림자크기(확장분만씀) color - 그림자색
-        */
+              box-shadow: inset hoff voff blur spread color;
+              inset은 내부그림자,
+              hoff -x축이동, voff-y축이동, blur 경계선흐림
+              spread - 그림자크기(확장분만씀) color - 그림자색
+              */
         box-shadow: 4px 4px 10px #00000026;
       }
       /* 카드 내부상단 이미지박스 */
       .character-card .card-imgs {
         /* 포지션을 준 이유: 자식요소중 앱솔루트 기준 */
         position: relative;
-        /* height: 204px; 
-        내용물만큼 늘어나려면 높이값 주면 안됨! */
+        /* height: 204px;
+              내용물만큼 늘어나려면 높이값 주면 안됨! */
         /* 플렉스 모두 불필요!
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        justify-content: center; */
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+              justify-content: center; */
         background: #f7f7f7;
         border-bottom: 1px solid #eee;
       }
@@ -377,6 +404,24 @@
         background: #f5f5f5;
       }
 
+      /* 리쿠르트 영역 */
+      #recruit-section {
+        /* 배경: 색이반고윙/크 */
+        background: url(./images/bg_recruit.png) no-repeat center 70px;
+      }
+
+      /* 플레이스 영역 */
+      #place-section {
+        background: url(./images/bg_shop.jpg) no-repeat center;
+        height: 43vh;
+      }
+
+      /* 컨텍어스 영역 */
+      #contactus-section {
+        background-color: #4a679e;
+      }
+
+      /* 카트파트는 공통모듈임(컴퍼니&리쿠르트) */
       /* 카드 컨테이너 추가 */
       .com-card-box {
         display: flex;
@@ -384,7 +429,6 @@
         margin: 0 auto;
         justify-content: space-between;
         gap: 30px;
-        padding-bottom: 50px;
       }
 
       /* 개별카드박스 */
@@ -400,7 +444,6 @@
       .img-box {
       }
 
-
       /* 카드타이틀 */
       .card-title {
         font-size: 2.5rem;
@@ -412,7 +455,6 @@
         display: block;
         font-size: 1.8rem;
       }
-      
     </style>
   </head>
   <body>
@@ -442,7 +484,7 @@
             <!-- 장소 소개 섹션으로 이동 -->
             <li><a href="#place-section" class="menu-link">place</a></li>
             <!-- 채용 정보 섹션으로 이동 -->
-            <li><a href="#recruit-section" class="menu-link">recruit</a></li>
+            <li><a href="##" class="menu-link">recruit</a></li>
           </ul>
         </nav>
       </section>
@@ -738,7 +780,7 @@
             <a href="#" class="btn-view">view more</a>
           </div>
         </div>
-        
+
         <!-- 카드섹션파트 -->
         <div class="com-card-box">
           <!-- 카드 1 -->
@@ -802,7 +844,10 @@
       <section id="contactus-section">
         <!-- 컨텍어스영역 내용 -->
         <!-- 타이틀박스 -->
-        <div class="tit-box">
+        <div class="tit-box white">
+          <div class="logo-box">
+            <img src="./images/logo_w.png" alt="화이트로고" />
+          </div>
           <h2 class="part-tit">contact us</h2>
           <div class="btn-box">
             <a href="#" class="btn-view">view more</a>
