@@ -3,6 +3,9 @@
   <head>
     <title>산리오 코리아 홍홍</title>
     <meta charset="UTF-8" />
+    <!-- 미디어쿼리를 위한 뷰포트 필수!!! 
+     줄임말 meta:vp -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 인터널스타일시트(internal style sheet) -->
     <!-- 상단영역 스타일 (Top Area Styles) -->
     <style>
@@ -24,6 +27,7 @@
         /* 웹폰트체 지정 (콤마는 우선순위) */
         font-family: Montserrat, NanumBarunGothic, Dotum, sans-serif;
       }
+
       /* 공통요소 초기화 */
       /* prettier-ignore */
       html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
@@ -44,17 +48,34 @@
       .header-inner {
         max-width: 1440px;
         margin: 0 auto;
+        padding: 0 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 90px;
       }
-      .logo-box {
-        flex-shrink: 0;
+      /* 상단로그박스 */
+      h1.logo-box {
+        width: 10%;
       }
-      .logo-box img {
-        height: 56px; /* 로고 이미지 높이 고정 */
+      h1.logo-box img {
+        max-width: 100%;
       }
+
+
+      /* 1024px 이하 미디어쿼리 시작 */
+      @media screen and (max-width:1024px) {
+        /* 기존선택자와 동일하게 사용함! */
+       /* 상단로그박스 */
+      h1.logo-box {
+        width: 30%;
+      }
+    }
+    /* 1024px 이하 미디어쿼리 종료 */
+    
+
+
+
       .menu-list {
         display: flex;
         gap: 48px;
@@ -399,6 +420,20 @@
         color: #ccc;
       }
 
+      /* 800px 이하 미디어쿼리 시작 (캐릭터영역) */
+      @media screen and (max-width: 800px) {
+        /* 타이틀 글자크기: 50px(5rem) -> 32px(3.2rem) */
+        section#character-section .tit-box .part-tit {
+          font-size: 3.2rem;
+        }
+
+        /* 카드 4열 -> 2열 (gap 20px 이므로 20px의 절반인 10px 차감) */
+        section#character-section .character-card {
+          width: calc(50% - 10px);
+        }
+      }
+      /* 800px 이하 미디어쿼리 종료 */
+
       /* 컴퍼니 영역 */
       #company-section {
         background: #f5f5f5;
@@ -572,14 +607,14 @@
       <!-- 헤더 내부 컨테이너(로고와 네비게이션 정렬 역할) -->
       <section class="header-inner">
         <!-- 로고 박스(좌측) -->
-        <aside class="logo-box">
+        <h1 class="logo-box">
           <!-- 사이트 대표 로고 이미지 -->
           <img
             src="./images/logo_2023.png"
             alt="Sanrio Korea Logo"
             class="site-logo"
           />
-        </aside>
+        </h1>
         <!-- 내비게이션(메인 메뉴) 영역 -->
         <nav>
           <!-- 메뉴 리스트(네비게이션 링크들을 포함) -->

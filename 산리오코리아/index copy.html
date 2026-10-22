@@ -1,0 +1,1028 @@
+<!doctype html>
+<html>
+  <head>
+    <title>산리오 코리아 홍홍</title>
+    <meta charset="UTF-8" />
+    <!-- 미디어쿼리를 위한 뷰포트 필수!!! 
+     줄임말 meta:vp -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 인터널스타일시트(internal style sheet) -->
+    <!-- 상단영역 스타일 (Top Area Styles) -->
+    <style>
+      /* 웹폰트 로딩하기(CDN방식)
+            CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
+
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
+
+      @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css");
+
+      /* 전체 루트 설정 */
+      html {
+        /* rem단위를 위한 Root 글자크기설정 */
+        font-size: 10px;
+        /* 왜 10px인가? rem단위에 계산이 용이함! */
+      }
+      html,
+      body {
+        /* 웹폰트체 지정 (콤마는 우선순위) */
+        font-family: Montserrat, NanumBarunGothic, Dotum, sans-serif;
+      }
+
+      /* 공통요소 초기화 */
+      /* prettier-ignore */
+      html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+              margin: 0;
+              padding: 0;
+              font-weight: normal;
+            }
+
+      /* 공통셋팅 */
+      /* 메인영역 하위박스 공통 */
+      /* 직계자식 선택자(>), 형제선택자(+)
+            section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라! 즉, 첫번째 section을 제외한 모든 section선택
+            */
+      #site-main > section + section {
+        padding: 85px 0;
+      }
+
+      .header-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 90px;
+      }
+      /* 상단로그박스 */
+      h1.logo-box {
+        width: 10%;
+      }
+      h1.logo-box img {
+        max-width: 100%;
+      }
+
+
+      /* 1024px 이하 미디어쿼리 시작 */
+      @media screen and (max-width:1024px) {
+        /* 기존선택자와 동일하게 사용함! */
+       /* 상단로그박스 */
+      h1.logo-box {
+        width: 30%;
+      }
+    }
+    /* 1024px 이하 미디어쿼리 종료 */
+    
+
+
+
+      .menu-list {
+        display: flex;
+        gap: 48px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase; /* 대문자 변환 */
+      }
+      .menu-link {
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.6rem;
+        transition: color 0.2s;
+      }
+      .menu-link:hover {
+        color: #ff69b4;
+      }
+
+      /* 배너 영역 스타일 */
+      #banner-section {
+        position: relative;
+        padding: 80px;
+        padding-bottom: 160px;
+        background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
+        /* 배경스타일 사용법:
+              background: 색 이 반 고 윙/크
+              background: 배경색 이미지 반복 고정 위치/크기 */
+      }
+      .main-visual-box {
+        text-align: center;
+        /* margin: 0 auto 0 auto;
+              justify-content: center;
+              align-items: center; */
+      }
+      .main-visual-img {
+        width: 984px;
+        max-width: 100%;
+        /* object-fit: contain; */
+      }
+
+      /* SNS 버튼 박스 스타일 */
+      .sns {
+        display: flex; /* 아이콘을 flex로 배치 */
+        flex-direction: column; /* 세로 정렬 */
+        position: absolute; /* 부모 영역에서 위치 지정 */
+        top: 50px; /* 위쪽에서 50px 떨어짐 */
+        right: 50px; /* 오른쪽에서 50px 떨어짐 */
+      }
+      .sns img {
+        width: 40px;
+        height: 40px;
+      }
+
+      /* 스크롤 유도 애니 버튼박스 */
+      .scroll_btn {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        translate: -50%;
+        width: 79px;
+        height: 70px;
+        /* outline: 2px solid blue; */
+      }
+
+      /* 마우스 글자박스 */
+      .scroll_btn p {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1rem;
+      }
+
+      /* 움직일 대상 마우스 */
+      .scroll_btn .mouse {
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+        top: 0px;
+        display: block;
+        width: 26px;
+        height: 36px;
+        background-color: #fff;
+        border: 1px solid #222;
+        border-radius: 15px;
+        /* 애니메이션 호출 : (이시이지반방마)
+              이름 시간 이징 지연시간 반복 방향 마지막상태 */
+        animation: mouse-ani 0.9s ease-in-out infinite alternate;
+      }
+
+      /* 마우스 애니메이션 키프레임 */
+      @keyframes mouse-ani {
+        /* 시작값  from이 처음 셋팅값과 같으면 생략가능 */
+        from {
+          top: 0;
+        }
+        to {
+          top: 15px;
+        }
+      }
+
+      .scroll_btn .mouse span {
+        position: absolute;
+        top: 27%;
+        left: 50%;
+        translate: -50% -50%;
+        width: 5px;
+        height: 5px;
+        background-color: #222;
+        border-radius: 50%;
+        opacity: 0;
+        /* 마우스휠 키프레임 호출 : 이시이지반방마 */
+        animation: mouse-dot-ani 1.5s linear infinite;
+      }
+
+      /* 마우스휠 애니메이션 키프레임 */
+      @keyframes mouse-dot-ani {
+        0% {
+          opacity: 0;
+          top: 27%;
+        }
+        10% {
+          opacity: 1;
+          top: 27%;
+        }
+        40% {
+          opacity: 1;
+          top: 50%;
+        }
+        60% {
+          opacity: 0;
+          top: 50%;
+        }
+        100% {
+          opacity: 0;
+          top: 50%;
+        }
+      }
+
+      /* 캐릭터영역 박스 */
+      section#character-section {
+        min-height: 100vh;
+      }
+
+      /* 공통타이틀박스 */
+      .tit-box {
+        max-width: 1200px;
+        margin: 0 auto;
+        /* outline: 3px dashed blue; */
+        /* 대문자변환 */
+        text-transform: uppercase;
+      }
+
+      /* 타이틀파트 */
+      .tit-box .part-tit {
+        text-align: center;
+        /* padding: 40px 0; */
+        margin-bottom: 30px;
+        font-size: 5rem;
+        font-weight: normal;
+      }
+
+      /* 타이틀박스 하위 버튼박스 */
+      .btn-box {
+        text-align: center;
+        /* padding: 20px 0; */
+        margin-bottom: 50px;
+        /* 버튼이 사라지면 하단 마진도 사라짐! */
+      }
+
+      /* 버튼출력안함 클래스 */
+      .btn-box.off {
+        display: none;
+      }
+
+      /* 타이틀 흰색테마 클래스 */
+
+      .tit-box.white .part-tit {
+        color: #fff;
+      }
+      /* 타이틀박스의 로고 컨트롤 */
+      .tit-box.tit-box.white .logo-box {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      /* 버튼 흰색테마 클래스 */
+      .tit-box.white .btn-view {
+        color: #fff;
+        border: 1px solid #fff;
+      }
+      .tit-box.white .btn-view::after {
+        content: url(./images/ico_more2.png);
+      }
+      .tit-box.white .btn-view:hover {
+        color: #222;
+        background: #fff;
+      }
+      .tit-box.white .btn-view:hover::after {
+        content: url(./images/ico_more1.png);
+      }
+
+      /* 화살표 출력안함 클래스 */
+      /* 부모박스에 simple클래스를 주면 자식 버튼에 가상요소 화살표가 출력안됨 */
+      .btn-box.simple .btn-view::after {
+        display: none;
+      }
+      /* simple클래스 버튼 디자인변경 */
+      .btn-box.simple .btn-view {
+        padding: 11px 22px;
+      }
+
+      /* 타이틀 아래 버튼 */
+      .btn-view {
+        text-decoration: none;
+        color: #222;
+        font-size: 1.2rem;
+        /* 대문자출력 */
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0 auto;
+        border: 1px solid #222;
+        border-radius: 24px;
+        padding: 16px 32px;
+        /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
+        transition: all 0.5s;
+      }
+
+      /* 버튼가상요소로 이미지 넣기 */
+      /* 앞은 ::before, 뒤는 ::after */
+      .btn-view::after {
+        /* before, after의 필수속성 content */
+        content: url(./images/ico_more1.png);
+        padding-left: 20px;
+      }
+
+      /* 버튼 오버시 가상클래스 :hover를 사용함 */
+      .btn-view:hover {
+        color: #fff;
+        background: #222;
+        /* 트랜지션 양뱡향은 원본에 설정함! */
+        /* :hover에 설정하면 오버시에만 애니됨 */
+        /* transition: all .5s; */
+      }
+
+      /* 버튼오버시 가상요소 after이미지변경 */
+      .btn-view:hover::after {
+        content: url(./images/ico_more2.png);
+      }
+
+      /* 캐릭터카드 리스트: 4열, flex 줄바꿈 */
+      .card-box {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* gap 사이간격(값을 두개쓰면 가로,세로) */
+      }
+
+      /* 캐릭터카드 */
+      .character-card {
+        width: calc(25% - 15px);
+        /* calc(계산식)
+               +,-는 기호 앞뒤를 반드시 띄어써야 함!
+               *,/ 곱하기 나누기는 붙여써도 됨 */
+        box-sizing: border-box;
+        /* height: 285px;
+              높이값이 없으면 기본값 auto임.
+              의미는 내용물만큼 높이값이 생성됨 */
+        border: 1px solid #ddd;
+        border-radius: 16px;
+        /* 박스그림자
+              box-shadow: inset hoff voff blur spread color;
+              inset은 내부그림자,
+              hoff -x축이동, voff-y축이동, blur 경계선흐림
+              spread - 그림자크기(확장분만씀) color - 그림자색
+              */
+        box-shadow: 4px 4px 10px #00000026;
+      }
+      /* 카드 내부상단 이미지박스 */
+      .character-card .card-imgs {
+        /* 포지션을 준 이유: 자식요소중 앱솔루트 기준 */
+        position: relative;
+        /* height: 204px;
+              내용물만큼 늘어나려면 높이값 주면 안됨! */
+        /* 플렉스 모두 불필요!
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+              justify-content: center; */
+        background: #f7f7f7;
+        border-bottom: 1px solid #eee;
+      }
+      /* 첫번째 이미지 셋팅 - 비율크기 유지역할 */
+      section#character-section .card-imgs img:first-child {
+        width: 100%;
+        /* 싸고있는 부모박스 기준 채우기 */
+      }
+
+      /* 두번째 이미지만 앱솔루트주기 */
+      .character-card .card-imgs img:last-child {
+        position: absolute;
+        /* 부모는? .card-imgs */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* 처음엔 투명, 오버시 보이게 */
+        opacity: 0;
+        /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
+        transition: opacity 0.5s;
+      }
+
+      /* 카드 마우스 오버시 두번째 이미지 보이기 */
+      .character-card:hover .card-imgs img:last-child {
+        opacity: 1;
+      }
+      /* 카드 내부하단 설명박스 */
+      .character-card .card-desc {
+        /* height: 81px; */
+        /* 비율유지 설정하기 (높이값 불필요!) */
+        aspect-ratio: 1 / 0.3;
+        padding: 16px 12px 12px 12px;
+        /* text-align: center; */
+        /* 플렉스 박스 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      /* 한글타이틀 */
+      .character-card .card-desc h3 {
+        font-size: 2.4rem;
+        color: #444;
+      }
+      /* 영어타이틀 */
+      .character-card .card-desc h4 {
+        font-size: 1.2rem;
+        color: #ccc;
+      }
+
+      /* 컴퍼니 영역 */
+      #company-section {
+        background: #f5f5f5;
+      }
+
+      /* 리쿠르트 영역 */
+      #recruit-section {
+        /* 배경: 색이반고윙/크 */
+        background: url(./images/bg_recruit.png) no-repeat center 70px;
+      }
+
+      /* 플레이스 영역 */
+      #place-section {
+        background: url(./images/bg_shop.jpg) no-repeat center;
+        height: 30vh;
+      }
+
+      /* 컨텍어스 영역 */
+      #contactus-section {
+        background-color: #4a679e;
+      }
+
+      /* 카트파트는 공통모듈임(컴퍼니&리쿠르트) */
+      /* 카드 컨테이너 추가 */
+      .com-card-box {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      /* 개별카드박스 */
+      .card-part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        flex: 1; /* 동일한 너비 배분 */
+        text-align: center;
+      }
+
+      /* .img-box {
+      } */
+
+      /* 카드타이틀 */
+      .card-title {
+        font-size: 2.5rem;
+      }
+
+      /* 카드설명span */
+      .card-desc span {
+        /* 인라인인 span을 블록으로 변경 */
+        display: block;
+        font-size: 1.8rem;
+      }
+
+      /* 컨텍어스 지도 + 회사정보 박스 */
+      .contact-box {
+        display: flex;
+        max-width: 1200px;
+        height: 350px;
+        margin: 0 auto;
+        border-radius: 20px;
+        /* overflow:hidden을 쓰면 자식(키티자동차)이 박스 밖에서 잘리므로
+        사용하지 않고, 대신 좌우 자식박스에 각각 둥근 모서리를 줌 */
+        background: #fff;
+      }
+
+      /* 반으로 갈라서 좌우 50% */
+      .contact-box .map-box,
+      .contact-box .info-box {
+        width: 50%;
+        height: 100%;
+      }
+
+      .contact-box .map-box {
+        overflow: hidden;
+        border-radius: 20px 0 0 20px;
+      }
+
+      .contact-box .map-box iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .contact-box .info-box {
+        position: relative;
+        border-radius: 0 20px 20px 0;
+        box-sizing: border-box;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #222;
+      }
+
+      /* 키티 자동차 이미지 */
+      #kitty-car {
+        width: 207px;
+        height: 240px;
+        /* 부모(.contact-box) 기준 오른쪽 아래 */
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /* 자기 높이의 10%만큼 아래로 내림 */
+        /* transform: translate(가로이동, 세로이동) */
+        transform: translate(-23%, 23%);
+        /* translate: : -23%, 23%; */
+        /* 다른 방법? transform: 가로이동 세로이동 */
+      }
+
+      .contact-box .info-box h3 {
+        font-size: 2.4rem;
+        font-weight: bold;
+        margin-bottom: 14px;
+      }
+
+      .contact-box .info-box h4 {
+        font-size: 1.6rem;
+        color: #555;
+        line-height: 1.5;
+      }
+      .contact-box .info-box h4:nth-of-type(2) {
+        margin-bottom: 28px;
+      }
+
+      .contact-box .info-box h5 {
+        font-size: 1.6rem;
+        line-height: 1.8;
+      }
+
+      /* 하단영역 */
+      #site-footer {
+        background-color: #222;
+        padding: 50px;
+      }
+
+      /* 하단속박스 */
+      .bottom-inner {
+        /* 플렉스박스 */
+        display: flex;
+        /* 진행방향정렬: 사이간격 일정하게 */
+        justify-content: space-between;
+        /* 진행방향의 수직정렬: 중간 */
+        align-items: center;
+      }
+
+      /* 하단속박스 카피라이트 이미지 */
+      .bottom-inner img {
+        height: 13px;
+      }
+
+      /* 하단속박스 버튼 */
+      .bottom-inner .btn-view {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+      }
+
+      .bottom-inner .btn-box {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. 상단영역 -->
+    <header id="site-header">
+      <!-- 헤더 내부 컨테이너(로고와 네비게이션 정렬 역할) -->
+      <section class="header-inner">
+        <!-- 로고 박스(좌측) -->
+        <h1 class="logo-box">
+          <!-- 사이트 대표 로고 이미지 -->
+          <img
+            src="./images/logo_2023.png"
+            alt="Sanrio Korea Logo"
+            class="site-logo"
+          />
+        </h1>
+        <!-- 내비게이션(메인 메뉴) 영역 -->
+        <nav>
+          <!-- 메뉴 리스트(네비게이션 링크들을 포함) -->
+          <ul class="menu-list">
+            <!-- 회사 소개 섹션으로 이동 -->
+            <li><a href="#company-section" class="menu-link">company</a></li>
+            <!-- 캐릭터 소개 섹션으로 이동 -->
+            <li>
+              <a href="#character-section" class="menu-link">character</a>
+            </li>
+            <!-- 장소 소개 섹션으로 이동 -->
+            <li><a href="#place-section" class="menu-link">place</a></li>
+            <!-- 채용 정보 섹션으로 이동 -->
+            <li><a href="##" class="menu-link">recruit</a></li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+    <!-- 2. 메인영역 -->
+    <main id="site-main">
+      <!-- 2-1. 배너영역 -->
+      <section id="banner-section">
+        <!-- 배너영역 내용 -->
+        <figure class="main-visual-box">
+          <img
+            src="./images/main_visual_pc_v1.png"
+            alt="메인 비주얼"
+            class="main-visual-img"
+          />
+        </figure>
+
+        <!-- SNS이동버튼박스 -->
+        <div class="sns">
+          <a href="https://www.instagram.com/sanrio_kr/" target="_blank"
+            ><img src="./images/i_ins_pc_v3.png" alt="instargram"
+          /></a>
+          <a
+            href="https://www.youtube.com/c/sanriokorea/featured"
+            target="_blank"
+            ><img src="./images/i_you_pc_v3.png" alt="youtube"
+          /></a>
+        </div>
+
+        <!-- 스크롤 유도 애니박스 -->
+        <div class="scroll_btn">
+          <span class="mouse"><span></span></span>
+          <p>scroll down</p>
+        </div>
+      </section>
+
+      <!-- 2-2. 캐릭터영역 -->
+      <section id="character-section">
+        <!-- 캐릭터영역 내용 -->
+
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">character</h2>
+          <div class="btn-box">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+        <!-- 캐릭터카드 박스 (flex 4열 줄바꿈) -->
+        <div class="card-box">
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt1.png" alt="헬로키티" />
+              <img src="./images/new_main_crt1_ov.png" alt="헬로키티 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>헬로키티</h3>
+              <h4>hello kitty</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt2.png" alt="마이멜로디" />
+              <img src="./images/new_main_crt2_ov.png" alt="마이멜로디 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>마이멜로디</h3>
+              <h4>MY MELODY</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt3.png" alt="쿠로미" />
+              <img src="./images/new_main_crt3_ov.png" alt="쿠로미 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>쿠로미</h3>
+              <h4>KUROMI</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt4.png" alt="폼폼푸린" />
+              <img src="./images/new_main_crt4_ov.png" alt="폼폼푸린 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>폼폼푸린</h3>
+              <h4>POMPOMPURIN</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt5.png" alt="시나모롤" />
+              <img src="./images/new_main_crt5_ov.png" alt="시나모롤 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>시나모롤</h3>
+              <h4>CINNAMOROLL</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt6.png" alt="리틀트윈스타" />
+              <img
+                src="./images/new_main_crt6_ov.png"
+                alt="리틀트윈스타 오버"
+              />
+            </div>
+            <div class="card-desc">
+              <h3>리틀트윈스타</h3>
+              <h4>LittleTwinStars</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt7.png" alt="포차코" />
+              <img src="./images/new_main_crt7_ov.png" alt="포차코 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>포차코</h3>
+              <h4>POCHACCO</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt8.png" alt="케로케로케로피" />
+              <img
+                src="./images/new_main_crt8_ov.png"
+                alt="케로케로케로피 오버"
+              />
+            </div>
+            <div class="card-desc">
+              <h3>케로케로케로피</h3>
+              <h4>KEROKEROKEROPPI</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt9.png" alt="구데타마" />
+              <img src="./images/new_main_crt9_ov.png" alt="구데타마 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>구데타마</h3>
+              <h4>GUDETAMA</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt10.png" alt="배드바츠마루" />
+              <img
+                src="./images/new_main_crt10_ov.png"
+                alt="배드바츠마루 오버"
+              />
+            </div>
+            <div class="card-desc">
+              <h3>배드바츠마루</h3>
+              <h4>BAD BADTZ-MARU</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt11.png" alt="턱시도샘" />
+              <img src="./images/new_main_crt11_ov.png" alt="턱시도샘 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>턱시도샘</h3>
+              <h4>TUXEDOSAM</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt12.png" alt="코기뮹" />
+              <img src="./images/new_main_crt12_ov.png" alt="코기뮹 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>코기뮹</h3>
+              <h4>Cogimyun</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt13.png" alt="딩구리데이즈" />
+              <img
+                src="./images/new_main_crt13_ov.png"
+                alt="딩구리데이즈 오버"
+              />
+            </div>
+            <div class="card-desc">
+              <h3>딩구리데이즈</h3>
+              <h4>Marumofubiyori</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt14.png" alt="숲의요정 페어리루" />
+              <img
+                src="./images/new_main_crt14_ov.png"
+                alt="숲의요정 페어리루 오버"
+              />
+            </div>
+            <div class="card-desc">
+              <h3>숲의요정 페어리루</h3>
+              <h4>RILU RILU FAIRILU</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt15.png" alt="어그레츠코" />
+              <img src="./images/new_main_crt15_ov.png" alt="어그레츠코 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>어그레츠코</h3>
+              <h4>Aggretsuko</h4>
+            </div>
+          </div>
+          <div class="character-card">
+            <div class="card-imgs">
+              <img src="./images/new_main_crt16.png" alt="꿈속의 뮤" />
+              <img src="./images/new_main_crt16_ov.png" alt="꿈속의 뮤 오버" />
+            </div>
+            <div class="card-desc">
+              <h3>꿈속의 뮤</h3>
+              <h4>Mewkledreamy</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 2-3. 컴퍼니영역 -->
+      <section id="company-section">
+        <!-- 컴퍼니영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">company</h2>
+          <div class="btn-box off">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+        <!-- 카드섹션파트 -->
+        <div class="com-card-box">
+          <!-- 카드 1 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company1.png" alt="회사소개" />
+            </div>
+            <h3 class="card-title">회사소개</h3>
+            <p class="card-desc">
+              <span>맑고 깨끗한 강가에</span>
+              <span>문화를 쌓아 올리자.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 2 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company3.png" alt="회사연혁" />
+            </div>
+            <h3 class="card-title">회사연혁</h3>
+            <p class="card-desc">
+              <span>산리오의 히스토리를</span>
+              <span>확인하세요.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 3 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company4.png" alt="사업영역" />
+            </div>
+            <h3 class="card-title">사업영역</h3>
+            <p class="card-desc">
+              <span>소셜 커뮤니케이션을</span>
+              <span>산리오가 시작합니다.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+        </div>
+      </section>
+      <!-- 2-4. 리쿠르트영역 -->
+      <section id="recruit-section">
+        <!-- 리쿠르트영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">recruit</h2>
+          <div class="btn-box off">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+
+        <!-- 카드섹션파트 -->
+        <div class="com-card-box">
+          <!-- 카드 1 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_recruit1.png" alt="채용공고" />
+            </div>
+            <h3 class="card-title">채용공고</h3>
+            <p class="card-desc">
+              <span>산리오코리아에서</span>
+              <span>인재를 찾습니다</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 2 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_recruit2.png" alt="직무소개" />
+            </div>
+            <h3 class="card-title">직무소개</h3>
+            <p class="card-desc">
+              <span>산리오코리아에서는</span>
+              <span>어떤 일을 할까요?</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 3 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_recruit3.png" alt="복리후생" />
+            </div>
+            <h3 class="card-title">복리후생</h3>
+            <p class="card-desc">
+              <span>산리오코리아에서</span>
+              <span>누릴 수 있는것!</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+        </div>
+      </section>
+      <!-- 2-5. 플레이스영역 -->
+      <section id="place-section">
+        <!-- 플레이스영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box">
+          <h2 class="part-tit">place</h2>
+          <div class="btn-box">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+      </section>
+      <!-- 2-6. 컨텍어스영역 -->
+      <section id="contactus-section">
+        <!-- 컨텍어스영역 내용 -->
+        <!-- 타이틀박스 -->
+        <div class="tit-box white">
+          <div class="logo-box">
+            <img src="./images/logo_w.png" alt="화이트로고" />
+          </div>
+          <h2 class="part-tit">contact us</h2>
+          <div class="btn-box">
+            <a href="#" class="btn-view">view more</a>
+          </div>
+        </div>
+        <!-- 지도 + 회사정보 박스 -->
+        <div class="contact-box">
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%ED%85%8C%ED%97%A4%EB%9E%80%EB%A1%9C%20509&output=embed"
+              title="구글맵 - 엔씨타워1"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="info-box">
+            <h3>서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)</h3>
+            <h4>509, Teheranro, Gangnam-gu, Seoul</h4>
+            <h4>(4th floor, Samsung-dong, NC Tower 1)</h4>
+            <h5>M : webmaster@sanriokorea.co.kr</h5>
+            <h5>T : +82 (0) 2 543 3810</h5>
+            <h5>F : +82 (0) 2 543 2904</h5>
+            <!-- 키티이미지 -->
+            <img
+              id="kitty-car"
+              src="./images/contact_img.png"
+              alt="키티자동차"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 3. 하단영역 -->
+    <footer id="site-footer">
+      <!-- 하단영역 내용 -->
+      <div class="bottom-inner">
+        <!-- 카피라잇 이미지 -->
+        <img src="./images/copyright_2023_02_v2.png" alt="산리오카피라이트" />
+        <!-- 개인정보버튼 -->
+        <div class="btn-box simple">
+          <a href="#" class="btn-view">개인정보처리방침</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
