@@ -231,11 +231,23 @@
         display: none;
       }
 
+      /* 화살표 출력안함 클래스 */
+      /* 부모박스에 simple클래스를 주면 자식 버튼에 가상요소 화살표가 출력안됨 */
+      .btn-box.simple .btn-view::after {
+        display: none;
+      }
+      /* simple클래스 버튼 디자인변경 */
+      .btn-box.simple .btn-view {
+        padding: 11px 22px;
+      }
+
       /* 타이틀 아래 버튼 */
       .btn-view {
         text-decoration: none;
         color: #222;
         font-size: 1.2rem;
+        /* 대문자출력 */
+        text-transform: uppercase;
         display: inline-block;
         margin: 0 auto;
         border: 1px solid #222;
@@ -358,6 +370,45 @@
       .character-card .card-desc h4 {
         font-size: 1.2rem;
         color: #ccc;
+      }
+
+      /* 컴퍼니 영역 */
+      #company-section {
+        background: #f5f5f5;
+      }
+      /* 카드 컨테이너 추가 */
+      .com-card-box {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+        gap: 30px;
+        padding-bottom: 50px;
+      }
+      /* 개별카드박스 */
+      .card-part {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        flex: 1; /* 동일한 너비 배분 */
+        text-align: center;
+      }
+
+      .img-box {
+      }
+
+
+      /* 카드타이틀 */
+      .card-title {
+        font-size: 2.5rem;
+      }
+
+      /* 카드설명span */
+      .card-desc span {
+        /* 인라인인 span을 블록으로 변경 */
+        display: block;
+        font-size: 1.8rem;
       }
     </style>
   </head>
@@ -625,6 +676,53 @@
           <div class="btn-box off">
             <a href="#" class="btn-view">view more</a>
           </div>
+        </div>
+        <!-- 카드섹션파트 -->
+        <div class="com-card-box">
+          <!-- 카드 1 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company1.png" alt="회사소개" />
+            </div>
+            <h3 class="card-title">회사소개</h3>
+            <p class="card-desc">
+              <span>맑고 깨끗한 강가에</span>
+              <span>문화를 쌓아 올리자.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 2 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company3.png" alt="회사연혁" />
+            </div>
+            <h3 class="card-title">회사연혁</h3>
+            <p class="card-desc">
+              <span>산리오의 히스토리를</span>
+              <span>확인하세요.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
+
+          <!-- 카드 3 -->
+          <figure class="card-part">
+            <div class="img-box">
+              <img src="./images/ico_company4.png" alt="사업영역" />
+            </div>
+            <h3 class="card-title">사업영역</h3>
+            <p class="card-desc">
+              <span>소셜 커뮤니케이션을</span>
+              <span>산리오가 시작합니다.</span>
+            </p>
+            <div class="btn-box simple">
+              <a href="#" class="btn-view">more</a>
+            </div>
+          </figure>
         </div>
       </section>
       <!-- 2-4. 리쿠르트영역 -->
