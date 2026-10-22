@@ -42,9 +42,9 @@
       }
 
       .header-inner {
-        display: flex;
         max-width: 1440px;
         margin: 0 auto;
+        display: flex;
         align-items: center;
         justify-content: space-between;
         height: 90px;
@@ -57,18 +57,16 @@
       }
       .menu-list {
         display: flex;
-        gap: 32px;
-        margin: 0 20px 0 0;
-        padding: 0;
+        gap: 48px;
         list-style: none;
-        align-items: center;
+        padding: 0;
+        margin: 0;
         text-transform: uppercase; /* 대문자 변환 */
       }
       .menu-link {
         text-decoration: none;
-        color: #333;
+        color: inherit;
         font-size: 1.6rem;
-        padding: 6px 12px;
         transition: color 0.2s;
       }
       .menu-link:hover {
@@ -77,6 +75,9 @@
 
       /* 배너 영역 스타일 */
       #banner-section {
+        position: relative;
+        padding: 80px;
+        padding-bottom: 160px;
         background: url("./images/main_visual_bg.jpg") repeat 0 0/50px;
         /* 배경스타일 사용법:
         background: 색 이 반 고 윙/크
@@ -84,16 +85,14 @@
       }
       .main-visual-box {
         text-align: center;
-        margin: 0 auto 0 auto;
+        /* margin: 0 auto 0 auto;
         justify-content: center;
-        padding: 80px;
-        padding-bottom: 160px;
-        align-items: center;
+        align-items: center; */
       }
       .main-visual-img {
         width: 984px;
         max-width: 100%;
-        object-fit: contain;
+        /* object-fit: contain; */
       }
 
       /* SNS 버튼 박스 스타일 */
@@ -201,16 +200,6 @@
         min-height: 100vh;
       }
 
-      /* 캐릭터카드 리스트: 4열, flex 줄바꿈 */
-      .card-box {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        /* gap 사이간격(값을 두개쓰면 가로,세로) */
-      }
-
       /* 공통타이틀박스 */
       .tit-box {
         max-width: 1200px;
@@ -278,6 +267,16 @@
         content: url(./images/ico_more2.png);
       }
 
+      /* 캐릭터카드 리스트: 4열, flex 줄바꿈 */
+      .card-box {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        /* gap 사이간격(값을 두개쓰면 가로,세로) */
+      }
+
       /* 캐릭터카드 */
       .character-card {
         width: calc(25% - 15px);
@@ -328,12 +327,11 @@
         width: 100%;
         /* 처음엔 투명, 오버시 보이게 */
         opacity: 0;
-        /* 트랜지션 : 속시이지(속성 시간 이징 지연)
-        양방향 애니는 원본에 설정함 */
+        /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
         transition: opacity 0.5s;
       }
 
-      /* 카드 오버시 두번째 이미지 보이기 */
+      /* 카드 마우스 오버시 두번째 이미지 보이기 */
       .character-card:hover .card-imgs img:last-child {
         opacity: 1;
       }
@@ -399,7 +397,7 @@
     <!-- 2. 메인영역 -->
     <main id="site-main">
       <!-- 2-1. 배너영역 -->
-      <section id="banner-section" style="position: relative">
+      <section id="banner-section">
         <!-- 배너영역 내용 -->
         <figure class="main-visual-box">
           <img
