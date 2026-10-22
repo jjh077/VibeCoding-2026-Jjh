@@ -237,7 +237,7 @@
         color: #fff;
       }
       /* 타이틀박스의 로고 컨트롤 */
-      .tit-box.tit-box.white .logo-box{
+      .tit-box.tit-box.white .logo-box {
         text-align: center;
         margin-bottom: 20px;
       }
@@ -441,8 +441,8 @@
         text-align: center;
       }
 
-      .img-box {
-      }
+      /* .img-box {
+      } */
 
       /* 카드타이틀 */
       .card-title {
@@ -459,51 +459,110 @@
       /* 컨텍어스 지도 + 회사정보 박스 */
       .contact-box {
         display: flex;
-        width: 1200px;
+        max-width: 1200px;
         height: 350px;
-        margin: 0 auto 50px;
+        margin: 0 auto;
         border-radius: 20px;
-        overflow: hidden; /* 모서리 둥글게 자식까지 적용 */
+        /* overflow:hidden을 쓰면 자식(키티자동차)이 박스 밖에서 잘리므로
+        사용하지 않고, 대신 좌우 자식박스에 각각 둥근 모서리를 줌 */
         background: #fff;
       }
+
       /* 반으로 갈라서 좌우 50% */
       .contact-box .map-box,
       .contact-box .info-box {
         width: 50%;
         height: 100%;
       }
+
+      .contact-box .map-box {
+        overflow: hidden;
+        border-radius: 20px 0 0 20px;
+      }
+
       .contact-box .map-box iframe {
         display: block;
         width: 100%;
         height: 100%;
         border: 0;
       }
+
       .contact-box .info-box {
+        position: relative;
+        border-radius: 0 20px 20px 0;
         box-sizing: border-box;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 10px;
-        padding: 0 40px;
         color: #222;
       }
+
       /* 키티 자동차 이미지 */
-      #kitty-car{
+      #kitty-car {
         width: 207px;
         height: 240px;
+        /* 부모(.contact-box) 기준 오른쪽 아래 */
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        /* 자기 높이의 10%만큼 아래로 내림 */
+        /* transform: translate(가로이동, 세로이동) */
+        transform: translate(-23%, 23%);
+        /* translate: : -23%, 23%; */
+        /* 다른 방법? transform: 가로이동 세로이동 */
       }
+
       .contact-box .info-box h3 {
-        font-size: 2rem;
-        margin-bottom: 10px;
+        font-size: 2.4rem;
+        font-weight: bold;
+        margin-bottom: 14px;
       }
+
       .contact-box .info-box h4 {
-        font-size: 1.4rem;
-        font-weight: normal;
+        font-size: 1.6rem;
         color: #555;
+        line-height: 1.5;
       }
+      .contact-box .info-box h4:nth-of-type(2) {
+        margin-bottom: 28px;
+      }
+
       .contact-box .info-box h5 {
-        font-size: 1.4rem;
-        font-weight: normal;
+        font-size: 1.6rem;
+        line-height: 1.8;
+      }
+
+      /* 하단영역 */
+      #site-footer {
+        background-color: #222;
+        padding: 50px;
+      }
+
+      /* 하단속박스 */
+      .bottom-inner {
+        /* 플렉스박스 */
+        display: flex;
+        /* 진행방향정렬: 사이간격 일정하게 */
+        justify-content: space-between;
+        /* 진행방향의 수직정렬: 중간 */
+        align-items: center;
+      }
+
+      /* 하단속박스 카피라이트 이미지 */
+      .bottom-inner img {
+        height: 13px;
+      }
+
+      /* 하단속박스 버튼 */
+      .bottom-inner .btn-view {
+        background-color: transparent;
+        color: #fff;
+        border-color: #fff;
+      }
+
+      .bottom-inner .btn-box {
+        margin-bottom: 0;
       }
     </style>
   </head>
@@ -922,7 +981,11 @@
             <h5>T : +82 (0) 2 543 3810</h5>
             <h5>F : +82 (0) 2 543 2904</h5>
             <!-- 키티이미지 -->
-             <img id="kitty-car" src="./images/contact_img.png" alt="키티자동차">
+            <img
+              id="kitty-car"
+              src="./images/contact_img.png"
+              alt="키티자동차"
+            />
           </div>
         </div>
       </section>
@@ -931,6 +994,14 @@
     <!-- 3. 하단영역 -->
     <footer id="site-footer">
       <!-- 하단영역 내용 -->
+      <div class="bottom-inner">
+        <!-- 카피라잇 이미지 -->
+        <img src="./images/copyright_2023_02_v2.png" alt="산리오카피라이트" />
+        <!-- 개인정보버튼 -->
+        <div class="btn-box simple">
+          <a href="#" class="btn-view">개인정보처리방침</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
