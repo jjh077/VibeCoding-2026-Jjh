@@ -63,18 +63,6 @@
       }
 
 
-      /* 1024px 이하 미디어쿼리 시작 */
-      @media screen and (max-width:1024px) {
-        /* 기존선택자와 동일하게 사용함! */
-       /* 상단로그박스 */
-      h1.logo-box {
-        width: 30%;
-      }
-    }
-    /* 1024px 이하 미디어쿼리 종료 */
-    
-
-
 
       .menu-list {
         display: flex;
@@ -92,6 +80,11 @@
       }
       .menu-link:hover {
         color: #ff69b4;
+      }
+
+      /* 햄버거 버튼: PC에서는 숨김 (1199px 이하에서 표시) */
+      .menu-btn {
+        display: none;
       }
 
       /* 배너 영역 스타일 */
@@ -420,20 +413,6 @@
         color: #ccc;
       }
 
-      /* 800px 이하 미디어쿼리 시작 (캐릭터영역) */
-      @media screen and (max-width: 800px) {
-        /* 타이틀 글자크기: 50px(5rem) -> 32px(3.2rem) */
-        section#character-section .tit-box .part-tit {
-          font-size: 3.2rem;
-        }
-
-        /* 카드 4열 -> 2열 (gap 20px 이므로 20px의 절반인 10px 차감) */
-        section#character-section .character-card {
-          width: calc(50% - 10px);
-        }
-      }
-      /* 800px 이하 미디어쿼리 종료 */
-
       /* 컴퍼니 영역 */
       #company-section {
         background: #f5f5f5;
@@ -599,6 +578,389 @@
       .bottom-inner .btn-box {
         margin-bottom: 0;
       }
+
+      /* =====================================================
+         반응형 미디어쿼리 (PC 기본 CSS 아래에 추가)
+         순서: 1199px → 1024px → 800px → 767px → 736px
+         ===================================================== */
+
+      /* ---------- 1199px 이하 ---------- */
+      @media screen and (max-width: 1199px) {
+        /* 1. 공통 컨테이너: 고정폭 -> 가로 꽉 채움 + 좌우 14px 여백 */
+        .tit-box,
+        .card-box,
+        .com-card-box,
+        .contact-box {
+          margin-left: 14px;
+          margin-right: 14px;
+        }
+
+        /* 2. 헤더: 높이 100px + 아래 회색 구분선 */
+        #site-header {
+          border-bottom: 1px solid #ddd;
+        }
+        .header-inner {
+          max-width: none;
+          height: 100px;
+          padding: 19.5px 42px;
+          box-sizing: border-box;
+        }
+        h1.logo-box {
+          position: relative;
+          z-index: 101; /* 메뉴 패널 위에도 로고 보이기 */
+        }
+
+        /* 햄버거 버튼 (너비 34px) */
+        .menu-btn {
+          display: block;
+          position: relative;
+          z-index: 101;
+          width: 34px;
+          height: 26px;
+          padding: 0;
+          border: 0;
+          background: none;
+          cursor: pointer;
+        }
+        .menu-btn span {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 4px;
+          background: #222;
+          transition: all 0.3s;
+        }
+        .menu-btn span:nth-child(1) {
+          top: 0;
+        }
+        .menu-btn span:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .menu-btn span:nth-child(3) {
+          top: 100%;
+          transform: translateY(-100%);
+        }
+        /* 열렸을 때 X 모양 */
+        body.menu-open .menu-btn span:nth-child(1) {
+          top: 50%;
+          transform: translateY(-50%) rotate(45deg);
+        }
+        body.menu-open .menu-btn span:nth-child(2) {
+          opacity: 0;
+        }
+        body.menu-open .menu-btn span:nth-child(3) {
+          top: 50%;
+          transform: translateY(-50%) rotate(-45deg);
+        }
+
+        /* PC 가로메뉴 -> 화면 전체를 덮는 흰색 패널(오른쪽에서 슬라이드) */
+        #site-header nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #fff;
+          z-index: 100;
+          transform: translateX(100%);
+          visibility: hidden;
+          transition:
+            transform 0.4s ease,
+            visibility 0.4s;
+        }
+        body.menu-open #site-header nav {
+          transform: translateX(0);
+          visibility: visible;
+        }
+        body.menu-open {
+          overflow: hidden; /* 메뉴 열렸을 때 뒤 화면 스크롤 방지 */
+        }
+        /* 항목: 세로 쌓기 + 가운데 정렬 + 대문자 + 큰 글자(42px) */
+        .menu-list {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          gap: 40px;
+          text-align: center;
+        }
+        .menu-link {
+          font-size: 4.2rem;
+        }
+      }
+      /* 1199px 이하 미디어쿼리 종료 */
+
+      /* ---------- 1024px 이하 ---------- */
+      @media screen and (max-width: 1024px) {
+        /* 헤더: 로고 너비 30% */
+        h1.logo-box {
+          width: 30%;
+        }
+
+        /* 3. SNS 아이콘: 고정 배치, 헤더 아래(top 112px) */
+        .sns {
+          position: fixed;
+          top: 112px;
+          z-index: 50;
+        }
+
+        /* 4. 메인 비주얼: 좌우 여백 30px */
+        #banner-section {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        /* 9. recruit: 좌우 여백 9% */
+        #site-main > section#recruit-section {
+          padding-left: 9%;
+          padding-right: 9%;
+        }
+
+        /* 11. contact us: 아래 여백 150px + 키티 스티커 위치 */
+        #site-main > section#contactus-section {
+          padding-bottom: 150px;
+        }
+        #kitty-car {
+          right: 40px;
+          bottom: -120px;
+          transform: none;
+        }
+      }
+      /* 1024px 이하 미디어쿼리 종료 */
+
+      /* ---------- 800px 이하 ---------- */
+      @media screen and (max-width: 800px) {
+        /* 5. 섹션 공통: 상하 여백 75px */
+        #site-main > section + section {
+          padding: 75px 0;
+        }
+
+        /* 6. character: 2열, 정사각형 카드, 이미지 중앙 */
+        section#character-section .character-card {
+          width: calc(50% - 10px);
+          aspect-ratio: 1 / 1;
+          display: flex;
+          flex-direction: column;
+        }
+        section#character-section .card-imgs {
+          flex: 1;
+          min-height: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        section#character-section .card-imgs img:first-child {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        section#character-section .card-imgs img:last-child {
+          height: 100%;
+          object-fit: contain;
+        }
+
+        /* 8. company: 2열 배치 + 회색 구분선 + 행 사이 5% 여백 */
+        #company-section .com-card-box {
+          flex-wrap: wrap;
+          gap: 0;
+        }
+        #company-section .card-part {
+          flex: 0 0 50%;
+          box-sizing: border-box;
+          padding: 0 10px 5%;
+          margin-bottom: 5%;
+          border-bottom: 1px solid #ddd;
+        }
+
+        /* 9. recruit: 항목 가로 배치 (아이콘 57% + 텍스트 33%), 배경 90% 크기 */
+        #recruit-section {
+          background-size: 90%;
+          background-position: center 30px;
+        }
+        #recruit-section .com-card-box {
+          flex-direction: column;
+          gap: 30px;
+        }
+        #recruit-section .card-part {
+          display: grid;
+          grid-template-columns: 57% 33%;
+          justify-content: space-between;
+          align-content: center;
+          align-items: center;
+          gap: 10px 0;
+          text-align: left;
+        }
+        #recruit-section .card-part .img-box {
+          grid-column: 1;
+          grid-row: 1 / span 3;
+        }
+        #recruit-section .card-part .img-box img {
+          max-width: 100%;
+        }
+        #recruit-section .card-part .card-title,
+        #recruit-section .card-part .card-desc,
+        #recruit-section .card-part .btn-box {
+          grid-column: 2;
+        }
+
+        /* 10. place: 배경 cover */
+        #place-section {
+          background-size: cover;
+        }
+
+        /* 11. contact us: 지도(위) + 정보(아래) 세로 배치 */
+        .contact-box {
+          flex-direction: column;
+          height: auto;
+        }
+        .contact-box .map-box,
+        .contact-box .info-box {
+          width: 100%;
+        }
+        .contact-box .map-box {
+          height: 280px;
+          border-radius: 20px 20px 0 0;
+        }
+        .contact-box .info-box {
+          height: auto;
+          border-radius: 0 0 20px 20px;
+        }
+        .contact-box .info-box h4 {
+          font-size: 10px; /* 주소 글자 */
+        }
+
+        /* 12. 푸터: 세로 쌓기 + 가운데 정렬 */
+        .bottom-inner {
+          display: block;
+          text-align: center;
+        }
+        .bottom-inner img {
+          width: 100%;
+          height: auto;
+        }
+        .bottom-inner .btn-box {
+          margin-top: 20px;
+        }
+      }
+      /* 800px 이하 미디어쿼리 종료 */
+
+      /* ---------- 767px 이하 ---------- */
+      @media screen and (max-width: 767px) {
+        /* 1. 기본 글자 크기 87.5% (기준 10px -> 8.75px) */
+        html {
+          font-size: 8.75px;
+        }
+      }
+      /* 767px 이하 미디어쿼리 종료 */
+
+      /* ---------- 736px 이하 ---------- */
+      @media screen and (max-width: 736px) {
+        /* 2. 헤더: 높이 50px, 햄버거 24px(선 3px), 메뉴 글자 28px */
+        .header-inner {
+          height: 50px;
+          padding: 0 20px;
+        }
+        .menu-btn {
+          width: 24px;
+          height: 18px;
+        }
+        .menu-btn span {
+          height: 3px;
+        }
+        .menu-list {
+          gap: 20px;
+        }
+        .menu-link {
+          font-size: 28px;
+        }
+
+        /* 3. SNS 아이콘: 화면 너비 기준 위치(20vw), 크기 34px */
+        .sns {
+          right: 20vw;
+        }
+        .sns img {
+          width: 34px;
+          height: 34px;
+        }
+
+        /* 4. 메인 비주얼: 좌우 여백 제거, 스크롤 버튼 위치 */
+        #banner-section {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .scroll_btn {
+          bottom: 20px;
+        }
+
+        /* 5. 섹션 공통: 상하 여백 50px, 제목 글자 축소 */
+        #site-main > section + section {
+          padding: 50px 0;
+        }
+        .tit-box .part-tit {
+          font-size: 33px;
+        }
+
+        /* 6. character: 이름 영역 높이 축소 */
+        section#character-section .character-card .card-desc {
+          aspect-ratio: 1 / 0.22;
+          padding: 8px 6px;
+          gap: 2px;
+        }
+        section#character-section .character-card .card-desc h3 {
+          font-size: 1.6rem;
+        }
+        section#character-section .character-card .card-desc h4 {
+          font-size: 1rem;
+        }
+
+        /* 8. company: 항목 너비 50%, 아이콘 35% */
+        #company-section .card-part {
+          flex: 0 0 50%;
+        }
+        #company-section .card-part .img-box img {
+          width: 35%;
+        }
+
+        /* 9. recruit: 아이콘 52% / 텍스트 48%, 더보기 버튼 축소(최대 80px) */
+        #recruit-section .card-part {
+          grid-template-columns: 52% 48%;
+        }
+        #recruit-section .btn-view {
+          max-width: 80px;
+          box-sizing: border-box;
+          padding: 8px 12px;
+          text-align: center;
+        }
+
+        /* 10. place: 상하 여백 55px */
+        #site-main > section#place-section {
+          padding: 55px 0;
+        }
+
+        /* 11. contact us: 지도 150px, 스티커 40%, 연락처 글자 축소 */
+        .contact-box .map-box {
+          height: 150px;
+        }
+        #kitty-car {
+          width: 40%;
+          height: auto;
+          right: 10px;
+          bottom: -40px;
+        }
+        .contact-box .info-box h5 {
+          font-size: 13px;
+        }
+
+        /* 12. 푸터: 여백 30px / 50px, 저작권 이미지 60% */
+        #site-footer {
+          padding: 30px 50px;
+        }
+        .bottom-inner img {
+          width: 60%;
+        }
+      }
+      /* 736px 이하 미디어쿼리 종료 */
     </style>
   </head>
   <body>
@@ -631,6 +993,15 @@
             <li><a href="##" class="menu-link">recruit</a></li>
           </ul>
         </nav>
+        <!-- 햄버거 버튼 (1199px 이하에서만 표시) -->
+        <button
+          type="button"
+          class="menu-btn"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </section>
     </header>
 
@@ -1038,5 +1409,23 @@
         </div>
       </div>
     </footer>
+    <script>
+      // 햄버거 메뉴 열기/닫기
+      const menuBtn = document.querySelector(".menu-btn");
+      function setMenu(open) {
+        document.body.classList.toggle("menu-open", open);
+        menuBtn.setAttribute("aria-expanded", open);
+        menuBtn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+      }
+      menuBtn.addEventListener("click", () =>
+        setMenu(!document.body.classList.contains("menu-open"))
+      );
+      document
+        .querySelectorAll(".menu-link")
+        .forEach((a) => a.addEventListener("click", () => setMenu(false)));
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 1199) setMenu(false);
+      });
+    </script>
   </body>
 </html>
