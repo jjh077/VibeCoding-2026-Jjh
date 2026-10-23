@@ -72,10 +72,6 @@
       }
     }
     /* 1024px 이하 미디어쿼리 종료 */
-    
-
-
-
       .menu-list {
         display: flex;
         gap: 48px;
@@ -419,6 +415,20 @@
         font-size: 1.2rem;
         color: #ccc;
       }
+
+      /* 800px 이하 미디어쿼리 시작 (캐릭터영역) */
+      @media screen and (max-width: 800px) {
+        /* 타이틀 글자크기: 50px(5rem) -> 32px(3.2rem) */
+        section#character-section .tit-box .part-tit {
+          font-size: 3.2rem;
+        }
+
+        /* 카드 4열 -> 2열 (gap 20px 이므로 20px의 절반인 10px 차감) */
+        section#character-section .character-card {
+          width: calc(50% - 10px);
+        }
+      }
+      /* 800px 이하 미디어쿼리 종료 */
 
       /* 컴퍼니 영역 */
       #company-section {
