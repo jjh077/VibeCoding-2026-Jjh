@@ -1,0 +1,410 @@
+/* common.css : 글꼴 · 공통 레이아웃 · 제목 · 버튼 · 헤더 · 푸터 (모든 페이지 공통) */
+
+/* 웹폰트 로딩하기(CDN방식)
+      CDN은 Content Delivery Networt 즉, 네트워크 망으로 컨텐트를 배달시켜 쓰는 방식 */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Gothic&display=swap");
+
+@import url("https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css");
+
+/* 전체 루트 설정 */
+html {
+  /* rem단위를 위한 Root 글자크기설정 */
+  font-size: 10px;
+  /* 왜 10px인가? rem단위에 계산이 용이함! */
+}
+html,
+body {
+  /* 웹폰트체 지정 (콤마는 우선순위) */
+  font-family: Montserrat, NanumBarunGothic, Dotum, sans-serif;
+}
+
+/* 공통셋팅 */
+/* 메인영역 하위박스 공통 */
+/* 직계자식 선택자(>), 형제선택자(+)
+      section + section 은 앞에 section태그가 있는 section태그를 모두 선택하라! 즉, 첫번째 section을 제외한 모든 section선택
+      */
+#site-main > section + section {
+  padding: 85px 0;
+}
+
+.header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+/* 상단로그박스 */
+h1.logo-box {
+  width: 10%;
+}
+h1.logo-box img {
+  max-width: 100%;
+}
+
+.menu-list {
+  display: flex;
+  gap: 48px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase; /* 대문자 변환 */
+}
+.menu-link {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.6rem;
+  transition: color 0.2s;
+}
+.menu-link:hover {
+  color: #ff69b4;
+}
+
+/* 햄버거 버튼: PC에서는 숨김 (1199px 이하에서 표시) */
+.menu-btn {
+  display: none;
+}
+
+/* 공통타이틀박스 */
+.tit-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* outline: 3px dashed blue; */
+  /* 대문자변환 */
+  text-transform: uppercase;
+}
+
+/* 타이틀파트 */
+.tit-box .part-tit {
+  text-align: center;
+  /* padding: 40px 0; */
+  margin-bottom: 30px;
+  font-size: 5rem;
+  font-weight: normal;
+}
+
+/* 타이틀박스 하위 버튼박스 */
+.btn-box {
+  text-align: center;
+  /* padding: 20px 0; */
+  margin-bottom: 50px;
+  /* 버튼이 사라지면 하단 마진도 사라짐! */
+}
+
+/* 버튼출력안함 클래스 */
+.btn-box.off {
+  display: none;
+}
+
+/* 타이틀 흰색테마 클래스 */
+
+.tit-box.white .part-tit {
+  color: #fff;
+}
+/* 타이틀박스의 로고 컨트롤 */
+.tit-box.tit-box.white .logo-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* 버튼 흰색테마 클래스 */
+.tit-box.white .btn-view {
+  color: #fff;
+  border: 1px solid #fff;
+}
+.tit-box.white .btn-view::after {
+  content: url(../images/ico_more2.png);
+}
+.tit-box.white .btn-view:hover {
+  color: #222;
+  background: #fff;
+}
+.tit-box.white .btn-view:hover::after {
+  content: url(../images/ico_more1.png);
+}
+
+/* 화살표 출력안함 클래스 */
+/* 부모박스에 simple클래스를 주면 자식 버튼에 가상요소 화살표가 출력안됨 */
+.btn-box.simple .btn-view::after {
+  display: none;
+}
+/* simple클래스 버튼 디자인변경 */
+.btn-box.simple .btn-view {
+  padding: 11px 22px;
+}
+
+/* 타이틀 아래 버튼 */
+.btn-view {
+  text-decoration: none;
+  color: #222;
+  font-size: 1.2rem;
+  /* 대문자출력 */
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0 auto;
+  border: 1px solid #222;
+  border-radius: 24px;
+  padding: 16px 32px;
+  /* 트랜지션 : 속시이지(속성 시간 이징 지연) */
+  transition: all 0.5s;
+}
+
+/* 버튼가상요소로 이미지 넣기 */
+/* 앞은 ::before, 뒤는 ::after */
+.btn-view::after {
+  /* before, after의 필수속성 content */
+  content: url(../images/ico_more1.png);
+  padding-left: 20px;
+}
+
+/* 버튼 오버시 가상클래스 :hover를 사용함 */
+.btn-view:hover {
+  color: #fff;
+  background: #222;
+  /* 트랜지션 양뱡향은 원본에 설정함! */
+  /* :hover에 설정하면 오버시에만 애니됨 */
+  /* transition: all .5s; */
+}
+
+/* 버튼오버시 가상요소 after이미지변경 */
+.btn-view:hover::after {
+  content: url(../images/ico_more2.png);
+}
+
+/* 하단영역 */
+#site-footer {
+  background-color: #222;
+  padding: 50px;
+}
+
+/* 하단속박스 */
+.bottom-inner {
+  /* 플렉스박스 */
+  display: flex;
+  /* 진행방향정렬: 사이간격 일정하게 */
+  justify-content: space-between;
+  /* 진행방향의 수직정렬: 중간 */
+  align-items: center;
+}
+
+/* 하단속박스 카피라이트 이미지 */
+.bottom-inner img {
+  height: 13px;
+}
+
+/* 하단속박스 버튼 */
+.bottom-inner .btn-view {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+.bottom-inner .btn-box {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   공통 반응형 미디어쿼리 (순서: 1199px → 1024px → 800px → 767px → 736px)
+   ===================================================== */
+
+/* ---------- 1199px 이하 ---------- */
+@media screen and (max-width: 1199px) {
+  /* 1. 공통 컨테이너: 고정폭 -> 가로 꽉 채움 + 좌우 14px 여백 */
+  .tit-box {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  /* 2. 헤더: 높이 100px + 아래 회색 구분선 */
+  #site-header {
+    border-bottom: 1px solid #ddd;
+  }
+  .header-inner {
+    max-width: none;
+    height: 100px;
+    padding: 19.5px 42px;
+    box-sizing: border-box;
+  }
+  h1.logo-box {
+    position: relative;
+    z-index: 101; /* 메뉴 패널 위에도 로고 보이기 */
+  }
+
+  /* 햄버거 버튼 (너비 34px) */
+  .menu-btn {
+    display: block;
+    position: relative;
+    z-index: 101;
+    width: 34px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .menu-btn span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #222;
+    transition: all 0.3s;
+  }
+  .menu-btn span:nth-child(1) {
+    top: 0;
+  }
+  .menu-btn span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .menu-btn span:nth-child(3) {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+  /* 열렸을 때 X 모양 */
+  #site-header.on .menu-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  #site-header.on .menu-btn span:nth-child(2) {
+    opacity: 0;
+  }
+  #site-header.on .menu-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* PC 가로메뉴 -> 화면 전체를 덮는 흰색 패널(오른쪽에서 슬라이드) */
+  #site-header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 100;
+    /* 변경내용 : 위치이동, 투명도 */
+    translate: 100%;
+    opacity: 0;
+    transition: .4s;
+    /* translate속성값은 하나만 쓰면 x축, 두개 x,y축 */
+    /* transform: translateX(100%); */
+    /* visibility와 opacity 투명도0의 차이는 투명해진 후 이벤트 적용여부다.
+    opacity:0은 이벤트가 적용되고 visibility: hidden은 이벤트 적용안됨. */
+    /* visibility: hidden; */
+    /* 트랜지션을 처음부터 주면 메뉴변경시 화면에 한번 보이므로 처음에 트렌지션을 주지 않는다. */
+    /* transition:
+      transform 0.4s ease,
+      visibility 0.4s; */
+  }
+
+  /* 모바일용 메뉴를 위한 클래스 지정: 트랜지션 넣기 */
+  /* mob클래스를 자바스크립트에서 작동시 넣어주면된다! */
+  #site-header.on nav {
+    /* 트랜스폼 보이게 설정 */
+    translate: 0;
+    opacity: 1;
+  }
+  /* body.menu-open #site-header nav {
+    transform: translateX(0);
+    visibility: visible;
+  } */
+  body.menu-open {
+    overflow: hidden; /* 메뉴 열렸을 때 뒤 화면 스크롤 방지 */
+  }
+  /* 항목: 세로 쌓기 + 가운데 정렬 + 대문자 + 큰 글자(42px) */
+  .menu-list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 40px;
+    text-align: center;
+  }
+  .menu-link {
+    font-size: 4.2rem;
+  }
+}
+/* 1199px 이하 미디어쿼리 종료 */
+
+/* ---------- 1024px 이하 ---------- */
+@media screen and (max-width: 1024px) {
+  /* 헤더: 로고 너비 30% */
+  h1.logo-box {
+    width: 30%;
+  }
+}
+/* 1024px 이하 미디어쿼리 종료 */
+
+/* ---------- 800px 이하 ---------- */
+@media screen and (max-width: 800px) {
+  /* 5. 섹션 공통: 상하 여백 75px */
+  #site-main > section + section {
+    padding: 75px 0;
+  }
+
+  /* 12. 푸터: 세로 쌓기 + 가운데 정렬 */
+  .bottom-inner {
+    display: block;
+    text-align: center;
+  }
+  .bottom-inner img {
+    width: 100%;
+    height: auto;
+  }
+  .bottom-inner .btn-box {
+    margin-top: 20px;
+  }
+}
+/* 800px 이하 미디어쿼리 종료 */
+
+/* ---------- 767px 이하 ---------- */
+@media screen and (max-width: 767px) {
+  /* 1. 기본 글자 크기 87.5% (기준 10px -> 8.75px) */
+  html {
+    font-size: 8.75px;
+  }
+}
+/* 767px 이하 미디어쿼리 종료 */
+
+/* ---------- 736px 이하 ---------- */
+@media screen and (max-width: 736px) {
+  /* 2. 헤더: 높이 50px, 햄버거 24px(선 3px), 메뉴 글자 28px */
+  .header-inner {
+    height: 50px;
+    padding: 0 20px;
+  }
+  .menu-btn {
+    width: 24px;
+    height: 18px;
+  }
+  .menu-btn span {
+    height: 3px;
+  }
+  .menu-list {
+    gap: 20px;
+  }
+  .menu-link {
+    font-size: 28px;
+  }
+
+  /* 5. 섹션 공통: 상하 여백 50px, 제목 글자 축소 */
+  #site-main > section + section {
+    padding: 50px 0;
+  }
+  .tit-box .part-tit {
+    font-size: 33px;
+  }
+
+  /* 12. 푸터: 여백 30px / 50px, 저작권 이미지 60% */
+  #site-footer {
+    padding: 30px 50px;
+  }
+  .bottom-inner img {
+    width: 60%;
+  }
+}
+/* 736px 이하 미디어쿼리 종료 */
