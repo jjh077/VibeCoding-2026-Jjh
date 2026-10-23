@@ -584,10 +584,14 @@
         /* 1. 공통 컨테이너: 고정폭 -> 가로 꽉 채움 + 좌우 14px 여백 */
         .tit-box,
         .card-box,
-        .com-card-box,
-        .contact-box {
+        .com-card-box {
           margin-left: 14px;
           margin-right: 14px;
+        }
+        /* contact-box: 좌우 여백 20px */
+        .contact-box {
+          margin-left: 20px;
+          margin-right: 20px;
         }
 
         /* 2. 헤더: 높이 100px + 아래 회색 구분선 */
@@ -774,6 +778,7 @@
         /* 8. company: 2열 배치 + 회색 구분선 + 행 사이 5% 여백 */
         #company-section .com-card-box {
           flex-wrap: wrap;
+          justify-content: center; /* 아래 줄 1개는 가운데 정렬 */
           gap: 0;
         }
         #company-section .card-part {
@@ -791,9 +796,11 @@
         }
         #recruit-section .com-card-box {
           flex-direction: column;
+          align-items: center;
           gap: 30px;
         }
         #recruit-section .card-part {
+          width: 100%; /* align-items:center 로 폭이 줄어드는 것 방지 */
           display: grid;
           grid-template-columns: 57% 33%;
           justify-content: space-between;
@@ -895,10 +902,10 @@
           height: 34px;
         }
 
-        /* 4. 메인 비주얼: 좌우 여백 제거, 스크롤 버튼 위치 */
+        /* 4. 메인 비주얼: 좌우 여백 20px, 스크롤 버튼 위치 */
         #banner-section {
-          padding-left: 0;
-          padding-right: 0;
+          padding-left: 20px;
+          padding-right: 20px;
         }
         .scroll_btn {
           bottom: 20px;
@@ -929,13 +936,44 @@
         #company-section .card-part {
           flex: 0 0 50%;
         }
+        #company-section .card-part {
+          padding: 0 8px 5%;
+          gap: 14px;
+        }
         #company-section .card-part .img-box img {
-          width: 35%;
+          width: 65%;
+        }
+        #company-section .card-part .card-title {
+          font-size: clamp(2rem, 6.4vw, 3rem); /* 화면 너비에 비례 */
+        }
+        #company-section .card-part .card-desc span {
+          font-size: clamp(1.3rem, 4vw, 1.8rem);
+          line-height: 1.5;
+        }
+        #company-section .card-part .btn-view {
+          font-size: 1.4rem;
+          padding: 12px 26px;
         }
 
         /* 9. recruit: 아이콘 52% / 텍스트 48%, 더보기 버튼 축소(최대 80px) */
         #recruit-section .card-part {
           grid-template-columns: 52% 48%;
+        }
+        #recruit-section .card-part .card-desc {
+          display: none; /* 모바일에서 설명글 숨김 */
+        }
+        /* 제목 + 버튼: 오른쪽 칸에서 서로 붙여 세로/가로 가운데 정렬 */
+        #recruit-section .card-part .img-box {
+          grid-row: 1 / span 2;
+        }
+        #recruit-section .card-part .card-title {
+          align-self: end;
+          text-align: center;
+        }
+        #recruit-section .card-part .btn-box {
+          align-self: start;
+          text-align: center;
+          margin-bottom: 0;
         }
         #recruit-section .btn-view {
           max-width: 80px;
@@ -1510,29 +1548,6 @@
       }; //////// 클릭함수 ///////////
 
     console.log('선택확인:',햄버거);
-
-
-
-
-
-
-
-      // // 햄버거 메뉴 열기/닫기
-      // const menuBtn = document.querySelector(".menu-btn");
-      // function setMenu(open) {
-      //   document.body.classList.toggle("menu-open", open);
-      //   menuBtn.setAttribute("aria-expanded", open);
-      //   menuBtn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
-      // }
-      // menuBtn.addEventListener("click", () =>
-      //   setMenu(!document.body.classList.contains("menu-open")),
-      // );
-      // document
-      //   .querySelectorAll(".menu-link")
-      //   .forEach((a) => a.addEventListener("click", () => setMenu(false)));
-      // window.addEventListener("resize", () => {
-      //   if (window.innerWidth > 1199) setMenu(false);
-      // });
     </script>
   </body>
 </html>
