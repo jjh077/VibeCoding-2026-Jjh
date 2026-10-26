@@ -20,6 +20,27 @@
   width: 984px;
   max-width: 100%;
   /* object-fit: contain; */
+  /* 로딩 1초 후 위에서 내려오며 나타나는 애니메이션
+     animation: 이름 시간 이징 지연시간 반복 방향 마지막상태
+     backwards: 지연시간 동안에도 from(투명) 상태 유지 */
+  animation: visual-down 1s ease-out .5s 1 normal backwards;
+}
+
+/* 모바일용 이미지: PC에서는 숨김 */
+.main-visual-img.main-visual-m {
+  display: none;
+}
+
+/* 메인 비주얼 등장 키프레임: 투명 + 위로 20% -> 원래 위치 + 보임 */
+@keyframes visual-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* SNS 버튼 박스 스타일 */
@@ -510,6 +531,8 @@ section#character-section .card-imgs img:first-child {
   /* 3. SNS 아이콘: 화면 너비 기준 위치(20vw), 크기 34px */
   .sns {
     right: 20vw;
+    /* 모바일에서는 안보임 */
+    display: none;
   }
   .sns img {
     width: 34px;
@@ -520,6 +543,14 @@ section#character-section .card-imgs img:first-child {
   #banner-section {
     padding-left: 20px;
     padding-right: 20px;
+  }
+  /* 메인 비주얼: PC용 숨기고 모바일용 보이기 */
+  .main-visual-img.main-visual-pc {
+    display: none;
+  }
+  .main-visual-img.main-visual-m {
+    display: inline-block;
+    width: 100%;
   }
   .scroll_btn {
     bottom: 20px;
