@@ -7,9 +7,20 @@
      줄임말 meta:vp -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 외부 스타일시트(external style sheet) : 순서 중요! reset -> common -> main -->
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/common.css" />
+    <!-- <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" /> -->
+    <!-- link로 불러오던 reset,common, css를 main에서 import함 -->
     <link rel="stylesheet" href="./css/main.css" />
+
+    <!-- 외부 자바스크립트 : 순서 중요! common.js(공통) -> main.js(메인 전용) -->
+    <script src="./js/common.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <!-- (((중요!)))
+      defer 속성을 써서 html이 모두 로딩후 실행함!
+      이것을 안할경우 JS파일내에 'DOMContentLoaded'
+      이벤트 구역을 설정하여야 html로딩후 실행을 할 수 있다 -->
+
+
   </head>
   <body>
     <!-- 1. 상단영역 -->

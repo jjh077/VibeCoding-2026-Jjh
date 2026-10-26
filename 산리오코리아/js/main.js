@@ -1,5 +1,5 @@
 // main.js : 메인 페이지 전용 기능 (메인 배너 클릭 효과)
-// ※ common.js 다음에 불러와야 함!
+// - common.js 다음에 불러와야 함!
 
 // document는 전체 문서객체(DOM-Document Object Model)
 // 점(.)은 객체의 하위 속성으로 들어감
@@ -8,13 +8,13 @@
 // -> 참고로 여러요소 선택은 querySelectorAll(CSS선택자)
 
 // 변수(저장주소)
-let 나야나 = document.querySelector("#site-header");
+let 나야나 = document.querySelector('#site-header');
 // 변수는 따옴표로 싸지 않는 문자다.
 // 변수는 let으로 선언한다.
 // 이퀄(=)은 오른쪽의 값이 왼쪽변수에 할당된다는 것!
 // 변수는 왜 쓰나? 재사용!
 
-console.log("나는 누구인가?", 나야나);
+console.log('나는 누구인가?', 나야나);
 
 // 아래의 코드가 바로실행하지 않고
 // 호출시에만 실행하도록 하려면? 함수안에 넣어준다!
@@ -30,14 +30,14 @@ console.log("나는 누구인가?", 나야나);
 
 // const 나야나함수 = ()=>{};
 const 나야나함수 = (색상) => {
-  console.log("함수호출! 전달값은?", 색상);
+  console.log('함수호출! 전달값은?', 색상);
   // 상단요소의 배경색 바꾸기
   나야나.style.backgroundColor = 색상;
-  나야나.style.transition = "2s ease-in-out";
+  나야나.style.transition = '2s ease-in-out';
   // 회전은 로고가 하도록 변경
-  나야나.querySelector(".logo-box").style.rotate = "360deg";
+  나야나.querySelector('.logo-box').style.rotate = '360deg';
   // 로고 트랜지션 : 2초후 1초간 ease-in-out
-  나야나.querySelector(".logo-box").style.transition = "1s ease-in-out 2s";
+  나야나.querySelector('.logo-box').style.transition = '1s ease-in-out 2s';
 }; //////// 나야나함수 ////////
 
 // 할당된 화살표함수는 반드시 함수 아래쪽에서 호출해야함!
@@ -55,7 +55,7 @@ const 나야나함수 = (색상) => {
 
 // 대상선정:
 // 1. 이벤트 대상 : 상단배너 (.main-visual-img)
-let 너를클릭해 = document.querySelector(".main-visual-img");
+let 너를클릭해 = document.querySelector('.main-visual-img');
 // 2. 변경대상 : 상단영역은 이미 위에서 선택.
 // 3. 이벤트 설정하기 : 클릭이벤트
 // 클릭이벤트는 onclick 속성으로 셋팅!
@@ -64,7 +64,7 @@ if (너를클릭해 && 나야나) {
   // 클릭시 함수호출은 바로실행 안되게 화살표함수로 표시
   너를클릭해.onclick = () => {
     // 해당요소에 클릭이벤트가 발생하면 이 구역을 실행함
-    나야나함수("orange");
+    나야나함수('orange');
   }; //// onclick 함수 ////
 } //// if ////
 
@@ -88,7 +88,7 @@ if (너를클릭해 && 나야나) {
 })(); */
 
 
-const 플레이스트랙 = document.querySelector("#place-section .place-track");
+const 플레이스트랙 = document.querySelector('#place-section .place-track');
 
 if (플레이스트랙) {
   const 대기시간 = 2000; // 2초 후 이동 시작
@@ -110,8 +110,8 @@ if (플레이스트랙) {
     setTimeout(() => {
       // 복제된 1번(마지막)에 도착하면 애니메이션 없이 진짜 1번 위치로 리셋
       if (현재순번 === 전체개수 - 1) {
-        플레이스트랙.style.transition = "none";
-        플레이스트랙.style.transform = "translateX(0)";
+        플레이스트랙.style.transition = 'none';
+        플레이스트랙.style.transform = 'translateX(0)';
         현재순번 = 0;
         플레이스트랙.offsetWidth; // 강제 리플로우(리셋 즉시 반영)
       }

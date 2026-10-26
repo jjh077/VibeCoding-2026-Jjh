@@ -1,5 +1,10 @@
 /* main.css : 메인 페이지 전용 영역(배너·캐릭터·컴퍼니·리쿠르트·플레이스·컨택트) + 반응형 */
 
+/* 공통CSS 가져오기 @import */
+@import url(./reset.css);
+@import url(./common.css);
+/* import의 장점은 한파일에서 모두 모아서 가져오므로 html파일에서 link를 최소화 할 수 있다! 주의: import는 항상 CSS문서 상단에 씀. */
+
 /* 배너 영역 스타일 */
 #banner-section {
   position: relative;

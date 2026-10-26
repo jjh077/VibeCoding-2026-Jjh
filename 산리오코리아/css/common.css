@@ -218,10 +218,20 @@ h1.logo-box img {
     margin-right: 14px;
   }
 
+  /* 상단고정으로 body에 패딩탑 필요 */
+  body{
+    padding-top: 100px;
+  }
+
   /* 2. 헤더: 높이 100px + 아래 회색 구분선 */
   #site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: #fff;
     border-bottom: 1px solid #ddd;
-  }
+    }
   .header-inner {
     max-width: none;
     height: 100px;
@@ -327,7 +337,7 @@ h1.logo-box img {
   .menu-link {
     font-size: 4.2rem;
   }
-}
+} 
 /* 1199px 이하 미디어쿼리 종료 */
 
 /* ---------- 1024px 이하 ---------- */
@@ -372,10 +382,18 @@ h1.logo-box img {
 
 /* ---------- 736px 이하 ---------- */
 @media screen and (max-width: 736px) {
+
+   /* 상단고정으로 body에 패딩탑 필요 */
+   body{
+    padding-top: 50px;
+  }
+/* 로고 사이즈 조정 */
+  h1.logo-box img {
+    max-width: 75%;
+}
   /* 2. 헤더: 높이 50px, 햄버거 24px(선 3px), 메뉴 글자 28px */
   .header-inner {
     height: 50px;
-    padding: 0 20px;
   }
   .menu-btn {
     width: 24px;
