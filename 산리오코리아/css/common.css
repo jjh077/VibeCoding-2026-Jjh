@@ -156,7 +156,7 @@ h1.logo-box img {
 /* 앞은 ::before, 뒤는 ::after */
 .btn-view::after {
   /* before, after의 필수속성 content */
-  content: url(../images/ico_more1.png);
+  content: url(../images/ico_more2.png);
   padding-left: 20px;
 }
 

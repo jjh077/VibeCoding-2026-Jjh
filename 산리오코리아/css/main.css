@@ -254,15 +254,83 @@ section#character-section .card-imgs img:first-child {
 
 /* 플레이스 영역 */
 #place-section {
-  background: url(../images/bg_shop.jpg) no-repeat 0 / 100%;
-  /* height: 30vh; */
-  /* aspect-ratio 속성 비율은 가로/세로 -> 높이값 없이 비율로 유지 비율값은 이미지 가로,세로 값을 써도 된다. 단, 단위는 없음! */
+  /* 기존 배경이미지 제거 -> 슬라이드 박스(.place-slide)가 각각 배경을 가짐 */
+  position: relative; /* 슬라이더/오버레이 기준 */
+  overflow: hidden; /* 박스 바깥으로 나간 슬라이드는 숨김 */
+  /* aspect-ratio 속성 비율은 가로/세로 -> 높이값 없이 비율로 유지 */
   aspect-ratio: 1920 / 500;
-  /* box-sizing 속성은 기본값으로 'content-box' 이다. 즉, 박스의 크기외에 패딩과 보더값이 있으면 커진다! 크기가 지정될 때 더 커지고 기본값이 width:auto인 경우 패딩과 보더는 포함된다.이떄 높이값 설정이 있으면 패딩과 보더를 포함하는 속성값인 'border-box'로 설정해야함! */
   box-sizing: border-box;
-  /* 더 강한 패딩설정이 덮어쓰므로 !important로 가장 강하게 우선순위를 높여줌(주의: !important 남발은 하지말것!)*/
   padding: 3vw !important;
-  /* vw단위는 뷰포트 단위로 보이는 화면 가로크기기준 %크기임. */
+}
+
+/* 슬라이더 : 섹션과 정확히 같은 크기로 채움 (맨 아래층) */
+#place-section .place-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* 트랙 : 박스 3개를 flex로 가로 배치 (JS가 translateX로 이동) */
+#place-section .place-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* 슬라이드 박스 : 현재 섹션과 같은 크기(가로 100%, 세로 100%) */
+#place-section .place-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#place-section .slide1 {
+  background-image: url(../images/bg_shop.jpg);
+}
+#place-section .slide2 {
+  background-image: url(../images/bg_shop2.jpg);
+}
+#place-section .slide3 {
+  background-image: url(../images/bg_shop3.jpg);
+}
+
+/* 가독성용 어두운 오버레이 (슬라이더 위, 타이틀 아래) */
+#place-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+/* 타이틀박스/버튼은 이미지박스보다 항상 위 */
+#place-section .tit-box {
+  position: relative;
+  z-index: 2;
+}
+#place-section .part-tit {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+#place-section .btn-view {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* 처음부터 흰색 이미지로 나오게함! */
+.place-area .btn-view::after {
+  content: url(../images/ico_more2.png);
+  padding-left: 20px;
 }
 
 /* 컨텍어스 영역 */
@@ -503,11 +571,6 @@ section#character-section .card-imgs img:first-child {
   #recruit-section .card-part .card-desc,
   #recruit-section .card-part .btn-box {
     grid-column: 2;
-  }
-
-  /* 10. place: 배경 cover */
-  #place-section {
-    background-size: cover;
   }
 
   /* 11. contact us: 지도(위) + 정보(아래) 세로 배치 */
