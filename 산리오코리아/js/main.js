@@ -30,10 +30,10 @@ console.log('나는 누구인가?', 나야나);
 
 // const 나야나함수 = ()=>{};
 const 나야나함수 = (색상) => {
-  console.log("함수호출! 전달값은?", 색상);
+  console.log('함수호출! 전달값은?', 색상);
   // 상단요소의 배경색 바꾸기
   나야나.style.backgroundColor = 색상;
-  나야나.style.transition = "2s ease-in-out";
+  나야나.style.transition = '2s ease-in-out';
   // 회전은 로고가 하도록 변경
   나야나.querySelector('.logo-box').style.rotate = '360deg';
   // 로고 트랜지션 : 2초후 1초간 ease-in-out
