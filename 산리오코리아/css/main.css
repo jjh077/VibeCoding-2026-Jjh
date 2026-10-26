@@ -254,8 +254,15 @@ section#character-section .card-imgs img:first-child {
 
 /* 플레이스 영역 */
 #place-section {
-  background: url(../images/bg_shop.jpg) no-repeat center;
-  height: 30vh;
+  background: url(../images/bg_shop.jpg) no-repeat 0 / 100%;
+  /* height: 30vh; */
+  /* aspect-ratio 속성 비율은 가로/세로 -> 높이값 없이 비율로 유지 비율값은 이미지 가로,세로 값을 써도 된다. 단, 단위는 없음! */
+  aspect-ratio: 1920 / 500;
+  /* box-sizing 속성은 기본값으로 'content-box' 이다. 즉, 박스의 크기외에 패딩과 보더값이 있으면 커진다! 크기가 지정될 때 더 커지고 기본값이 width:auto인 경우 패딩과 보더는 포함된다.이떄 높이값 설정이 있으면 패딩과 보더를 포함하는 속성값인 'border-box'로 설정해야함! */
+  box-sizing: border-box;
+  /* 더 강한 패딩설정이 덮어쓰므로 !important로 가장 강하게 우선순위를 높여줌(주의: !important 남발은 하지말것!)*/
+  padding: 3vw !important;
+  /* vw단위는 뷰포트 단위로 보이는 화면 가로크기기준 %크기임. */
 }
 
 /* 컨텍어스 영역 */
