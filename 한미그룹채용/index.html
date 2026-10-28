@@ -623,6 +623,24 @@
         --hs-toggle-bottom: 13.3cqw;
         --hs-toggle-icon: max(18px, 1.3cqw);
         --hs-toggle-label: max(13px, 0.95cqw);
+
+        /* 접힘 상태 높이 = 한 화면(100vh → 100dvh 우선) - 펼치기 버튼 영역
+           버튼 영역은 위 --hs-toggle-* 값에서 계산하므로 Tablet/Mobile 에서 값만 바뀌면 자동 동기화 */
+        --hs-vh: 100vh;
+        --hs-toggle-bottom-fold: 1.5cqw; /* 접힘 상태 버튼 아래 여백 (펼침 상태는 --hs-toggle-bottom) */
+        --hs-toggle-reserve: calc(
+          var(--hs-fold-gap) + 2.1cqw + var(--hs-toggle-icon) * 0.84 +
+            var(--hs-toggle-label) * 1.4 + var(--hs-toggle-bottom-fold)
+        );
+        --hs-collapsed-h: max(
+          240px,
+          calc(var(--hs-vh) - var(--hs-toggle-reserve))
+        );
+      }
+      @supports (height: 100dvh) {
+        .history {
+          --hs-vh: 100dvh;
+        }
       }
 
       /* 접힘/펼침 패널 - JS가 붙이는 .is-collapsible 이 있을 때만 높이를 제한 */
@@ -633,6 +651,14 @@
         overflow: hidden;
         transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       }
+      /* 접힘: 패널 + 버튼 영역이 합쳐 한 화면(100dvh)을 넘지 않도록 */
+      .history.is-collapsible:not(.is-expanded) .history__panel {
+        max-height: var(--hs-collapsed-h);
+      }
+      /* 펼침: 높이 제한 해제 (애니메이션 중에는 JS 가 px 로 제어, 종료 후 none + overflow: visible) */
+      .history.is-expanded .history__panel {
+        max-height: none;
+      }
       /* 하단 페이드아웃 오버레이 (접힘 상태에서만 노출) */
       .history__panel::after {
         content: "";
@@ -641,7 +667,7 @@
         bottom: 0;
         left: 0;
         z-index: 3;
-        height: 36%;
+        height: min(36%, max(96px, 24cqw));
         background: linear-gradient(
           180deg,
           rgba(255, 255, 255, 0) 0%,
@@ -977,7 +1003,7 @@
         letter-spacing: -0.02em;
         color: var(--black);
         transition:
-          margin-top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+          margin 0.7s cubic-bezier(0.4, 0, 0.2, 1),
           color var(--ease);
       }
       .history__toggle[hidden] {
@@ -1002,6 +1028,7 @@
       /* 접힘 상태: 화살표 아래로, 버튼은 페이드 바로 아래에 붙임 */
       .history.is-collapsible:not(.is-expanded) .history__toggle {
         margin-top: var(--hs-fold-gap);
+        margin-bottom: var(--hs-toggle-bottom-fold);
       }
       .history.is-collapsible:not(.is-expanded) .history__toggle-icon {
         transform: rotate(180deg);
@@ -2330,7 +2357,8 @@
         });
       })();
 
-      /* History 섹션: 펼치기 / 접기 (전체 높이의 2/3만 노출) */
+      /* History 섹션: 펼치기 / 접기
+         접힘 높이(100dvh 기준)는 CSS(--hs-collapsed-h)가 담당, JS 는 클래스 토글 + 높이 전환 보조만 수행 */
       (function () {
         var section = document.getElementById("history");
         var panel = document.getElementById("history-panel");
@@ -2338,13 +2366,8 @@
         var label = toggle && toggle.querySelector(".history__toggle-label");
         if (!section || !panel || !toggle || !label) return;
 
-        var RATIO = 2 / 3; // 접힘 상태에서 보여줄 비율
         var expanded = false;
 
-        // 시안 대비 유동 레이아웃이라 높이를 px로 고정하지 않고, 실제 콘텐츠 높이의 2/3를 측정
-        function collapsedHeight() {
-          return Math.round(panel.scrollHeight * RATIO);
-        }
         // prefers-reduced-motion 등으로 transition이 꺼져 있으면 transitionend가 오지 않음
         function hasMotion() {
           return parseFloat(getComputedStyle(panel).transitionDuration) > 0;
@@ -2355,19 +2378,26 @@
           toggle.setAttribute("aria-expanded", String(isExpanded));
           label.textContent = isExpanded ? "접기" : "펼치기";
         }
+        // 펼침 완료 후: 높이 제한/잘림 모두 해제 (이후 리사이즈에도 자연스럽게 대응)
+        function release() {
+          panel.style.maxHeight = "none";
+          panel.style.overflow = "visible";
+        }
 
         function expand() {
+          panel.style.overflow = "hidden"; // 애니메이션 중에는 잘라서 보여줌
           setState(true);
-          panel.style.maxHeight = panel.scrollHeight + "px"; // 현재(2/3) → 전체 높이로 애니메이션
-          if (!hasMotion()) panel.style.maxHeight = "none";
+          panel.style.maxHeight = panel.scrollHeight + "px"; // CSS 접힘 높이 → 전체 높이로 애니메이션
+          if (!hasMotion()) release();
         }
 
         function collapse() {
-          // none → px 로는 transition 되지 않으므로 현재 전체 높이를 먼저 px 로 고정
+          // none → 값 으로는 transition 되지 않으므로 현재 전체 높이를 먼저 px 로 고정
+          panel.style.overflow = "hidden";
           panel.style.maxHeight = panel.scrollHeight + "px";
           void panel.offsetHeight; // 강제 리플로우
           setState(false);
-          panel.style.maxHeight = collapsedHeight() + "px";
+          panel.style.maxHeight = ""; // 인라인 제거 → CSS 의 접힘 높이(100dvh 기준)로 전환
 
           // 섹션 상단이 화면 위로 지나가 있을 때만 섹션 시작점으로 부드럽게 이동
           if (section.getBoundingClientRect().top < 0) {
@@ -2378,14 +2408,13 @@
           }
         }
 
-        // 펼침이 끝나면 max-height 제한을 풀어 이후 리사이즈에도 자연스럽게 대응
         panel.addEventListener("transitionend", function (e) {
           if (
             e.target === panel &&
             e.propertyName === "max-height" &&
             expanded
           ) {
-            panel.style.maxHeight = "none";
+            release();
           }
         });
 
@@ -2398,19 +2427,6 @@
         section.classList.add("is-collapsible");
         toggle.hidden = false;
         setState(false);
-        panel.style.maxHeight = collapsedHeight() + "px";
-
-        // 리사이즈 / 폰트 로딩 등으로 높이가 바뀌면 접힘 높이를 다시 계산
-        function syncCollapsed() {
-          if (!expanded) panel.style.maxHeight = collapsedHeight() + "px";
-        }
-        window.addEventListener("resize", syncCollapsed);
-        if ("ResizeObserver" in window) {
-          var ro = new ResizeObserver(syncCollapsed);
-          Array.prototype.forEach.call(panel.children, function (child) {
-            ro.observe(child); // 패널은 높이가 제한되므로 내부 블록의 높이 변화를 관찰
-          });
-        }
       })();
     </script>
   </body>
