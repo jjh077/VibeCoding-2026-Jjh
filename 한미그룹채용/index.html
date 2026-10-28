@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+KR:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -23,9 +23,9 @@
             }
             /* prettier-ignore */
             html,body,h1,h2,h3,p,ul,ol,figure {
-              margin: 0;
-              padding: 0;
-            }
+                    margin: 0;
+                    padding: 0;
+                  }
             ul,
             ol {
               list-style: none;
@@ -53,16 +53,17 @@
 
             /* CSS변수구역 */
             /* :root{변수코드}
-          1. 변수설정방법
-          --변수명: 값;
-          변수명은 케밥케이스로 주로 씀
-          (케밥케이스란? 마이너스 기호로 연결된 변수법)
-          2. 변수호출방법
-          var(변수명)
-          쓰고 싶은 곳에 값으로 변수를 사용함.
-        */
+                1. 변수설정방법
+                --변수명: 값;
+                변수명은 케밥케이스로 주로 씀
+                (케밥케이스란? 마이너스 기호로 연결된 변수법)
+                2. 변수호출방법
+                var(변수명)
+                쓰고 싶은 곳에 값으로 변수를 사용함.
+              */
             :root {
               --white: #ffffff;
+              --white-50: rgba(255, 255, 255, 0.5);
               --black: #000000;
               --red: #e60012;
               --orange: #ff5d32;
@@ -467,8 +468,8 @@
             }
 
             /* ---------- Mirae (새로운 미래를 향해 나아갑니다) ----------
-               시안 비율 기준 % 좌표 + container query 단위(cqw)로 섹션 폭에 맞춰 비율 유지
-               Desktop 1370×913 / Tablet 1330×909 / Mobile 850×920 */
+                     시안 비율 기준 % 좌표 + container query 단위(cqw)로 섹션 폭에 맞춰 비율 유지
+                     Desktop 1370×913 / Tablet 1330×909 / Mobile 850×920 */
             .mirae {
               position: relative;
               isolation: isolate;
@@ -561,11 +562,471 @@
               width: 3.9%;
             }
 
+            /* ---------- History (한미의 도전 · 53th → 100th 연혁) ----------
+                     섹션 폭(cqw) 기준 유동형. 레이아웃 규칙은 하나, 값(--hs-*)만 브레이크포인트별로 교체
+                     시안 폭 Desktop 1592 / Tablet 1957 / Mobile 1197 기준으로 환산한 값 */
+            .history {
+              position: relative;
+              isolation: isolate;
+              width: 100%;
+              max-width: var(--viewport-max);
+              margin: 0 auto;
+              overflow: hidden;
+              container-type: inline-size;
+              background: var(--white);
+
+              /* 상단 타이틀 / 53th·100th 숫자 */
+              --hs-pad-top: 6.9cqw;
+              --hs-title: max(22px, 3.15cqw);
+              --hs-title-lh: 1.54;
+              --hs-title-gap: 4.7cqw;
+              --hs-num: 19.8cqw;
+
+              /* 세로 타임라인 */
+              --hs-line-w: 1.5cqw;
+              --hs-side-gap: 4.9cqw;
+              --hs-tl-top: 6.4cqw;
+              --hs-tl-bottom: 13cqw;
+              --hs-block-gap: 11.2cqw;
+              --hs-grid-gap: 2.1cqw;
+              --hs-media-gap: 0.7cqw;
+
+              /* 연혁 텍스트 */
+              --hs-range: max(24px, 2.6cqw);
+              --hs-phrase: max(18px, 1.7cqw);
+              --hs-year: max(16px, 1.34cqw);
+              --hs-row: max(12px, 0.94cqw);
+              --hs-row-gap: 2.4cqw;
+              --hs-cell-gap: 1.5cqw;
+              --hs-dot: max(6px, 0.6cqw);
+              --hs-dot-gap: 0.66cqw;
+              --hs-dots-top: 2.3cqw;
+
+              /* 이미지 폭 */
+              --hs-w-snack: 23.5cqw;
+              --hs-w-together: 26cqw;
+              --hs-w-spectrum: 31cqw;
+              --hs-w-asco: 29cqw;
+              --hs-w-lancet: 23.4cqw;
+
+              /* 마무리 문구 */
+              --hs-closing-gap: 7.7cqw;
+              --hs-closing-sub: max(13px, 1.19cqw);
+              --hs-closing-main: max(20px, 2.2cqw);
+              --hs-closing-main-gap: 1.1cqw;
+              --hs-glow-w: 78cqw;
+              --hs-glow-h: 28cqw;
+
+              /* 펼치기/접기 버튼 */
+              --hs-fold-gap: 1.5cqw;
+              --hs-toggle-gap: 7.2cqw;
+              --hs-toggle-bottom: 13.3cqw;
+              --hs-toggle-icon: max(18px, 1.3cqw);
+              --hs-toggle-label: max(13px, 0.95cqw);
+            }
+
+            /* 접힘/펼침 패널 - JS가 붙이는 .is-collapsible 이 있을 때만 높이를 제한 */
+            .history__panel {
+              position: relative;
+            }
+            .history.is-collapsible .history__panel {
+              overflow: hidden;
+              transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            /* 하단 페이드아웃 오버레이 (접힘 상태에서만 노출) */
+            .history__panel::after {
+              content: "";
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              z-index: 3;
+              height: 36%;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0) 0%,
+                var(--white) 100%
+              );
+              opacity: 0;
+              pointer-events: none;
+              transition: opacity 0.4s ease;
+            }
+            .history.is-collapsible:not(.is-expanded) .history__panel::after {
+              opacity: 1;
+            }
+
+            /* Head */
+            .history__head {
+              position: relative;
+              padding-top: var(--hs-pad-top);
+              text-align: center;
+            }
+            .history__title {
+              font-size: var(--hs-title);
+              font-weight: 700;
+              line-height: var(--hs-title-lh);
+              letter-spacing: -0.03em;
+            }
+            .history__title-line {
+              display: block;
+            }
+            .history__head .history__num {
+              margin-top: var(--hs-title-gap);
+            }
+
+            /* 53th / 100th : line-height .74 → 글상자 높이 ≈ 숫자 높이 (세로선 시작·끝 기준점) */
+            .history__num {
+              display: flex;
+              align-items: baseline;
+              justify-content: center;
+              font-size: var(--hs-num);
+              font-weight: 800;
+              line-height: 0.74;
+              letter-spacing: -0.06em;
+              color: var(--orange);
+            }
+            .history__num-suffix {
+              margin-left: 0.06em;
+              font-size: 0.43em;
+              letter-spacing: -0.02em;
+            }
+
+            /* Timeline */
+            .history__timeline {
+              position: relative;
+              padding: var(--hs-tl-top) 0 var(--hs-tl-bottom);
+            }
+            .history__timeline::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 50%;
+              z-index: 0;
+              width: var(--hs-line-w);
+              background: var(--orange);
+              transform: translateX(-50%);
+            }
+
+            .history__block {
+              position: relative;
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+              column-gap: calc(var(--hs-line-w) + var(--hs-side-gap) * 2);
+              row-gap: var(--hs-grid-gap);
+            }
+            .history__block + .history__block {
+              margin-top: var(--hs-block-gap);
+            }
+
+            /* 같은 DOM, 영역(grid-area)만 교체: 목록이 왼쪽/오른쪽 */
+            .history__block--list-left {
+              grid-template-areas:
+                "phrase range"
+                "events media";
+            }
+            .history__block--list-right {
+              grid-template-areas:
+                "range events"
+                "media events";
+              grid-template-rows: auto 1fr;
+            }
+            .history__range {
+              grid-area: range;
+              align-self: center;
+              font-size: var(--hs-range);
+              font-weight: 800;
+              line-height: 1.2;
+              letter-spacing: -0.03em;
+              color: var(--orange);
+            }
+            .history__phrase {
+              grid-area: phrase;
+              align-self: center;
+              font-size: var(--hs-phrase);
+              font-weight: 700;
+              line-height: 1.4;
+              letter-spacing: -0.03em;
+              text-align: right;
+            }
+            .history__events {
+              grid-area: events;
+              display: flex;
+              flex-direction: column;
+            }
+            .history__media {
+              grid-area: media;
+              align-self: start;
+              margin-top: var(--hs-media-gap);
+            }
+            .history__media img {
+              width: var(--hs-img-w);
+              height: auto;
+            }
+            .history__media--snack {
+              --hs-img-w: var(--hs-w-snack);
+            }
+            .history__media--together {
+              --hs-img-w: var(--hs-w-together);
+            }
+            .history__media--spectrum {
+              --hs-img-w: var(--hs-w-spectrum);
+            }
+            .history__media--asco {
+              --hs-img-w: var(--hs-w-asco);
+            }
+            .history__media--lancet {
+              --hs-img-w: var(--hs-w-lancet);
+            }
+
+            /* 정렬: 중앙선 기준으로 안쪽 모서리에 붙임 */
+            .history__block--list-left .history__phrase,
+            .history__block--list-left .history__events {
+              justify-self: end;
+            }
+            .history__block--list-left .history__range,
+            .history__block--list-left .history__media {
+              justify-self: start;
+            }
+            .history__block--list-right .history__range,
+            .history__block--list-right .history__media {
+              justify-self: end;
+            }
+            .history__block--list-right .history__events {
+              align-self: start;
+              justify-self: start;
+            }
+            .history__block--list-left .history__events {
+              align-items: flex-end;
+              align-self: start;
+            }
+
+            /* 연도 + 내용 목록 */
+            .history__list {
+              display: grid;
+              row-gap: var(--hs-row-gap);
+            }
+            .history__item {
+              display: flex;
+              align-items: center;
+              gap: var(--hs-cell-gap);
+            }
+            .history__block--list-left .history__item {
+              flex-direction: row-reverse;
+              text-align: right;
+            }
+            .history__year {
+              flex: none;
+              min-width: 2.5em;
+              font-size: var(--hs-year);
+              font-weight: 700;
+              line-height: 1.2;
+              letter-spacing: -0.02em;
+            }
+            .history__block--list-left .history__year {
+              text-align: right;
+            }
+            .history__block--list-right .history__year {
+              text-align: left;
+            }
+            .history__desc {
+              font-size: var(--hs-row);
+              font-weight: 400;
+              line-height: 1.4;
+              letter-spacing: -0.02em;
+            }
+            .history__line {
+              display: block;
+            }
+
+            /* 점 3개 (연도 열의 중앙 아래) */
+            .history__dots {
+              display: flex;
+              flex-direction: column;
+              gap: var(--hs-dot-gap);
+              margin-top: var(--hs-dots-top);
+            }
+            .history__dots > span {
+              width: var(--hs-dot);
+              height: var(--hs-dot);
+              border-radius: 50%;
+              background: var(--orange);
+            }
+            .history__dots > span:nth-child(2) {
+              opacity: 0.6;
+            }
+            .history__dots > span:nth-child(3) {
+              opacity: 0.3;
+            }
+            .history__block--list-left .history__dots {
+              margin-right: calc((var(--hs-year) * 2.5 - var(--hs-dot)) / 2);
+            }
+            .history__block--list-right .history__dots {
+              margin-left: calc((var(--hs-year) * 2.5 - var(--hs-dot)) / 2);
+            }
+
+            /* Goal (100th + 마무리 문구) */
+            .history__goal {
+              position: relative;
+            }
+            .history__closing {
+              position: relative;
+              margin-top: var(--hs-closing-gap);
+              text-align: center;
+            }
+            .history__closing::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              z-index: -1;
+              width: var(--hs-glow-w);
+              height: var(--hs-glow-h);
+              background: radial-gradient(
+                closest-side,
+                rgba(255, 93, 50, 0.07) 0%,
+                rgba(255, 93, 50, 0) 100%
+              );
+              transform: translate(-50%, -50%);
+              pointer-events: none;
+            }
+            .history__closing-sub {
+              font-size: var(--hs-closing-sub);
+              font-weight: 500;
+              line-height: 1.7;
+              letter-spacing: -0.02em;
+            }
+            .history__closing-main {
+              margin-top: var(--hs-closing-main-gap);
+              font-size: var(--hs-closing-main);
+              font-weight: 700;
+              line-height: 1.7;
+              letter-spacing: -0.04em;
+            }
+            .history__closing-line {
+              display: block;
+            }
+
+            /* 장식 이미지 - 기준 박스(.history__head / .history__block / .history__goal) 안 절대 배치
+                     --obj  : 태블릿 이하에서 제거 (시안에 없음)
+                     --blur : 모바일에서 제거 (시안에 없음) */
+            .history__deco {
+              position: absolute;
+              max-width: none;
+              height: auto;
+              pointer-events: none;
+              user-select: none;
+            }
+            .history__deco--blur {
+              z-index: -1;
+            }
+            .history__deco--stars {
+              top: 14.5cqw;
+              left: 78.5%;
+              width: 15cqw;
+            }
+            .history__deco--beaker {
+              top: 7.4cqw;
+              left: 3.7cqw;
+              width: 15.5cqw;
+            }
+            .history__deco--hex {
+              top: 2.4cqw;
+              left: 84%;
+              width: 26cqw;
+            }
+            .history__deco--microscope {
+              top: 15.8cqw;
+              left: 85.8%;
+              width: 9.6cqw;
+            }
+            .history__deco--ring {
+              top: 24cqw;
+              left: -7.7cqw;
+              width: 21cqw;
+            }
+            .history__deco--molecule {
+              top: 18.6cqw;
+              left: 88%;
+              width: 11.8cqw;
+            }
+            .history__deco--shadow {
+              top: 4.7cqw;
+              left: -1.5cqw;
+              width: 17cqw;
+            }
+            .history__deco--char {
+              top: -10.9cqw;
+              left: 6cqw;
+              width: 14.5cqw;
+            }
+
+            /* 펼치기 / 접기 버튼 */
+            .history__toggle {
+              position: relative;
+              z-index: 4;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 0.5cqw;
+              margin: var(--hs-toggle-gap) auto var(--hs-toggle-bottom);
+              padding: 0.8cqw 2cqw;
+              font-size: var(--hs-toggle-label);
+              font-weight: 500;
+              line-height: 1.4;
+              letter-spacing: -0.02em;
+              color: var(--black);
+              transition:
+                margin-top 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                color var(--ease);
+            }
+            .history__toggle[hidden] {
+              display: none;
+            }
+            .history__toggle-icon {
+              width: var(--hs-toggle-icon);
+              height: auto;
+              color: #b9b9b9;
+              transition:
+                transform 0.4s ease,
+                color var(--ease);
+            }
+            .history__toggle:hover,
+            .history__toggle:focus-visible {
+              color: var(--red);
+            }
+            .history__toggle:hover .history__toggle-icon,
+            .history__toggle:focus-visible .history__toggle-icon {
+              color: var(--red);
+            }
+            /* 접힘 상태: 화살표 아래로, 버튼은 페이드 바로 아래에 붙임 */
+            .history.is-collapsible:not(.is-expanded) .history__toggle {
+              margin-top: var(--hs-fold-gap);
+            }
+            .history.is-collapsible:not(.is-expanded) .history__toggle-icon {
+              transform: rotate(180deg);
+            }
+
             :focus-visible {
               outline: 2px solid var(--red);
               outline-offset: 3px;
             }
 
+            footer {
+              background: var(--black);
+              color: var(--white-50);
+            }
+
+            .footer__inner {
+              width: 100%;
+              max-width: var(--container-width);
+              margin: 0 auto;
+              padding: 40px 60px;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 22px;
+              letter-spacing: -0.3px;
+           }
 
             @media (prefers-reduced-motion: reduce) {
               html {
@@ -589,11 +1050,11 @@
             }
 
             /* =====================================================
-           Responsive (Desktop First)
-           - Desktop : 1025px 이상 (위 기본 스타일)
-           - Tablet  : max-width 1024px
-           - Mobile  : max-width 390px
-           ===================================================== */
+                 Responsive (Desktop First)
+                 - Desktop : 1025px 이상 (위 기본 스타일)
+                 - Tablet  : max-width 1024px
+                 - Mobile  : max-width 390px
+                 ===================================================== */
 
             /* ---------- Tablet ---------- */
             @media (max-width: 1024px) {
@@ -816,6 +1277,53 @@
                 left: 40.4%;
                 top: 78.5%;
                 width: 2.9%;
+              }
+
+              /* History: 2열 구조 유지, 값만 교체 */
+              .history {
+                --hs-pad-top: 13cqw;
+                --hs-title: max(22px, 3.7cqw);
+                --hs-title-lh: 1.6;
+                --hs-title-gap: 5.8cqw;
+                --hs-num: 25.8cqw;
+                --hs-line-w: 2.2cqw;
+                --hs-side-gap: 7cqw;
+                --hs-tl-top: 10.3cqw;
+                --hs-tl-bottom: 19cqw;
+                --hs-block-gap: 15cqw;
+                --hs-grid-gap: 3.2cqw;
+                --hs-range: max(22px, 3.6cqw);
+                --hs-phrase: max(15px, 2.05cqw);
+                --hs-year: max(15px, 1.83cqw);
+                --hs-row: max(12px, 1.24cqw);
+                --hs-row-gap: 3.3cqw;
+                --hs-cell-gap: 2.4cqw;
+                --hs-dot: max(6px, 0.75cqw);
+                --hs-dot-gap: 0.8cqw;
+                --hs-dots-top: 3.35cqw;
+                --hs-w-snack: 32.5cqw;
+                --hs-w-together: 36cqw;
+                --hs-w-spectrum: 38.5cqw;
+                --hs-w-asco: 38.5cqw;
+                --hs-w-lancet: 32.5cqw;
+                --hs-closing-gap: 11cqw;
+                --hs-closing-sub: max(13px, 1.65cqw);
+                --hs-closing-main: max(19px, 3.07cqw);
+                --hs-closing-main-gap: 1.15cqw;
+                --hs-glow-w: 100cqw;
+                --hs-glow-h: 40cqw;
+                --hs-toggle-gap: 9.7cqw;
+                --hs-toggle-bottom: 15.3cqw;
+                --hs-toggle-icon: max(18px, 1.8cqw);
+                --hs-toggle-label: max(13px, 1.4cqw);
+              }
+              .history__deco--obj {
+                display: none;
+              }
+              .history__deco--shadow {
+                top: 6.6cqw;
+                left: -2cqw;
+                width: 21cqw;
               }
             }
 
@@ -1045,6 +1553,81 @@
                 top: 78.2%;
                 width: 4.7%;
               }
+
+              /* History: 1열로 전환 (같은 DOM, grid-template-areas 만 교체) */
+              .history {
+                --hs-pad-top: 5.6cqw;
+                --hs-title: max(16px, 3.34cqw);
+                --hs-title-lh: 1.5;
+                --hs-title-gap: 3.8cqw;
+                --hs-num: 20.5cqw;
+                --hs-line-w: 0px;
+                --hs-tl-top: 8.5cqw;
+                --hs-tl-bottom: 16.3cqw;
+                --hs-block-gap: 12.7cqw;
+                --hs-grid-gap: 3.1cqw;
+                --hs-media-gap: 2cqw;
+                --hs-range: max(16px, 3.1cqw);
+                --hs-phrase: max(14px, 2.6cqw);
+                --hs-year: max(15px, 3.1cqw);
+                --hs-row: max(12px, 2.36cqw);
+                --hs-row-gap: 4.2cqw;
+                --hs-cell-gap: 3.4cqw;
+                --hs-dot: max(5px, 1cqw);
+                --hs-dot-gap: 1.4cqw;
+                --hs-dots-top: 4.4cqw;
+                --hs-w-snack: 58.3cqw;
+                --hs-w-together: 91.7cqw;
+                --hs-w-spectrum: 77cqw;
+                --hs-w-asco: 72cqw;
+                --hs-w-lancet: 57.6cqw;
+                --hs-closing-gap: 5.4cqw;
+                --hs-closing-sub: max(12px, 2.2cqw);
+                --hs-closing-main: max(15px, 3.2cqw);
+                --hs-closing-main-gap: 2.5cqw;
+                --hs-glow-w: 98cqw;
+                --hs-glow-h: 36cqw;
+                --hs-toggle-gap: 9.8cqw;
+                --hs-toggle-bottom: 12cqw;
+                --hs-toggle-icon: max(16px, 2.9cqw);
+                --hs-toggle-label: max(13px, 2.2cqw);
+              }
+              .history__block {
+                grid-template-columns: minmax(0, 1fr);
+                padding-inline: max(16px, 3.1cqw);
+              }
+              .history__closing {
+                padding-inline: max(16px, 3.1cqw);
+              }
+              .history__block--list-left {
+                grid-template-areas:
+                  "range"
+                  "phrase"
+                  "events"
+                  "media";
+              }
+              .history__block--list-right {
+                grid-template-areas:
+                  "range"
+                  "events"
+                  "media";
+                grid-template-rows: auto;
+              }
+              /* 목록이 왼쪽이던 블록 = 오른쪽 정렬, 오른쪽이던 블록 = 왼쪽 정렬 */
+              .history__block--list-left .history__range,
+              .history__block--list-left .history__media {
+                justify-self: end;
+              }
+              .history__block--list-right .history__range,
+              .history__block--list-right .history__media {
+                justify-self: start;
+              }
+              .history__block--list-right .history__events {
+                align-self: start;
+              }
+              .history__deco--blur {
+                display: none;
+              }
             }
     </style>
   </head>
@@ -1247,11 +1830,443 @@
           alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습"
         />
       </section>
+
+      <section class="history" id="history" aria-labelledby="history-title">
+        <div class="history__panel" id="history-panel">
+          <header class="history__head">
+            <h2 class="history__title" id="history-title">
+              <span class="history__title-line"
+                >한미의 도전은 작은 가능성에서</span
+              >
+              <span class="history__title-line">시작되었습니다.</span>
+            </h2>
+            <p class="history__num history__num--start">
+              <span class="sr-only">한미약품 설립 53주년</span>
+              <span class="history__num-main" aria-hidden="true">53</span>
+              <span class="history__num-suffix" aria-hidden="true">th</span>
+            </p>
+            <img
+              class="history__deco history__deco--obj history__deco--stars"
+              src="images/obj_star_big.png"
+              alt="반짝이는 노란 별 세 개"
+              width="240"
+              height="288"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </header>
+
+          <div class="history__timeline">
+            <!-- 1973~2001 : 목록 좌 / 이미지 우 -->
+            <div class="history__block history__block--list-left">
+              <h3 class="history__range">1973~2001</h3>
+              <p class="history__phrase">한계를 하나씩 넘을 때마다,</p>
+              <div class="history__events">
+                <ul class="history__list">
+                  <li class="history__item">
+                    <span class="history__year">1973</span>
+                    <span class="history__desc">한미약품공업주식회사 설립</span>
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">1984</span>
+                    <span class="history__desc">팔탄 GMP 공장 신축</span>
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">1989</span>
+                    <span class="history__desc"
+                      >세프트리악손 제조방법 Roche사 기술 수출</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">1997</span>
+                    <span class="history__desc"
+                      >마이크로에멀젼 제제기술 Novartis사 기술 수출</span
+                    >
+                  </li>
+                </ul>
+                <span class="history__dots" aria-hidden="true"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
+              <figure class="history__media history__media--snack">
+                <img
+                  src="images/his1.png"
+                  alt="텐텐, 쎄쎄 등 한미약품 초기 어린이 영양제와 비타민 제품 모음"
+                  width="750"
+                  height="404"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <img
+                class="history__deco history__deco--obj history__deco--beaker"
+                src="images/obj_beaker.png"
+                alt="분홍빛 용액이 담긴 연구용 비커"
+                width="240"
+                height="288"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+            </div>
+
+            <!-- 2002~2010 : 이미지 좌 / 목록 우 -->
+            <div class="history__block history__block--list-right">
+              <h3 class="history__range">2002~2010</h3>
+              <div class="history__events">
+                <ul class="history__list">
+                  <li class="history__item">
+                    <span class="history__year">2004</span>
+                    <span class="history__desc"
+                      >국내 최초 고혈압치료제 ‘아모디핀’ 미국특허 획득</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2006</span>
+                    <span class="history__desc"
+                      >세계 최초 유소아 해열 시럽제 개량신약 ‘맥시부펜’ 개발
+                      성공</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2008</span>
+                    <span class="history__desc"
+                      >국내 최초 주사용항생제 세프트리악손 美 FDA 승인</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2009</span>
+                    <span class="history__desc"
+                      >세계최초 암로디핀+로살탄 복합제 ‘아모잘탄’ 발매</span
+                    >
+                  </li>
+                </ul>
+                <span class="history__dots" aria-hidden="true"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
+              <figure class="history__media history__media--together">
+                <img
+                  src="images/his2.png"
+                  alt="노을 지는 해변 위에서 손을 잡고 함께 뛰어오르는 다섯 사람의 실루엣"
+                  width="830"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <img
+                class="history__deco history__deco--blur history__deco--hex"
+                src="images/obj_mol_blur1.png"
+                alt="흐릿하게 번진 푸른 분자 구조 배경 장식"
+                width="420"
+                height="465"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+              <img
+                class="history__deco history__deco--obj history__deco--microscope"
+                src="images/obj_microscope.png"
+                alt="파란색 현미경"
+                width="218"
+                height="306"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+            </div>
+
+            <!-- 2011~2015 : 목록 좌 / 이미지 우 -->
+            <div class="history__block history__block--list-left">
+              <h3 class="history__range">2011~2015</h3>
+              <p class="history__phrase">새로운 가능성이 현실이 되었어요.</p>
+              <div class="history__events">
+                <ul class="history__list">
+                  <li class="history__item">
+                    <span class="history__year">2011</span>
+                    <span class="history__desc"
+                      >MSD와 ‘아모잘탄’ 50여개국 수출 계약 체결</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2012</span>
+                    <span class="history__desc"
+                      >‘LAPS-GCSF’ 美 스펙트럼사와 공동개발 및 상업화 계약</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2013</span>
+                    <span class="history__desc"
+                      >국내 개량신약 최초 미국 FDA 승인 및 미국 출시
+                      ‘에소메졸’</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2014</span>
+                    <span class="history__desc"
+                      >‘트리악손’ 국내 최초 유럽 4개국 시판 허가</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2015</span>
+                    <span class="history__desc"
+                      >한국 사상 최대규모 릴레이 기술수출</span
+                    >
+                  </li>
+                </ul>
+                <span class="history__dots" aria-hidden="true"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
+              <figure class="history__media history__media--spectrum">
+                <img
+                  src="images/his3.png"
+                  alt="인체 엑스레이 이미지 앞에 놓인 에소메졸 20mg·40mg 제품과 스펙트럼 파마슈티컬스 로고"
+                  width="1000"
+                  height="508"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <img
+                class="history__deco history__deco--blur history__deco--ring"
+                src="images/obj_mol_blur2.png"
+                alt="흐릿하게 번진 회색 분자 구조 배경 장식"
+                width="338"
+                height="372"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+            </div>
+
+            <!-- 2016~2020 : 이미지 좌 / 목록 우 -->
+            <div class="history__block history__block--list-right">
+              <h3 class="history__range">2016~2020</h3>
+              <div class="history__events">
+                <ul class="history__list">
+                  <li class="history__item">
+                    <span class="history__year">2016</span>
+                    <span class="history__desc"
+                      >차세대 RAF 저해제, Roche 제넨텍 기술수출</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2017</span>
+                    <span class="history__desc"
+                      >‘에소메졸’ 국내 제약회사 최초 미국약전(USP) 등재</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2018</span>
+                    <span class="history__desc"
+                      >‘Glucagon Analog’, ‘오락솔’ 차세대 AML 치료제 美
+                      희귀의약품 지정</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2019</span>
+                    <span class="history__desc"
+                      >최근 10년간 처방실적 최다 4조 4,176억원</span
+                    >
+                  </li>
+                </ul>
+                <span class="history__dots" aria-hidden="true"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
+              <figure class="history__media history__media--asco">
+                <img
+                  src="images/his4.png"
+                  alt="ASCO와 USP 로고, 로수젯 네 가지 용량의 제품 패키지"
+                  width="934"
+                  height="452"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+
+            <!-- 2021~2026 : 목록 좌 / 이미지 우 -->
+            <div class="history__block history__block--list-left">
+              <h3 class="history__range">2021~2026</h3>
+              <p class="history__phrase">
+                하지만 아직, 가야 할 길이 더 남아 있습니다.
+              </p>
+              <div class="history__events">
+                <ul class="history__list">
+                  <li class="history__item">
+                    <span class="history__year">2021</span>
+                    <span class="history__desc"
+                      >‘로수젯’, 국내사 개발 처방의약품 매출 1위 달성</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2022</span>
+                    <span class="history__desc">
+                      <span class="history__line"
+                        >‘롤론티스’ 한국 최초 FDA 허가 받은 바이오신약
+                        등재</span
+                      >
+                      <span class="history__line"
+                        >‘로수젯 RACING 연구’ 세계 최고 권위 의학저널 ‘LANCET’
+                        등재</span
+                      >
+                    </span>
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2023</span>
+                    <span class="history__desc"
+                      >비만 프로젝트 ‘H.O.P’ 프로젝트 가동</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2024</span>
+                    <span class="history__desc"
+                      >근손실 한계 뛰어넘은 신개념 비만 신약 ‘HM17321’
+                      발표</span
+                    >
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2025</span>
+                    <span class="history__desc">
+                      <span class="history__line"
+                        >‘로수젯’ 한국 전문의약품 시장 1위 품목 등록</span
+                      >
+                      <span class="history__line"
+                        >한미약품 8년 연속 원외처방 1위</span
+                      >
+                      <span class="history__line"
+                        >미국암연구학회(AACR)서 국내 최다 11개 연구 성과
+                        발표</span
+                      >
+                      <span class="history__line"
+                        >한미사이언스 약국화장품 ‘EGF크림’ 27만개 완판</span
+                      >
+                    </span>
+                  </li>
+                  <li class="history__item">
+                    <span class="history__year">2026</span>
+                    <span class="history__desc">
+                      <span class="history__line"
+                        >희귀질환치료제 ‘LAPS-GLP2’ 릴리 기술수출</span
+                      >
+                      <span class="history__line"
+                        >한미 ‘완전두유·케어미’ 국제 우수 미각상 수상</span
+                      >
+                    </span>
+                  </li>
+                </ul>
+                <span class="history__dots" aria-hidden="true"
+                  ><span></span><span></span><span></span
+                ></span>
+              </div>
+              <figure class="history__media history__media--lancet">
+                <img
+                  src="images/his5.png"
+                  alt="랜싯 200주년 표지와 롤론티스 제품·주사기, 약물 작용 원리를 보여주는 도식"
+                  width="746"
+                  height="538"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <img
+                class="history__deco history__deco--obj history__deco--molecule"
+                src="images/obj_mol_big.png"
+                alt="보랏빛 유리 구슬로 만든 분자 구조 오브제"
+                width="237"
+                height="293"
+                loading="lazy"
+                decoding="async"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
+
+          <div class="history__goal">
+            <p class="history__num history__num--goal">
+              <span class="sr-only">한미약품 100주년</span>
+              <span class="history__num-main" aria-hidden="true">100</span>
+              <span class="history__num-suffix" aria-hidden="true">th</span>
+            </p>
+            <div class="history__closing">
+              <p class="history__closing-sub">
+                한계를 넘을 때마다, 건강한 미래는 가까워졌습니다. 한계를 넘는
+                일, 우리에게는 꽤 익숙하니까.
+              </p>
+              <p class="history__closing-main">
+                <span class="history__closing-line"
+                  >수많은 도전이 오늘의 한미를 만들었습니다.</span
+                >
+                <span class="history__closing-line"
+                  >이제 또 다른 가능성을 향해 당신과 함께 나아갑니다.</span
+                >
+              </p>
+            </div>
+            <img
+              class="history__deco history__deco--blur history__deco--shadow"
+              src="images/cloud_blur_medium.png"
+              alt="캐릭터 아래에 드리운 흐릿한 그림자"
+              width="379"
+              height="230"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+            <img
+              class="history__deco history__deco--obj history__deco--char"
+              src="images/con2_char.png"
+              alt="사원증을 목에 걸고 힘차게 달려가는 한미 캐릭터"
+              width="339"
+              height="485"
+              loading="lazy"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+
+        <!-- 펼치기/접기: JS가 활성화되면 hidden 해제 + .is-collapsible 부여 -->
+        <button
+          class="history__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="history-panel"
+          hidden
+        >
+          <svg
+            class="history__toggle-icon"
+            viewBox="0 0 24 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 9l9-6.5L21 9"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 17l9-6.5L21 17"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.45"
+            />
+          </svg>
+          <span class="history__toggle-label">펼치기</span>
+        </button>
+      </section>
     </main>
 
     <footer class="footer">
       <div class="footer__inner">
-        <p class="footer__copy">© Hanmi Group. All rights reserved.</p>
+        <p>© Hanmi Group. All rights reserved.</p>
       </div>
     </footer>
 
@@ -1313,6 +2328,89 @@
             e.preventDefault();
           });
         });
+      })();
+
+      /* History 섹션: 펼치기 / 접기 (전체 높이의 2/3만 노출) */
+      (function () {
+        var section = document.getElementById("history");
+        var panel = document.getElementById("history-panel");
+        var toggle = section && section.querySelector(".history__toggle");
+        var label = toggle && toggle.querySelector(".history__toggle-label");
+        if (!section || !panel || !toggle || !label) return;
+
+        var RATIO = 2 / 3; // 접힘 상태에서 보여줄 비율
+        var expanded = false;
+
+        // 시안 대비 유동 레이아웃이라 높이를 px로 고정하지 않고, 실제 콘텐츠 높이의 2/3를 측정
+        function collapsedHeight() {
+          return Math.round(panel.scrollHeight * RATIO);
+        }
+        // prefers-reduced-motion 등으로 transition이 꺼져 있으면 transitionend가 오지 않음
+        function hasMotion() {
+          return parseFloat(getComputedStyle(panel).transitionDuration) > 0;
+        }
+        function setState(isExpanded) {
+          expanded = isExpanded;
+          section.classList.toggle("is-expanded", isExpanded);
+          toggle.setAttribute("aria-expanded", String(isExpanded));
+          label.textContent = isExpanded ? "접기" : "펼치기";
+        }
+
+        function expand() {
+          setState(true);
+          panel.style.maxHeight = panel.scrollHeight + "px"; // 현재(2/3) → 전체 높이로 애니메이션
+          if (!hasMotion()) panel.style.maxHeight = "none";
+        }
+
+        function collapse() {
+          // none → px 로는 transition 되지 않으므로 현재 전체 높이를 먼저 px 로 고정
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          void panel.offsetHeight; // 강제 리플로우
+          setState(false);
+          panel.style.maxHeight = collapsedHeight() + "px";
+
+          // 섹션 상단이 화면 위로 지나가 있을 때만 섹션 시작점으로 부드럽게 이동
+          if (section.getBoundingClientRect().top < 0) {
+            section.scrollIntoView({
+              behavior: hasMotion() ? "smooth" : "auto",
+              block: "start",
+            });
+          }
+        }
+
+        // 펼침이 끝나면 max-height 제한을 풀어 이후 리사이즈에도 자연스럽게 대응
+        panel.addEventListener("transitionend", function (e) {
+          if (
+            e.target === panel &&
+            e.propertyName === "max-height" &&
+            expanded
+          ) {
+            panel.style.maxHeight = "none";
+          }
+        });
+
+        toggle.addEventListener("click", function () {
+          if (expanded) collapse();
+          else expand();
+        });
+
+        // 초기화: 접힘 상태로 시작 (JS 미동작 시에는 전체 노출 + 버튼 숨김 상태 유지)
+        section.classList.add("is-collapsible");
+        toggle.hidden = false;
+        setState(false);
+        panel.style.maxHeight = collapsedHeight() + "px";
+
+        // 리사이즈 / 폰트 로딩 등으로 높이가 바뀌면 접힘 높이를 다시 계산
+        function syncCollapsed() {
+          if (!expanded) panel.style.maxHeight = collapsedHeight() + "px";
+        }
+        window.addEventListener("resize", syncCollapsed);
+        if ("ResizeObserver" in window) {
+          var ro = new ResizeObserver(syncCollapsed);
+          Array.prototype.forEach.call(panel.children, function (child) {
+            ro.observe(child); // 패널은 높이가 제한되므로 내부 블록의 높이 변화를 관찰
+          });
+        }
       })();
     </script>
   </body>
