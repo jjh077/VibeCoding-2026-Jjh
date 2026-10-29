@@ -88,7 +88,8 @@
          기존: max-width 1920px → 1920px 화면에서 cqw 기반 폰트·이미지가 .main-visual(1440 컨테이너 고정 px)보다
          훨씬 커져 비율이 깨졌음. 1200px 로 상한을 두면 cqw 기준 폭이 1200 을 넘지 않아 폰트/이미지가 함께 제한됨 */
       --section-max: 1200px;
-      --edge-fade: 48px; /* [신규] 1240px↑ 화면에서 섹션 좌우 경계 페이드 폭 */
+      --edge-fade: 48px;
+      /* [신규] 1240px↑ 화면에서 섹션 좌우 경계 페이드 폭 */
       --scale: 1.0000;
       /* JS가 1440px 미만에서 갱신 */
     }
@@ -627,7 +628,8 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--section-max); /* [수정] 1920px → 1200px : 이미지(구름·캐릭터)가 % 기반이라 섹션 폭과 함께 축소됨 */
+      max-width: var(--section-max);
+      /* [수정] 1920px → 1200px : 이미지(구름·캐릭터)가 % 기반이라 섹션 폭과 함께 축소됨 */
       aspect-ratio: 1370 / 913;
       margin: 0 auto;
       overflow: hidden;
@@ -731,7 +733,8 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--section-max); /* [수정] 1920px → 1200px */
+      max-width: var(--section-max);
+      /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       container-type: inline-size;
@@ -739,10 +742,13 @@
 
       /* 상단 타이틀 / 53th·100th 숫자 */
       --hs-pad-top: 6.9cqw;
-      --hs-title: max(20px, 2.5cqw); /* [수정] 3.15 → 2.5cqw : "한미의 도전은…" 문구 축소 (1200px 기준 38px → 30px) */
+      --hs-title: max(20px, 2.5cqw);
+      /* [수정] 3.15 → 2.5cqw : "한미의 도전은…" 문구 축소 (1200px 기준 38px → 30px) */
       --hs-title-lh: 1.54;
-      --hs-title-gap: 3.6cqw; /* [수정] 4.7 → 3.6cqw : 타이틀↔숫자 간격 */
-      --hs-num: 12cqw; /* [수정] 19.8 → 12cqw : "53th"/"100th" 숫자 대폭 축소 (1200px 기준 238px → 144px) */
+      --hs-title-gap: 3.6cqw;
+      /* [수정] 4.7 → 3.6cqw : 타이틀↔숫자 간격 */
+      --hs-num: 12cqw;
+      /* [수정] 19.8 → 12cqw : "53th"/"100th" 숫자 대폭 축소 (1200px 기준 238px → 144px) */
 
       /* 세로 타임라인 */
       --hs-line-w: 1.5cqw;
@@ -1290,7 +1296,8 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--section-max); /* [수정] 1920px → 1200px */
+      max-width: var(--section-max);
+      /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       container-type: inline-size;
@@ -1301,8 +1308,10 @@
 
       /* 상단 헤더 */
       --jb-pad-top: 14.4cqw;
-      --jb-title: max(22px, 2.7cqw); /* [수정] 3.38 → 2.7cqw */
-      --jb-desc: max(13px, 1.2cqw); /* [수정] 1.44 → 1.2cqw */
+      --jb-title: max(22px, 2.7cqw);
+      /* [수정] 3.38 → 2.7cqw */
+      --jb-desc: max(13px, 1.2cqw);
+      /* [수정] 1.44 → 1.2cqw */
       --jb-desc-w: none;
       --jb-desc-gap: 2.13cqw;
 
@@ -1314,30 +1323,40 @@
       --jb-char-x: 79.7cqw;
       --jb-char-y: 9.5cqw;
       --jb-bottle-w: 15.4cqw;
-      --jb-bottle-x: -5cqw;
-      --jb-bottle-y: 60.4cqw;
+      --jb-bottle-x: 5cqw;
+      --jb-bottle-y: 50.4cqw;
 
       /* 카드 목록 */
       --jb-list-top: 5.57cqw;
-      --jb-side: 14cqw; /* [수정] 좌우 대칭 여백 4 → 14cqw : 카드 영역이 중앙으로 모이고 카드 폭 축소 */
-      --jb-col-gap: 3cqw; /* [수정] 4.1 → 3cqw */
-      --jb-row-gap: 3cqw; /* [수정] 4.1 → 3cqw */
+      --jb-side: 14cqw;
+      /* [수정] 좌우 대칭 여백 4 → 14cqw : 카드 영역이 중앙으로 모이고 카드 폭 축소 */
+      --jb-col-gap: 3cqw;
+      /* [수정] 4.1 → 3cqw */
+      --jb-row-gap: 3cqw;
+      /* [수정] 4.1 → 3cqw */
       --jb-cols: 2;
-      --jb-card-pad: 2.3cqw; /* [수정] 카드 안쪽 여백 2.88 → 2.3cqw */
+      --jb-card-pad: 2.3cqw;
+      /* [수정] 카드 안쪽 여백 2.88 → 2.3cqw */
       --jb-card-radius: 2.4cqw;
       --jb-img-radius: 2cqw;
       --jb-text-gap: 2.1cqw;
-      --jb-text: max(12px, 1.1cqw); /* [수정] 카드 문구 1.3 → 1.1cqw */
+      --jb-text: max(12px, 1.1cqw);
+      /* [수정] 카드 문구 1.3 → 1.1cqw */
       --jb-text-lh: 1.67;
       --jb-meta-gap: 1.74cqw;
-      --jb-meta: max(11px, 0.95cqw); /* [수정] 1.12 → 0.95cqw */
-      --jb-arrow: max(20px, 2.4cqw); /* [수정] 2.8 → 2.4cqw */
+      --jb-meta: max(11px, 0.95cqw);
+      /* [수정] 1.12 → 0.95cqw */
+      --jb-arrow: max(20px, 2.4cqw);
+      /* [수정] 2.8 → 2.4cqw */
 
       /* CTA 버튼 */
       --jb-cta-gap: 6.2cqw;
-      --jb-cta-w: max(180px, 20cqw); /* [수정] 22.8 → 20cqw */
-      --jb-cta-h: max(42px, 4.4cqw); /* [수정] 5 → 4.4cqw */
-      --jb-cta-fs: max(14px, 1.25cqw); /* [수정] 1.45 → 1.25cqw */
+      --jb-cta-w: max(180px, 20cqw);
+      /* [수정] 22.8 → 20cqw */
+      --jb-cta-h: max(42px, 4.4cqw);
+      /* [수정] 5 → 4.4cqw */
+      --jb-cta-fs: max(14px, 1.25cqw);
+      /* [수정] 1.45 → 1.25cqw */
       --jb-btn-from: #ea2f3f;
       --jb-btn-to: #ff7e5c;
       --jb-pad-bottom: 7cqw;
@@ -1345,7 +1364,8 @@
 
     /* 우측 가장자리 / 우하단 번짐 */
     .job__glow {
-      display: none; /* [수정] 밴드(.band--job::before)로 이동 */
+      display: none;
+      /* [수정] 밴드(.band--job::before)로 이동 */
       position: absolute;
       inset: 0;
       z-index: 0;
@@ -1814,7 +1834,8 @@
 
       .mirae__title {
         top: 24.75%;
-        font-size: 3.2vw; /* [수정] 태블릿 3.7 → 3.2 */
+        font-size: 3.2vw;
+        /* [수정] 태블릿 3.7 → 3.2 */
         font-size: 3.2cqw;
         background: none;
         color: var(--black);
@@ -1870,10 +1891,12 @@
       /* History: 2열 구조 유지, 값만 교체 */
       .history {
         --hs-pad-top: 13cqw;
-        --hs-title: max(20px, 3cqw); /* [수정] 태블릿 3.7 → 3.0cqw */
+        --hs-title: max(20px, 3cqw);
+        /* [수정] 태블릿 3.7 → 3.0cqw */
         --hs-title-lh: 1.6;
         --hs-title-gap: 5.8cqw;
-        --hs-num: 17cqw; /* [수정] 태블릿 25.8 → 17cqw */
+        --hs-num: 17cqw;
+        /* [수정] 태블릿 25.8 → 17cqw */
         --hs-line-w: 2.2cqw;
         --hs-side-gap: 7cqw;
         --hs-tl-top: 10.3cqw;
@@ -2049,7 +2072,8 @@
 
       /* Main visual */
       .main-visual__inner {
-        padding: 100px 22px 90px; /* [수정] 하단 24 → 72px : 스크롤 버튼(44px)이 이미지와 겹치지 않도록 */
+        padding: 100px 22px 90px;
+        /* [수정] 하단 24 → 72px : 스크롤 버튼(44px)이 이미지와 겹치지 않도록 */
       }
 
       .mv-copy {
@@ -2182,7 +2206,8 @@
         --hs-title: max(16px, 3.34cqw);
         --hs-title-lh: 1.5;
         --hs-title-gap: 3.8cqw;
-        --hs-num: 16cqw; /* [수정] 모바일 20.5 → 16cqw */
+        --hs-num: 16cqw;
+        /* [수정] 모바일 20.5 → 16cqw */
         --hs-line-w: 0px;
         --hs-tl-top: 8.5cqw;
         --hs-tl-bottom: 16.3cqw;
@@ -2268,8 +2293,10 @@
         --jb-glow: 0;
 
         --jb-pad-top: 14.26cqw;
-        --jb-title: max(22px, 3cqw); /* [수정] 태블릿 3.36 → 3.0cqw */
-        --jb-desc: max(13px, 1.5cqw); /* [수정] 1.68 → 1.5cqw */
+        --jb-title: max(22px, 3cqw);
+        /* [수정] 태블릿 3.36 → 3.0cqw */
+        --jb-desc: max(13px, 1.5cqw);
+        /* [수정] 1.68 → 1.5cqw */
         --jb-desc-gap: 2.19cqw;
 
         --jb-logo-w: 7.4cqw;
@@ -2283,10 +2310,12 @@
         --jb-bottle-y: 64.4cqw;
 
         --jb-list-top: 3.92cqw;
-        --jb-side: 9cqw; /* [수정] 태블릿 좌우 대칭 여백 3.9 → 9cqw */
+        --jb-side: 9cqw;
+        /* [수정] 태블릿 좌우 대칭 여백 3.9 → 9cqw */
         --jb-col-gap: 2.2cqw;
         --jb-row-gap: 2.2cqw;
-        --jb-card-pad: 2.1cqw; /* [수정] 2.45 → 2.1cqw */
+        --jb-card-pad: 2.1cqw;
+        /* [수정] 2.45 → 2.1cqw */
         --jb-text-gap: 2.25cqw;
         --jb-text: max(12px, 1.5cqw);
         --jb-meta-gap: 1.65cqw;
@@ -2323,7 +2352,8 @@
 
         --jb-cols: 1;
         --jb-list-top: 4.9cqw;
-        --jb-side: 7cqw; /* [수정] 모바일 좌우 여백 5.2 → 7cqw */
+        --jb-side: 7cqw;
+        /* [수정] 모바일 좌우 여백 5.2 → 7cqw */
         --jb-row-gap: 4.3cqw;
         --jb-card-pad: 6.1cqw;
         --jb-card-radius: 6.4cqw;
@@ -2364,7 +2394,8 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--section-max); /* [수정] 1920px → 1200px */
+      max-width: var(--section-max);
+      /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       /* 장식이 화면 밖으로 넘쳐도 가로 스크롤 방지 */
@@ -2377,23 +2408,27 @@
 
       /* 헤더 */
       --in-pad-top: 7.4cqw;
-      --in-title: max(22px, 2.8cqw); /* [수정] 4.07 → 2.8cqw (1200px 기준 49px → 34px) */
+      --in-title: max(22px, 2.8cqw);
+      /* [수정] 4.07 → 2.8cqw (1200px 기준 49px → 34px) */
       --in-title-lh: 1.36;
-      --in-desc: max(13px, 1.25cqw); /* [수정] 1.6 → 1.25cqw */
+      --in-desc: max(13px, 1.25cqw);
+      /* [수정] 1.6 → 1.25cqw */
       --in-desc-lh: 1.7;
       --in-desc-w: none;
       --in-desc-gap: 1.3cqw;
       --in-head-gap: 5.75cqw;
 
       /* 카드(말풍선 박스) */
-      --in-card-w: 80cqw; /* [수정] 91.8 → 80cqw : 좌우 각 10cqw 대칭 여백 확보 */
+      --in-card-w: 80cqw;
+      /* [수정] 91.8 → 80cqw : 좌우 각 10cqw 대칭 여백 확보 */
       --in-card-radius: 2.4cqw;
       --in-card-pt: 3.8cqw;
       --in-card-px: 4.3cqw;
       --in-card-pb: 3.5cqw;
 
       /* 말풍선 */
-      --in-bt: max(12px, 1.35cqw); /* [수정] 말풍선 글자 1.56 → 1.35cqw (카드 폭 축소에 맞춤) */
+      --in-bt: max(12px, 1.35cqw);
+      /* [수정] 말풍선 글자 1.56 → 1.35cqw (카드 폭 축소에 맞춤) */
       --in-r: 1.7cqw;
       /* 모서리 반경 = 꼬리 크기 기준 */
       --in-bx: 1.7cqw;
@@ -2417,7 +2452,8 @@
       --in-mol-l: 5.3cqw;
       --in-mol-b: 1.4cqw;
 
-      --in-pad-bottom: 11cqw; /* [수정] 14.5 → 11cqw */
+      --in-pad-bottom: 11cqw;
+      /* [수정] 14.5 → 11cqw */
     }
 
     /* 배경 그라데이션 장식 (가상요소) */
@@ -2664,13 +2700,16 @@
     @media (max-width: 1024px) {
       .innovation {
         --in-pad-top: 10.4cqw;
-        --in-title: max(22px, 3.6cqw); /* [수정] 태블릿 4.4 → 3.6cqw */
+        --in-title: max(22px, 3.6cqw);
+        /* [수정] 태블릿 4.4 → 3.6cqw */
         --in-title-lh: 1.3;
-        --in-desc: max(13px, 1.7cqw); /* [수정] 2 → 1.7cqw */
+        --in-desc: max(13px, 1.7cqw);
+        /* [수정] 2 → 1.7cqw */
         --in-desc-gap: 1cqw;
         --in-head-gap: 7.8cqw;
 
-        --in-card-w: 88cqw; /* [수정] 태블릿 92.8 → 88cqw */
+        --in-card-w: 88cqw;
+        /* [수정] 태블릿 92.8 → 88cqw */
         --in-card-radius: 2.8cqw;
         --in-card-pt: 5.9cqw;
         --in-card-px: 6.1cqw;
@@ -2749,10 +2788,12 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--section-max); /* [수정] 1920px → 1200px */
+      max-width: var(--section-max);
+      /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
-      padding: 76px clamp(24px, 5.8vw, 88px) 108px; /* 좌우 대칭 패딩(유지) */
+      padding: 76px clamp(24px, 5.8vw, 88px) 108px;
+      /* 좌우 대칭 패딩(유지) */
       background: var(--white);
     }
 
@@ -2768,7 +2809,8 @@
     }
 
     .welfare__title {
-      font-size: clamp(24px, 2.8vw, 34px); /* [수정] 26~42px → 24~34px */
+      font-size: clamp(24px, 2.8vw, 34px);
+      /* [수정] 26~42px → 24~34px */
       font-weight: 800;
       line-height: 1.35;
       letter-spacing: -0.04em;
@@ -3143,23 +3185,23 @@
     </section>
 
     <div class="band band--mirae">
-    <section class="mirae" id="mirae" aria-labelledby="mirae-title">
-      <h2 class="mirae__title" id="mirae-title">
-        <span class="mirae__title-em">새로운 미래</span>를 향해 나아갑니다
-      </h2>
+      <section class="mirae" id="mirae" aria-labelledby="mirae-title">
+        <h2 class="mirae__title" id="mirae-title">
+          <span class="mirae__title-em">새로운 미래</span>를 향해 나아갑니다
+        </h2>
 
-      <!-- 배경 장식: 구름 · 별 (스크린리더에서는 숨김) -->
-      <div class="mirae__deco" aria-hidden="true">
-        <img class="mirae__cloud mirae__cloud--blur-l" src="images/mirae_cont.png" alt="멀리 흐릿하게 떠 있는 큰 구름" />
-        <img class="mirae__cloud mirae__cloud--blur-r" src="images/mirae_cloud1.png" alt="오른쪽 아래에 흐릿하게 떠 있는 작은 구름" />
-        <img class="mirae__cloud mirae__cloud--front-l" src="images/mirae_cloud2.png" alt="화면 왼쪽 가장자리에 걸친 하얀 구름" />
-        <img class="mirae__cloud mirae__cloud--front-r" src="images/mirae_cloud3.png" alt="화면 오른쪽 가장자리에 걸친 큰 하얀 구름" />
-        <img class="mirae__star mirae__star--right" src="images/mirae_star1.png" alt="캐릭터 오른쪽 위에서 반짝이는 노란 별" />
-        <img class="mirae__star mirae__star--left" src="images/mirae_star2.png" alt="캐릭터 왼쪽 아래에서 반짝이는 노란 별" />
-      </div>
+        <!-- 배경 장식: 구름 · 별 (스크린리더에서는 숨김) -->
+        <div class="mirae__deco" aria-hidden="true">
+          <img class="mirae__cloud mirae__cloud--blur-l" src="images/mirae_cont.png" alt="멀리 흐릿하게 떠 있는 큰 구름" />
+          <img class="mirae__cloud mirae__cloud--blur-r" src="images/mirae_cloud1.png" alt="오른쪽 아래에 흐릿하게 떠 있는 작은 구름" />
+          <img class="mirae__cloud mirae__cloud--front-l" src="images/mirae_cloud2.png" alt="화면 왼쪽 가장자리에 걸친 하얀 구름" />
+          <img class="mirae__cloud mirae__cloud--front-r" src="images/mirae_cloud3.png" alt="화면 오른쪽 가장자리에 걸친 큰 하얀 구름" />
+          <img class="mirae__star mirae__star--right" src="images/mirae_star1.png" alt="캐릭터 오른쪽 위에서 반짝이는 노란 별" />
+          <img class="mirae__star mirae__star--left" src="images/mirae_star2.png" alt="캐릭터 왼쪽 아래에서 반짝이는 노란 별" />
+        </div>
 
-      <img class="mirae__char" src="images/mirae_run.png" alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습" />
-    </section>
+        <img class="mirae__char" src="images/mirae_run.png" alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습" />
+      </section>
     </div>
 
     <section class="history" id="history" aria-labelledby="history-title">
@@ -3416,210 +3458,210 @@
     <!-- ===== Job (한미에서는 어떤 일을 할까요? · 현직자 직무소개) =====
            .history 바로 다음 형제 section 으로 삽입 (</section> 뒤, </main> 앞) -->
     <div class="band band--job">
-    <section class="job" id="job" aria-labelledby="job-title">
-      <!-- 배경 장식: 우측 가장자리 번짐 (데스크탑 시안에만 노출) -->
-      <div class="job__glow" aria-hidden="true"></div>
+      <section class="job" id="job" aria-labelledby="job-title">
+        <!-- 배경 장식: 우측 가장자리 번짐 (데스크탑 시안에만 노출) -->
+        <div class="job__glow" aria-hidden="true"></div>
 
-      <div class="job__inner">
-        <header class="job__head">
-          <img class="job__logo" src="./images/con3_logo.png" alt="붉은 타원형 한미(Hanmi) 로고" width="216" height="193"
-            loading="lazy" decoding="async" />
-          <h2 class="job__title" id="job-title">
-            한미에서는 어떤 일을 할까요?
-          </h2>
-          <p class="job__desc">
-            <span class="job__desc-line">일의 보람부터 성장의 순간까지, 먼저 경험한 현직자들이
-              솔직하게</span>
-            <span class="job__desc-line">들려드립니다.</span>
-          </p>
-          <img class="job__char" src="./images/con3_char.png" alt="서류 가방을 들고 사원증을 목에 건 보라색 한미 캐릭터" width="560"
-            height="458" loading="lazy" decoding="async" />
-        </header>
+        <div class="job__inner">
+          <header class="job__head">
+            <img class="job__logo" src="./images/con3_logo.png" alt="붉은 타원형 한미(Hanmi) 로고" width="216" height="193"
+              loading="lazy" decoding="async" />
+            <h2 class="job__title" id="job-title">
+              한미에서는 어떤 일을 할까요?
+            </h2>
+            <p class="job__desc">
+              <span class="job__desc-line">일의 보람부터 성장의 순간까지, 먼저 경험한 현직자들이
+                솔직하게</span>
+              <span class="job__desc-line">들려드립니다.</span>
+            </p>
+            <img class="job__char" src="./images/con3_char.png" alt="서류 가방을 들고 사원증을 목에 건 보라색 한미 캐릭터" width="560"
+              height="458" loading="lazy" decoding="async" />
+          </header>
 
-        <ul class="job__list">
-          <li class="job__item">
-            <!-- TODO: href 를 실제 현직자 상세 페이지 주소로 교체 -->
-            <a class="job__card" href="#">
-              <figure class="job__card-media">
-                <img src="./images/con3_int1.png" alt="실험 장비가 늘어선 연구실에서 주먹을 쥐어 보이며 웃고 있는 한미약품 품질관리 이건호 사원" width="1100"
-                  height="706" loading="lazy" decoding="async" />
-              </figure>
-              <p class="job__card-text">
-                <span class="job__card-line">정밀한 시험과 분석으로 의약품의 품질을 확인해</span>
-                <span class="job__card-line">안전하고 신뢰할 수 있는 의약품을 만들어갑니다.</span>
-              </p>
-              <div class="job__card-foot">
-                <p class="job__card-meta">
-                  <span class="job__card-team">한미약품 품질관리</span>
-                  <span class="job__card-name">이건호 사원</span>
+          <ul class="job__list">
+            <li class="job__item">
+              <!-- TODO: href 를 실제 현직자 상세 페이지 주소로 교체 -->
+              <a class="job__card" href="#">
+                <figure class="job__card-media">
+                  <img src="./images/con3_int1.png" alt="실험 장비가 늘어선 연구실에서 주먹을 쥐어 보이며 웃고 있는 한미약품 품질관리 이건호 사원"
+                    width="1100" height="706" loading="lazy" decoding="async" />
+                </figure>
+                <p class="job__card-text">
+                  <span class="job__card-line">정밀한 시험과 분석으로 의약품의 품질을 확인해</span>
+                  <span class="job__card-line">안전하고 신뢰할 수 있는 의약품을 만들어갑니다.</span>
                 </p>
-                <span class="job__card-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </div>
-              <span class="sr-only">이건호 사원 인터뷰 자세히 보기</span>
-            </a>
-          </li>
+                <div class="job__card-foot">
+                  <p class="job__card-meta">
+                    <span class="job__card-team">한미약품 품질관리</span>
+                    <span class="job__card-name">이건호 사원</span>
+                  </p>
+                  <span class="job__card-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </div>
+                <span class="sr-only">이건호 사원 인터뷰 자세히 보기</span>
+              </a>
+            </li>
 
-          <li class="job__item">
-            <!-- TODO: href 를 실제 현직자 상세 페이지 주소로 교체 -->
-            <a class="job__card" href="#">
-              <figure class="job__card-media">
-                <img src="./images/con3_int2.png" alt="블라인드가 내려진 창가의 긴 소파에 앉아 미소 짓고 있는 한미약품 전임상연구 박진하 연구원" width="1100"
-                  height="706" loading="lazy" decoding="async" />
-              </figure>
-              <p class="job__card-text">
-                <span class="job__card-line">신약 후보물질의 가능성을 과학적으로 검증해</span>
-                <span class="job__card-line">새로운 치료제가 환자에게 향하는 첫걸음을 만듭니다.</span>
-              </p>
-              <div class="job__card-foot">
-                <p class="job__card-meta">
-                  <span class="job__card-team">한미약품 전임상연구</span>
-                  <span class="job__card-name">박진하 연구원</span>
+            <li class="job__item">
+              <!-- TODO: href 를 실제 현직자 상세 페이지 주소로 교체 -->
+              <a class="job__card" href="#">
+                <figure class="job__card-media">
+                  <img src="./images/con3_int2.png" alt="블라인드가 내려진 창가의 긴 소파에 앉아 미소 짓고 있는 한미약품 전임상연구 박진하 연구원"
+                    width="1100" height="706" loading="lazy" decoding="async" />
+                </figure>
+                <p class="job__card-text">
+                  <span class="job__card-line">신약 후보물질의 가능성을 과학적으로 검증해</span>
+                  <span class="job__card-line">새로운 치료제가 환자에게 향하는 첫걸음을 만듭니다.</span>
                 </p>
-                <span class="job__card-arrow" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </span>
-              </div>
-              <span class="sr-only">박진하 연구원 인터뷰 자세히 보기</span>
-            </a>
-          </li>
-        </ul>
+                <div class="job__card-foot">
+                  <p class="job__card-meta">
+                    <span class="job__card-team">한미약품 전임상연구</span>
+                    <span class="job__card-name">박진하 연구원</span>
+                  </p>
+                  <span class="job__card-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                </div>
+                <span class="sr-only">박진하 연구원 인터뷰 자세히 보기</span>
+              </a>
+            </li>
+          </ul>
 
-        <!-- TODO: href 를 현직자 목록 페이지 주소로 교체 -->
-        <a class="job__cta" href="#">모든 현직자 알아가기!</a>
-      </div>
+          <!-- TODO: href 를 현직자 목록 페이지 주소로 교체 -->
+          <a class="job__cta" href="#">모든 현직자 알아가기!</a>
+        </div>
 
-      <!-- 약병: 첫 번째 카드 좌하단에 걸쳐 놓이는 장식 (모바일 시안에는 없음) -->
-      <img class="job__bottle" src="./images/con3_bottle.png" alt="한미 로고가 붙은 파란 뚜껑의 약병" width="442" height="692"
-        loading="lazy" decoding="async" />
-    </section>
+        <!-- 약병: 첫 번째 카드 좌하단에 걸쳐 놓이는 장식 (모바일 시안에는 없음) -->
+        <img class="job__bottle" src="./images/con3_bottle.png" alt="한미 로고가 붙은 파란 뚜껑의 약병" width="442" height="692"
+          loading="lazy" decoding="async" />
+      </section>
     </div>
 
     <!-- ===== Innovation (당신의 가능성, 한미그룹에서 더 크게 성장합니다 · 성장/혁신 기사)
            .job 바로 다음 형제 section 으로 삽입 (</section> 뒤, </main> 앞) -->
     <div class="band band--innovation">
-    <section class="innovation" id="innovation" aria-labelledby="innovation-title">
-      <div class="innovation__inner">
-        <header class="innovation__head">
-          <h2 class="innovation__title" id="innovation-title">
-            <span class="innovation__title-line">당신의 가능성,</span>
-            <span class="innovation__title-line">한미그룹에서 더 크게 성장합니다</span>
-          </h2>
-          <p class="innovation__desc">
-            연구와 혁신으로 성장하며 글로벌 제약/바이오 기업을 향해 나아갑니다.
-          </p>
-        </header>
+      <section class="innovation" id="innovation" aria-labelledby="innovation-title">
+        <div class="innovation__inner">
+          <header class="innovation__head">
+            <h2 class="innovation__title" id="innovation-title">
+              <span class="innovation__title-line">당신의 가능성,</span>
+              <span class="innovation__title-line">한미그룹에서 더 크게 성장합니다</span>
+            </h2>
+            <p class="innovation__desc">
+              연구와 혁신으로 성장하며 글로벌 제약/바이오 기업을 향해 나아갑니다.
+            </p>
+          </header>
 
-        <div class="innovation__card">
-          <!-- 장식: 화학식(뒤) + 원자 모형(앞), 카드 우상단에 걸침 -->
-          <img class="innovation__chem" src="./images/inno_chemical.png" alt="" width="702" height="208" loading="lazy"
-            decoding="async" />
-          <img class="innovation__atom" src="./images/inno_molecule1.png" alt="" width="359" height="359" loading="lazy"
-            decoding="async" />
+          <div class="innovation__card">
+            <!-- 장식: 화학식(뒤) + 원자 모형(앞), 카드 우상단에 걸침 -->
+            <img class="innovation__chem" src="./images/inno_chemical.png" alt="" width="702" height="208"
+              loading="lazy" decoding="async" />
+            <img class="innovation__atom" src="./images/inno_molecule1.png" alt="" width="359" height="359"
+              loading="lazy" decoding="async" />
 
-          <ul class="innovation__list">
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--orange" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text">한미약품, 상반기 누적 매출 8,602억원…2분기 영업이익 117% 증가</span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--white" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text"><span class="innovation__line">“사업형 지주사 경쟁력 입증”…한미사이언스, 2분기 영업이익
-                    71%↑</span><span class="innovation__line">2분기 매출 3,679억원…상반기 누적 매출 7,216억원 돌파</span></span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--orange" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text">한미약품, 로슈 제넨텍에 비만신약 기술수출…최대 3조 2,000억 규모</span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--white" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text">“UCN2 이어 또…” 한미약품, 두 번째 근육 증가 비만신약 공개</span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--orange" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text"><span class="innovation__line">명품 반열 오른 한미 ‘로수젯’…압도적 데이터 경쟁력으로 시장
-                    석권</span><span class="innovation__line">2년 연속 국내사 개발 전문의약품 시장 ‘1위’…올해 상반기 누적 처방액도 선두</span></span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--white" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text">“비만 넘어 항암으로 혁신 확장”…한미, AACR서 차세대 신약 대거 공개</span>
-              </a>
-            </li>
-            <li class="innovation__item">
-              <!-- TODO: href 를 해당 기사 주소로 교체 -->
-              <a class="innovation__bubble innovation__bubble--orange" href="#">
-                <svg class="innovation__shape" aria-hidden="true" focusable="false">
-                  <rect width="100%" height="100%" rx="1em" />
-                </svg>
-                <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
-                  <path d="M8 0C8 7 5 12 0 14H22V0Z" />
-                </svg>
-                <span class="innovation__text">한미 완전두유·케어미, 영양에 ‘맛’까지 인정…국제 우수 미각상 수상</span>
-              </a>
-            </li>
-          </ul>
-          <p class="innovation__hint">말풍선을 클릭해서 기사를 확인해 보세요.</p>
+            <ul class="innovation__list">
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--orange" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text">한미약품, 상반기 누적 매출 8,602억원…2분기 영업이익 117% 증가</span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--white" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text"><span class="innovation__line">“사업형 지주사 경쟁력 입증”…한미사이언스, 2분기 영업이익
+                      71%↑</span><span class="innovation__line">2분기 매출 3,679억원…상반기 누적 매출 7,216억원 돌파</span></span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--orange" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text">한미약품, 로슈 제넨텍에 비만신약 기술수출…최대 3조 2,000억 규모</span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--white" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text">“UCN2 이어 또…” 한미약품, 두 번째 근육 증가 비만신약 공개</span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--orange" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text"><span class="innovation__line">명품 반열 오른 한미 ‘로수젯’…압도적 데이터 경쟁력으로 시장
+                      석권</span><span class="innovation__line">2년 연속 국내사 개발 전문의약품 시장 ‘1위’…올해 상반기 누적 처방액도 선두</span></span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--white" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text">“비만 넘어 항암으로 혁신 확장”…한미, AACR서 차세대 신약 대거 공개</span>
+                </a>
+              </li>
+              <li class="innovation__item">
+                <!-- TODO: href 를 해당 기사 주소로 교체 -->
+                <a class="innovation__bubble innovation__bubble--orange" href="#">
+                  <svg class="innovation__shape" aria-hidden="true" focusable="false">
+                    <rect width="100%" height="100%" rx="1em" />
+                  </svg>
+                  <svg class="innovation__tail" viewBox="0 0 22 14" aria-hidden="true" focusable="false">
+                    <path d="M8 0C8 7 5 12 0 14H22V0Z" />
+                  </svg>
+                  <span class="innovation__text">한미 완전두유·케어미, 영양에 ‘맛’까지 인정…국제 우수 미각상 수상</span>
+                </a>
+              </li>
+            </ul>
+            <p class="innovation__hint">말풍선을 클릭해서 기사를 확인해 보세요.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- 장식: 좌하단 분자 모형 -->
-      <img class="innovation__molecule" src="./images/inno_molecule2.png" alt="" width="359" height="383" loading="lazy"
-        decoding="async" />
-    </section>
+        <!-- 장식: 좌하단 분자 모형 -->
+        <img class="innovation__molecule" src="./images/inno_molecule2.png" alt="" width="359" height="383"
+          loading="lazy" decoding="async" />
+      </section>
     </div>
 
     <section class="welfare" id="welfare" aria-labelledby="welfare-title">
