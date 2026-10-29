@@ -275,7 +275,7 @@
         position: absolute;
         inset: 0;
         z-index: 0;
-        background: url("./images/mv_bg.png") center / cover no-repeat;
+        background: url("././images/mv_bg.png") center / cover no-repeat;
       }
 
       .main-visual__inner {
@@ -3361,18 +3361,25 @@
       .tasks-modal {
         position: fixed;
         inset: 50% auto auto 50%;
+        display: none;
+        flex-direction: column;
         width: min(800px, calc(100vw - 32px));
         max-width: none;
+        height: min(84vh, 760px);
         max-height: min(84vh, 760px);
         margin: 0;
         padding: 0;
-        overflow: auto;
+        overflow: hidden;
         transform: translate(-50%, -50%);
         border: 0;
         border-radius: 24px;
         background: var(--white);
         color: var(--black);
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+      }
+
+      .tasks-modal[open] {
+        display: flex;
       }
 
       .tasks-modal::backdrop {
@@ -3382,6 +3389,7 @@
 
       .tasks-modal__visual {
         position: relative;
+        flex: none;
         height: 190px;
         overflow: hidden;
       }
@@ -3411,7 +3419,16 @@
       }
 
       .tasks-modal__body {
-        padding: 28px 60px 48px;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+        padding: 28px 60px 0;
+      }
+
+      .tasks-modal__summary {
+        flex: none;
       }
 
       .tasks-modal__heading {
@@ -3440,6 +3457,19 @@
       .tasks-modal__level {
         margin-top: 4px;
         font-size: 13px;
+      }
+
+      .tasks-modal__content {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: none;
+        padding-bottom: 48px;
+      }
+
+      .tasks-modal__content::-webkit-scrollbar {
+        display: none;
       }
 
       .tasks-modal__section {
@@ -3597,6 +3627,7 @@
 
         .tasks-modal {
           width: calc(100vw - 24px);
+          height: 90dvh;
           max-height: 90dvh;
           border-radius: 20px;
         }
@@ -3613,7 +3644,11 @@
         }
 
         .tasks-modal__body {
-          padding: 24px 22px 36px;
+          padding: 24px 22px 0;
+        }
+
+        .tasks-modal__content {
+          padding-bottom: 36px;
         }
 
         .tasks-modal__title {
@@ -3659,7 +3694,7 @@
       <div class="header__inner">
         <a class="brand" href="#" aria-label="한미그룹 홈">
           <img
-            src="./images/logo_svg.svg"
+            src="././images/logo_svg.svg"
             alt="Hanmi 한미그룹"
             width="182"
             height="31"
@@ -3671,7 +3706,7 @@
           <div class="gnb__head">
             <a class="brand" href="#" aria-label="한미그룹 홈">
               <img
-                src="./images/logo_svg.svg"
+                src="././images/logo_svg.svg"
                 alt="Hanmi 한미그룹"
                 width="182"
                 height="31"
@@ -3720,7 +3755,7 @@
             </a>
           </div>
 
-          <img class="gnb__char" src="./images/mo_menu_char.png" alt="" />
+          <img class="gnb__char" src="././images/mo_menu_char.png" alt="" />
         </nav>
 
         <!-- 모바일 헤더 우측: 지원하기 + 햄버거 (모바일에서만 노출) -->
@@ -3776,11 +3811,11 @@
             <div class="mv-stage__glass"></div>
             <div class="mv-stage__ring"></div>
 
-            <img class="micro" src="./images/mv_micro.png" alt="" />
-            <img class="char1" src="./images/mv_char1.png" alt="" />
-            <img class="char2" src="./images/mv_char2.png" alt="" />
-            <img class="char3" src="./images/mv_char3.png" alt="" />
-            <img class="char4" src="./images/mv_char4.png" alt="" />
+            <img class="micro" src="././images/mv_micro.png" alt="" />
+            <img class="char1" src="././images/mv_char1.png" alt="" />
+            <img class="char2" src="././images/mv_char2.png" alt="" />
+            <img class="char3" src="././images/mv_char3.png" alt="" />
+            <img class="char4" src="././images/mv_char4.png" alt="" />
 
             <span class="star star--blue"></span>
             <span class="star star--red"></span>
@@ -3818,39 +3853,39 @@
           <div class="mirae__deco" aria-hidden="true">
             <img
               class="mirae__cloud mirae__cloud--blur-l"
-              src="images/mirae_cont.png"
+              src="./images/mirae_cont.png"
               alt="멀리 흐릿하게 떠 있는 큰 구름"
             />
             <img
               class="mirae__cloud mirae__cloud--blur-r"
-              src="images/mirae_cloud1.png"
+              src="./images/mirae_cloud1.png"
               alt="오른쪽 아래에 흐릿하게 떠 있는 작은 구름"
             />
             <img
               class="mirae__cloud mirae__cloud--front-l"
-              src="images/mirae_cloud2.png"
+              src="./images/mirae_cloud2.png"
               alt="화면 왼쪽 가장자리에 걸친 하얀 구름"
             />
             <img
               class="mirae__cloud mirae__cloud--front-r"
-              src="images/mirae_cloud3.png"
+              src="./images/mirae_cloud3.png"
               alt="화면 오른쪽 가장자리에 걸친 큰 하얀 구름"
             />
             <img
               class="mirae__star mirae__star--right"
-              src="images/mirae_star1.png"
+              src="./images/mirae_star1.png"
               alt="캐릭터 오른쪽 위에서 반짝이는 노란 별"
             />
             <img
               class="mirae__star mirae__star--left"
-              src="images/mirae_star2.png"
+              src="./images/mirae_star2.png"
               alt="캐릭터 왼쪽 아래에서 반짝이는 노란 별"
             />
           </div>
 
           <img
             class="mirae__char"
-            src="images/mirae_run.png"
+            src="./images/mirae_run.png"
             alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습"
           />
         </section>
@@ -3872,7 +3907,7 @@
             </p>
             <img
               class="history__deco history__deco--obj history__deco--stars"
-              src="images/obj_star_big.png"
+              src="./images/obj_star_big.png"
               alt="반짝이는 노란 별 세 개"
               width="240"
               height="288"
@@ -3916,7 +3951,7 @@
               </div>
               <figure class="history__media history__media--snack">
                 <img
-                  src="images/his1.png"
+                  src="./images/his1.png"
                   alt="텐텐, 쎄쎄 등 한미약품 초기 어린이 영양제와 비타민 제품 모음"
                   width="750"
                   height="404"
@@ -3926,7 +3961,7 @@
               </figure>
               <img
                 class="history__deco history__deco--obj history__deco--beaker"
-                src="images/obj_beaker.png"
+                src="./images/obj_beaker.png"
                 alt="분홍빛 용액이 담긴 연구용 비커"
                 width="240"
                 height="288"
@@ -3973,7 +4008,7 @@
               </div>
               <figure class="history__media history__media--together">
                 <img
-                  src="images/his2.png"
+                  src="./images/his2.png"
                   alt="노을 지는 해변 위에서 손을 잡고 함께 뛰어오르는 다섯 사람의 실루엣"
                   width="830"
                   height="600"
@@ -3983,7 +4018,7 @@
               </figure>
               <img
                 class="history__deco history__deco--blur history__deco--hex"
-                src="images/obj_mol_blur1.png"
+                src="./images/obj_mol_blur1.png"
                 alt="흐릿하게 번진 푸른 분자 구조 배경 장식"
                 width="420"
                 height="465"
@@ -3993,7 +4028,7 @@
               />
               <img
                 class="history__deco history__deco--obj history__deco--microscope"
-                src="images/obj_microscope.png"
+                src="./images/obj_microscope.png"
                 alt="파란색 현미경"
                 width="218"
                 height="306"
@@ -4047,7 +4082,7 @@
               </div>
               <figure class="history__media history__media--spectrum">
                 <img
-                  src="images/his3.png"
+                  src="./images/his3.png"
                   alt="인체 엑스레이 이미지 앞에 놓인 에소메졸 20mg·40mg 제품과 스펙트럼 파마슈티컬스 로고"
                   width="1000"
                   height="508"
@@ -4057,7 +4092,7 @@
               </figure>
               <img
                 class="history__deco history__deco--blur history__deco--ring"
-                src="images/obj_mol_blur2.png"
+                src="./images/obj_mol_blur2.png"
                 alt="흐릿하게 번진 회색 분자 구조 배경 장식"
                 width="338"
                 height="372"
@@ -4104,7 +4139,7 @@
               </div>
               <figure class="history__media history__media--asco">
                 <img
-                  src="images/his4.png"
+                  src="./images/his4.png"
                   alt="ASCO와 USP 로고, 로수젯 네 가지 용량의 제품 패키지"
                   width="934"
                   height="452"
@@ -4190,7 +4225,7 @@
               </div>
               <figure class="history__media history__media--lancet">
                 <img
-                  src="images/his5.png"
+                  src="./images/his5.png"
                   alt="랜싯 200주년 표지와 롤론티스 제품·주사기, 약물 작용 원리를 보여주는 도식"
                   width="746"
                   height="538"
@@ -4200,7 +4235,7 @@
               </figure>
               <img
                 class="history__deco history__deco--obj history__deco--molecule"
-                src="images/obj_mol_big.png"
+                src="./images/obj_mol_big.png"
                 alt="보랏빛 유리 구슬로 만든 분자 구조 오브제"
                 width="237"
                 height="293"
@@ -4233,7 +4268,7 @@
             </div>
             <img
               class="history__deco history__deco--blur history__deco--shadow"
-              src="images/cloud_blur_medium.png"
+              src="./images/cloud_blur_medium.png"
               alt="캐릭터 아래에 드리운 흐릿한 그림자"
               width="379"
               height="230"
@@ -4243,7 +4278,7 @@
             />
             <img
               class="history__deco history__deco--obj history__deco--char"
-              src="images/con2_char.png"
+              src="./images/con2_char.png"
               alt="사원증을 목에 걸고 힘차게 달려가는 한미 캐릭터"
               width="339"
               height="485"
@@ -4298,7 +4333,7 @@
             <header class="job__head">
               <img
                 class="job__logo"
-                src="./images/con3_logo.png"
+                src="././images/con3_logo.png"
                 alt="붉은 타원형 한미(Hanmi) 로고"
                 width="216"
                 height="193"
@@ -4317,7 +4352,7 @@
               </p>
               <img
                 class="job__char"
-                src="./images/con3_char.png"
+                src="././images/con3_char.png"
                 alt="서류 가방을 들고 사원증을 목에 건 보라색 한미 캐릭터"
                 width="560"
                 height="458"
@@ -4332,7 +4367,7 @@
                 <a class="job__card" href="#">
                   <figure class="job__card-media">
                     <img
-                      src="./images/con3_int1.png"
+                      src="././images/con3_int1.png"
                       alt="실험 장비가 늘어선 연구실에서 주먹을 쥐어 보이며 웃고 있는 한미약품 품질관리 이건호 사원"
                       width="1100"
                       height="706"
@@ -4374,7 +4409,7 @@
                 <a class="job__card" href="#">
                   <figure class="job__card-media">
                     <img
-                      src="./images/con3_int2.png"
+                      src="././images/con3_int2.png"
                       alt="블라인드가 내려진 창가의 긴 소파에 앉아 미소 짓고 있는 한미약품 전임상연구 박진하 연구원"
                       width="1100"
                       height="706"
@@ -4419,7 +4454,7 @@
           <!-- 약병: 첫 번째 카드 좌하단에 걸쳐 놓이는 장식 (모바일 시안에는 없음) -->
           <img
             class="job__bottle"
-            src="./images/con3_bottle.png"
+            src="././images/con3_bottle.png"
             alt="한미 로고가 붙은 파란 뚜껑의 약병"
             width="442"
             height="692"
@@ -4455,7 +4490,7 @@
               <!-- 장식: 화학식(뒤) + 원자 모형(앞), 카드 우상단에 걸침 -->
               <img
                 class="innovation__chem"
-                src="./images/inno_chemical.png"
+                src="././images/inno_chemical.png"
                 alt=""
                 width="702"
                 height="208"
@@ -4464,7 +4499,7 @@
               />
               <img
                 class="innovation__atom"
-                src="./images/inno_molecule1.png"
+                src="././images/inno_molecule1.png"
                 alt=""
                 width="359"
                 height="359"
@@ -4682,7 +4717,7 @@
           <!-- 장식: 좌하단 분자 모형 -->
           <img
             class="innovation__molecule"
-            src="./images/inno_molecule2.png"
+            src="././images/inno_molecule2.png"
             alt=""
             width="359"
             height="383"
@@ -4703,7 +4738,7 @@
             </p>
             <img
               class="welfare__mascot"
-              src="./images/con5_char.png"
+              src="././images/con5_char.png"
               alt="복지를 소개하는 한미 캐릭터"
               width="411"
               height="414"
@@ -4737,7 +4772,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico1.png"
+                    src="././images/wf_ico1.png"
                     alt="건강 검진 달력 아이콘"
                     width="68"
                     height="68"
@@ -4756,7 +4791,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico2.png"
+                    src="././images/wf_ico2.png"
                     alt="기념일 축하 케이크 아이콘"
                     width="68"
                     height="68"
@@ -4776,7 +4811,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico3.png"
+                    src="././images/wf_ico3.png"
                     alt="선택복지 카드 아이콘"
                     width="68"
                     height="68"
@@ -4795,7 +4830,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico4.png"
+                    src="././images/wf_ico4.png"
                     alt="장기 근속 포상 과녁 아이콘"
                     width="68"
                     height="68"
@@ -4815,7 +4850,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico5.png"
+                    src="././images/wf_ico5.png"
                     alt="유연근무 시계 아이콘"
                     width="68"
                     height="68"
@@ -4844,7 +4879,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico6.png"
+                    src="././images/wf_ico6.png"
                     alt="단체 상해 보험 확인 아이콘"
                     width="68"
                     height="68"
@@ -4863,7 +4898,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico7.png"
+                    src="././images/wf_ico7.png"
                     alt="직무 교육 영상 아이콘"
                     width="68"
                     height="68"
@@ -4882,7 +4917,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico8.png"
+                    src="././images/wf_ico8.png"
                     alt="임직원 제휴 할인 가방 아이콘"
                     width="68"
                     height="68"
@@ -4902,7 +4937,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico9.png"
+                    src="././images/wf_ico9.png"
                     alt="문화 생활 곰인형 아이콘"
                     width="68"
                     height="68"
@@ -4921,7 +4956,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico10.png"
+                    src="././images/wf_ico10.png"
                     alt="구내식당 식기 아이콘"
                     width="68"
                     height="68"
@@ -4941,7 +4976,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico1.png"
+                    src="././images/wf_ico1.png"
                     alt="건강 검진 달력 아이콘"
                     width="68"
                     height="68"
@@ -4960,7 +4995,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico2.png"
+                    src="././images/wf_ico2.png"
                     alt="기념일 축하 케이크 아이콘"
                     width="68"
                     height="68"
@@ -4980,7 +5015,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico3.png"
+                    src="././images/wf_ico3.png"
                     alt="선택복지 카드 아이콘"
                     width="68"
                     height="68"
@@ -4999,7 +5034,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico4.png"
+                    src="././images/wf_ico4.png"
                     alt="장기 근속 포상 과녁 아이콘"
                     width="68"
                     height="68"
@@ -5019,7 +5054,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico5.png"
+                    src="././images/wf_ico5.png"
                     alt="유연근무 시계 아이콘"
                     width="68"
                     height="68"
@@ -5038,7 +5073,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico6.png"
+                    src="././images/wf_ico6.png"
                     alt="단체 상해 보험 확인 아이콘"
                     width="68"
                     height="68"
@@ -5057,7 +5092,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico7.png"
+                    src="././images/wf_ico7.png"
                     alt="직무 교육 영상 아이콘"
                     width="68"
                     height="68"
@@ -5076,7 +5111,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico8.png"
+                    src="././images/wf_ico8.png"
                     alt="임직원 제휴 할인 가방 아이콘"
                     width="68"
                     height="68"
@@ -5096,7 +5131,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico9.png"
+                    src="././images/wf_ico9.png"
                     alt="문화 생활 곰인형 아이콘"
                     width="68"
                     height="68"
@@ -5115,7 +5150,7 @@
                   </div>
                   <img
                     class="welfare__icon"
-                    src="./images/wf_ico10.png"
+                    src="././images/wf_ico10.png"
                     alt="구내식당 식기 아이콘"
                     width="68"
                     height="68"
@@ -5129,7 +5164,7 @@
         </div>
         <img
           class="welfare__cloud"
-          src="./images/con5_cloud.png"
+          src="././images/con5_cloud.png"
           alt="한미의 보라색 캐릭터"
           width="335"
           height="210"
@@ -5142,14 +5177,14 @@
         <div class="tasks__hero">
           <img
             class="tasks__brand-bg"
-            src="./images/tasks_bg_title.png"
+            src="././images/tasks_bg_title.png"
             alt=""
             aria-hidden="true"
           />
           <div class="tasks__stage">
             <img
               class="tasks__character"
-              src="./images/tasks_character.png"
+              src="././images/tasks_character.png"
               alt="돋보기를 들고 직무를 살펴보는 한미 캐릭터"
               width="2048"
               height="1408"
@@ -5258,7 +5293,7 @@
         >
           <div class="tasks-modal__visual">
             <img
-              src="./images/tasks_rnd_bg.jpg"
+              src="././images/tasks_rnd_bg.jpg"
               alt="연구실 현미경과 실험 장갑"
               width="800"
               height="180"
@@ -5427,8 +5462,19 @@
         var modal = document.getElementById("tasks-modal");
         var modalBody = document.getElementById("tasks-modal-body");
         var closeButton = modal && modal.querySelector(".tasks-modal__close");
-        if (!tabs.length || !groups || !modal || !modalBody || !closeButton)
+        var modalImage = modal && modal.querySelector(".tasks-modal__visual img");
+        if (
+          !tabs.length ||
+          !groups ||
+          !modal ||
+          !modalBody ||
+          !closeButton ||
+          !modalImage
+        )
           return;
+        if (modal.open) modal.close();
+
+        var popupJobs = [];
 
         var categories = [
           {
@@ -5560,11 +5606,16 @@
               var label = group.label;
               var roleCards = group.roles
                 .map(function (role) {
+                  var job = popupJobs.find(function (item) {
+                    return item.department === category.name && item.title === role;
+                  });
                   return (
                     '<button class="tasks__role" type="button" data-role="' +
                     escapeHtml(role) +
                     '" data-group="' +
                     escapeHtml(group.label) +
+                    '" data-popup-id="' +
+                    escapeHtml(job ? job.id : "") +
                     '"><span class="tasks__role-name">' +
                     escapeHtml(role) +
                     '</span><svg class="tasks__role-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
@@ -5589,48 +5640,54 @@
             .join("");
         }
 
-        function openRole(role, group, category) {
-          var isNce = role === "NCE (New Chemical Entity)";
-          var duties = isNce
-            ? [
-                "저분자 기반 비만대사 신약 개발 연구",
-                "약물설계, 유기화합물 합성 및 후보물질 탐색",
-              ]
-            : [
-                role + " 관련 업무 수행",
-                "유관 부서와 협업하여 과제 및 프로젝트 진행",
-              ];
-          var qualifications = isNce
-            ? [
-                "석사 이상 학력 소지자",
-                "화학, 약학 등 관련 전공자",
-                "의약화학, 약리학 등 신약개발 연구분야 지식 보유자",
-              ]
-            : [
-                "관련 분야 전공 또는 직무 경험 보유자",
-                "직무에 대한 이해와 원활한 협업 역량 보유자",
-              ];
+        function renderModalSection(title, items) {
+          if (!Array.isArray(items) || !items.length) return "";
+          return (
+            '<section class="tasks-modal__section"><h3>' +
+            escapeHtml(title) +
+            "</h3><ul>" +
+            items
+              .map(function (item) {
+                return "<li>" + escapeHtml(item) + "</li>";
+              })
+              .join("") +
+            "</ul></section>"
+          );
+        }
 
+        function openRole(jobId) {
+          var job = popupJobs.find(function (item) {
+            return item.id === jobId;
+          });
+          if (!job) return;
+
+          var imageName = job.image ? job.image.split("/").pop() : "";
+          var imagePath =
+            imageName === "rnd_bg.jpg"
+              ? "././images/tasks_" + imageName
+              : "././images/tasks_rnd_bg.jpg";
+          modalImage.onerror = function () {
+            modalImage.onerror = null;
+            modalImage.src = "././images/tasks_rnd_bg.jpg";
+          };
+          modalImage.src = imagePath;
+          modalImage.alt = job.title + " 직무 이미지";
+          var sections =
+            renderModalSection("직무 내용", job.job_description) +
+            renderModalSection("자격요건", job.qualifications) +
+            renderModalSection("우대사항", job.preferred);
           modalBody.innerHTML =
-            '<div class="tasks-modal__heading"><h2 class="tasks-modal__title" id="tasks-modal-title">' +
-            escapeHtml(role) +
+            '<div class="tasks-modal__summary"><div class="tasks-modal__heading"><h2 class="tasks-modal__title" id="tasks-modal-title">' +
+            escapeHtml(job.title) +
             '</h2><span class="tasks-modal__category">' +
-            escapeHtml(category) +
+            escapeHtml(job.department) +
             '</span><span class="tasks-modal__group">' +
-            escapeHtml(group) +
-            '</span></div><p class="tasks-modal__level">*신입/경력</p><section class="tasks-modal__section"><h3>직무 내용</h3><ul>' +
-            duties
-              .map(function (item) {
-                return "<li>" + escapeHtml(item) + "</li>";
-              })
-              .join("") +
-            '</ul></section><section class="tasks-modal__section"><h3>자격요건</h3><ul>' +
-            qualifications
-              .map(function (item) {
-                return "<li>" + escapeHtml(item) + "</li>";
-              })
-              .join("") +
-            "</ul></section>";
+            escapeHtml(job.location) +
+            '</span></div><p class="tasks-modal__level">' +
+            escapeHtml(job.category) +
+            '</p></div><div class="tasks-modal__content">' +
+            sections +
+            "</div>";
           modal.showModal();
         }
 
@@ -5690,14 +5747,7 @@
 
           var roleButton = event.target.closest(".tasks__role");
           if (!roleButton) return;
-          var activeTab = tabs.find(function (tab) {
-            return tab.getAttribute("aria-selected") === "true";
-          });
-          openRole(
-            roleButton.dataset.role,
-            roleButton.dataset.group,
-            activeTab ? activeTab.dataset.category : "R&D",
-          );
+          openRole(roleButton.dataset.popupId);
         });
 
         closeButton.addEventListener("click", function () {
@@ -5710,7 +5760,19 @@
           if (event.target === modal) modal.close();
         });
 
-        renderCategory(categories[0]);
+        fetch("./data/pop_data.json")
+          .then(function (response) {
+            if (!response.ok) throw new Error("직무 데이터를 불러오지 못했습니다.");
+            return response.json();
+          })
+          .then(function (data) {
+            popupJobs = data;
+            renderCategory(categories[0]);
+          })
+          .catch(function () {
+            groups.innerHTML =
+              '<p class="tasks__empty">직무 정보를 불러오지 못했습니다. 페이지를 로컬 서버에서 열어주세요.</p>';
+          });
       })();
     </script>
   </body>
