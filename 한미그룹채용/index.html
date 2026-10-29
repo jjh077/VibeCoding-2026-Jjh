@@ -84,6 +84,11 @@
       --page-width: 1920px;
       --container: 1440px;
       --hero-height: 900px;
+      /* [수정·신규] 하위 섹션(.mirae/.history/.job/.innovation/.welfare) 공통 최대 폭
+         기존: max-width 1920px → 1920px 화면에서 cqw 기반 폰트·이미지가 .main-visual(1440 컨테이너 고정 px)보다
+         훨씬 커져 비율이 깨졌음. 1200px 로 상한을 두면 cqw 기준 폭이 1200 을 넘지 않아 폰트/이미지가 함께 제한됨 */
+      --section-max: 1200px;
+      --edge-fade: 48px; /* [신규] 1240px↑ 화면에서 섹션 좌우 경계 페이드 폭 */
       --scale: 1.0000;
       /* JS가 1440px 미만에서 갱신 */
     }
@@ -517,6 +522,104 @@
       color: var(--red);
     }
 
+    /* ---------- [신규] 하위 섹션 공통 레이아웃 ----------
+         - 모든 하위 섹션: max-width: var(--section-max) + margin: 0 auto 로 중앙 정렬
+         - 섹션 배경색/그라데이션은 .band(풀블리드 래퍼)로 옮겨, 섹션 폭이 줄어도 화면 끝까지 이어지게 함 */
+    .mirae,
+    .history,
+    .job,
+    .innovation,
+    .welfare {
+      max-width: var(--section-max);
+      margin-inline: auto;
+    }
+
+    .band {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .band--mirae {
+      background: linear-gradient(180deg, var(--white) 0%, #ffe6e0 100%);
+    }
+
+    .band--job {
+      background: #fdf5f2;
+    }
+
+    /* 기존 .job__glow(섹션 우측 번짐)를 화면 가장자리 기준으로 이동 */
+    .band--job::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle 8vw at 100% 55%,
+          rgba(240, 205, 175, 0.75) 0,
+          rgba(240, 205, 175, 0) 100%),
+        radial-gradient(ellipse 30vw 16vw at 90% 100%,
+          rgba(255, 226, 214, 0.7) 0,
+          rgba(255, 226, 214, 0) 100%);
+    }
+
+    .band--innovation {
+      --in-main: var(--orange);
+      background: #fdf6f2;
+    }
+
+    /* 기존 .innovation::before/::after 배경 장식을 밴드로 이동 (섹션 경계에서 잘리지 않도록) */
+    .band--innovation::before,
+    .band--innovation::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: radial-gradient(circle closest-side,
+          var(--in-main) 0%,
+          transparent 100%);
+      pointer-events: none;
+    }
+
+    .band--innovation::before {
+      width: 30vw;
+      top: -9vw;
+      right: -12vw;
+      opacity: 0.1;
+    }
+
+    .band--innovation::after {
+      width: 20vw;
+      left: -6vw;
+      bottom: -6vw;
+      opacity: 0.2;
+    }
+
+    /* 1240px 이상: 섹션(1200px) 좌우 끝에서 장식 이미지가 뚝 잘려 보이지 않도록 가장자리를 부드럽게 페이드 */
+    @media (min-width: 1240px) {
+
+      .mirae,
+      .history,
+      .job,
+      .innovation {
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--edge-fade), #000 calc(100% - var(--edge-fade)), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 var(--edge-fade), #000 calc(100% - var(--edge-fade)), transparent 100%);
+      }
+
+      .mirae {
+        --edge-fade: 120px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .band--job::before {
+        display: none;
+      }
+    }
+
     /* ---------- Mirae (새로운 미래를 향해 나아갑니다) ----------
                      시안 비율 기준 % 좌표 + container query 단위(cqw)로 섹션 폭에 맞춰 비율 유지
                      Desktop 1370×913 / Tablet 1330×909 / Mobile 850×920 */
@@ -524,12 +627,12 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--page-width);
+      max-width: var(--section-max); /* [수정] 1920px → 1200px : 이미지(구름·캐릭터)가 % 기반이라 섹션 폭과 함께 축소됨 */
       aspect-ratio: 1370 / 913;
       margin: 0 auto;
       overflow: hidden;
       container-type: inline-size;
-      background: linear-gradient(180deg, var(--white) 0%, #ffe6e0 100%);
+      /* [수정] 배경 그라데이션은 .band--mirae 로 이동 (풀블리드 유지) */
     }
 
     .mirae__title {
@@ -538,9 +641,10 @@
       left: 50%;
       z-index: 5;
       transform: translate(-50%, -50%);
-      font-size: 4.6vw;
+      /* [수정] 4.6 → 3.4 : 1920px 기준 88px → 41px(1200px 상한). .main-visual 타이틀(72px)보다 작게 */
+      font-size: 3.4vw;
       /* cqw 미지원 브라우저 대비 */
-      font-size: 4.6cqw;
+      font-size: 3.4cqw;
       font-weight: 800;
       line-height: 1.3;
       letter-spacing: -0.03em;
@@ -627,7 +731,7 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--page-width);
+      max-width: var(--section-max); /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       container-type: inline-size;
@@ -635,10 +739,10 @@
 
       /* 상단 타이틀 / 53th·100th 숫자 */
       --hs-pad-top: 6.9cqw;
-      --hs-title: max(22px, 3.15cqw);
+      --hs-title: max(20px, 2.5cqw); /* [수정] 3.15 → 2.5cqw : "한미의 도전은…" 문구 축소 (1200px 기준 38px → 30px) */
       --hs-title-lh: 1.54;
-      --hs-title-gap: 4.7cqw;
-      --hs-num: 19.8cqw;
+      --hs-title-gap: 3.6cqw; /* [수정] 4.7 → 3.6cqw : 타이틀↔숫자 간격 */
+      --hs-num: 12cqw; /* [수정] 19.8 → 12cqw : "53th"/"100th" 숫자 대폭 축소 (1200px 기준 238px → 144px) */
 
       /* 세로 타임라인 */
       --hs-line-w: 1.5cqw;
@@ -1186,19 +1290,19 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--page-width);
+      max-width: var(--section-max); /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       container-type: inline-size;
-      background: #fdf5f2;
+      /* [수정] 배경색은 .band--job 으로 이동 (풀블리드 유지) */
 
       /* 배경 번짐 (데스크탑만) */
       --jb-glow: 1;
 
       /* 상단 헤더 */
       --jb-pad-top: 14.4cqw;
-      --jb-title: max(24px, 3.38cqw);
-      --jb-desc: max(13px, 1.44cqw);
+      --jb-title: max(22px, 2.7cqw); /* [수정] 3.38 → 2.7cqw */
+      --jb-desc: max(13px, 1.2cqw); /* [수정] 1.44 → 1.2cqw */
       --jb-desc-w: none;
       --jb-desc-gap: 2.13cqw;
 
@@ -1215,25 +1319,25 @@
 
       /* 카드 목록 */
       --jb-list-top: 5.57cqw;
-      --jb-side: 4cqw;
-      --jb-col-gap: 4.1cqw;
-      --jb-row-gap: 4.1cqw;
+      --jb-side: 14cqw; /* [수정] 좌우 대칭 여백 4 → 14cqw : 카드 영역이 중앙으로 모이고 카드 폭 축소 */
+      --jb-col-gap: 3cqw; /* [수정] 4.1 → 3cqw */
+      --jb-row-gap: 3cqw; /* [수정] 4.1 → 3cqw */
       --jb-cols: 2;
-      --jb-card-pad: 2.88cqw;
+      --jb-card-pad: 2.3cqw; /* [수정] 카드 안쪽 여백 2.88 → 2.3cqw */
       --jb-card-radius: 2.4cqw;
       --jb-img-radius: 2cqw;
       --jb-text-gap: 2.1cqw;
-      --jb-text: max(12px, 1.3cqw);
+      --jb-text: max(12px, 1.1cqw); /* [수정] 카드 문구 1.3 → 1.1cqw */
       --jb-text-lh: 1.67;
       --jb-meta-gap: 1.74cqw;
-      --jb-meta: max(11px, 1.12cqw);
-      --jb-arrow: max(22px, 2.8cqw);
+      --jb-meta: max(11px, 0.95cqw); /* [수정] 1.12 → 0.95cqw */
+      --jb-arrow: max(20px, 2.4cqw); /* [수정] 2.8 → 2.4cqw */
 
       /* CTA 버튼 */
       --jb-cta-gap: 6.2cqw;
-      --jb-cta-w: max(180px, 22.8cqw);
-      --jb-cta-h: max(42px, 5cqw);
-      --jb-cta-fs: max(14px, 1.45cqw);
+      --jb-cta-w: max(180px, 20cqw); /* [수정] 22.8 → 20cqw */
+      --jb-cta-h: max(42px, 4.4cqw); /* [수정] 5 → 4.4cqw */
+      --jb-cta-fs: max(14px, 1.25cqw); /* [수정] 1.45 → 1.25cqw */
       --jb-btn-from: #ea2f3f;
       --jb-btn-to: #ff7e5c;
       --jb-pad-bottom: 7cqw;
@@ -1241,6 +1345,7 @@
 
     /* 우측 가장자리 / 우하단 번짐 */
     .job__glow {
+      display: none; /* [수정] 밴드(.band--job::before)로 이동 */
       position: absolute;
       inset: 0;
       z-index: 0;
@@ -1552,6 +1657,12 @@
       }
 
       .mv-copy {
+        /* [수정] 데스크탑의 position:absolute(top/bottom:0)를 해제해 일반 흐름으로 복귀 →
+           아래 .mv-stage 가 텍스트 밑으로 내려가 겹치지 않음 */
+        position: relative;
+        top: auto;
+        bottom: auto;
+        justify-content: flex-start;
         gap: 40px;
         width: 100%;
         max-width: 560px;
@@ -1703,8 +1814,8 @@
 
       .mirae__title {
         top: 24.75%;
-        font-size: 3.7vw;
-        font-size: 3.7cqw;
+        font-size: 3.2vw; /* [수정] 태블릿 3.7 → 3.2 */
+        font-size: 3.2cqw;
         background: none;
         color: var(--black);
         -webkit-text-fill-color: currentColor;
@@ -1759,10 +1870,10 @@
       /* History: 2열 구조 유지, 값만 교체 */
       .history {
         --hs-pad-top: 13cqw;
-        --hs-title: max(22px, 3.7cqw);
+        --hs-title: max(20px, 3cqw); /* [수정] 태블릿 3.7 → 3.0cqw */
         --hs-title-lh: 1.6;
         --hs-title-gap: 5.8cqw;
-        --hs-num: 25.8cqw;
+        --hs-num: 17cqw; /* [수정] 태블릿 25.8 → 17cqw */
         --hs-line-w: 2.2cqw;
         --hs-side-gap: 7cqw;
         --hs-tl-top: 10.3cqw;
@@ -1938,7 +2049,7 @@
 
       /* Main visual */
       .main-visual__inner {
-        padding: 100px 22px 24px;
+        padding: 100px 22px 90px; /* [수정] 하단 24 → 72px : 스크롤 버튼(44px)이 이미지와 겹치지 않도록 */
       }
 
       .mv-copy {
@@ -2071,7 +2182,7 @@
         --hs-title: max(16px, 3.34cqw);
         --hs-title-lh: 1.5;
         --hs-title-gap: 3.8cqw;
-        --hs-num: 20.5cqw;
+        --hs-num: 16cqw; /* [수정] 모바일 20.5 → 16cqw */
         --hs-line-w: 0px;
         --hs-tl-top: 8.5cqw;
         --hs-tl-bottom: 16.3cqw;
@@ -2157,8 +2268,8 @@
         --jb-glow: 0;
 
         --jb-pad-top: 14.26cqw;
-        --jb-title: max(24px, 3.36cqw);
-        --jb-desc: max(13.5px, 1.68cqw);
+        --jb-title: max(22px, 3cqw); /* [수정] 태블릿 3.36 → 3.0cqw */
+        --jb-desc: max(13px, 1.5cqw); /* [수정] 1.68 → 1.5cqw */
         --jb-desc-gap: 2.19cqw;
 
         --jb-logo-w: 7.4cqw;
@@ -2172,10 +2283,10 @@
         --jb-bottle-y: 64.4cqw;
 
         --jb-list-top: 3.92cqw;
-        --jb-side: 3.9cqw;
-        --jb-col-gap: 1.9cqw;
-        --jb-row-gap: 1.9cqw;
-        --jb-card-pad: 2.45cqw;
+        --jb-side: 9cqw; /* [수정] 태블릿 좌우 대칭 여백 3.9 → 9cqw */
+        --jb-col-gap: 2.2cqw;
+        --jb-row-gap: 2.2cqw;
+        --jb-card-pad: 2.1cqw; /* [수정] 2.45 → 2.1cqw */
         --jb-text-gap: 2.25cqw;
         --jb-text: max(12px, 1.5cqw);
         --jb-meta-gap: 1.65cqw;
@@ -2212,7 +2323,7 @@
 
         --jb-cols: 1;
         --jb-list-top: 4.9cqw;
-        --jb-side: 5.2cqw;
+        --jb-side: 7cqw; /* [수정] 모바일 좌우 여백 5.2 → 7cqw */
         --jb-row-gap: 4.3cqw;
         --jb-card-pad: 6.1cqw;
         --jb-card-radius: 6.4cqw;
@@ -2253,12 +2364,12 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--page-width);
+      max-width: var(--section-max); /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
       /* 장식이 화면 밖으로 넘쳐도 가로 스크롤 방지 */
       container-type: inline-size;
-      background: #fdf6f2;
+      /* [수정] 배경색은 .band--innovation 으로 이동 (풀블리드 유지) */
       word-break: keep-all;
 
       /* 배경 장식 색 (메인 컬러). 빨강(#e60012)으로 바꾸려면 var(--red) */
@@ -2266,23 +2377,23 @@
 
       /* 헤더 */
       --in-pad-top: 7.4cqw;
-      --in-title: max(24px, 4.07cqw);
+      --in-title: max(22px, 2.8cqw); /* [수정] 4.07 → 2.8cqw (1200px 기준 49px → 34px) */
       --in-title-lh: 1.36;
-      --in-desc: max(13px, 1.6cqw);
+      --in-desc: max(13px, 1.25cqw); /* [수정] 1.6 → 1.25cqw */
       --in-desc-lh: 1.7;
       --in-desc-w: none;
       --in-desc-gap: 1.3cqw;
       --in-head-gap: 5.75cqw;
 
       /* 카드(말풍선 박스) */
-      --in-card-w: 91.8cqw;
+      --in-card-w: 80cqw; /* [수정] 91.8 → 80cqw : 좌우 각 10cqw 대칭 여백 확보 */
       --in-card-radius: 2.4cqw;
       --in-card-pt: 3.8cqw;
       --in-card-px: 4.3cqw;
       --in-card-pb: 3.5cqw;
 
       /* 말풍선 */
-      --in-bt: max(12px, 1.56cqw);
+      --in-bt: max(12px, 1.35cqw); /* [수정] 말풍선 글자 1.56 → 1.35cqw (카드 폭 축소에 맞춤) */
       --in-r: 1.7cqw;
       /* 모서리 반경 = 꼬리 크기 기준 */
       --in-bx: 1.7cqw;
@@ -2306,12 +2417,14 @@
       --in-mol-l: 5.3cqw;
       --in-mol-b: 1.4cqw;
 
-      --in-pad-bottom: 14.5cqw;
+      --in-pad-bottom: 11cqw; /* [수정] 14.5 → 11cqw */
     }
 
     /* 배경 그라데이션 장식 (가상요소) */
+    /* [수정] 아래 장식은 .band--innovation 의 ::before/::after 로 이동. 섹션 자체의 가상요소는 사용하지 않음 */
     .innovation::before,
     .innovation::after {
+      display: none;
       content: "";
       position: absolute;
       z-index: 0;
@@ -2551,13 +2664,13 @@
     @media (max-width: 1024px) {
       .innovation {
         --in-pad-top: 10.4cqw;
-        --in-title: max(22px, 4.4cqw);
+        --in-title: max(22px, 3.6cqw); /* [수정] 태블릿 4.4 → 3.6cqw */
         --in-title-lh: 1.3;
-        --in-desc: max(13px, 2cqw);
+        --in-desc: max(13px, 1.7cqw); /* [수정] 2 → 1.7cqw */
         --in-desc-gap: 1cqw;
         --in-head-gap: 7.8cqw;
 
-        --in-card-w: 92.8cqw;
+        --in-card-w: 88cqw; /* [수정] 태블릿 92.8 → 88cqw */
         --in-card-radius: 2.8cqw;
         --in-card-pt: 5.9cqw;
         --in-card-px: 6.1cqw;
@@ -2636,10 +2749,10 @@
       position: relative;
       isolation: isolate;
       width: 100%;
-      max-width: var(--page-width);
+      max-width: var(--section-max); /* [수정] 1920px → 1200px */
       margin: 0 auto;
       overflow: hidden;
-      padding: 76px clamp(24px, 5.8vw, 88px) 108px;
+      padding: 76px clamp(24px, 5.8vw, 88px) 108px; /* 좌우 대칭 패딩(유지) */
       background: var(--white);
     }
 
@@ -2655,7 +2768,7 @@
     }
 
     .welfare__title {
-      font-size: clamp(26px, 3.2vw, 42px);
+      font-size: clamp(24px, 2.8vw, 34px); /* [수정] 26~42px → 24~34px */
       font-weight: 800;
       line-height: 1.35;
       letter-spacing: -0.04em;
@@ -3029,6 +3142,7 @@
       </button>
     </section>
 
+    <div class="band band--mirae">
     <section class="mirae" id="mirae" aria-labelledby="mirae-title">
       <h2 class="mirae__title" id="mirae-title">
         <span class="mirae__title-em">새로운 미래</span>를 향해 나아갑니다
@@ -3046,6 +3160,7 @@
 
       <img class="mirae__char" src="images/mirae_run.png" alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습" />
     </section>
+    </div>
 
     <section class="history" id="history" aria-labelledby="history-title">
       <div class="history__panel" id="history-panel">
@@ -3300,6 +3415,7 @@
     </section>
     <!-- ===== Job (한미에서는 어떤 일을 할까요? · 현직자 직무소개) =====
            .history 바로 다음 형제 section 으로 삽입 (</section> 뒤, </main> 앞) -->
+    <div class="band band--job">
     <section class="job" id="job" aria-labelledby="job-title">
       <!-- 배경 장식: 우측 가장자리 번짐 (데스크탑 시안에만 노출) -->
       <div class="job__glow" aria-hidden="true"></div>
@@ -3384,9 +3500,11 @@
       <img class="job__bottle" src="./images/con3_bottle.png" alt="한미 로고가 붙은 파란 뚜껑의 약병" width="442" height="692"
         loading="lazy" decoding="async" />
     </section>
+    </div>
 
     <!-- ===== Innovation (당신의 가능성, 한미그룹에서 더 크게 성장합니다 · 성장/혁신 기사)
            .job 바로 다음 형제 section 으로 삽입 (</section> 뒤, </main> 앞) -->
+    <div class="band band--innovation">
     <section class="innovation" id="innovation" aria-labelledby="innovation-title">
       <div class="innovation__inner">
         <header class="innovation__head">
@@ -3502,6 +3620,7 @@
       <img class="innovation__molecule" src="./images/inno_molecule2.png" alt="" width="359" height="383" loading="lazy"
         decoding="async" />
     </section>
+    </div>
 
     <section class="welfare" id="welfare" aria-labelledby="welfare-title">
       <div class="welfare__inner">
