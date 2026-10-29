@@ -2839,6 +2839,7 @@
       .welfare__head {
         position: relative;
         text-align: center;
+        padding-bottom: 80px;
       }
 
       .welfare__title {
@@ -2858,8 +2859,8 @@
 
       .welfare__mascot {
         position: absolute;
-        top: -28px;
-        right: 0;
+        top: -42px;
+        right: 116px;
         width: clamp(100px, 17vw, 150px);
         height: auto;
         pointer-events: none;
@@ -3112,6 +3113,542 @@
           bottom: -34px;
           left: 14px;
           width: 122px;
+        }
+      }
+
+      /* ---------- Tasks (직무 탐색) ---------- */
+      .tasks {
+        position: relative;
+        overflow: hidden;
+        background: var(--white);
+      }
+
+      .tasks__hero {
+        position: relative;
+        isolation: isolate;
+        text-align: center;
+      }
+
+      .tasks__hero::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: -1;
+        height: 510px;
+        background: linear-gradient(
+          180deg,
+          #ffd9d0 0%,
+          #fff0eb 55%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+      .tasks__brand-bg {
+        position: absolute;
+        top: -44px;
+        left: 50%;
+        z-index: -1;
+        width: max(940px, 100vw);
+        max-width: none;
+        transform: translateX(-50%);
+        opacity: 0.13;
+        pointer-events: none;
+      }
+
+      .tasks__stage {
+        position: relative;
+        height: clamp(370px, calc(230px + 35vw), 490px);
+        overflow: hidden;
+      }
+
+      .tasks__character {
+        position: absolute;
+        top: clamp(120px, 22vw, 180px);
+        left: 50%;
+        width: min(76vw, 560px);
+        height: auto;
+        max-width: none;
+        transform: translateX(-50%);
+      }
+
+      .tasks__intro {
+        padding: 64px 24px 24px;
+      }
+
+      .tasks__title {
+        font-size: clamp(24px, 3.2vw, 34px);
+        font-weight: 800;
+        line-height: 1.42;
+        letter-spacing: -0.04em;
+      }
+
+      .tasks__description {
+        margin-top: 16px;
+        font-size: 13px;
+        line-height: 1.7;
+        letter-spacing: -0.02em;
+      }
+
+      .tasks__content {
+        width: min(100% - 48px, 1240px);
+        margin: 0 auto;
+        padding: 0 0 100px;
+      }
+
+      .tasks__tabs {
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 16px 0 18px;
+        border-bottom: 1px solid #e8e8e8;
+        scrollbar-width: none;
+        overscroll-behavior-x: contain;
+      }
+
+      .tasks__tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tasks__tab {
+        display: grid;
+        flex: 1 0 112px;
+        place-items: center;
+        min-height: 58px;
+        padding: 0 16px;
+        border-radius: 14px;
+        color: #777;
+        font-size: 15px;
+        font-weight: 500;
+        white-space: nowrap;
+        transition:
+          color var(--ease),
+          background-color var(--ease),
+          box-shadow var(--ease);
+      }
+
+      .tasks__tab[aria-selected="true"] {
+        color: var(--orange);
+        background: #fff8f5;
+        box-shadow: 0 5px 16px rgba(131, 77, 58, 0.12);
+        font-weight: 700;
+      }
+
+      .tasks__groups {
+        border-bottom: 1px solid #dedede;
+      }
+
+      .tasks__group {
+        border-bottom: 1px solid #dedede;
+      }
+
+      .tasks__group:last-child {
+        border-bottom: 0;
+      }
+
+      .tasks__group-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        min-height: 68px;
+        padding: 16px 36px;
+        color: #777;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 700;
+        transition: color var(--ease);
+      }
+
+      .tasks__group-toggle[aria-expanded="true"] {
+        color: var(--orange);
+      }
+
+      .tasks__group-label {
+        min-width: 0;
+      }
+
+      .tasks__count {
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        height: 18px;
+        padding: 0 7px;
+        border-radius: 999px;
+        background: var(--orange);
+        color: var(--white);
+        font-size: 12px;
+        line-height: 1;
+      }
+
+      .tasks__cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        padding: 0 36px 36px;
+      }
+
+      .tasks__panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition:
+          grid-template-rows 0.35s ease,
+          visibility 0s linear 0.35s;
+      }
+
+      .tasks__panel.is-open {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition:
+          grid-template-rows 0.35s ease,
+          visibility 0s;
+      }
+
+      .tasks__panel-inner {
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .tasks__role {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-width: 0;
+        min-height: 78px;
+        padding: 18px 26px;
+        border: 1px solid #ffe0d7;
+        border-radius: 20px;
+        background: linear-gradient(110deg, #fffaf8 0%, #fff 80%);
+        box-shadow: 0 5px 14px rgba(124, 81, 64, 0.1);
+        color: #111;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 500;
+        transition:
+          transform var(--ease),
+          border-color var(--ease),
+          box-shadow var(--ease);
+      }
+
+      .tasks__role:hover {
+        transform: translateY(-2px);
+        border-color: #ff9a7d;
+        box-shadow: 0 8px 18px rgba(124, 81, 64, 0.15);
+      }
+
+      .tasks__role-name {
+        min-width: 0;
+      }
+
+      .tasks__role-arrow {
+        flex: none;
+        width: 20px;
+        height: 20px;
+        color: #888;
+      }
+
+      .tasks__empty {
+        padding: 30px 36px;
+        color: #777;
+        font-size: 14px;
+      }
+
+      .tasks-modal {
+        position: fixed;
+        inset: 50% auto auto 50%;
+        width: min(800px, calc(100vw - 32px));
+        max-width: none;
+        max-height: min(84vh, 760px);
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        transform: translate(-50%, -50%);
+        border: 0;
+        border-radius: 24px;
+        background: var(--white);
+        color: var(--black);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+      }
+
+      .tasks-modal::backdrop {
+        background: rgba(0, 0, 0, 0.58);
+        backdrop-filter: blur(2px);
+      }
+
+      .tasks-modal__visual {
+        position: relative;
+        height: 190px;
+        overflow: hidden;
+      }
+
+      .tasks-modal__visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tasks-modal__close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--orange);
+        color: var(--white);
+      }
+
+      .tasks-modal__close svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .tasks-modal__body {
+        padding: 28px 60px 48px;
+      }
+
+      .tasks-modal__heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px 20px;
+      }
+
+      .tasks-modal__title {
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .tasks-modal__category,
+      .tasks-modal__group {
+        color: #777;
+        font-size: 15px;
+      }
+
+      .tasks-modal__category {
+        color: var(--orange);
+      }
+
+      .tasks-modal__level {
+        margin-top: 4px;
+        font-size: 13px;
+      }
+
+      .tasks-modal__section {
+        margin-top: 54px;
+      }
+
+      .tasks-modal__section + .tasks-modal__section {
+        margin-top: 38px;
+        padding-top: 38px;
+        border-top: 1px solid #dedede;
+      }
+
+      .tasks-modal__section h3 {
+        margin-bottom: 16px;
+        font-size: 19px;
+        font-weight: 700;
+      }
+
+      .tasks-modal__section ul {
+        display: grid;
+        gap: 10px;
+        padding-left: 0;
+      }
+
+      .tasks-modal__section li {
+        position: relative;
+        padding-left: 15px;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .tasks-modal__section li::before {
+        content: "";
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--orange);
+      }
+
+      @media (max-width: 1024px) {
+        .tasks__stage {
+          height: clamp(390px, 60vw, 460px);
+        }
+
+        .tasks__character {
+          width: min(72vw, 460px);
+        }
+
+        .tasks__content {
+          width: calc(100% - 56px);
+          padding-bottom: 88px;
+        }
+
+        .tasks__tab {
+          flex: 1 0 0;
+          min-width: 0;
+          min-height: 56px;
+          padding-inline: 8px;
+          font-size: 14px;
+        }
+
+        .tasks__group-toggle {
+          padding-inline: 20px;
+        }
+
+        .tasks__cards {
+          padding-inline: 20px;
+        }
+
+        .tasks__role {
+          min-height: 72px;
+          padding-inline: 20px;
+          border-radius: 16px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 568px) {
+        .tasks__hero::before {
+          height: 430px;
+        }
+
+        .tasks__brand-bg {
+          top: -36px;
+        }
+
+        .tasks__stage {
+          height: 370px;
+        }
+
+        .tasks__character {
+          top: 125px;
+          width: min(104vw, 430px);
+        }
+
+        .tasks__intro {
+          padding: 78px 20px 22px;
+        }
+
+        .tasks__title {
+          font-size: 24px;
+          line-height: 1.45;
+        }
+
+        .tasks__description {
+          max-width: 340px;
+          margin: 16px auto 0;
+          font-size: 12px;
+          line-height: 1.75;
+        }
+
+        .tasks__content {
+          width: calc(100% - 40px);
+          padding-bottom: 72px;
+        }
+
+        .tasks__tabs {
+          gap: 4px;
+          margin-right: -20px;
+          padding: 16px 20px 18px 0;
+        }
+
+        .tasks__tab {
+          flex: 0 0 88px;
+          min-height: 62px;
+          padding-inline: 10px;
+          border-radius: 14px;
+          font-size: 14px;
+        }
+
+        .tasks__group-toggle {
+          min-height: 68px;
+          padding: 16px 20px;
+          font-size: 14px;
+        }
+
+        .tasks__cards {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 12px;
+          padding: 0 12px 24px;
+        }
+
+        .tasks__role {
+          min-height: 68px;
+          padding: 16px 18px;
+          font-size: 14px;
+        }
+
+        .tasks__empty {
+          padding-inline: 20px;
+        }
+
+        .tasks-modal {
+          width: calc(100vw - 24px);
+          max-height: 90dvh;
+          border-radius: 20px;
+        }
+
+        .tasks-modal__visual {
+          height: 142px;
+        }
+
+        .tasks-modal__close {
+          top: 12px;
+          right: 12px;
+          width: 38px;
+          height: 38px;
+        }
+
+        .tasks-modal__body {
+          padding: 24px 22px 36px;
+        }
+
+        .tasks-modal__title {
+          font-size: 20px;
+        }
+
+        .tasks-modal__category,
+        .tasks-modal__group {
+          font-size: 13px;
+        }
+
+        .tasks-modal__section {
+          margin-top: 36px;
+        }
+
+        .tasks-modal__section + .tasks-modal__section {
+          margin-top: 28px;
+          padding-top: 28px;
+        }
+
+        .tasks-modal__section h3 {
+          font-size: 17px;
+        }
+
+        .tasks-modal__section li {
+          font-size: 14px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .tasks__tab,
+        .tasks__role,
+        .tasks__panel,
+        .tasks__panel.is-open {
+          transition: none;
         }
       }
     </style>
@@ -4175,20 +4712,19 @@
             />
           </header>
 
-          <div class="welfare__lead">
-            <h3 class="welfare__highlight">
-              💗 오늘의 나도, 내일의 나도 든든하게!
-            </h3>
-            <p class="welfare__lead-desc">
-              건강, 성장, 문화생활까지 알차게 챙겨드려요.
-            </p>
-          </div>
-
           <div
             class="welfare__scroll"
             role="region"
             aria-label="회사 복지 목록"
           >
+            <div class="welfare__lead">
+              <h3 class="welfare__highlight">
+                💗 오늘의 나도, 내일의 나도 든든하게!
+              </h3>
+              <p class="welfare__lead-desc">
+                건강, 성장, 문화생활까지 알차게 챙겨드려요.
+              </p>
+            </div>
             <ul class="welfare__list">
               <li>
                 <article class="welfare__card">
@@ -4288,6 +4824,16 @@
                   />
                 </article>
               </li>
+            </ul>
+            <div class="welfare__lead">
+              <h3 class="welfare__highlight">
+                🏠 가족의 행복도 빼놓을 수 없죠!
+              </h3>
+              <p class="welfare__lead-desc">
+                축하할 때도, 도움이 필요할 때도 한미가 함께해요.
+              </p>
+            </div>
+            <ul class="welfare__list">
               <li>
                 <article class="welfare__card">
                   <div>
@@ -4591,6 +5137,150 @@
           decoding="async"
         />
       </section>
+
+      <section class="tasks" id="tasks" aria-labelledby="tasks-title">
+        <div class="tasks__hero">
+          <img
+            class="tasks__brand-bg"
+            src="./images/tasks_bg_title.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="tasks__stage">
+            <img
+              class="tasks__character"
+              src="./images/tasks_character.png"
+              alt="돋보기를 들고 직무를 살펴보는 한미 캐릭터"
+              width="2048"
+              height="1408"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <header class="tasks__intro">
+            <h2 class="tasks__title" id="tasks-title">
+              알약이를 따라<br />나에게 맞는 직무를 찾아봐요!
+            </h2>
+            <p class="tasks__description">
+              연구부터 생산, 영업, 경영지원까지 당신의 가능성이 빛날 자리를
+              안내해 드릴게요.
+            </p>
+          </header>
+        </div>
+
+        <div class="tasks__content">
+          <div class="tasks__tabs" role="tablist" aria-label="직무 분야">
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-rnd"
+              aria-selected="true"
+              data-category="R&amp;D"
+              data-job-key="rnd"
+            >
+              R&amp;D
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-production"
+              aria-selected="false"
+              data-category="생산/품질"
+              data-job-key="prod"
+            >
+              생산/품질
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-sales"
+              aria-selected="false"
+              data-category="영업"
+              data-job-key="sales"
+            >
+              영업
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-management"
+              aria-selected="false"
+              data-category="경영관리"
+              data-job-key="mps"
+            >
+              경영관리
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-clinical"
+              aria-selected="false"
+              data-category="임상"
+              data-job-key="cl"
+            >
+              임상
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-global"
+              aria-selected="false"
+              data-category="글로벌"
+              data-job-key="global"
+            >
+              글로벌
+            </button>
+            <button
+              class="tasks__tab"
+              type="button"
+              role="tab"
+              id="tasks-tab-healthcare"
+              aria-selected="false"
+              data-category="헬스케어"
+              data-job-key="healthcare"
+            >
+              헬스케어
+            </button>
+          </div>
+          <div class="tasks__groups" id="tasks-groups" aria-live="polite"></div>
+        </div>
+
+        <dialog
+          class="tasks-modal"
+          id="tasks-modal"
+          aria-labelledby="tasks-modal-title"
+        >
+          <div class="tasks-modal__visual">
+            <img
+              src="./images/tasks_rnd_bg.jpg"
+              alt="연구실 현미경과 실험 장갑"
+              width="800"
+              height="180"
+            />
+            <button
+              class="tasks-modal__close"
+              type="button"
+              aria-label="직무 상세 닫기"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 5l14 14M19 5L5 19"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="tasks-modal__body" id="tasks-modal-body"></div>
+        </dialog>
+      </section>
     </main>
 
     <footer class="footer">
@@ -4729,6 +5419,298 @@
         section.classList.add("is-collapsible");
         toggle.hidden = false;
         setState(false);
+      })();
+
+      (function () {
+        var tabs = Array.from(document.querySelectorAll(".tasks__tab"));
+        var groups = document.getElementById("tasks-groups");
+        var modal = document.getElementById("tasks-modal");
+        var modalBody = document.getElementById("tasks-modal-body");
+        var closeButton = modal && modal.querySelector(".tasks-modal__close");
+        if (!tabs.length || !groups || !modal || !modalBody || !closeButton)
+          return;
+
+        var categories = [
+          {
+            name: "R&D",
+            jobKey: "rnd",
+            groups: [
+              {
+                label: "연구센터 (경기도 동탄)",
+                roles: [
+                  "NCE (New Chemical Entity)",
+                  "QS&F (Quality Science & Formulation)",
+                  "MST (Manufacturing Science Technology)",
+                  "TE (Toxicology Evaluation)",
+                  "DST (Drug Science & Technology)",
+                  "BSS (Biological & Structural Evaluation Science)",
+                ],
+              },
+              {
+                label: "제제연구소 [의약혁신센터] (경기도 광교)",
+                roles: ["신제형연구 (전문연구요원)"],
+              },
+            ],
+          },
+          {
+            name: "생산/품질",
+            jobKey: "prod",
+            groups: [
+              {
+                label: "팔탄제조센터 (경기도 화성)",
+                roles: ["제조", "포장", "품질관리", "기술지원"],
+              },
+              {
+                label: "평택제조센터 (경기도 평택)",
+                roles: ["DS생산 (학사)", "DS생산 (전문학사)"],
+              },
+            ],
+          },
+          {
+            name: "영업",
+            jobKey: "sales",
+            groups: [
+              {
+                label: "전국 (Mobile Office)",
+                roles: ["제약영업"],
+              },
+              {
+                label: "본사 (서울시 송파구)",
+                roles: ["해외영업", "IT솔루션영업"],
+              },
+            ],
+          },
+          {
+            name: "경영관리",
+            jobKey: "mps",
+            groups: [
+              {
+                label: "본사 (서울시 송파구)",
+                roles: ["구매", "국내법무", "특허", "안전관리", "인사총무"],
+              },
+            ],
+          },
+          {
+            name: "임상",
+            jobKey: "cl",
+            groups: [
+              {
+                label: "본사 (서울시 송파구)",
+                roles: [
+                  "Pipeline Valuation (신약가치평가)",
+                  "Market Intelligence (신약개발 전략분석)",
+                  "Data Management",
+                  "Biostatistician",
+                ],
+              },
+            ],
+          },
+          {
+            name: "글로벌",
+            jobKey: "global",
+            groups: [
+              {
+                label: "본사 (서울시 송파구)",
+                roles: ["Global Regulatory Affairs", "Licensing"],
+              },
+            ],
+          },
+          {
+            name: "헬스케어",
+            jobKey: "healthcare",
+            groups: [
+              {
+                label: "본사 (서울시 송파구)",
+                roles: [
+                  "식품영업",
+                  "식품커머스운영",
+                  "화장품 커머스사업기획",
+                  "화장품 상품기획",
+                  "화장품 홈쇼핑영업/운영",
+                  "화장품 국내영업",
+                  "화장품 해외영업",
+                  "화장품 글로벌마케팅",
+                  "해외이커머스운영",
+                ],
+              },
+              {
+                label: "서울/수도권/영남",
+                roles: ["의료기기영업"],
+              },
+            ],
+          },
+        ];
+
+        function escapeHtml(value) {
+          return String(value).replace(/[&<>"']/g, function (character) {
+            return {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            }[character];
+          });
+        }
+
+        function renderCategory(category) {
+          groups.innerHTML = category.groups
+            .map(function (group, index) {
+              var panelId = "tasks-panel-" + index;
+              var label = group.label;
+              var roleCards = group.roles
+                .map(function (role) {
+                  return (
+                    '<button class="tasks__role" type="button" data-role="' +
+                    escapeHtml(role) +
+                    '" data-group="' +
+                    escapeHtml(group.label) +
+                    '"><span class="tasks__role-name">' +
+                    escapeHtml(role) +
+                    '</span><svg class="tasks__role-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
+                  );
+                })
+                .join("");
+
+              return (
+                '<section class="tasks__group"><button class="tasks__group-toggle" type="button" aria-expanded="false" aria-controls="' +
+                panelId +
+                '"><span class="tasks__group-label">' +
+                escapeHtml(label) +
+                '</span><span class="tasks__count">' +
+                group.roles.length +
+                '</span></button><div class="tasks__panel" id="' +
+                panelId +
+                '" aria-hidden="true" inert><div class="tasks__panel-inner"><div class="tasks__cards">' +
+                roleCards +
+                "</div></div></div></section>"
+              );
+            })
+            .join("");
+        }
+
+        function openRole(role, group, category) {
+          var isNce = role === "NCE (New Chemical Entity)";
+          var duties = isNce
+            ? [
+                "저분자 기반 비만대사 신약 개발 연구",
+                "약물설계, 유기화합물 합성 및 후보물질 탐색",
+              ]
+            : [
+                role + " 관련 업무 수행",
+                "유관 부서와 협업하여 과제 및 프로젝트 진행",
+              ];
+          var qualifications = isNce
+            ? [
+                "석사 이상 학력 소지자",
+                "화학, 약학 등 관련 전공자",
+                "의약화학, 약리학 등 신약개발 연구분야 지식 보유자",
+              ]
+            : [
+                "관련 분야 전공 또는 직무 경험 보유자",
+                "직무에 대한 이해와 원활한 협업 역량 보유자",
+              ];
+
+          modalBody.innerHTML =
+            '<div class="tasks-modal__heading"><h2 class="tasks-modal__title" id="tasks-modal-title">' +
+            escapeHtml(role) +
+            '</h2><span class="tasks-modal__category">' +
+            escapeHtml(category) +
+            '</span><span class="tasks-modal__group">' +
+            escapeHtml(group) +
+            '</span></div><p class="tasks-modal__level">*신입/경력</p><section class="tasks-modal__section"><h3>직무 내용</h3><ul>' +
+            duties
+              .map(function (item) {
+                return "<li>" + escapeHtml(item) + "</li>";
+              })
+              .join("") +
+            '</ul></section><section class="tasks-modal__section"><h3>자격요건</h3><ul>' +
+            qualifications
+              .map(function (item) {
+                return "<li>" + escapeHtml(item) + "</li>";
+              })
+              .join("") +
+            "</ul></section>";
+          modal.showModal();
+        }
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            var category = categories.find(function (item) {
+              return item.jobKey === tab.dataset.jobKey;
+            });
+            if (!category) return;
+
+            tabs.forEach(function (item) {
+              item.setAttribute("aria-selected", String(item === tab));
+            });
+            renderCategory(category);
+            tab.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "center",
+            });
+          });
+
+          tab.addEventListener("keydown", function (event) {
+            if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+            event.preventDefault();
+            var direction = event.key === "ArrowRight" ? 1 : -1;
+            var nextIndex =
+              (tabs.indexOf(tab) + direction + tabs.length) % tabs.length;
+            tabs[nextIndex].focus();
+            tabs[nextIndex].click();
+          });
+        });
+
+        groups.addEventListener("click", function (event) {
+          var toggle = event.target.closest(".tasks__group-toggle");
+          if (toggle) {
+            var expanded = toggle.getAttribute("aria-expanded") === "true";
+            groups.querySelectorAll(".tasks__group-toggle").forEach(function (item) {
+              if (item === toggle) return;
+              item.setAttribute("aria-expanded", "false");
+              var otherPanel = document.getElementById(
+                item.getAttribute("aria-controls"),
+              );
+              otherPanel.classList.remove("is-open");
+              otherPanel.setAttribute("aria-hidden", "true");
+              otherPanel.inert = true;
+            });
+
+            var panel = document.getElementById(
+              toggle.getAttribute("aria-controls"),
+            );
+            toggle.setAttribute("aria-expanded", String(!expanded));
+            panel.classList.toggle("is-open", !expanded);
+            panel.setAttribute("aria-hidden", String(expanded));
+            panel.inert = expanded;
+            return;
+          }
+
+          var roleButton = event.target.closest(".tasks__role");
+          if (!roleButton) return;
+          var activeTab = tabs.find(function (tab) {
+            return tab.getAttribute("aria-selected") === "true";
+          });
+          openRole(
+            roleButton.dataset.role,
+            roleButton.dataset.group,
+            activeTab ? activeTab.dataset.category : "R&D",
+          );
+        });
+
+        closeButton.addEventListener("click", function () {
+          modal.close();
+        });
+        modal.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") modal.close();
+        });
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) modal.close();
+        });
+
+        renderCategory(categories[0]);
       })();
     </script>
   </body>

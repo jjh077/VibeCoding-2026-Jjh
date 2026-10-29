@@ -1,0 +1,92 @@
+[
+  {
+    "tabName": "R&D",
+    "jobKey": "rnd",
+    "items": [
+      "연구센터 (경기도 동탄)",
+      "NCE (New Chemical Entity)",
+      "QS&F (Quality Science & Formulation)",
+      "MST (Manufacturing Science Technology)",
+      "TE (Toxicology Evaluation)",
+      "DST (Drug Science & Technology)",
+      "BSS (Biological & Structural Evaluation Science)",
+      "제제연구소 [의약혁신센터] (경기도 광교)",
+      "신제형연구 (전문연구요원)"
+    ]
+  },
+  {
+    "tabName": "생산/품질",
+    "jobKey": "prod",
+    "items": [
+      "팔탄제조센터 (경기도 화성)",
+      "제조",
+      "포장",
+      "품질관리",
+      "기술지원",
+      "평택제조센터 (경기도 평택)",
+      "DS생산 (학사)",
+      "DS생산 (전문학사)"
+    ]
+  },
+  {
+    "tabName": "영업",
+    "jobKey": "sales",
+    "items": [
+      "전국 (Mobile Office)",
+      "제약영업",
+      "본사 (서울시 송파구)",
+      "해외영업",
+      "IT솔루션영업"
+    ]
+  },
+  {
+    "tabName": "경영관리",
+    "jobKey": "mps",
+    "items": [
+      "본사 (서울시 송파구)",
+      "구매",
+      "국내법무",
+      "특허",
+      "안전관리",
+      "인사총무"
+    ]
+  },
+  {
+    "tabName": "임상",
+    "jobKey": "cl",
+    "items": [
+      "본사 (서울시 송파구)",
+      "Pipeline Valuation (신약가치평가)",
+      "Market Intelligence (신약개발 전략분석)",
+      "Data Management",
+      "Biostatistician"
+    ]
+  },
+  {
+    "tabName": "글로벌",
+    "jobKey": "global",
+    "items": [
+      "본사 (서울시 송파구)",
+      "Global Regulatory Affairs",
+      "Licensing"
+    ]
+  },
+  {
+    "tabName": "헬스케어",
+    "jobKey": "healthcare",
+    "items": [
+      "본사 (서울시 송파구)",
+      "식품영업",
+      "식품커머스운영",
+      "화장품 커머스사업기획",
+      "화장품 상품기획",
+      "화장품 홈쇼핑영업/운영",
+      "화장품 국내영업",
+      "화장품 해외영업",
+      "화장품 글로벌마케팅",
+      "해외이커머스운영",
+      "서울/수도권/영남",
+      "의료기기영업"
+    ]
+  }
+]
