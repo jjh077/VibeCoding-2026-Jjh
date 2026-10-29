@@ -5,7 +5,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "저분자 기반 비만대사 신약 개발 연구",
 "약물설계, 유기화합물 합성 및 후보물질 탐색"
@@ -29,7 +29,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "펩타이드 합성/정제/분석 업무",
 "AI 기반 펩타이드 신약 후보 물질 디자인 및 탐색 연구",
@@ -53,7 +53,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "바이오의약품 제조 공정 개발, 생산 및 분석 연구",
 "차세대 플랫폼 개발, 타겟 발굴 및 바이오의약품 연구"
@@ -78,7 +78,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "해외 GLP 비임상 독성시험 관리",
 "내부 비임상 독성시험 수행",
@@ -102,7 +102,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "신약 후보물질의 CMC 분석 연구",
 "시험법 개발 및 Qualification/Validation",
@@ -129,7 +129,7 @@
 "department": "R&D",
 "location": "연구센터",
 "category": "*신입/경력",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "LC/QTOF MS 기반 합성/바이오의약품 및 신규 모달리티 구조 연구 및 특성 분석",
 "원료, 중간체 및 최종 물질 내 유연물질, 분해 산물의 구조 규명 및 발생 경로 연구",
@@ -152,7 +152,7 @@
 "department": "R&D",
 "location": "제제연구소 [의약혁신센터]",
 "category": "*신입",
-"image": "/img/rnd_bg.jpg",
+"image": "./images/tasks_rnd_bg.jpg",
 "job_description": [
 "신제품 개발전략 수립 및 처방설계 연구",
 "제형선정 연구 및 처방 안정성 연구",
@@ -174,7 +174,7 @@
 "department": "생산/품질",
 "location": "팔탄제조센터",
 "category": "*신입/경력",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "내용고형제 (칭량, 과립, 타정, 코팅, 인쇄·선별) 제조공정 수행",
 "제조설비 운전 및 공정 중 점검",
@@ -199,7 +199,7 @@
 "department": "생산/품질",
 "location": "팔탄제조센터",
 "category": "*신입/경력",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "병, PTP 포장, 검체 채취, 반제품/자재 이송"
 ],
@@ -218,7 +218,7 @@
 "department": "생산/품질",
 "location": "팔탄제조센터",
 "category": "*신입/경력",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "제품 출하 및 안정성 관련 품질관리 (기기분석, 이화학 시험)"
 ],
@@ -239,7 +239,7 @@
 "department": "생산/품질",
 "location": "팔탄제조센터",
 "category": "*신입/경력",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "생산설비 정비 및 점검 업무 수행",
 "신규 생산설비 구매 검토, 제작 관리 및 설치"
@@ -260,7 +260,7 @@
 "department": "생산/품질",
 "location": "평택제조센터",
 "category": "*신입",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "DS 제품 생산",
 "IPC 수행 및 장비 Qualification",
@@ -284,7 +284,7 @@
 "department": "생산/품질",
 "location": "평택제조센터",
 "category": "*신입",
-"image": "/img/quality_bg.jpg",
+"image": "./images/tasks_quality_bg.jpg",
 "job_description": [
 "DS 제품 생산",
 "IPC 수행 및 장비 Qualification",
@@ -305,7 +305,7 @@
 "department": "영업",
 "location": "전국",
 "category": "*채용연계형 인턴",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "MR (병의원 영업)"
 ],
@@ -320,7 +320,7 @@
 "department": "영업",
 "location": "본사",
 "category": "*신입",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "미주/유럽/중동/아프리카 권역 Account 발굴/관리",
 "의료장비(약품자동조제기/자동화장비) 및 약품(완제/원료) 수출",
@@ -342,7 +342,7 @@
 "department": "영업",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "대외사업 영업전략 수립 및 사업개발 조직 리딩",
 "신규 고객 및 신규 사업기회 발굴",
@@ -373,7 +373,7 @@
 "department": "경영관리",
 "location": "본사",
 "category": "*경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "구매 전략 수립 및 조달 운영 관리",
 "원가 절감 및 비용 최적화 전략 수립 및 추진",
@@ -397,7 +397,7 @@
 "department": "경영관리",
 "location": "본사",
 "category": "*경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "국내 사업 관련 계약 검토 및 자문",
 "분쟁, 소송 등 법적절차 대응",
@@ -421,7 +421,7 @@
 "department": "경영관리",
 "location": "본사",
 "category": "*경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "한미약품 제품 개발 특허 조사 및 검토, FTO, 특허 전략 수립",
 "한미약품 제품 특허 심판 및 소송 등 분쟁 대응",
@@ -446,7 +446,7 @@
 "department": "경영관리",
 "location": "본사",
 "category": "*신입/경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "한미사이언스 안전관리 업무",
 "정기 안전점검 (월 점검, 제3자 안전진단, 자율점검) 및 정기 위험성 평가·조치계획 수립",
@@ -472,7 +472,7 @@
 "department": "경영관리",
 "location": "본사",
 "category": "*계약직 (전환형)",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "채용, 교육, 평가 등 인사업무 전반 운영 관리",
 "인사 제도 및 프로세스 관리",
@@ -493,7 +493,7 @@
 "department": "임상",
 "location": "본사",
 "category": "*경력",
-"image": "/img/cd_bg.jpg",
+"image": "./images/tasks_cd_bg.jpg",
 "job_description": [
 "임상 성공 확률 및 시장 점유율 전망을 위한 약물 개발 현황, 차별화 요소, 시장성 등 평가",
 "자산의 경제성 및 사업가치 산출 (예: rNPV 모델링)",
@@ -518,7 +518,7 @@
 "department": "임상",
 "location": "본사",
 "category": "*신입/경력",
-"image": "/img/cd_bg.jpg",
+"image": "./images/tasks_cd_bg.jpg",
 "job_description": [
 "국내외 제약/바이오 산업, 치료제 및 신약개발 동향 모니터링 및 분석",
 "주요 질환별 시장환경, 경쟁구도 및 경쟁 파이프라인 분석",
@@ -542,7 +542,7 @@
 "department": "임상",
 "location": "본사",
 "category": "*신입/경력",
-"image": "/img/cd_bg.jpg",
+"image": "./images/tasks_cd_bg.jpg",
 "job_description": [
 "임상시험 데이터 관리 업무 수행",
 "CRO Management"
@@ -565,7 +565,7 @@
 "department": "임상",
 "location": "본사",
 "category": "*신입/경력",
-"image": "/img/cd_bg.jpg",
+"image": "./images/tasks_cd_bg.jpg",
 "job_description": [
 "임상시험 디자인 및 통계 분석 계획 수립",
 "CRO 통계 업무 관리 및 임상시험 진행 관리",
@@ -592,7 +592,7 @@
 "department": "글로벌",
 "location": "본사",
 "category": "*신입/경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "신약 및 신제품 해외 시판 허가 신청 및 승인",
 "해외 임상시험 신청 및 승인",
@@ -616,7 +616,7 @@
 "department": "글로벌",
 "location": "본사",
 "category": "*경력",
-"image": "/img/mps_bg.jpg",
+"image": "./images/tasks_mps_bg.jpg",
 "job_description": [
 "한미약품 신약 파이프라인 라이선스 아웃",
 "Alliance Management",
@@ -644,7 +644,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "건강기능식품·케어푸드 특수유통 채널 영업 및 거래처 관리",
 "병원, 요양원, 실버타운, 복지시설 등 신규 거래처 발굴 및 운영",
@@ -670,7 +670,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "디지털 광고 (Meta, Google, 네이버 등) 운영 및 성과 분석",
 "광고 효율 개선을 위한 퍼포먼스·세일즈 전략 수립",
@@ -697,7 +697,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "더마 코스메틱 브랜드 사업 및 커머스 전략 총괄",
 "온라인 채널 (자사몰, 네이버, 쿠팡, 올리브영 등) 매출 및 손익 관리",
@@ -725,7 +725,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "화장품 신상품 기획/개발/운영",
 "국내외 화장품 시장/소비자/트렌드 분석",
@@ -753,7 +753,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "홈쇼핑 채널 영업 및 운영 관리",
 "방송 편성 및 프로모션 운영",
@@ -775,7 +775,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "국내 거래처 발굴 및 영업 관리",
 "국내 유통 채널 및 온/오프라인 입점 영업",
@@ -800,7 +800,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "해외 (일본, 중국, 미주) 영업, 운영 및 실적 관리",
 "신규 해외 거래처 발굴 및 바이어 관리",
@@ -825,7 +825,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "글로벌 SNS 채널 기획 및 운영",
 "인플루언서 협업 및 콘텐츠 운영",
@@ -852,7 +852,7 @@
 "department": "헬스케어",
 "location": "본사",
 "category": "*경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "Amazon 스토어 운영 및 관리",
 "상품 등록 및 운영 전략 수립",
@@ -877,7 +877,7 @@
 "department": "헬스케어",
 "location": "서울/수도권/영남",
 "category": "*신입/경력",
-"image": "/img/sm_bg.jpg",
+"image": "./images/tasks_sm_bg.jpg",
 "job_description": [
 "거래처 매출 및 고객 관리",
 "영업 전략 수립 및 운영",
