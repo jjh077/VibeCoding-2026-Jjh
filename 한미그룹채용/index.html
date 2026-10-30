@@ -102,14 +102,41 @@
         position: relative;
       }
 
+      .scroll-reveal {
+        opacity: 0;
+        translate: 0 20%;
+        transition:
+          opacity 700ms ease,
+          translate 700ms cubic-bezier(0.2, 0.65, 0.3, 1);
+      }
+
+      .scroll-reveal.is-revealed {
+        opacity: 1;
+        translate: 0 0;
+      }
+
       /* ---------- Header (공통 레이아웃 / 헤더) ---------- */
       .header {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         height: 100px;
         z-index: 10;
+        background: transparent;
+        transition:
+          transform 280ms ease,
+          background-color 280ms ease,
+          box-shadow 280ms ease;
+      }
+
+      .header.is-hidden {
+        transform: translateY(-100%);
+      }
+
+      .header.is-visible {
+        background: var(--white);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       }
 
       .header__inner {
@@ -1302,6 +1329,11 @@
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
+        }
+
+        .scroll-reveal {
+          opacity: 1;
+          translate: none;
         }
 
         * {
@@ -4297,10 +4329,6 @@
         visibility: hidden;
         transform: translateY(8px);
         pointer-events: none;
-        transition:
-          opacity 200ms ease,
-          transform 200ms ease,
-          visibility 0s linear 200ms;
       }
 
       .exposition__campus-detail.is-visible {
@@ -4309,17 +4337,10 @@
         visibility: visible;
         transform: translateY(0);
         pointer-events: auto;
-        transition-delay: 0s;
       }
 
       .exposition__campus-detail[hidden] {
         display: none;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .exposition__campus-detail {
-          transition: none;
-        }
       }
 
       .exposition__campus-detail-item {
@@ -4547,6 +4568,479 @@
         }
       }
 
+      /* ---------- Con8 (빠른 링크) ---------- */
+      .con8 {
+        position: relative;
+        overflow: hidden;
+        padding: 84px clamp(24px, 2.5vw, 48px) 72px;
+        background: #fff;
+      }
+
+      .con8__filters {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .con8__inner {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: clamp(24px, 4vw, 64px);
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+      }
+
+      .con8__card {
+        min-width: 0;
+      }
+
+      .con8__card:nth-child(1) {
+        margin-top: 40px;
+      }
+
+      .con8__card:nth-child(3) {
+        margin-top: 72px;
+      }
+
+      .con8__link {
+        position: relative;
+        display: block;
+        color: inherit;
+        text-align: center;
+      }
+
+      .con8__image-wrap {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 0.835;
+        border-radius: 12px;
+        background: #333;
+      }
+
+      .con8__image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 300ms ease;
+      }
+
+      .con8__link:hover .con8__image,
+      .con8__link:focus-visible .con8__image {
+        transform: scale(1.04);
+      }
+
+      .con8__caption {
+        display: grid;
+        gap: 0;
+        padding: 12px 4px 0;
+      }
+
+      .con8__action {
+        display: none;
+      }
+
+      .con8__question {
+        color: #333;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .con8__marked-text {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+      }
+
+      .con8__mark {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        height: auto;
+        filter: url("#con8-remove-black");
+        pointer-events: none;
+      }
+
+      .con8__marked-text .con8__mark {
+        display: inline;
+      }
+
+      .con8__mark--arrow-left {
+        bottom: 18px;
+        left: 2%;
+        width: clamp(38px, 4vw, 58px);
+      }
+
+      .con8__mark--star {
+        right: -2%;
+        bottom: 28px;
+        width: clamp(42px, 4.5vw, 62px);
+      }
+
+      .con8__mark--circle {
+        inset: 50% auto auto 50%;
+        width: 68px;
+        max-width: none;
+        transform: translate(-50%, -50%);
+      }
+
+      .con8__mark--arrow-right {
+        right: 2%;
+        bottom: 20px;
+        width: clamp(38px, 4vw, 58px);
+      }
+
+      .con8__mark--underline {
+        right: 0;
+        bottom: -2px;
+        left: -2px;
+        width: 100%;
+      }
+
+      .con8__mark--underline-wide {
+        right: -4px;
+        bottom: -4px;
+        left: -1px;
+        width: calc(100% + 8px);
+      }
+
+      .con8__action {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--black);
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .con8__arrow {
+        display: grid;
+        width: 24px;
+        height: 24px;
+        flex: none;
+        place-items: center;
+        border-radius: 50%;
+        color: #fff;
+        background: linear-gradient(135deg, #ffc99a 0%, #ff714b 100%);
+      }
+
+      .con8__arrow svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .con8__mascot {
+        position: absolute;
+        top: 24px;
+        right: max(24px, calc((100% - 1280px) / 2));
+        width: clamp(56px, 6vw, 82px);
+        height: auto;
+      }
+
+      /* ---------- Con9 (지원 마감 카운트다운) ---------- */
+      .con9 {
+        position: relative;
+        display: flex;
+        min-height: 620px;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        padding: 92px 24px 80px;
+        background: #d7f8f6 url("./images/con9_bg.png") center / cover no-repeat;
+        text-align: center;
+      }
+
+      .con9__title {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(26px, 3vw, 38px);
+        font-weight: 800;
+        line-height: 1.4;
+        letter-spacing: -0.04em;
+      }
+
+      .con9__countdown {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0 10px;
+        margin-top: 12px;
+        font-size: clamp(22px, 2.8vw, 34px);
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: -0.03em;
+      }
+
+      .con9 [hidden] {
+        display: none;
+      }
+
+      .con9__countdown-item {
+        white-space: nowrap;
+      }
+
+      .con9__countdown-number {
+        color: var(--red);
+        font-size: 1.12em;
+        font-weight: 800;
+      }
+
+      .con9__expired {
+        position: relative;
+        z-index: 1;
+        margin-top: 12px;
+        color: var(--red);
+        font-size: clamp(20px, 2.5vw, 30px);
+        font-weight: 800;
+      }
+
+      .con9__earth-link {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: clamp(180px, 23vw, 260px);
+        aspect-ratio: 1;
+        flex: none;
+        place-items: center;
+        margin-top: 48px;
+        border-radius: 50%;
+      }
+
+      .con9__earth {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .con9__apply {
+        position: absolute;
+        display: inline-flex;
+        min-width: 124px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px 9px 8px 16px;
+        border-radius: 999px;
+        color: var(--orange);
+        background: #fff;
+        box-shadow: 0 3px 14px rgba(43, 107, 126, 0.2);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .con9__apply-arrow {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        color: #fff;
+        background: linear-gradient(135deg, #ffc99a 0%, #ff714b 100%);
+      }
+
+      .con9__apply-arrow svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .con9__cloud {
+        position: absolute;
+        z-index: 0;
+        bottom: -6px;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .con9__cloud--left {
+        left: 0;
+        width: min(36vw, 420px);
+      }
+
+      .con9__cloud--right {
+        right: 0;
+        width: min(26vw, 320px);
+      }
+
+      .footer {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 20px;
+        background: #fff;
+        color: var(--black);
+      }
+
+      .footer__inner {
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .footer__logo {
+        display: block;
+        width: 182px;
+        height: auto;
+      }
+
+      @media (max-width: 1024px) {
+        .con8 {
+          padding: 72px 36px 64px;
+        }
+
+        .con8__inner {
+          gap: 28px;
+          max-width: 960px;
+        }
+
+        .con8__card:nth-child(1) {
+          margin-top: 32px;
+        }
+
+        .con8__card:nth-child(3) {
+          margin-top: 64px;
+        }
+
+        .con8__question {
+          font-size: 13px;
+        }
+
+        .con8__action {
+          display: none;
+        }
+
+        .con9 {
+          min-height: 560px;
+          padding-top: 80px;
+        }
+
+        .footer {
+          min-height: 64px;
+        }
+      }
+
+      @media (max-width: 568px) {
+        .con8 {
+          padding: 28px 18px 48px;
+        }
+
+        .con8__inner {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 12px;
+          max-width: 420px;
+        }
+
+        .con8__card,
+        .con8__card:nth-child(1),
+        .con8__card:nth-child(3) {
+          margin: 0;
+        }
+
+        .con8__image-wrap {
+          aspect-ratio: 1.56;
+          border-radius: 10px;
+        }
+
+        .con8__image-wrap::after {
+          position: absolute;
+          inset: 30% 0 0;
+          background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+          content: "";
+        }
+
+        .con8__caption {
+          position: absolute;
+          right: 8px;
+          bottom: 12px;
+          left: 8px;
+          z-index: 1;
+          gap: 4px;
+          padding: 0;
+          color: #fff;
+        }
+
+        .con8__question {
+          color: inherit;
+          font-size: 11px;
+        }
+
+        .con8__action {
+          display: inline-flex;
+          color: inherit;
+          font-size: 13px;
+        }
+
+        .con8__arrow {
+          width: 20px;
+          height: 20px;
+        }
+
+        .con8__arrow svg {
+          width: 10px;
+          height: 10px;
+        }
+
+        .con8__mascot {
+          display: none;
+        }
+
+        .con8 .con8__mark {
+          display: none;
+        }
+
+        .con9 {
+          min-height: 365px;
+          padding: 58px 12px 36px;
+        }
+
+        .con9__title {
+          font-size: clamp(17px, 5vw, 22px);
+        }
+
+        .con9__countdown {
+          gap: 0 5px;
+          margin-top: 6px;
+          font-size: clamp(15px, 4.2vw, 19px);
+        }
+
+        .con9__expired {
+          margin-top: 8px;
+          font-size: 17px;
+        }
+
+        .con9__earth-link {
+          width: 150px;
+          margin-top: 28px;
+        }
+
+        .con9__cloud--left {
+          width: 48vw;
+        }
+
+        .con9__cloud--right {
+          width: 40vw;
+        }
+
+        .footer {
+          min-height: 58px;
+          padding: 10px 16px;
+        }
+
+        .footer__logo {
+          width: 150px;
+        }
+      }
+
     </style>
   </head>
 
@@ -4592,7 +5086,7 @@
 
           <ul class="gnb__list">
             <li class="gnb__item">
-              <a class="gnb__link" href="#">직무소개</a>
+              <a class="gnb__link" href="#job">직무소개</a>
             </li>
             <li class="gnb__item">
               <a class="gnb__link" href="#requirement">지원자격 및 접수방법</a>
@@ -6540,15 +7034,440 @@
         </div>
       </section>
 
+      <section class="con8" aria-label="한미그룹 바로가기">
+        <svg class="con8__filters" aria-hidden="true" focusable="false">
+          <filter id="con8-remove-black" color-interpolation-filters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      1 1 1 0 0"
+            />
+          </filter>
+        </svg>
+        <img
+          class="con8__mascot"
+          src="./images/con8_char.png"
+          alt=""
+          width="281"
+          height="357"
+          loading="lazy"
+        />
+        <div class="con8__inner">
+          <article class="con8__card">
+            <a class="con8__link" href="#welfare">
+              <div class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img1.jpg"
+                  alt=""
+                  width="774"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <img
+                class="con8__mark con8__mark--arrow-left"
+                src="./images/con8_image.png"
+                alt=""
+                aria-hidden="true"
+                width="90"
+                height="160"
+              />
+              <img
+                class="con8__mark con8__mark--star"
+                src="./images/con8_Image-2.png"
+                alt=""
+                aria-hidden="true"
+                width="112"
+                height="112"
+              />
+              <div class="con8__caption">
+                <span class="con8__question">
+                  한미그룹의
+                  <span class="con8__marked-text">
+                    문화와 복지가
+                    <img
+                      class="con8__mark con8__mark--underline"
+                      src="./images/con8_Image-1.png"
+                      alt=""
+                      aria-hidden="true"
+                      width="240"
+                      height="10"
+                    />
+                  </span>
+                  궁금하다면?
+                </span>
+                <span class="con8__action">
+                  한미그룹 YouTube
+                  <span class="con8__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M5 12h14m-6-6 6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
+          <article class="con8__card">
+            <a class="con8__link" href="#job">
+              <div class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img2.jpg"
+                  alt=""
+                  width="774"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <img
+                class="con8__mark con8__mark--arrow-right"
+                src="./images/con8_Image-4.png"
+                alt=""
+                aria-hidden="true"
+                width="90"
+                height="158"
+              />
+              <div class="con8__caption">
+                <span class="con8__question">
+                  한미그룹의
+                  <span class="con8__marked-text">직무<img class="con8__mark con8__mark--circle" src="./images/con8_Image-3.png" alt="" aria-hidden="true" width="164" height="114" /></span>가 궁금하다면?
+                </span>
+                <span class="con8__action">
+                  한미그룹 직무 소개 페이지
+                  <span class="con8__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M5 12h14m-6-6 6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
+          <article class="con8__card">
+            <a class="con8__link" href="#requirement">
+              <div class="con8__image-wrap">
+                <img
+                  class="con8__image"
+                  src="./images/con8_img3.jpg"
+                  alt=""
+                  width="774"
+                  height="1000"
+                  loading="lazy"
+                />
+              </div>
+              <div class="con8__caption">
+                <span class="con8__question">
+                  한미그룹의
+                  <span class="con8__marked-text">채용소식<img class="con8__mark con8__mark--underline-wide" src="./images/con8_Image-5.png" alt="" aria-hidden="true" width="210" height="20" /></span>을 빠르게 받고 싶다면?
+                </span>
+                <span class="con8__action">
+                  한미그룹 채용 홈페이지
+                  <span class="con8__arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M5 12h14m-6-6 6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="con9" aria-labelledby="con9-title">
+        <h2 class="con9__title" id="con9-title">
+          당신에게 딱 맞는 자리를 찾으러 출발!
+        </h2>
+        <p class="con9__countdown" id="con9-countdown" aria-live="off">
+          <span class="con9__countdown-item">
+            <span class="con9__countdown-number" data-countdown-days>0</span>일
+          </span>
+          <span class="con9__countdown-item">
+            <span class="con9__countdown-number" data-countdown-hours>00</span>시간
+          </span>
+          <span class="con9__countdown-item">
+            <span class="con9__countdown-number" data-countdown-minutes>00</span>분
+          </span>
+          <span class="con9__countdown-item">
+            <span class="con9__countdown-number" data-countdown-seconds>00</span>초 남았어요
+          </span>
+        </p>
+        <p class="con9__expired" id="con9-expired" role="status" hidden>
+          지원 기간이 종료되었습니다.
+        </p>
+        <a
+          class="con9__earth-link"
+          href="#requirement"
+          aria-label="지원 자격 및 접수 안내 확인하기"
+        >
+          <img
+            class="con9__earth"
+            src="./images/con9_earth.png"
+            alt=""
+            width="444"
+            height="444"
+          />
+          <span class="con9__apply">
+            지원하기
+            <span class="con9__apply-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14m-6-6 6 6-6 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </span>
+        </a>
+        <img
+          class="con9__cloud con9__cloud--left"
+          src="./images/con9_cloud_l.png"
+          alt=""
+          width="657"
+          height="309"
+          loading="lazy"
+        />
+        <img
+          class="con9__cloud con9__cloud--right"
+          src="./images/con9_cloud_r.png"
+          alt=""
+          width="450"
+          height="383"
+          loading="lazy"
+        />
+      </section>
+
     </main>
 
     <footer class="footer">
       <div class="footer__inner">
-        <p>© Hanmi Group. All rights reserved.</p>
+        <img
+          class="footer__logo"
+          src="./images/logo_svg.svg"
+          alt="Hanmi 한미그룹"
+          width="182"
+          height="31"
+          loading="lazy"
+        />
       </div>
     </footer>
 
     <script>
+      (function () {
+      var header = document.querySelector(".header");
+      if (!header) return;
+
+      var previousScrollY = window.scrollY;
+      var accumulatedScrollDelta = 0;
+      var ticking = false;
+      var directionThreshold = 6;
+
+      function updateHeaderOnScroll() {
+        var currentScrollY = Math.max(0, window.scrollY);
+        var scrollDelta = currentScrollY - previousScrollY;
+
+        if (currentScrollY <= 0) {
+          header.classList.remove("is-hidden", "is-visible");
+          accumulatedScrollDelta = 0;
+        } else {
+          if (
+            accumulatedScrollDelta === 0 ||
+            Math.sign(scrollDelta) === Math.sign(accumulatedScrollDelta)
+          ) {
+            accumulatedScrollDelta += scrollDelta;
+          } else {
+            accumulatedScrollDelta = scrollDelta;
+          }
+
+          if (accumulatedScrollDelta > directionThreshold) {
+            header.classList.add("is-hidden");
+            header.classList.remove("is-visible");
+            accumulatedScrollDelta = 0;
+          } else if (accumulatedScrollDelta < -directionThreshold) {
+            header.classList.remove("is-hidden");
+            header.classList.add("is-visible");
+            accumulatedScrollDelta = 0;
+          }
+        }
+
+        previousScrollY = currentScrollY;
+        ticking = false;
+      }
+
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(updateHeaderOnScroll);
+        },
+        { passive: true },
+      );
+    })();
+
+    (function () {
+      var revealSelectors = [
+        ".mirae__title",
+        ".mirae__char",
+        ".history__head",
+        ".history__block",
+        ".history__goal",
+        ".history__closing",
+        ".job__head",
+        ".job__item",
+        ".innovation__head",
+        ".innovation__item",
+        ".welfare__head",
+        ".welfare__lead",
+        ".welfare__card",
+        ".tasks__intro",
+        ".tasks__tabs",
+        ".tasks__group",
+        "#requirement-title",
+        ".requirement__tabs",
+        ".requirement__item",
+        ".requirement__notes",
+        ".requirement__notice",
+        ".requirement__process-group",
+        ".requirement__process-notes",
+        ".exposition__hero",
+        ".exposition__tabs",
+        ".exposition__region",
+        ".exposition__week-list",
+        ".con8__card",
+        ".con9__title",
+        ".con9__countdown",
+        ".con9__expired",
+        ".con9__earth-link",
+      ];
+      var revealSelector = revealSelectors.join(", ");
+      if (!("IntersectionObserver" in window)) return;
+
+      var lastScrollY = window.scrollY;
+      var scrollDirection = 0;
+      var revealObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+            } else if (scrollDirection < 0) {
+              entry.target.classList.remove("is-revealed");
+            }
+          });
+        },
+        {
+          rootMargin: "0px 0px -45% 0px",
+          threshold: 0,
+        },
+      );
+
+      function observeRevealTarget(target) {
+        if (target.classList.contains("scroll-reveal")) return;
+        target.classList.add("scroll-reveal");
+        revealObserver.observe(target);
+      }
+
+      function observeTargets(root) {
+        if (root.nodeType !== Node.ELEMENT_NODE) return;
+        var element = root;
+        if (element.matches(revealSelector)) observeRevealTarget(element);
+        element.querySelectorAll(revealSelector).forEach(observeRevealTarget);
+      }
+
+      revealSelectors.forEach(function (selector) {
+        document.querySelectorAll(selector).forEach(observeRevealTarget);
+      });
+
+      var dynamicContentObserver = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(observeTargets);
+        });
+      });
+      var dynamicContainers = [
+        document.getElementById("tasks-groups"),
+        document.querySelector(".welfare__scroll"),
+      ];
+      dynamicContainers.forEach(function (container) {
+        if (container) {
+          dynamicContentObserver.observe(container, {
+            childList: true,
+            subtree: true,
+          });
+        }
+      });
+
+      window.addEventListener(
+        "scroll",
+        function () {
+          var currentScrollY = window.scrollY;
+          var delta = currentScrollY - lastScrollY;
+          if (Math.abs(delta) > 1) scrollDirection = Math.sign(delta);
+          lastScrollY = currentScrollY;
+        },
+        { passive: true },
+      );
+    })();
+
+    (function () {
+        var countdown = document.getElementById("con9-countdown");
+        var expired = document.getElementById("con9-expired");
+        if (!countdown || !expired) return;
+
+        var deadline = new Date("2026-10-18T23:59:00+09:00").getTime();
+        var days = countdown.querySelector("[data-countdown-days]");
+        var hours = countdown.querySelector("[data-countdown-hours]");
+        var minutes = countdown.querySelector("[data-countdown-minutes]");
+        var seconds = countdown.querySelector("[data-countdown-seconds]");
+        var timer;
+
+        function updateCountdown() {
+          var remaining = deadline - Date.now();
+          if (remaining <= 0) {
+            countdown.hidden = true;
+            expired.hidden = false;
+            window.clearInterval(timer);
+            return;
+          }
+
+          var totalSeconds = Math.floor(remaining / 1000);
+          days.textContent = String(Math.floor(totalSeconds / 86400));
+          hours.textContent = String(
+            Math.floor((totalSeconds % 86400) / 3600),
+          ).padStart(2, "0");
+          minutes.textContent = String(
+            Math.floor((totalSeconds % 3600) / 60),
+          ).padStart(2, "0");
+          seconds.textContent = String(totalSeconds % 60).padStart(2, "0");
+        }
+
+        timer = window.setInterval(updateCountdown, 1000);
+        updateCountdown();
+      })();
+
       (function () {
         var btn = document.getElementById("scrollDown");
         var hero = document.getElementById("main-visual");
@@ -6893,16 +7812,6 @@
               value.textContent = itemData.value;
               detailItem.append(label, value);
               detail.appendChild(detailItem);
-            });
-
-            detail.addEventListener("transitionend", function (event) {
-              if (
-                event.target === detail &&
-                event.propertyName === "opacity" &&
-                !detail.classList.contains("is-visible")
-              ) {
-                detail.hidden = true;
-              }
             });
 
             button.addEventListener("click", function () {
