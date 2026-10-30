@@ -4095,6 +4095,458 @@
           font-size: 12px;
         }
       }
+
+      /* ---------- Exposition (박람회 및 캠퍼스 방문 일정) ---------- */
+      .exposition {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 48px 80px;
+        background: var(--white);
+      }
+
+      .exposition__hero {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        align-items: center;
+        gap: 24px;
+        min-height: 210px;
+      }
+
+      .exposition__character {
+        width: 220px;
+        height: auto;
+      }
+
+      .exposition__title {
+        font-size: clamp(30px, 3.2vw, 40px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.04em;
+      }
+
+      .exposition__description {
+        margin-top: 14px;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .exposition__description-note span {
+        margin-right: 6px;
+        color: var(--orange);
+        font-size: 10px;
+      }
+
+      .exposition__tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .exposition__tab,
+      .exposition__region {
+        min-width: 0;
+        min-height: 52px;
+        border-radius: 12px;
+        color: #777;
+        font-size: 16px;
+        font-weight: 600;
+        transition:
+          color var(--ease),
+          background-color var(--ease),
+          box-shadow var(--ease);
+      }
+
+      .exposition__tab[aria-selected="true"],
+      .exposition__region[aria-selected="true"] {
+        color: var(--orange);
+        background: #fff8f5;
+        box-shadow: 0 4px 12px rgba(131, 77, 58, 0.14);
+      }
+
+      .exposition__panel[hidden] {
+        display: none;
+      }
+
+      .exposition__region-list {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 22px;
+        padding: 8px;
+        border-radius: 12px;
+        background: #fffaf8;
+      }
+
+      .exposition__region {
+        min-height: 44px;
+        font-size: 15px;
+      }
+
+      .exposition__calendar {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        margin-top: 22px;
+      }
+
+      .exposition__week-list {
+        display: grid;
+      }
+
+      .exposition__day {
+        display: flex;
+        position: relative;
+        min-width: 0;
+        flex-direction: column;
+        border-top: 1px solid #e6e6e6;
+        border-bottom: 1px solid #e6e6e6;
+      }
+
+      .exposition__date {
+        position: relative;
+        display: flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 4px;
+        border-bottom: 1px solid #e6e6e6;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .exposition__date::after {
+        position: absolute;
+        top: 10px;
+        right: 0;
+        bottom: 10px;
+        width: 1px;
+        background: #e6e6e6;
+        content: "";
+      }
+
+      .exposition__day:nth-child(5n) .exposition__date::after,
+      .exposition__day:last-child .exposition__date::after {
+        display: none;
+      }
+
+      .exposition__venues {
+        display: grid;
+        flex: 1;
+        align-content: center;
+        justify-items: center;
+        gap: 0;
+        min-height: 144px;
+        padding: 12px 6px;
+        color: #ff8068;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .exposition__venues li {
+        max-width: 100%;
+        padding: 10px 0;
+      }
+
+      .exposition__campus-name {
+        display: block;
+        margin: 0 auto;
+        color: inherit;
+        font: inherit;
+        text-align: center;
+      }
+
+      .exposition__campus-entry {
+        width: 100%;
+      }
+
+      .exposition__venues li.exposition__campus-entry--expanded {
+        padding: 0;
+      }
+
+      .exposition__venues li.exposition__campus-entry--expanded::before {
+        display: none;
+      }
+
+      .exposition__campus-name:hover,
+      .exposition__campus-name:focus-visible {
+        color: var(--orange);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      .exposition__campus-detail {
+        display: grid;
+        position: absolute;
+        z-index: 1;
+        top: 42px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        gap: 10px;
+        align-content: center;
+        padding: 24px 8px;
+        color: #222;
+        background: #fff7f4;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition:
+          opacity 200ms ease,
+          transform 200ms ease,
+          visibility 0s linear 200ms;
+      }
+
+      .exposition__campus-detail.is-visible {
+        border-radius: 0 0 8px 8px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition-delay: 0s;
+      }
+
+      .exposition__campus-detail[hidden] {
+        display: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .exposition__campus-detail {
+          transition: none;
+        }
+      }
+
+      .exposition__campus-detail-item {
+        display: grid;
+        gap: 3px;
+        justify-items: center;
+      }
+
+      .exposition__campus-detail-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .exposition__campus-detail-icon {
+        width: 12px;
+        height: 12px;
+        flex: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .exposition__campus-detail-value {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+      }
+
+      .exposition__venues li + li::before {
+        display: block;
+        width: 44px;
+        height: 1px;
+        margin: -1px auto 10px;
+        background: #ffe0d8;
+        content: "";
+      }
+
+      .exposition__day--empty .exposition__date {
+        color: transparent;
+      }
+
+      .exposition__campus-calendar {
+        margin-top: 18px;
+      }
+
+      .exposition__campus-calendar .exposition__calendar {
+        margin-top: 18px;
+      }
+
+      .exposition__campus-calendar .exposition__venues {
+        min-height: 192px;
+      }
+
+      .exposition__empty {
+        padding: 28px 16px;
+        color: #666;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      @media (max-width: 1024px) {
+        .exposition {
+          padding: 56px 32px 68px;
+        }
+
+        .exposition__hero {
+          display: block;
+          min-height: 0;
+          text-align: center;
+        }
+
+        .exposition__character {
+          display: none;
+        }
+
+        .exposition__title {
+          font-size: clamp(30px, 4vw, 38px);
+        }
+
+        .exposition__description {
+          margin-top: 14px;
+        }
+
+        .exposition__description-note {
+          margin-top: 20px;
+          font-size: 13px;
+        }
+
+        .exposition__description-note span {
+          margin-right: 6px;
+          color: var(--orange);
+          font-size: 10px;
+        }
+
+        .exposition__tabs {
+          margin-top: 48px;
+        }
+
+        .exposition__date {
+          font-size: 13px;
+        }
+
+        .exposition__venues {
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 568px) {
+        .exposition {
+          padding: 44px 20px 56px;
+        }
+
+        .exposition__title {
+          font-size: 22px;
+        }
+
+        .exposition__description {
+          margin-top: 8px;
+          font-size: 12px;
+        }
+
+        .exposition__description-note {
+          max-width: 280px;
+          margin: 14px auto 0;
+          font-size: 10px;
+          line-height: 1.5;
+        }
+
+        .exposition__description-note span {
+          margin-right: 4px;
+          color: var(--orange);
+          font-size: 8px;
+        }
+
+        .exposition__tabs {
+          gap: 6px;
+          margin-top: 28px;
+        }
+
+        .exposition__tab {
+          min-height: 44px;
+          border-radius: 10px;
+          font-size: 13px;
+        }
+
+        .exposition__region-list {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+          margin-top: 14px;
+          padding: 5px;
+        }
+
+        .exposition__region {
+          min-height: 36px;
+          border-radius: 8px;
+          font-size: 12px;
+        }
+
+        .exposition__calendar {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          margin-top: 14px;
+        }
+
+        .exposition__campus-calendar .exposition__venues {
+          min-height: 56px;
+        }
+
+        .exposition__day {
+          border-top: 1px solid #e6e6e6;
+        }
+
+        .exposition__day:nth-child(5n) .exposition__date::after {
+          display: block;
+        }
+
+        .exposition__day:nth-child(2n) .exposition__date::after {
+          display: none;
+        }
+
+        .exposition__date {
+          min-height: 36px;
+          font-size: 11px;
+        }
+
+        .exposition__venues,
+        .exposition__campus-calendar .exposition__venues {
+          min-height: 104px;
+          padding: 8px 4px;
+          font-size: 11px;
+        }
+
+        .exposition__venues li {
+          padding: 8px 0;
+        }
+
+        .exposition__venues li.exposition__campus-entry--expanded {
+          padding: 0;
+        }
+
+        .exposition__campus-detail {
+          top: 36px;
+        }
+
+        .exposition__campus-detail {
+          gap: 8px;
+          padding: 16px 6px;
+        }
+
+        .exposition__campus-detail-label {
+          font-size: 10px;
+        }
+
+        .exposition__campus-detail-value {
+          font-size: 11px;
+        }
+
+        .exposition__venues li + li::before {
+          margin-bottom: 8px;
+        }
+      }
+
     </style>
   </head>
 
@@ -4146,7 +4598,7 @@
               <a class="gnb__link" href="#requirement">지원자격 및 접수방법</a>
             </li>
             <li class="gnb__item">
-              <a class="gnb__link" href="#">채용설명회 일정</a>
+              <a class="gnb__link" href="#exposition">채용설명회 일정</a>
             </li>
           </ul>
           <div class="gnb__apply">
@@ -5921,6 +6373,173 @@
           </ul>
         </div>
       </section>
+
+      <section
+        class="exposition"
+        id="exposition"
+        aria-labelledby="exposition-title"
+      >
+        <div class="exposition__hero">
+          <img
+            class="exposition__character"
+            src="./images/expo_char.png"
+            alt=""
+            width="698"
+            height="602"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="exposition__intro">
+            <h2 class="exposition__title" id="exposition-title">
+              Hanmi 박람회/캠퍼스로 출발!
+            </h2>
+            <p class="exposition__description">
+              한미그룹이 여러분을 만나러 박람회와 캠퍼스로 찾아갑니다.<br />
+              우리가 어디서 만날지 궁금하다면 아래 지역에서 찾아보세요!
+            </p>
+            <p class="exposition__description-note">
+              <span aria-hidden="true">●</span>
+              지역을 선택하면 캠퍼스 방문 일정을 확인하실 수 있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="exposition__tabs" role="tablist" aria-label="일정 유형">
+          <button
+            class="exposition__tab"
+            type="button"
+            role="tab"
+            id="exposition-tab-fair"
+            aria-controls="exposition-panel-fair"
+            aria-selected="true"
+            tabindex="0"
+          >
+            박람회
+          </button>
+          <button
+            class="exposition__tab"
+            type="button"
+            role="tab"
+            id="exposition-tab-campus"
+            aria-controls="exposition-panel-campus"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            캠퍼스
+          </button>
+        </div>
+
+        <div
+          class="exposition__panel"
+          id="exposition-panel-fair"
+          role="tabpanel"
+          aria-labelledby="exposition-tab-fair"
+          tabindex="0"
+        >
+          <div
+            class="exposition__week-list"
+            id="exposition-fair-calendar"
+            aria-live="polite"
+          ></div>
+        </div>
+
+        <div
+          class="exposition__panel"
+          id="exposition-panel-campus"
+          role="tabpanel"
+          aria-labelledby="exposition-tab-campus"
+          tabindex="0"
+          hidden
+        >
+          <div
+            class="exposition__region-list"
+            role="tablist"
+            aria-label="캠퍼스 방문 지역"
+          >
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-seoul"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="true"
+              tabindex="0"
+              data-region="seoul"
+            >
+              서울
+            </button>
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-gyeonggi"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="false"
+              tabindex="-1"
+              data-region="gyeonggi"
+            >
+              경기
+            </button>
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-gangwon"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="false"
+              tabindex="-1"
+              data-region="gangwon"
+            >
+              강원
+            </button>
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-gyeongsang"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="false"
+              tabindex="-1"
+              data-region="gyeongsang"
+            >
+              경상
+            </button>
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-chungcheong"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="false"
+              tabindex="-1"
+              data-region="chungcheong"
+            >
+              충청
+            </button>
+            <button
+              class="exposition__region"
+              type="button"
+              role="tab"
+              id="exposition-region-jeolla"
+              aria-controls="exposition-campus-calendar"
+              aria-selected="false"
+              tabindex="-1"
+              data-region="jeolla"
+            >
+              전라
+            </button>
+          </div>
+          <div
+            class="exposition__campus-calendar"
+            id="exposition-campus-calendar"
+            role="tabpanel"
+            aria-labelledby="exposition-region-seoul"
+            aria-live="polite"
+            tabindex="0"
+          ></div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
@@ -6029,6 +6648,405 @@
             activateTab(tabs[nextIndex], true);
           });
         });
+      })();
+
+      (function () {
+        var tabs = Array.from(document.querySelectorAll(".exposition__tab"));
+        var regions = Array.from(document.querySelectorAll(".exposition__region"));
+        var fairCalendar = document.getElementById("exposition-fair-calendar");
+        var campusCalendar = document.getElementById("exposition-campus-calendar");
+        if (!tabs.length || !regions.length || !fairCalendar || !campusCalendar)
+          return;
+
+        var fairWeeks = [
+          [
+            { date: "8월 31일 (월)", venues: ["KAIST"] },
+            { date: "9월 1일 (화)", venues: ["서울대학교", "서강대학교", "연세대학교"] },
+            { date: "9월 2일 (수)", venues: ["UNIST", "한양대학교"] },
+            { date: "9월 3일 (목)", venues: ["GIST"] },
+            { date: "9월 4일 (금)", venues: ["고려대학교", "성균관대학교(자연)"] },
+          ],
+          [
+            { date: "9월 7일 (월)", venues: ["KIST", "동국대학교"] },
+            { date: "9월 8일 (화)", venues: ["이화여자대학교", "중견기업박람회(대전)"] },
+            { date: "9월 9일 (수)", venues: ["POSTECH"] },
+            { date: "", venues: [] },
+            { date: "10월 7일 (수)", venues: ["서울고용센터"] },
+          ],
+        ];
+        var campusSchedules = [];
+        var campusWeekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+        function parseCampusDate(value) {
+          var match = /^(\d{1,2})월\s*(\d{1,2})일\s*\(([월화수목금토일])\)$/.exec(
+            value,
+          );
+          if (!match) {
+            throw new Error("캠퍼스 일정 날짜 형식이 올바르지 않습니다.");
+          }
+
+          var date = new Date(
+            Date.UTC(2026, Number(match[1]) - 1, Number(match[2])),
+          );
+          if (
+            date.getUTCMonth() !== Number(match[1]) - 1 ||
+            date.getUTCDate() !== Number(match[2]) ||
+            campusWeekdays[date.getUTCDay()] !== match[3]
+          ) {
+            throw new Error("캠퍼스 일정 날짜와 요일이 일치하지 않습니다.");
+          }
+          return date;
+        }
+
+        function validateCampusSchedules(data) {
+          if (
+            !Array.isArray(data) ||
+            !data.every(function (item) {
+              return (
+                item &&
+                typeof item.region === "string" &&
+                typeof item.date === "string" &&
+                typeof item.university === "string" &&
+                typeof item.location === "string" &&
+                typeof item.time === "string"
+              );
+            })
+          ) {
+            throw new Error("캠퍼스 일정 데이터 형식이 올바르지 않습니다.");
+          }
+
+          data.forEach(function (item) {
+            parseCampusDate(item.date);
+          });
+          return data;
+        }
+
+        function getCampusWeeks(regionName) {
+          var regionSchedule = campusSchedules
+            .filter(function (item) {
+              return item.region === regionName;
+            })
+            .map(function (item) {
+              return {
+                item: item,
+                date: parseCampusDate(item.date),
+              };
+            })
+            .sort(function (a, b) {
+              return a.date.getTime() - b.date.getTime();
+            });
+          if (!regionSchedule.length) return [];
+
+          var lastScheduleDate = regionSchedule[regionSchedule.length - 1].date;
+          var weeks = new Map();
+          regionSchedule.forEach(function (entry) {
+            var weekStart = new Date(entry.date.getTime());
+            var daysFromMonday = (weekStart.getUTCDay() + 6) % 7;
+            weekStart.setUTCDate(weekStart.getUTCDate() - daysFromMonday);
+            var weekKey = weekStart.getTime();
+            if (!weeks.has(weekKey)) weeks.set(weekKey, []);
+            weeks.get(weekKey).push(entry);
+          });
+
+          return Array.from(weeks.entries())
+            .sort(function (a, b) {
+              return a[0] - b[0];
+            })
+            .map(function (week) {
+              var weekStart = new Date(week[0]);
+              var finalDay = new Date(weekStart.getTime());
+              finalDay.setUTCDate(finalDay.getUTCDate() + 4);
+              if (lastScheduleDate < finalDay) finalDay = lastScheduleDate;
+
+              var campusesByDate = new Map();
+              week[1].forEach(function (entry) {
+                var dateKey = entry.date.getTime();
+                if (!campusesByDate.has(dateKey)) {
+                  campusesByDate.set(dateKey, []);
+                }
+                campusesByDate.get(dateKey).push({
+                  name: entry.item.university,
+                  location: entry.item.location,
+                  time: entry.item.time,
+                });
+              });
+
+              var days = [];
+              for (
+                var date = new Date(weekStart.getTime());
+                date <= finalDay;
+                date.setUTCDate(date.getUTCDate() + 1)
+              ) {
+                var dateKey = date.getTime();
+                days.push({
+                  date:
+                    (date.getUTCMonth() + 1) +
+                    "월 " +
+                    date.getUTCDate() +
+                    "일 (" +
+                    campusWeekdays[date.getUTCDay()] +
+                    ")",
+                  campuses: campusesByDate.get(dateKey) || [],
+                });
+              }
+              return days;
+            });
+        }
+
+        function createDay(day, index) {
+          var article = document.createElement("article");
+          article.className = "exposition__day";
+          if (!day.date) article.classList.add("exposition__day--empty");
+          if (!(day.venues || []).length && !(day.campuses || []).length)
+            article.classList.add("exposition__day--no-venue");
+
+          var date = document.createElement("h3");
+          date.className = "exposition__date";
+          date.textContent = day.date || "\u00a0";
+          article.appendChild(date);
+
+          var venues = document.createElement("ul");
+          venues.className = "exposition__venues";
+          (day.venues || []).forEach(function (venue) {
+            var item = document.createElement("li");
+            item.textContent = venue;
+            venues.appendChild(item);
+          });
+          (day.campuses || []).forEach(function (campus, campusIndex) {
+            var item = document.createElement("li");
+            item.className = "exposition__campus-entry";
+            var detailId =
+              "exposition-campus-detail-" +
+              day.date.replace(/\D/g, "") +
+              "-" +
+              campusIndex;
+            var button = document.createElement("button");
+            button.className = "exposition__campus-name";
+            button.type = "button";
+            button.textContent = campus.name;
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-controls", detailId);
+
+            var detail = document.createElement("div");
+            detail.className = "exposition__campus-detail";
+            detail.id = detailId;
+            detail.hidden = true;
+            detail.tabIndex = -1;
+            detail.inert = true;
+            detail.setAttribute("role", "group");
+            detail.setAttribute("aria-label", campus.name + " 상세 일정");
+            detail.setAttribute("aria-hidden", "true");
+
+            [
+              { label: "장소", value: campus.location, icon: "location" },
+              { label: "시간", value: campus.time, icon: "time" },
+            ].forEach(function (itemData) {
+              var detailItem = document.createElement("div");
+              detailItem.className = "exposition__campus-detail-item";
+              var label = document.createElement("span");
+              label.className = "exposition__campus-detail-label";
+              var icon = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "svg",
+              );
+              icon.classList.add("exposition__campus-detail-icon");
+              icon.setAttribute("viewBox", "0 0 24 24");
+              icon.setAttribute("fill", "none");
+              icon.setAttribute("aria-hidden", "true");
+              icon.setAttribute("focusable", "false");
+              if (itemData.icon === "location") {
+                var pin = document.createElementNS(
+                  "http://www.w3.org/2000/svg",
+                  "path",
+                );
+                pin.setAttribute(
+                  "d",
+                  "M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z",
+                );
+                var pinCenter = document.createElementNS(
+                  "http://www.w3.org/2000/svg",
+                  "circle",
+                );
+                pinCenter.setAttribute("cx", "12");
+                pinCenter.setAttribute("cy", "10");
+                pinCenter.setAttribute("r", "2.5");
+                icon.append(pin, pinCenter);
+              } else {
+                var clockFace = document.createElementNS(
+                  "http://www.w3.org/2000/svg",
+                  "circle",
+                );
+                clockFace.setAttribute("cx", "12");
+                clockFace.setAttribute("cy", "12");
+                clockFace.setAttribute("r", "9");
+                var clockHands = document.createElementNS(
+                  "http://www.w3.org/2000/svg",
+                  "path",
+                );
+                clockHands.setAttribute("d", "M12 7v5l3 2");
+                icon.append(clockFace, clockHands);
+              }
+              label.textContent = itemData.label;
+              label.prepend(icon);
+              var value = document.createElement("span");
+              value.className = "exposition__campus-detail-value";
+              value.textContent = itemData.value;
+              detailItem.append(label, value);
+              detail.appendChild(detailItem);
+            });
+
+            detail.addEventListener("transitionend", function (event) {
+              if (
+                event.target === detail &&
+                event.propertyName === "opacity" &&
+                !detail.classList.contains("is-visible")
+              ) {
+                detail.hidden = true;
+              }
+            });
+
+            button.addEventListener("click", function () {
+              button.setAttribute("aria-expanded", "true");
+              detail.hidden = false;
+              detail.inert = false;
+              detail.setAttribute("aria-hidden", "false");
+              item.classList.add("exposition__campus-entry--expanded");
+              requestAnimationFrame(function () {
+                detail.classList.add("is-visible");
+                detail.focus();
+                button.hidden = true;
+              });
+            });
+            item.append(button, detail);
+            venues.appendChild(item);
+          });
+          article.appendChild(venues);
+          return article;
+        }
+
+        function renderWeeks(container, weeks) {
+          container.replaceChildren();
+          weeks.forEach(function (week) {
+            var calendar = document.createElement("div");
+            calendar.className = "exposition__calendar";
+            week.forEach(function (day, index) {
+              calendar.appendChild(createDay(day, index));
+            });
+            container.appendChild(calendar);
+          });
+        }
+
+        function activateTab(tab, moveFocus) {
+          tabs.forEach(function (item) {
+            var selected = item === tab;
+            item.setAttribute("aria-selected", String(selected));
+            item.tabIndex = selected ? 0 : -1;
+            document.getElementById(
+              item.getAttribute("aria-controls"),
+            ).hidden = !selected;
+          });
+          if (moveFocus) tab.focus();
+        }
+
+        function activateRegion(region, moveFocus) {
+          regions.forEach(function (item) {
+            var selected = item === region;
+            item.setAttribute("aria-selected", String(selected));
+            item.tabIndex = selected ? 0 : -1;
+          });
+          campusCalendar.setAttribute("aria-labelledby", region.id);
+          var weeks = getCampusWeeks(region.textContent.trim());
+          if (!weeks.length) {
+            var message = document.createElement("p");
+            message.className = "exposition__empty";
+            message.textContent = "해당 지역의 캠퍼스 일정이 없습니다.";
+            campusCalendar.replaceChildren(message);
+          } else {
+            renderWeeks(campusCalendar, weeks);
+          }
+          if (moveFocus) region.focus();
+        }
+
+        campusCalendar.addEventListener("focusout", function (event) {
+          var item = event.target.closest(".exposition__campus-entry");
+          if (!item || item.contains(event.relatedTarget)) return;
+          var button = item.querySelector(".exposition__campus-name");
+          var detail =
+            button &&
+            document.getElementById(button.getAttribute("aria-controls"));
+          if (!button || !detail) return;
+          button.hidden = false;
+          button.setAttribute("aria-expanded", "false");
+          detail.inert = true;
+          detail.setAttribute("aria-hidden", "true");
+          detail.classList.remove("is-visible");
+          item.classList.remove("exposition__campus-entry--expanded");
+          if (parseFloat(getComputedStyle(detail).transitionDuration) === 0) {
+            detail.hidden = true;
+          }
+        });
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            activateTab(tab, false);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var index = tabs.indexOf(tab);
+            var nextIndex = index;
+            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+            else if (event.key === "ArrowLeft")
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            else if (event.key === "Home") nextIndex = 0;
+            else if (event.key === "End") nextIndex = tabs.length - 1;
+            else return;
+            event.preventDefault();
+            activateTab(tabs[nextIndex], true);
+          });
+        });
+
+        regions.forEach(function (region) {
+          region.addEventListener("click", function () {
+            activateRegion(region, false);
+          });
+          region.addEventListener("keydown", function (event) {
+            var index = regions.indexOf(region);
+            var nextIndex = index;
+            if (event.key === "ArrowRight" || event.key === "ArrowDown")
+              nextIndex = (index + 1) % regions.length;
+            else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+              nextIndex = (index - 1 + regions.length) % regions.length;
+            else if (event.key === "Home") nextIndex = 0;
+            else if (event.key === "End") nextIndex = regions.length - 1;
+            else return;
+            event.preventDefault();
+            activateRegion(regions[nextIndex], true);
+          });
+        });
+
+        campusCalendar.textContent = "캠퍼스 일정을 불러오는 중입니다.";
+        fetch("./data/campus_schedule.json")
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("캠퍼스 일정 데이터를 불러오지 못했습니다.");
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            campusSchedules = validateCampusSchedules(data);
+            var selectedRegion = regions.find(function (region) {
+              return region.getAttribute("aria-selected") === "true";
+            });
+            if (selectedRegion) activateRegion(selectedRegion, false);
+          })
+          .catch(function (error) {
+            console.error("캠퍼스 일정 렌더링 오류:", error);
+            campusCalendar.textContent =
+              "캠퍼스 일정을 불러오지 못했습니다. 페이지를 로컬 서버에서 열어주세요.";
+          });
+
+        renderWeeks(fairCalendar, [
+          [].concat.apply([], fairWeeks),
+        ]);
       })();
 
       /* History 섹션: 펼치기 / 접기
