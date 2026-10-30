@@ -3842,6 +3842,36 @@
         container-type: inline-size;
       }
 
+      .requirement__process-notes {
+        display: grid;
+        gap: 10px;
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 20px;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        list-style: none;
+      }
+
+      .requirement__process-notes li {
+        position: relative;
+        padding-left: 16px;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .requirement__process-notes li::before {
+        position: absolute;
+        top: 0.8em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--orange);
+        content: "";
+      }
+
       .requirement__process-group {
         padding: 40px 20px;
         border-bottom: 1px solid #e8e8e8;
@@ -3944,6 +3974,10 @@
         .requirement__step-date {
           margin-top: 2px;
           font-size: clamp(9px, 1.5cqw, 12px);
+        }
+
+        .requirement__process-notes li {
+          font-size: 14px;
         }
       }
 
@@ -4055,6 +4089,10 @@
 
         .requirement__step-date {
           font-size: clamp(9px, 2.3cqw, 10px);
+        }
+
+        .requirement__process-notes li {
+          font-size: 12px;
         }
       }
     </style>
@@ -5858,6 +5896,29 @@
               </ol>
             </section>
           </div>
+          <ul class="requirement__process-notes">
+            <li>
+              상기 일정은 상황에 따라 변경될 수 있으며 각 전형별 상세 일정은
+              대상자에 한해 개별 안내 예정입니다.
+            </li>
+            <li>
+              입사지원서에 허위 기재가 있거나 제출서류가 허위로 판명되는 경우,
+              또는 입사 이후 자격 미확보 및 상실하는 경우는 입사가 취소될 수
+              있습니다.
+            </li>
+            <li>
+              지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.
+            </li>
+            <li>
+              전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소
+              및 휴대전화 번호를 정확히 기재해주시기 바랍니다.
+            </li>
+            <li>
+              입사 후 3개월간 수습기간이 적용되며, 수습 기간 중 성적이
+              불량하거나 직무 수행 능력이 부족하다고 판단되는 경우 입사가
+              취소될 수 있습니다.
+            </li>
+          </ul>
         </div>
       </section>
     </main>
