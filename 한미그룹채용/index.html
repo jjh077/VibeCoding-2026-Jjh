@@ -3843,7 +3843,7 @@
       }
 
       .requirement__process-group {
-        padding: 44px 32px;
+        padding: 40px 20px;
         border-bottom: 1px solid #e8e8e8;
       }
 
@@ -3873,32 +3873,36 @@
 
       .requirement__step:not(:last-child)::after {
         position: absolute;
-        top: 1.5cqw;
-        right: -0.1cqw;
+        top: 14px;
+        right: -4px;
         color: #222;
         content: "›";
-        font-size: 3cqw;
+        font-size: 28px;
         line-height: 1;
       }
 
       .requirement__step-icon {
-        min-height: 5.2cqw;
-        font-size: 4.2cqw;
+        display: grid;
+        flex: none;
+        place-items: center;
+        width: 52px;
+        height: 56px;
+        font-size: 44px;
         line-height: 1;
       }
 
       .requirement__step-title {
-        margin-top: 1.1cqw;
-        font-size: 1.55cqw;
+        margin-top: 8px;
+        font-size: 15px;
         font-weight: 700;
         line-height: 1.4;
         white-space: nowrap;
       }
 
       .requirement__step-date {
-        margin-top: 0.25cqw;
+        margin-top: 3px;
         color: #999;
-        font-size: 1.3cqw;
+        font-size: 13px;
         line-height: 1.4;
         white-space: nowrap;
       }
@@ -3914,6 +3918,32 @@
 
         .requirement__tabs {
           margin-top: 44px;
+        }
+
+        .requirement__process-group {
+          padding: 32px 10px;
+        }
+
+        .requirement__step-icon {
+          width: 42px;
+          height: 48px;
+          font-size: 36px;
+        }
+
+        .requirement__step:not(:last-child)::after {
+          top: 12px;
+          right: -3px;
+          font-size: 22px;
+        }
+
+        .requirement__step-title {
+          margin-top: 6px;
+          font-size: clamp(10px, 1.8cqw, 13px);
+        }
+
+        .requirement__step-date {
+          margin-top: 2px;
+          font-size: clamp(9px, 1.5cqw, 12px);
         }
       }
 
@@ -3987,12 +4017,33 @@
         }
 
         .requirement__process-group {
-          padding: 5cqw 0;
+          padding: 20px 0;
         }
 
         .requirement__process-group h3 {
-          margin-bottom: 3cqw;
-          font-size: 2cqw;
+          margin-bottom: 16px;
+          font-size: 16px;
+        }
+
+        .requirement__step-icon {
+          width: 34px;
+          height: 40px;
+          font-size: 30px;
+        }
+
+        .requirement__step:not(:last-child)::after {
+          top: 8px;
+          right: -2px;
+          font-size: 16px;
+        }
+
+        .requirement__step-title {
+          margin-top: 5px;
+          font-size: clamp(8px, 2.5cqw, 10px);
+        }
+
+        .requirement__step-date {
+          font-size: clamp(7px, 2cqw, 8px);
         }
       }
     </style>
