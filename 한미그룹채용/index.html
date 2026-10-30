@@ -2450,21 +2450,19 @@
         --in-head-gap: 5.75cqw;
 
         /* 카드(말풍선 박스) */
-        --in-card-w: 80cqw;
-        /* [수정] 91.8 → 80cqw : 좌우 각 10cqw 대칭 여백 확보 */
-        --in-card-radius: 2.4cqw;
-        --in-card-pt: 3.8cqw;
-        --in-card-px: 4.3cqw;
-        --in-card-pb: 3.5cqw;
+        --in-card-w: 88cqw;
+        --in-card-radius: 2.6cqw;
+        --in-card-pt: 4.2cqw;
+        --in-card-px: 4.6cqw;
+        --in-card-pb: 4cqw;
 
         /* 말풍선 */
-        --in-bt: max(12px, 1.35cqw);
-        /* [수정] 말풍선 글자 1.56 → 1.35cqw (카드 폭 축소에 맞춤) */
+        --in-bt: max(14px, 1.55cqw);
         --in-r: 1.7cqw;
         /* 모서리 반경 = 꼬리 크기 기준 */
-        --in-bx: 1.7cqw;
-        --in-by: 1.37cqw;
-        --in-gap: 2.9cqw;
+        --in-bx: 1.9cqw;
+        --in-by: 1.55cqw;
+        --in-gap: 3.2cqw;
 
         /* 안내 문구 */
         --in-hint: max(10px, 1.1cqw);
@@ -2821,30 +2819,27 @@
         position: relative;
         isolation: isolate;
         width: 100%;
-        max-width: var(--section-max);
-        /* [수정] 1920px → 1200px */
+        max-width: 1440px;
         margin: 0 auto;
         overflow: hidden;
         padding: 76px clamp(24px, 5.8vw, 88px) 108px;
-        /* 좌우 대칭 패딩(유지) */
         background: var(--white);
       }
 
       .welfare__inner {
         position: relative;
-        max-width: var(--container);
+        max-width: 1200px;
         margin: 0 auto;
       }
 
       .welfare__head {
         position: relative;
         text-align: center;
-        padding-bottom: 80px;
+        padding-bottom: 72px;
       }
 
       .welfare__title {
-        font-size: clamp(24px, 2.8vw, 34px);
-        /* [수정] 26~42px → 24~34px */
+        font-size: clamp(30px, 2.8vw, 40px);
         font-weight: 800;
         line-height: 1.35;
         letter-spacing: -0.04em;
@@ -2852,7 +2847,7 @@
 
       .welfare__desc {
         margin-top: 12px;
-        font-size: 15px;
+        font-size: 17px;
         line-height: 1.7;
         letter-spacing: -0.03em;
       }
@@ -2868,28 +2863,31 @@
 
       .welfare__lead {
         display: flex;
+        flex-wrap: wrap;
         align-items: baseline;
         gap: 12px;
         margin: 25px 0 18px;
       }
 
       .welfare__highlight {
+        flex: 0 0 auto;
         color: var(--orange);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 1.5;
         letter-spacing: -0.03em;
+        white-space: nowrap;
       }
 
       .welfare__lead-desc {
         margin-top: 5px;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 1.6;
         letter-spacing: -0.02em;
       }
 
       .welfare__scroll {
-        height: 420px;
+        height: 600px;
         overflow-x: hidden;
         overflow-y: auto;
         padding-right: 9px;
@@ -2915,43 +2913,43 @@
       .welfare__list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: minmax(74px, auto);
-        gap: 10px 12px;
+        grid-auto-rows: minmax(108px, auto);
+        gap: 16px 18px;
       }
 
       .welfare__card {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 48px;
+        grid-template-columns: minmax(0, 1fr) 58px;
         align-items: center;
-        gap: 12px;
+        gap: 16px;
         min-width: 0;
-        min-height: 74px;
-        padding: 12px 16px;
+        min-height: 108px;
+        padding: 16px 22px;
         border: 1px solid #ffe4dc;
-        border-radius: 16px;
+        border-radius: 18px;
         background: #fffefd;
-        box-shadow: 0 3px 7px rgba(103, 58, 42, 0.08);
+        box-shadow: 0 4px 10px rgba(103, 58, 42, 0.08);
       }
 
       .welfare__card-title {
         margin: 0;
-        font-size: 13px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 1.5;
         letter-spacing: -0.03em;
       }
 
       .welfare__card-desc {
-        margin-top: 4px;
+        margin-top: 6px;
         color: #77716f;
-        font-size: 9px;
-        line-height: 1.5;
+        font-size: 12px;
+        line-height: 1.6;
         letter-spacing: -0.02em;
       }
 
       .welfare__icon {
-        width: 48px;
-        height: 48px;
+        width: 58px;
+        height: 58px;
         object-fit: contain;
       }
 
@@ -3064,6 +3062,7 @@
 
         .welfare__lead {
           margin: 42px 0 18px;
+          row-gap: 4px;
         }
 
         .welfare__highlight {
@@ -3071,7 +3070,7 @@
         }
 
         .welfare__lead-desc {
-          margin-top: 4px;
+          margin-top: 0;
           font-size: 12px;
         }
 
@@ -3686,6 +3685,316 @@
           transition: none;
         }
       }
+
+      /* ---------- Requirement (지원자격 및 전형절차) ---------- */
+      .requirement {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 72px 48px 80px;
+        overflow: hidden;
+        background: var(--white);
+      }
+
+      .requirement__title {
+        position: relative;
+        max-width: 640px;
+        margin: 0 auto;
+        font-size: clamp(30px, 3vw, 40px);
+        font-weight: 800;
+        line-height: 1.4;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+
+      .requirement__bulb {
+        position: absolute;
+        top: -30px;
+        right: 4%;
+        width: clamp(66px, 8vw, 96px);
+        height: auto;
+      }
+
+      .requirement__tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 56px;
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      .requirement__tab {
+        min-width: 0;
+        min-height: 58px;
+        padding: 12px 16px;
+        border-radius: 14px 14px 0 0;
+        color: #777;
+        font-size: 16px;
+        font-weight: 500;
+        transition:
+          color var(--ease),
+          background-color var(--ease),
+          box-shadow var(--ease);
+      }
+
+      .requirement__tab[aria-selected="true"] {
+        color: var(--orange);
+        background: #fff8f5;
+        box-shadow: 0 5px 16px rgba(131, 77, 58, 0.12);
+        font-weight: 700;
+      }
+
+      .requirement__panel[hidden] {
+        display: none;
+      }
+
+      .requirement__eligibility {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      .requirement__item {
+        display: flex;
+        min-height: 184px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .requirement__item + .requirement__item {
+        position: relative;
+      }
+
+      .requirement__item + .requirement__item::before {
+        position: absolute;
+        top: 24%;
+        bottom: 24%;
+        left: 0;
+        width: 1px;
+        background: #e8e8e8;
+        content: "";
+      }
+
+      .requirement__item img {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+      }
+
+      .requirement__item h3 {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: -0.03em;
+      }
+
+      .requirement__notes {
+        display: grid;
+        justify-content: center;
+        gap: 12px;
+        margin: 0;
+        padding: 32px 24px;
+        border-bottom: 1px solid #e8e8e8;
+        list-style: none;
+      }
+
+      .requirement__notes li {
+        position: relative;
+        padding-left: 16px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .requirement__notes li::before {
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--orange);
+        content: "";
+      }
+
+      .requirement__notice {
+        margin: 0;
+        padding: 32px 20px;
+        border-bottom: 1px solid #e8e8e8;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.7;
+        text-align: center;
+      }
+
+      .requirement__notice strong {
+        color: var(--orange);
+      }
+
+      .requirement__process {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        container-type: inline-size;
+      }
+
+      .requirement__process-group {
+        padding: 44px 32px;
+        border-bottom: 1px solid #e8e8e8;
+      }
+
+      .requirement__process-group h3 {
+        margin-bottom: 32px;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .requirement__steps {
+        display: flex;
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .requirement__step {
+        position: relative;
+        display: flex;
+        min-width: 0;
+        flex: 1 1 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .requirement__step:not(:last-child)::after {
+        position: absolute;
+        top: 1.5cqw;
+        right: -0.1cqw;
+        color: #222;
+        content: "›";
+        font-size: 3cqw;
+        line-height: 1;
+      }
+
+      .requirement__step-icon {
+        min-height: 5.2cqw;
+        font-size: 4.2cqw;
+        line-height: 1;
+      }
+
+      .requirement__step-title {
+        margin-top: 1.1cqw;
+        font-size: 1.55cqw;
+        font-weight: 700;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .requirement__step-date {
+        margin-top: 0.25cqw;
+        color: #999;
+        font-size: 1.3cqw;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 1024px) {
+        .requirement {
+          padding: 64px 28px 72px;
+        }
+
+        .requirement__bulb {
+          display: none;
+        }
+
+        .requirement__tabs {
+          margin-top: 44px;
+        }
+      }
+
+      @media (max-width: 568px) {
+        .requirement {
+          padding: 52px 20px 64px;
+        }
+
+        .requirement__title {
+          max-width: 320px;
+          font-size: 25px;
+        }
+
+        .requirement__bulb {
+          top: -28px;
+          right: -8px;
+          width: 58px;
+        }
+
+        .requirement__tabs {
+          gap: 4px;
+          margin-top: 40px;
+        }
+
+        .requirement__tab {
+          min-height: 58px;
+          padding: 10px 6px;
+          border-radius: 14px 14px 0 0;
+          font-size: 13px;
+        }
+
+        .requirement__eligibility {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .requirement__item {
+          min-height: 168px;
+          gap: 10px;
+          padding: 20px 12px;
+        }
+
+        .requirement__item + .requirement__item::before {
+          top: 0;
+          right: 0;
+          bottom: auto;
+          width: auto;
+          height: 1px;
+        }
+
+        .requirement__item img {
+          width: 64px;
+          height: 64px;
+        }
+
+        .requirement__item h3 {
+          font-size: 17px;
+        }
+
+        .requirement__notes {
+          gap: 10px;
+          padding: 28px 8px;
+        }
+
+        .requirement__notes li {
+          font-size: 13px;
+        }
+
+        .requirement__notice {
+          padding: 28px 8px;
+          font-size: 14px;
+        }
+
+        .requirement__process-group {
+          padding: 5cqw 0;
+        }
+
+        .requirement__process-group h3 {
+          margin-bottom: 3cqw;
+          font-size: 2cqw;
+        }
+      }
     </style>
   </head>
 
@@ -3734,7 +4043,7 @@
               <a class="gnb__link" href="#">직무소개</a>
             </li>
             <li class="gnb__item">
-              <a class="gnb__link" href="#">지원자격 및 접수방법</a>
+              <a class="gnb__link" href="#requirement">지원자격 및 접수방법</a>
             </li>
             <li class="gnb__item">
               <a class="gnb__link" href="#">채용설명회 일정</a>
@@ -5316,6 +5625,179 @@
           <div class="tasks-modal__body" id="tasks-modal-body"></div>
         </dialog>
       </section>
+
+      <section
+        class="requirement"
+        id="requirement"
+        aria-labelledby="requirement-title"
+      >
+        <h2 class="requirement__title" id="requirement-title">
+          한미그룹과 함께하는 문은<br />활짝 열려 있습니다
+        </h2>
+        <img
+          class="requirement__bulb"
+          src="./images/require_bulb.png"
+          alt=""
+          width="360"
+          height="456"
+          loading="lazy"
+          decoding="async"
+        />
+
+        <div class="requirement__tabs" role="tablist" aria-label="채용 안내">
+          <button
+            class="requirement__tab"
+            type="button"
+            role="tab"
+            id="requirement-tab-eligibility"
+            aria-controls="requirement-panel-eligibility"
+            aria-selected="true"
+            tabindex="0"
+          >
+            지원자격
+          </button>
+          <button
+            class="requirement__tab"
+            type="button"
+            role="tab"
+            id="requirement-tab-process"
+            aria-controls="requirement-panel-process"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            전형절차 및 접수방법
+          </button>
+        </div>
+
+        <div
+          class="requirement__panel"
+          id="requirement-panel-eligibility"
+          role="tabpanel"
+          aria-labelledby="requirement-tab-eligibility"
+          tabindex="0"
+        >
+          <div class="requirement__eligibility">
+            <article class="requirement__item">
+              <img
+                src="./images/require_ico_calendar_3d.png"
+                alt=""
+                width="169"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>27년 1월 입사가 가능한 자</h3>
+            </article>
+            <article class="requirement__item">
+              <img
+                src="./images/require_ico_gradcap_3d.png"
+                alt=""
+                width="244"
+                height="200"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3>기졸업자 또는 27년 2월 졸업 예정자</h3>
+            </article>
+          </div>
+          <ul class="requirement__notes">
+            <li>남성의 경우 병역을 마쳤거나 면제인 분</li>
+            <li>해외여행 (또는 해외 출장)에 결격사유가 없는 분</li>
+            <li>취업보호대상자는 관련 법령에 의거하여 우대</li>
+          </ul>
+          <p class="requirement__notice">
+            모집 직무별로 지원자격이 상이하오니 반드시
+            <strong>채용 공고</strong>를 확인해 주시기 바랍니다.
+          </p>
+        </div>
+
+        <div
+          class="requirement__panel"
+          id="requirement-panel-process"
+          role="tabpanel"
+          aria-labelledby="requirement-tab-process"
+          tabindex="0"
+          hidden
+        >
+          <div class="requirement__process">
+            <section class="requirement__process-group" aria-labelledby="requirement-sales-title">
+              <h3 id="requirement-sales-title">영업직군</h3>
+              <ol class="requirement__steps">
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🗓️</span>
+                  <span class="requirement__step-title">지원접수</span>
+                  <span class="requirement__step-date">9.28~10.18</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">📄</span>
+                  <span class="requirement__step-title">서류전형</span>
+                  <span class="requirement__step-date">10.19~10.20</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🔍</span>
+                  <span class="requirement__step-title">AI역량검사</span>
+                  <span class="requirement__step-date">10.21~10.25</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">👤</span>
+                  <span class="requirement__step-title">1차면접</span>
+                  <span class="requirement__step-date">11월 중</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">📍</span>
+                  <span class="requirement__step-title">현장체험</span>
+                  <span class="requirement__step-date">12월 초</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">💬</span>
+                  <span class="requirement__step-title">2차면접</span>
+                  <span class="requirement__step-date">12월 중</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🏢</span>
+                  <span class="requirement__step-title">교육전형</span>
+                  <span class="requirement__step-date">27.1~</span>
+                </li>
+              </ol>
+            </section>
+            <section class="requirement__process-group" aria-labelledby="requirement-other-title">
+              <h3 id="requirement-other-title">영업 외 전직군</h3>
+              <ol class="requirement__steps">
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🗓️</span>
+                  <span class="requirement__step-title">지원접수</span>
+                  <span class="requirement__step-date">9.28~10.18</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">📄</span>
+                  <span class="requirement__step-title">서류전형</span>
+                  <span class="requirement__step-date">10.19~10.20</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🔍</span>
+                  <span class="requirement__step-title">AI역량검사</span>
+                  <span class="requirement__step-date">10.21~10.25</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">👤</span>
+                  <span class="requirement__step-title">1차면접</span>
+                  <span class="requirement__step-date">11월 중</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">💬</span>
+                  <span class="requirement__step-title">2차면접</span>
+                  <span class="requirement__step-date">12월 중</span>
+                </li>
+                <li class="requirement__step">
+                  <span class="requirement__step-icon" aria-hidden="true">🏢</span>
+                  <span class="requirement__step-title">입사</span>
+                  <span class="requirement__step-date">27.1~<br />(경력직 협의 가능)</span>
+                </li>
+              </ol>
+            </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
@@ -5380,6 +5862,48 @@
         document.querySelectorAll('a[href="#"]').forEach(function (a) {
           a.addEventListener("click", function (e) {
             e.preventDefault();
+          });
+        });
+      })();
+
+      (function () {
+        var tabs = Array.from(
+          document.querySelectorAll(".requirement__tab"),
+        );
+        if (!tabs.length) return;
+
+        function activateTab(tab, moveFocus) {
+          tabs.forEach(function (item) {
+            var selected = item === tab;
+            item.setAttribute("aria-selected", String(selected));
+            item.tabIndex = selected ? 0 : -1;
+            document.getElementById(
+              item.getAttribute("aria-controls"),
+            ).hidden = !selected;
+          });
+          if (moveFocus) tab.focus();
+        }
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            activateTab(tab, false);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var index = tabs.indexOf(tab);
+            var nextIndex = index;
+            if (event.key === "ArrowRight") {
+              nextIndex = (index + 1) % tabs.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (index - 1 + tabs.length) % tabs.length;
+            } else if (event.key === "Home") {
+              nextIndex = 0;
+            } else if (event.key === "End") {
+              nextIndex = tabs.length - 1;
+            } else {
+              return;
+            }
+            event.preventDefault();
+            activateTab(tabs[nextIndex], true);
           });
         });
       })();
@@ -5754,6 +6278,114 @@
         modal.addEventListener("click", function (event) {
           if (event.target === modal) modal.close();
         });
+
+        var welfareScroll = document.querySelector(".welfare__scroll");
+        if (welfareScroll) {
+          welfareScroll.textContent = "복지 정보를 불러오는 중입니다.";
+
+          function createWelfareElement(tagName, className, text) {
+            var element = document.createElement(tagName);
+            element.className = className;
+            element.textContent = text;
+            return element;
+          }
+
+          function renderBenefits(data) {
+            if (
+              !data ||
+              !Array.isArray(data.benefits) ||
+              !data.benefits.every(function (group) {
+                return (
+                  group &&
+                  typeof group.group_title === "string" &&
+                  typeof group.group_description === "string" &&
+                  Array.isArray(group.items) &&
+                  group.items.every(function (item) {
+                    return (
+                      item &&
+                      typeof item.title === "string" &&
+                      typeof item.description === "string" &&
+                      typeof item.icon === "string" &&
+                      typeof item.icon_alt === "string"
+                    );
+                  })
+                );
+              })
+            ) {
+              throw new Error("복지 데이터 형식이 올바르지 않습니다.");
+            }
+
+            var content = document.createDocumentFragment();
+            data.benefits.forEach(function (group) {
+              var lead = document.createElement("div");
+              lead.className = "welfare__lead";
+              var heading = createWelfareElement(
+                "h3",
+                "welfare__highlight",
+                (group.heading_emoji ? group.heading_emoji + " " : "") +
+                  group.group_title,
+              );
+              var description = createWelfareElement(
+                "p",
+                "welfare__lead-desc",
+                group.group_description,
+              );
+              lead.append(heading, description);
+              content.appendChild(lead);
+
+              var list = document.createElement("ul");
+              list.className = "welfare__list";
+              group.items.forEach(function (item) {
+                var listItem = document.createElement("li");
+                var card = document.createElement("article");
+                card.className = "welfare__card";
+                var copy = document.createElement("div");
+                copy.appendChild(
+                  createWelfareElement(
+                    "h4",
+                    "welfare__card-title",
+                    item.title,
+                  ),
+                );
+                copy.appendChild(
+                  createWelfareElement(
+                    "p",
+                    "welfare__card-desc",
+                    item.description,
+                  ),
+                );
+
+                var icon = document.createElement("img");
+                icon.className = "welfare__icon";
+                icon.src = item.icon;
+                icon.alt = item.icon_alt;
+                icon.width = 68;
+                icon.height = 68;
+                icon.loading = "lazy";
+                icon.decoding = "async";
+                card.append(copy, icon);
+                listItem.appendChild(card);
+                list.appendChild(listItem);
+              });
+              content.appendChild(list);
+            });
+            welfareScroll.replaceChildren(content);
+          }
+
+          fetch("./data/benefits.json")
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("복지 데이터를 불러오지 못했습니다.");
+              }
+              return response.json();
+            })
+            .then(renderBenefits)
+            .catch(function (error) {
+              console.error("복지 데이터 렌더링 오류:", error);
+              welfareScroll.textContent =
+                "복지 정보를 불러오지 못했습니다. 페이지를 로컬 서버에서 열어주세요.";
+            });
+        }
 
         fetch("./data/pop_data.json")
           .then(function (response) {
