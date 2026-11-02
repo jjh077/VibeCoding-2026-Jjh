@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./hanmi-eye-tracking/player.css" />
     <style>
       /* ---------- Reset ---------- */
       *,
@@ -99,6 +100,45 @@
         -webkit-font-smoothing: antialiased;
         word-break: keep-all;
         position: relative;
+      }
+
+      .updown {
+        animation: character-updown 2s ease-in-out infinite alternate;
+      }
+
+      .leftright {
+        animation: character-leftright 2s ease-in-out infinite alternate;
+      }
+
+      .bigsmall {
+        animation: character-bigsmall 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes character-updown {
+        from {
+          translate: 0 0;
+        }
+        to {
+          translate: 0 -10%;
+        }
+      }
+
+      @keyframes character-leftright {
+        from {
+          translate: 0 0;
+        }
+        to {
+          translate: 10% 0;
+        }
+      }
+
+      @keyframes character-bigsmall {
+        from {
+          scale: 0.9;
+        }
+        to {
+          scale: 1.1;
+        }
       }
 
       .scroll-reveal {
@@ -415,6 +455,31 @@
         z-index: 3;
       }
 
+      .mv-stage .micro.updown {
+        animation-duration: 2.4s;
+        animation-delay: 0s;
+      }
+
+      .mv-stage .char1.updown {
+        animation-duration: 2.8s;
+        animation-delay: 0.35s;
+      }
+
+      .mv-stage .char2.updown {
+        animation-duration: 2.2s;
+        animation-delay: 0.7s;
+      }
+
+      .mv-stage .char3.updown {
+        animation-duration: 3s;
+        animation-delay: 1.05s;
+      }
+
+      .mv-stage .char4.updown {
+        animation-duration: 2.6s;
+        animation-delay: 1.4s;
+      }
+
       .mv-stage .micro {
         left: 765.8px;
         top: 151.7px;
@@ -652,7 +717,8 @@
         }
 
         .mirae {
-          --edge-fade: 120px;
+          -webkit-mask-image: none;
+          mask-image: none;
         }
       }
 
@@ -669,9 +735,8 @@
         position: relative;
         isolation: isolate;
         width: 100%;
-        max-width: var(--section-max);
-        /* [수정] 1920px → 1200px : 이미지(구름·캐릭터)가 % 기반이라 섹션 폭과 함께 축소됨 */
-        aspect-ratio: 1370 / 913;
+        max-width: none;
+        height: min(66.64vw, 800px);
         margin: 0 auto;
         overflow: hidden;
         container-type: inline-size;
@@ -687,7 +752,7 @@
         /* [수정] 4.6 → 3.4 : 1920px 기준 88px → 41px(1200px 상한). .main-visual 타이틀(72px)보다 작게 */
         font-size: 3.4vw;
         /* cqw 미지원 브라우저 대비 */
-        font-size: 3.4cqw;
+        font-size: min(3.4cqw, 40.8px);
         font-weight: 800;
         line-height: 1.3;
         letter-spacing: -0.03em;
@@ -715,38 +780,39 @@
 
       /* 구름: blur(흐림, 뒤) → front(선명, 앞) */
       .mirae__cloud--blur-l {
-        left: 4.4%;
+        left: 15.6%;
         top: 19.6%;
-        width: 28.2%;
+        width: 21%;
         z-index: 1;
       }
 
       .mirae__cloud--blur-r {
-        left: 72.6%;
+        left: 66.8%;
         top: 64.7%;
-        width: 11.8%;
+        width: 8.4%;
         z-index: 1;
       }
 
       .mirae__cloud--front-l {
         left: 0;
         top: 53.1%;
-        width: 14.5%;
+        width: 10.9%;
         z-index: 2;
       }
 
       .mirae__cloud--front-r {
-        left: 76.3%;
+        left: 81.8%;
         top: 26.8%;
-        width: 24.1%;
+        width: 18.2%;
         z-index: 2;
       }
 
       /* 캐릭터(언덕은 섹션 하단에서 잘림) */
       .mirae__char {
-        left: -1%;
-        top: 16.6%;
-        width: 102%;
+        left: 50%;
+        top: min(16.6%, 133px);
+        width: min(102%, 1224px);
+        transform: translateX(-50%);
         z-index: 3;
       }
 
@@ -1338,6 +1404,12 @@
         * {
           transition: none !important;
         }
+
+        .updown,
+        .leftright,
+        .bigsmall {
+          animation: none;
+        }
       }
 
       /* =====================================================================
@@ -1372,11 +1444,11 @@
 
         /* 장식 이미지 (좌표는 섹션 좌상단 기준) */
         --jb-logo-w: 7.4cqw;
-        --jb-logo-x: 25cqw;
-        --jb-logo-y: 10.3cqw;
+        --jb-logo-x: 26cqw;
+        --jb-logo-y: -3.7cqw;
         --jb-char-w: 19.5cqw;
-        --jb-char-x: 79.7cqw;
-        --jb-char-y: 9.5cqw;
+        --jb-char-x: 82.7cqw;
+        --jb-char-y: -3.5cqw;
         --jb-bottle-w: 15.4cqw;
         --jb-bottle-x: 5cqw;
         --jb-bottle-y: 50.4cqw;
@@ -1892,6 +1964,7 @@
 
         /* Mirae: 타이틀은 '새로운 미래'만 레드, 나머지는 블랙 */
         .mirae {
+          height: auto;
           aspect-ratio: 1330 / 909;
         }
 
@@ -1937,6 +2010,7 @@
           left: 11.65%;
           top: 39.5%;
           width: 76.7%;
+          transform: none;
         }
 
         .mirae__star--right {
@@ -2202,6 +2276,7 @@
 
         /* Mirae: 모바일은 타이틀 전체 그라데이션 */
         .mirae {
+          height: auto;
           aspect-ratio: 850 / 920;
         }
 
@@ -2248,6 +2323,7 @@
           left: -1%;
           top: 44.9%;
           width: 102%;
+          transform: none;
         }
 
         .mirae__star--right {
@@ -5068,7 +5144,6 @@
           width: 150px;
         }
       }
-
     </style>
   </head>
 
@@ -5194,11 +5269,11 @@
             <div class="mv-stage__glass"></div>
             <div class="mv-stage__ring"></div>
 
-            <img class="micro" src="./images/mv_micro.png" alt="" />
-            <img class="char1" src="./images/mv_char1.png" alt="" />
-            <img class="char2" src="./images/mv_char2.png" alt="" />
-            <img class="char3" src="./images/mv_char3.png" alt="" />
-            <img class="char4" src="./images/mv_char4.png" alt="" />
+            <img class="micro updown" src="./images/mv_micro.png" alt="" />
+            <img class="char1 updown" src="./images/mv_char1.png" alt="" />
+            <img class="char2 updown" src="./images/mv_char2.png" alt="" />
+            <img class="char3 updown" src="./images/mv_char3.png" alt="" />
+            <img class="char4 updown" src="./images/mv_char4.png" alt="" />
 
             <span class="star star--blue"></span>
             <span class="star star--red"></span>
@@ -5266,11 +5341,15 @@
             />
           </div>
 
-          <img
-            class="mirae__char"
-            src="./images/mirae_run.png"
-            alt="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습"
-          />
+          <div class="mirae__char hanmi-walker" data-hanmi-walker>
+            <canvas
+              width="1920"
+              height="1080"
+              role="img"
+              aria-label="사원증을 목에 건 한미그룹 캐릭터가 초록 언덕 위를 걸어 나아가는 모습"
+            ></canvas>
+            <span data-status role="status">이미지 준비 중</span>
+          </div>
         </section>
       </div>
 
@@ -5289,7 +5368,7 @@
               <span class="history__num-suffix" aria-hidden="true">th</span>
             </p>
             <img
-              class="history__deco history__deco--obj history__deco--stars"
+              class="history__deco history__deco--obj history__deco--stars updown"
               src="./images/obj_star_big.png"
               alt="반짝이는 노란 별 세 개"
               width="240"
@@ -5343,7 +5422,7 @@
                 />
               </figure>
               <img
-                class="history__deco history__deco--obj history__deco--beaker"
+                class="history__deco history__deco--obj history__deco--beaker updown updown"
                 src="./images/obj_beaker.png"
                 alt="분홍빛 용액이 담긴 연구용 비커"
                 width="240"
@@ -5410,7 +5489,7 @@
                 aria-hidden="true"
               />
               <img
-                class="history__deco history__deco--obj history__deco--microscope"
+                class="history__deco history__deco--obj history__deco--microscope updown"
                 src="./images/obj_microscope.png"
                 alt="파란색 현미경"
                 width="218"
@@ -5617,7 +5696,7 @@
                 />
               </figure>
               <img
-                class="history__deco history__deco--obj history__deco--molecule"
+                class="history__deco history__deco--obj history__deco--molecule updown"
                 src="./images/obj_mol_big.png"
                 alt="보랏빛 유리 구슬로 만든 분자 구조 오브제"
                 width="237"
@@ -5660,7 +5739,7 @@
               aria-hidden="true"
             />
             <img
-              class="history__deco history__deco--obj history__deco--char"
+              class="history__deco history__deco--obj history__deco--char leftright"
               src="./images/con2_char.png"
               alt="사원증을 목에 걸고 힘차게 달려가는 한미 캐릭터"
               width="339"
@@ -5715,7 +5794,7 @@
           <div class="job__inner">
             <header class="job__head">
               <img
-                class="job__logo"
+                class="job__logo updown"
                 src="./images/con3_logo.png"
                 alt="붉은 타원형 한미(Hanmi) 로고"
                 width="216"
@@ -5734,7 +5813,7 @@
                 <span class="job__desc-line">들려드립니다.</span>
               </p>
               <img
-                class="job__char"
+                class="job__char leftright"
                 src="./images/con3_char.png"
                 alt="서류 가방을 들고 사원증을 목에 건 보라색 한미 캐릭터"
                 width="560"
@@ -5836,7 +5915,7 @@
 
           <!-- 약병: 첫 번째 카드 좌하단에 걸쳐 놓이는 장식 (모바일 시안에는 없음) -->
           <img
-            class="job__bottle"
+            class="job__bottle updown"
             src="./images/con3_bottle.png"
             alt="한미 로고가 붙은 파란 뚜껑의 약병"
             width="442"
@@ -5881,7 +5960,7 @@
                 decoding="async"
               />
               <img
-                class="innovation__atom"
+                class="innovation__atom bigsmall"
                 src="./images/inno_molecule1.png"
                 alt=""
                 width="359"
@@ -6099,7 +6178,7 @@
 
           <!-- 장식: 좌하단 분자 모형 -->
           <img
-            class="innovation__molecule"
+            class="innovation__molecule updown"
             src="./images/inno_molecule2.png"
             alt=""
             width="359"
@@ -6120,7 +6199,7 @@
               건강부터 성장, 휴식까지 알차게 준비한 복지를 소개할게요.
             </p>
             <img
-              class="welfare__mascot"
+              class="welfare__mascot updown"
               src="./images/con5_char.png"
               alt="복지를 소개하는 한미 캐릭터"
               width="411"
@@ -6709,7 +6788,7 @@
           한미그룹과 함께하는 문은<br />활짝 열려 있습니다
         </h2>
         <img
-          class="requirement__bulb"
+          class="requirement__bulb updown"
           src="./images/require_bulb.png"
           alt=""
           width="360"
@@ -6794,78 +6873,112 @@
           hidden
         >
           <div class="requirement__process">
-            <section class="requirement__process-group" aria-labelledby="requirement-sales-title">
+            <section
+              class="requirement__process-group"
+              aria-labelledby="requirement-sales-title"
+            >
               <h3 id="requirement-sales-title">영업직군</h3>
               <ol class="requirement__steps">
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🗓️</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🗓️</span
+                  >
                   <span class="requirement__step-title">지원접수</span>
                   <span class="requirement__step-date">9.28~10.18</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">📄</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >📄</span
+                  >
                   <span class="requirement__step-title">서류전형</span>
                   <span class="requirement__step-date">10.19~10.20</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🔍</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🔍</span
+                  >
                   <span class="requirement__step-title">AI역량검사</span>
                   <span class="requirement__step-date">10.21~10.25</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">👤</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >👤</span
+                  >
                   <span class="requirement__step-title">1차면접</span>
                   <span class="requirement__step-date">11월 중</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">📍</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >📍</span
+                  >
                   <span class="requirement__step-title">현장체험</span>
                   <span class="requirement__step-date">12월 초</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">💬</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >💬</span
+                  >
                   <span class="requirement__step-title">2차면접</span>
                   <span class="requirement__step-date">12월 중</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🏢</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🏢</span
+                  >
                   <span class="requirement__step-title">교육전형</span>
                   <span class="requirement__step-date">27.1~</span>
                 </li>
               </ol>
             </section>
-            <section class="requirement__process-group" aria-labelledby="requirement-other-title">
+            <section
+              class="requirement__process-group"
+              aria-labelledby="requirement-other-title"
+            >
               <h3 id="requirement-other-title">영업 외 전직군</h3>
               <ol class="requirement__steps">
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🗓️</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🗓️</span
+                  >
                   <span class="requirement__step-title">지원접수</span>
                   <span class="requirement__step-date">9.28~10.18</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">📄</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >📄</span
+                  >
                   <span class="requirement__step-title">서류전형</span>
                   <span class="requirement__step-date">10.19~10.20</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🔍</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🔍</span
+                  >
                   <span class="requirement__step-title">AI역량검사</span>
                   <span class="requirement__step-date">10.21~10.25</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">👤</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >👤</span
+                  >
                   <span class="requirement__step-title">1차면접</span>
                   <span class="requirement__step-date">11월 중</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">💬</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >💬</span
+                  >
                   <span class="requirement__step-title">2차면접</span>
                   <span class="requirement__step-date">12월 중</span>
                 </li>
                 <li class="requirement__step">
-                  <span class="requirement__step-icon" aria-hidden="true">🏢</span>
+                  <span class="requirement__step-icon" aria-hidden="true"
+                    >🏢</span
+                  >
                   <span class="requirement__step-title">입사</span>
-                  <span class="requirement__step-date">27.1~<br />(경력직 협의 가능)</span>
+                  <span class="requirement__step-date"
+                    >27.1~<br />(경력직 협의 가능)</span
+                  >
                 </li>
               </ol>
             </section>
@@ -6884,13 +6997,13 @@
               지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.
             </li>
             <li>
-              전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소
-              및 휴대전화 번호를 정확히 기재해주시기 바랍니다.
+              전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소 및
+              휴대전화 번호를 정확히 기재해주시기 바랍니다.
             </li>
             <li>
               입사 후 3개월간 수습기간이 적용되며, 수습 기간 중 성적이
-              불량하거나 직무 수행 능력이 부족하다고 판단되는 경우 입사가
-              취소될 수 있습니다.
+              불량하거나 직무 수행 능력이 부족하다고 판단되는 경우 입사가 취소될
+              수 있습니다.
             </li>
           </ul>
         </div>
@@ -6903,7 +7016,7 @@
       >
         <div class="exposition__hero">
           <img
-            class="exposition__character"
+            class="exposition__character updown"
             src="./images/expo_char.png"
             alt=""
             width="698"
@@ -7074,15 +7187,11 @@
                       1 0 0 0 0"
               result="red-opacity"
             />
-            <feComposite
-              in="SourceGraphic"
-              in2="red-opacity"
-              operator="in"
-            />
+            <feComposite in="SourceGraphic" in2="red-opacity" operator="in" />
           </filter>
         </svg>
         <img
-          class="con8__mascot"
+          class="con8__mascot updown"
           src="./images/con8_char.png"
           alt=""
           width="281"
@@ -7174,7 +7283,15 @@
               <div class="con8__caption">
                 <span class="con8__question">
                   한미그룹의
-                  <span class="con8__marked-text">직무<img class="con8__mark con8__mark--circle" src="./images/con8_Image-3.png" alt="" aria-hidden="true" width="164" height="114" /></span>가 궁금하다면?
+                  <span class="con8__marked-text"
+                    >직무<img
+                      class="con8__mark con8__mark--circle"
+                      src="./images/con8_Image-3.png"
+                      alt=""
+                      aria-hidden="true"
+                      width="164"
+                      height="114" /></span
+                  >가 궁금하다면?
                 </span>
                 <span class="con8__action">
                   한미그룹 직무 소개 페이지
@@ -7208,7 +7325,15 @@
               <div class="con8__caption">
                 <span class="con8__question">
                   한미그룹의
-                  <span class="con8__marked-text">채용소식<img class="con8__mark con8__mark--underline-wide" src="./images/con8_Image-5.png" alt="" aria-hidden="true" width="210" height="20" /></span>을 빠르게 받고 싶다면?
+                  <span class="con8__marked-text"
+                    >채용소식<img
+                      class="con8__mark con8__mark--underline-wide"
+                      src="./images/con8_Image-5.png"
+                      alt=""
+                      aria-hidden="true"
+                      width="210"
+                      height="20" /></span
+                  >을 빠르게 받고 싶다면?
                 </span>
                 <span class="con8__action">
                   한미그룹 채용 홈페이지
@@ -7239,13 +7364,16 @@
             <span class="con9__countdown-number" data-countdown-days>0</span>일
           </span>
           <span class="con9__countdown-item">
-            <span class="con9__countdown-number" data-countdown-hours>00</span>시간
+            <span class="con9__countdown-number" data-countdown-hours>00</span
+            >시간
           </span>
           <span class="con9__countdown-item">
-            <span class="con9__countdown-number" data-countdown-minutes>00</span>분
+            <span class="con9__countdown-number" data-countdown-minutes>00</span
+            >분
           </span>
           <span class="con9__countdown-item">
-            <span class="con9__countdown-number" data-countdown-seconds>00</span>초 남았어요
+            <span class="con9__countdown-number" data-countdown-seconds>00</span
+            >초 남았어요
           </span>
         </p>
         <p class="con9__expired" id="con9-expired" role="status" hidden>
@@ -7296,7 +7424,6 @@
           loading="lazy"
         />
       </section>
-
     </main>
 
     <footer class="footer">
@@ -7314,157 +7441,157 @@
 
     <script>
       (function () {
-      var header = document.querySelector(".header");
-      if (!header) return;
+        var header = document.querySelector(".header");
+        if (!header) return;
 
-      var previousScrollY = window.scrollY;
-      var accumulatedScrollDelta = 0;
-      var ticking = false;
-      var directionThreshold = 6;
+        var previousScrollY = window.scrollY;
+        var accumulatedScrollDelta = 0;
+        var ticking = false;
+        var directionThreshold = 6;
 
-      function updateHeaderOnScroll() {
-        var currentScrollY = Math.max(0, window.scrollY);
-        var scrollDelta = currentScrollY - previousScrollY;
+        function updateHeaderOnScroll() {
+          var currentScrollY = Math.max(0, window.scrollY);
+          var scrollDelta = currentScrollY - previousScrollY;
 
-        if (currentScrollY <= 0) {
-          header.classList.remove("is-hidden", "is-visible");
-          accumulatedScrollDelta = 0;
-        } else {
-          if (
-            accumulatedScrollDelta === 0 ||
-            Math.sign(scrollDelta) === Math.sign(accumulatedScrollDelta)
-          ) {
-            accumulatedScrollDelta += scrollDelta;
+          if (currentScrollY <= 0) {
+            header.classList.remove("is-hidden", "is-visible");
+            accumulatedScrollDelta = 0;
           } else {
-            accumulatedScrollDelta = scrollDelta;
-          }
-
-          if (accumulatedScrollDelta > directionThreshold) {
-            header.classList.add("is-hidden");
-            header.classList.remove("is-visible");
-            accumulatedScrollDelta = 0;
-          } else if (accumulatedScrollDelta < -directionThreshold) {
-            header.classList.remove("is-hidden");
-            header.classList.add("is-visible");
-            accumulatedScrollDelta = 0;
-          }
-        }
-
-        previousScrollY = currentScrollY;
-        ticking = false;
-      }
-
-      window.addEventListener(
-        "scroll",
-        function () {
-          if (ticking) return;
-          ticking = true;
-          window.requestAnimationFrame(updateHeaderOnScroll);
-        },
-        { passive: true },
-      );
-    })();
-
-    (function () {
-      var revealSelectors = [
-        ".mirae__title",
-        ".mirae__char",
-        ".history__head",
-        ".history__block",
-        ".history__goal",
-        ".history__closing",
-        ".job__head",
-        ".job__item",
-        ".innovation__head",
-        ".innovation__item",
-        ".welfare__head",
-        ".welfare__lead",
-        ".welfare__card",
-        ".tasks__intro",
-        ".tasks__tabs",
-        ".tasks__group",
-        "#requirement-title",
-        ".requirement__tabs",
-        ".requirement__item",
-        ".requirement__notes",
-        ".requirement__notice",
-        ".requirement__process-group",
-        ".requirement__process-notes",
-        ".exposition__hero",
-        ".exposition__tabs",
-        ".exposition__region",
-        ".exposition__week-list",
-        ".con8__card",
-      ];
-      var revealSelector = revealSelectors.join(", ");
-      if (!("IntersectionObserver" in window)) return;
-
-      var lastScrollY = window.scrollY;
-      var scrollDirection = 0;
-      var revealObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-revealed");
-            } else if (scrollDirection < 0) {
-              entry.target.classList.remove("is-revealed");
+            if (
+              accumulatedScrollDelta === 0 ||
+              Math.sign(scrollDelta) === Math.sign(accumulatedScrollDelta)
+            ) {
+              accumulatedScrollDelta += scrollDelta;
+            } else {
+              accumulatedScrollDelta = scrollDelta;
             }
-          });
-        },
-        {
-          rootMargin: "0px 0px -45% 0px",
-          threshold: 0,
-        },
-      );
 
-      function observeRevealTarget(target) {
-        if (target.classList.contains("scroll-reveal")) return;
-        target.classList.add("scroll-reveal");
-        revealObserver.observe(target);
-      }
+            if (accumulatedScrollDelta > directionThreshold) {
+              header.classList.add("is-hidden");
+              header.classList.remove("is-visible");
+              accumulatedScrollDelta = 0;
+            } else if (accumulatedScrollDelta < -directionThreshold) {
+              header.classList.remove("is-hidden");
+              header.classList.add("is-visible");
+              accumulatedScrollDelta = 0;
+            }
+          }
 
-      function observeTargets(root) {
-        if (root.nodeType !== Node.ELEMENT_NODE) return;
-        var element = root;
-        if (element.matches(revealSelector)) observeRevealTarget(element);
-        element.querySelectorAll(revealSelector).forEach(observeRevealTarget);
-      }
-
-      revealSelectors.forEach(function (selector) {
-        document.querySelectorAll(selector).forEach(observeRevealTarget);
-      });
-
-      var dynamicContentObserver = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          mutation.addedNodes.forEach(observeTargets);
-        });
-      });
-      var dynamicContainers = [
-        document.getElementById("tasks-groups"),
-        document.querySelector(".welfare__scroll"),
-      ];
-      dynamicContainers.forEach(function (container) {
-        if (container) {
-          dynamicContentObserver.observe(container, {
-            childList: true,
-            subtree: true,
-          });
+          previousScrollY = currentScrollY;
+          ticking = false;
         }
-      });
 
-      window.addEventListener(
-        "scroll",
-        function () {
-          var currentScrollY = window.scrollY;
-          var delta = currentScrollY - lastScrollY;
-          if (Math.abs(delta) > 1) scrollDirection = Math.sign(delta);
-          lastScrollY = currentScrollY;
-        },
-        { passive: true },
-      );
-    })();
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(updateHeaderOnScroll);
+          },
+          { passive: true },
+        );
+      })();
 
-    (function () {
+      (function () {
+        var revealSelectors = [
+          ".mirae__title",
+          ".mirae__char",
+          ".history__head",
+          ".history__block",
+          ".history__goal",
+          ".history__closing",
+          ".job__head",
+          ".job__item",
+          ".innovation__head",
+          ".innovation__item",
+          ".welfare__head",
+          ".welfare__lead",
+          ".welfare__card",
+          ".tasks__intro",
+          ".tasks__tabs",
+          ".tasks__group",
+          "#requirement-title",
+          ".requirement__tabs",
+          ".requirement__item",
+          ".requirement__notes",
+          ".requirement__notice",
+          ".requirement__process-group",
+          ".requirement__process-notes",
+          ".exposition__hero",
+          ".exposition__tabs",
+          ".exposition__region",
+          ".exposition__week-list",
+          ".con8__card",
+        ];
+        var revealSelector = revealSelectors.join(", ");
+        if (!("IntersectionObserver" in window)) return;
+
+        var lastScrollY = window.scrollY;
+        var scrollDirection = 0;
+        var revealObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed");
+              } else if (scrollDirection < 0) {
+                entry.target.classList.remove("is-revealed");
+              }
+            });
+          },
+          {
+            rootMargin: "0px 0px -45% 0px",
+            threshold: 0,
+          },
+        );
+
+        function observeRevealTarget(target) {
+          if (target.classList.contains("scroll-reveal")) return;
+          target.classList.add("scroll-reveal");
+          revealObserver.observe(target);
+        }
+
+        function observeTargets(root) {
+          if (root.nodeType !== Node.ELEMENT_NODE) return;
+          var element = root;
+          if (element.matches(revealSelector)) observeRevealTarget(element);
+          element.querySelectorAll(revealSelector).forEach(observeRevealTarget);
+        }
+
+        revealSelectors.forEach(function (selector) {
+          document.querySelectorAll(selector).forEach(observeRevealTarget);
+        });
+
+        var dynamicContentObserver = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            mutation.addedNodes.forEach(observeTargets);
+          });
+        });
+        var dynamicContainers = [
+          document.getElementById("tasks-groups"),
+          document.querySelector(".welfare__scroll"),
+        ];
+        dynamicContainers.forEach(function (container) {
+          if (container) {
+            dynamicContentObserver.observe(container, {
+              childList: true,
+              subtree: true,
+            });
+          }
+        });
+
+        window.addEventListener(
+          "scroll",
+          function () {
+            var currentScrollY = window.scrollY;
+            var delta = currentScrollY - lastScrollY;
+            if (Math.abs(delta) > 1) scrollDirection = Math.sign(delta);
+            lastScrollY = currentScrollY;
+          },
+          { passive: true },
+        );
+      })();
+
+      (function () {
         var countdown = document.getElementById("con9-countdown");
         var expired = document.getElementById("con9-expired");
         if (!countdown || !expired) return;
@@ -7560,9 +7687,7 @@
       })();
 
       (function () {
-        var tabs = Array.from(
-          document.querySelectorAll(".requirement__tab"),
-        );
+        var tabs = Array.from(document.querySelectorAll(".requirement__tab"));
         if (!tabs.length) return;
 
         function activateTab(tab, moveFocus) {
@@ -7570,9 +7695,8 @@
             var selected = item === tab;
             item.setAttribute("aria-selected", String(selected));
             item.tabIndex = selected ? 0 : -1;
-            document.getElementById(
-              item.getAttribute("aria-controls"),
-            ).hidden = !selected;
+            document.getElementById(item.getAttribute("aria-controls")).hidden =
+              !selected;
           });
           if (moveFocus) tab.focus();
         }
@@ -7603,23 +7727,36 @@
 
       (function () {
         var tabs = Array.from(document.querySelectorAll(".exposition__tab"));
-        var regions = Array.from(document.querySelectorAll(".exposition__region"));
+        var regions = Array.from(
+          document.querySelectorAll(".exposition__region"),
+        );
         var fairCalendar = document.getElementById("exposition-fair-calendar");
-        var campusCalendar = document.getElementById("exposition-campus-calendar");
+        var campusCalendar = document.getElementById(
+          "exposition-campus-calendar",
+        );
         if (!tabs.length || !regions.length || !fairCalendar || !campusCalendar)
           return;
 
         var fairWeeks = [
           [
             { date: "8월 31일 (월)", venues: ["KAIST"] },
-            { date: "9월 1일 (화)", venues: ["서울대학교", "서강대학교", "연세대학교"] },
+            {
+              date: "9월 1일 (화)",
+              venues: ["서울대학교", "서강대학교", "연세대학교"],
+            },
             { date: "9월 2일 (수)", venues: ["UNIST", "한양대학교"] },
             { date: "9월 3일 (목)", venues: ["GIST"] },
-            { date: "9월 4일 (금)", venues: ["고려대학교", "성균관대학교(자연)"] },
+            {
+              date: "9월 4일 (금)",
+              venues: ["고려대학교", "성균관대학교(자연)"],
+            },
           ],
           [
             { date: "9월 7일 (월)", venues: ["KIST", "동국대학교"] },
-            { date: "9월 8일 (화)", venues: ["이화여자대학교", "중견기업박람회(대전)"] },
+            {
+              date: "9월 8일 (화)",
+              venues: ["이화여자대학교", "중견기업박람회(대전)"],
+            },
             { date: "9월 9일 (수)", venues: ["POSTECH"] },
             { date: "", venues: [] },
             { date: "10월 7일 (수)", venues: ["서울고용센터"] },
@@ -7629,9 +7766,8 @@
         var campusWeekdays = ["일", "월", "화", "수", "목", "금", "토"];
 
         function parseCampusDate(value) {
-          var match = /^(\d{1,2})월\s*(\d{1,2})일\s*\(([월화수목금토일])\)$/.exec(
-            value,
-          );
+          var match =
+            /^(\d{1,2})월\s*(\d{1,2})일\s*\(([월화수목금토일])\)$/.exec(value);
           if (!match) {
             throw new Error("캠퍼스 일정 날짜 형식이 올바르지 않습니다.");
           }
@@ -7731,7 +7867,8 @@
                 var dateKey = date.getTime();
                 days.push({
                   date:
-                    (date.getUTCMonth() + 1) +
+                    date.getUTCMonth() +
+                    1 +
                     "월 " +
                     date.getUTCDate() +
                     "일 (" +
@@ -7882,9 +8019,8 @@
             var selected = item === tab;
             item.setAttribute("aria-selected", String(selected));
             item.tabIndex = selected ? 0 : -1;
-            document.getElementById(
-              item.getAttribute("aria-controls"),
-            ).hidden = !selected;
+            document.getElementById(item.getAttribute("aria-controls")).hidden =
+              !selected;
           });
           if (moveFocus) tab.focus();
         }
@@ -7934,7 +8070,8 @@
           tab.addEventListener("keydown", function (event) {
             var index = tabs.indexOf(tab);
             var nextIndex = index;
-            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+            if (event.key === "ArrowRight")
+              nextIndex = (index + 1) % tabs.length;
             else if (event.key === "ArrowLeft")
               nextIndex = (index - 1 + tabs.length) % tabs.length;
             else if (event.key === "Home") nextIndex = 0;
@@ -7985,9 +8122,7 @@
               "캠퍼스 일정을 불러오지 못했습니다. 페이지를 로컬 서버에서 열어주세요.";
           });
 
-        renderWeeks(fairCalendar, [
-          [].concat.apply([], fairWeeks),
-        ]);
+        renderWeeks(fairCalendar, [[].concat.apply([], fairWeeks)]);
       })();
 
       /* History 섹션: 펼치기 / 접기
@@ -8068,7 +8203,8 @@
         var modal = document.getElementById("tasks-modal");
         var modalBody = document.getElementById("tasks-modal-body");
         var closeButton = modal && modal.querySelector(".tasks-modal__close");
-        var modalImage = modal && modal.querySelector(".tasks-modal__visual img");
+        var modalImage =
+          modal && modal.querySelector(".tasks-modal__visual img");
         if (
           !tabs.length ||
           !groups ||
@@ -8213,7 +8349,9 @@
               var roleCards = group.roles
                 .map(function (role) {
                   var job = popupJobs.find(function (item) {
-                    return item.department === category.name && item.title === role;
+                    return (
+                      item.department === category.name && item.title === role
+                    );
                   });
                   return (
                     '<button class="tasks__role" type="button" data-role="' +
@@ -8325,16 +8463,18 @@
           var toggle = event.target.closest(".tasks__group-toggle");
           if (toggle) {
             var expanded = toggle.getAttribute("aria-expanded") === "true";
-            groups.querySelectorAll(".tasks__group-toggle").forEach(function (item) {
-              if (item === toggle) return;
-              item.setAttribute("aria-expanded", "false");
-              var otherPanel = document.getElementById(
-                item.getAttribute("aria-controls"),
-              );
-              otherPanel.classList.remove("is-open");
-              otherPanel.setAttribute("aria-hidden", "true");
-              otherPanel.inert = true;
-            });
+            groups
+              .querySelectorAll(".tasks__group-toggle")
+              .forEach(function (item) {
+                if (item === toggle) return;
+                item.setAttribute("aria-expanded", "false");
+                var otherPanel = document.getElementById(
+                  item.getAttribute("aria-controls"),
+                );
+                otherPanel.classList.remove("is-open");
+                otherPanel.setAttribute("aria-hidden", "true");
+                otherPanel.inert = true;
+              });
 
             var panel = document.getElementById(
               toggle.getAttribute("aria-controls"),
@@ -8423,11 +8563,7 @@
                 card.className = "welfare__card";
                 var copy = document.createElement("div");
                 copy.appendChild(
-                  createWelfareElement(
-                    "h4",
-                    "welfare__card-title",
-                    item.title,
-                  ),
+                  createWelfareElement("h4", "welfare__card-title", item.title),
                 );
                 copy.appendChild(
                   createWelfareElement(
@@ -8471,7 +8607,8 @@
 
         fetch("./data/pop_data.json")
           .then(function (response) {
-            if (!response.ok) throw new Error("직무 데이터를 불러오지 못했습니다.");
+            if (!response.ok)
+              throw new Error("직무 데이터를 불러오지 못했습니다.");
             return response.json();
           })
           .then(function (data) {
@@ -8484,5 +8621,59 @@
           });
       })();
     </script>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.",
+        );
+      }
+      // ]]>
+    </script>
+    <script src="./hanmi-eye-tracking/metadata.js"></script>
+    <script src="./hanmi-eye-tracking/player.js"></script>
   </body>
 </html>
