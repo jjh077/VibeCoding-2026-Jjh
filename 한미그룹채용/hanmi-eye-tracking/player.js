@@ -12,14 +12,24 @@
       this.frames = [];
       this.index = 0; this.elapsed = 0; this.last = 0; this.raf = 0;
       this.ready = false; this.visible = true; this.paused = false;
-      this.tracking = true; this.pointer = null; this.gaze = { x: 0, y: 0 };
+      this.desktopTrackingOnly = root.dataset.tracking === 'desktop';
+      this.pointerTracking = matchMedia('(min-width: 1025px) and (hover: hover) and (pointer: fine)');
+      this.tracking = !this.desktopTrackingOnly || this.pointerTracking.matches;
+      this.pointer = null; this.gaze = { x: 0, y: 0 };
       this.reduce = matchMedia('(prefers-reduced-motion: reduce)');
       this.paused = this.reduce.matches;
       this.tick = this.tick.bind(this);
       this.onVisibility = () => { this.last = 0; this.update(); };
       document.addEventListener('visibilitychange', this.onVisibility);
+      this.onPointerTracking = e => {
+        this.tracking = e.matches;
+        this.pointer = null;
+        this.gaze = { x: 0, y: 0 };
+        this.update();
+      };
+      if (this.desktopTrackingOnly) this.pointerTracking.addEventListener('change', this.onPointerTracking);
       this.canvas.addEventListener('pointermove', e => {
-        if (e.pointerType === 'touch') return;
+        if (!this.tracking || e.pointerType === 'touch') return;
         const r = this.canvas.getBoundingClientRect();
         this.pointer = {x:(e.clientX-r.left)*1920/r.width,y:(e.clientY-r.top)*1080/r.height};
         this.update();
@@ -134,6 +144,7 @@
       cancelAnimationFrame(this.raf);this.observer.disconnect();
       document.removeEventListener('visibilitychange',this.onVisibility);
       this.reduce.removeEventListener('change',this.onReduce);
+      if (this.desktopTrackingOnly) this.pointerTracking.removeEventListener('change',this.onPointerTracking);
       this.ready=false;this.frames=[];
     }
   }

@@ -810,8 +810,8 @@
       /* 캐릭터(언덕은 섹션 하단에서 잘림) */
       .mirae__char {
         left: 50%;
-        top: min(16.6%, 133px);
-        width: min(102%, 1224px);
+        top: max(0px, calc(min(16.6%, 133px) - 80px));
+        width: min(calc(min(102%, 1224px) + 17vw), 100%);
         transform: translateX(-50%);
         z-index: 3;
       }
@@ -3263,7 +3263,7 @@
 
       .tasks__stage {
         position: relative;
-        height: clamp(370px, calc(230px + 35vw), 490px);
+        height: calc(clamp(120px, 22vw, 180px) + 28.125vw + 40px);
         overflow: hidden;
       }
 
@@ -3271,8 +3271,11 @@
         position: absolute;
         top: clamp(120px, 22vw, 180px);
         left: 50%;
-        width: min(76vw, 560px);
+        display: block;
+        width: 50vw;
         height: auto;
+        aspect-ratio: 16 / 9;
+        border: 0;
         max-width: none;
         transform: translateX(-50%);
       }
@@ -3620,11 +3623,7 @@
 
       @media (max-width: 1024px) {
         .tasks__stage {
-          height: clamp(390px, 60vw, 460px);
-        }
-
-        .tasks__character {
-          width: min(72vw, 460px);
+          height: calc(clamp(120px, 22vw, 180px) + 28.125vw + 40px);
         }
 
         .tasks__content {
@@ -3666,16 +3665,15 @@
         }
 
         .tasks__stage {
-          height: 370px;
+          height: calc(125px + 28.125vw + 20px);
         }
 
         .tasks__character {
           top: 125px;
-          width: min(104vw, 430px);
         }
 
         .tasks__intro {
-          padding: 78px 20px 22px;
+          padding: 24px 20px 22px;
         }
 
         .tasks__title {
@@ -5341,7 +5339,11 @@
             />
           </div>
 
-          <div class="mirae__char hanmi-walker" data-hanmi-walker>
+          <div
+            class="mirae__char hanmi-walker"
+            data-hanmi-walker
+            data-tracking="desktop"
+          >
             <canvas
               width="1920"
               height="1080"
@@ -6644,15 +6646,12 @@
             aria-hidden="true"
           />
           <div class="tasks__stage">
-            <img
+            <iframe
               class="tasks__character"
-              src="./images/tasks_character.png"
-              alt="돋보기를 들고 직무를 살펴보는 한미 캐릭터"
-              width="2048"
-              height="1408"
+              src="./hanmi-reading-eye-tracking/embed.html?tracking=desktop"
+              title="돋보기를 들고 직무를 살펴보는 한미 캐릭터"
               loading="lazy"
-              decoding="async"
-            />
+            ></iframe>
           </div>
           <header class="tasks__intro">
             <h2 class="tasks__title" id="tasks-title">
