@@ -39,10 +39,9 @@
         transition: color var(--ease);
       }
 
-      img,
-      svg {
+      img {
         display: block;
-        max-width: 100%;
+        max-width: none;
       }
 
       button {
@@ -4589,7 +4588,7 @@
         align-items: start;
         gap: clamp(24px, 4vw, 64px);
         width: 100%;
-        max-width: 1800px;
+        max-width: var(--container);
         margin: 0 auto;
       }
 
@@ -4673,18 +4672,18 @@
       .con8__mark--arrow-left {
         bottom: 18px;
         left: 2%;
-        width: clamp(38px, 4vw, 58px);
+        width: clamp(32px, 2.4vw, 42px);
       }
 
       .con8__mark--star {
         right: -2%;
         bottom: 28px;
-        width: clamp(42px, 4.5vw, 62px);
+        width: clamp(36px, 2.8vw, 50px);
       }
 
       .con8__mark--circle {
         inset: 50% auto auto 50%;
-        width: 68px;
+        width: 80px;
         max-width: none;
         transform: translate(-50%, -50%);
       }
@@ -4692,7 +4691,7 @@
       .con8__mark--arrow-right {
         right: 2%;
         bottom: 20px;
-        width: clamp(38px, 4vw, 58px);
+        width: clamp(32px, 2.4vw, 42px);
       }
 
       .con8__mark--underline {
@@ -4747,11 +4746,11 @@
       .con9 {
         position: relative;
         display: flex;
-        min-height: 620px;
+        min-height: 750px;
         flex-direction: column;
         align-items: center;
         overflow: hidden;
-        padding: 92px 24px 80px;
+        padding: 108px 24px 70px;
         background: #d7f8f6 url("./images/con9_bg.png") center / cover no-repeat;
         text-align: center;
       }
@@ -4802,11 +4801,27 @@
         font-weight: 800;
       }
 
+      .con9__note {
+        position: relative;
+        z-index: 1;
+        margin-top: 78px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .con9__note::before {
+        display: inline-block;
+        margin-right: 10px;
+        color: var(--red);
+        content: "•";
+      }
+
       .con9__earth-link {
         position: relative;
         z-index: 1;
         display: grid;
-        width: clamp(180px, 23vw, 260px);
+        width: clamp(180px, 15vw, 200px);
         aspect-ratio: 1;
         flex: none;
         place-items: center;
@@ -4920,8 +4935,16 @@
         }
 
         .con9 {
-          min-height: 560px;
-          padding-top: 80px;
+          min-height: 700px;
+          padding-top: 88px;
+        }
+
+        .con9__earth-link {
+          width: 190px;
+        }
+
+        .con9__note {
+          margin-top: 70px;
         }
 
         .footer {
@@ -4999,8 +5022,8 @@
         }
 
         .con9 {
-          min-height: 365px;
-          padding: 58px 12px 36px;
+          min-height: 500px;
+          padding: 58px 12px 42px;
         }
 
         .con9__title {
@@ -5021,6 +5044,11 @@
         .con9__earth-link {
           width: 150px;
           margin-top: 28px;
+        }
+
+        .con9__note {
+          margin-top: 44px;
+          font-size: 12px;
         }
 
         .con9__cloud--left {
@@ -7038,11 +7066,18 @@
         <svg class="con8__filters" aria-hidden="true" focusable="false">
           <filter id="con8-remove-black" color-interpolation-filters="sRGB">
             <feColorMatrix
+              in="SourceGraphic"
               type="matrix"
               values="1 0 0 0 0
                       0 1 0 0 0
                       0 0 1 0 0
-                      1 1 1 0 0"
+                      1 0 0 0 0"
+              result="red-opacity"
+            />
+            <feComposite
+              in="SourceGraphic"
+              in2="red-opacity"
+              operator="in"
             />
           </filter>
         </svg>
@@ -7243,6 +7278,7 @@
             </span>
           </span>
         </a>
+        <p class="con9__note">아이콘을 클릭해서 지원해주세요!</p>
         <img
           class="con9__cloud con9__cloud--left"
           src="./images/con9_cloud_l.png"
@@ -7359,10 +7395,6 @@
         ".exposition__region",
         ".exposition__week-list",
         ".con8__card",
-        ".con9__title",
-        ".con9__countdown",
-        ".con9__expired",
-        ".con9__earth-link",
       ];
       var revealSelector = revealSelectors.join(", ");
       if (!("IntersectionObserver" in window)) return;
